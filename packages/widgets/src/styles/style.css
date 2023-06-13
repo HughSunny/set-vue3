@@ -1,0 +1,19 @@
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  overflow: hidden;
+  justify-content: center;
+  max-width: 100vw;
+}
+
+.wr {
+  position: relative;
+  /* max-width: 1030px; */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 0;
+}

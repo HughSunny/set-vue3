@@ -1,0 +1,44 @@
+{
+  "name": "@set/widgets",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm generate:file && pnpm build:components",
+    "staging": "vite build --mode staging",
+    "serve": "vite preview",
+    "build:components": "vite build --config vite.config.build.ts",
+    "generate:file": "node scripts/gen.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/set-widgets.umd.js",
+  "module": "dist/set-widgets.es.js",
+  "style": "dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/set-widgets.es.js",
+      "require": "./dist/set-widgets.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
+  "dependencies": {
+    "ant-design-vue": "~3.2.0",
+    "@ant-design/icons-vue": "^6.0.1",
+    "@set/utils": "workspace:*",
+    "swiper": "~9.0.3",
+    "v-viewer": "3.0.10",
+    "viewerjs": "1.10.4",
+    "vue-cropper": "^1.0.1",
+    "vue": "~3.2.37",
+    "vue-router": "4",
+    "vuex": "^4.0.2",
+    "vuex-oidc": "^3.10.3"
+  },
+  "devDependencies": {
+    "rollup-plugin-commonjs": "^10.1.0"
+  }
+}

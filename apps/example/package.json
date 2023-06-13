@@ -1,0 +1,38 @@
+{
+  "name": "sys",
+  "description": "用例系统",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint": "run-s lint:eslint lint:prettier",
+    "lint:eslint": "eslint --cache \"src/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write \"src/**/*.{js,json,ts,tsx,css,less,vue,html,md}\"",
+    "clean": "run-s clean:*",
+    "clean:lint": "rimraf .eslintcache node_modules/.cache/prettier",
+    "clean:vite": "rimraf node_modules/.vite"
+  },
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@ckpack/vue-color": "^1.4.1",
+    "ant-design-vue": "^3.2.20",
+    "dayjs": "^1.11.7",
+    "lodash-es": "^4.17.21",
+    "numeral": "^2.0.6",
+    "pinia": "^2.1.3",
+    "vue": "^3.3.4",
+    "vue-cropper": "^1.0.5",
+    "vue-router": "^4.2.1",
+    "vue3-virtual-scroll-list": "^0.2.1",
+    "vuedraggable": "^4.1.0",
+    "@set/widgets": "workspace:*",
+    "@set/utils": "workspace:*",
+    "v-viewer": "^3.0.10",
+    "viewerjs": "^1.10.5"
+  },
+  "devDependencies": {
+    "vue-tsc": "^1.6.5"
+  }
+}

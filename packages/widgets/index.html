@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIX</title>
+
+    <style type="text/css">
+      #spinner {
+        background: #fff;
+        height: 100%;
+        left: 0;
+        opacity: 1;
+        filter: alpha(opacity=100);
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 999999999;
+      }
+      .spinner-img {
+        height: 100%;
+        left: 0;
+        position: fixed;
+        top: 35%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="spinner">
+        <div class="spinner-img">
+          <img alt="Opportunities Preloader" src="/images/loader.gif" />
+          <h2>loading.....</h2>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+    <a href="#" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+  </body>
+</html>

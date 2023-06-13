@@ -1,0 +1,26 @@
+[
+  {
+    "name": "FieldTypeEdit",
+    "path": "./components/set-form/set-field-type/field-type-edit.vue"
+  },
+  {
+    "name": "FieldTypeViewer",
+    "path": "./components/set-form/set-field-type/field-type-viewer.vue"
+  },
+  {
+    "name": "FormRowEdit",
+    "path": "./components/set-form/set-form-row/form-row-edit.vue"
+  },
+  {
+    "name": "FormRowViewer",
+    "path": "./components/set-form/set-form-row/form-row-viewer.vue"
+  },
+  {
+    "name": "FormTypeEdit",
+    "path": "./components/set-form/set-form-type/form-type-edit.vue"
+  },
+  {
+    "name": "FormTypeViewer",
+    "path": "./components/set-form/set-form-type/form-type-viewer.vue"
+  }
+]
