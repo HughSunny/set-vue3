@@ -3,7 +3,7 @@
     <a-row v-for="row in fieldRows" :key="row.key" :gutter="20">
       <a-col
         v-for="field in row.children"
-        :key="field.key"
+        :key="field.model"
         :span="field.span || 24"
         :offset="field.offset || 0"
       >
@@ -12,7 +12,7 @@
           :label-width="labelWidth"
           :data="data"
           :optionDict="optionDict"
-          :error="errors[field.key]"
+          :error="errors[field.model]"
           @onValueChange="handleValueChange"
           @onSwitchChange="handleSwitchChange"
         >
@@ -105,7 +105,7 @@ export default defineComponent({
       emit('onValueChange', key, event)
       if (props.form) {
         // 下下策 文件触发校验的时机有问题，所以在设置值之后需要清空校验
-        const fieldMatch = props.fields.find((field) => field.key === key);
+        const fieldMatch = props.fields.find((field) => field.model === key);
         if (fieldMatch && (fieldMatch.type.indexOf('ile' ) !== -1 ) ) {
           props.form.validateFields([key])
           // rowFormRef.value.clearValidate(key)

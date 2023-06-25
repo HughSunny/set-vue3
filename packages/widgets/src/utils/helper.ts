@@ -110,7 +110,7 @@ export function getTableColumnX(columns, offset = 200) {
   }
   let x = offset;
   columns.forEach(s => {
-    x += s.width || 0;
+    x += s.width || 0; //放到外面，就是了列表的宽度了
   });
   return x;
 }

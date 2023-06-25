@@ -3,24 +3,25 @@
     <a-input
       v-if="field.type === 'input'"
       :disabled="field.disabled"
+      :style="getFieldStyle"
       v-model:value="fieldValue"
-      @change="handleValueChange($event, field.key)"
-      :placeholder="field.placeholder || '请输入'"
+      @change="handleValueChange($event, field.model)"
+      :placeholder="field.params?.placeholder || '请输入'"
     >
-      <template v-if="field.prepend" #addonBefore>
-        {{ field.prepend }}
+      <template v-if="field.params?.prepend" #addonBefore>
+        {{ field.params?.prepend }}
       </template>
-      <template v-if="field.append" #addonAfter>
+      <template v-if="field.params?.append" #addonAfter>
         <a-select
-          v-if="field.append.type === 'select'"
+          v-if="field.params?.append.type === 'select'"
           placeholder="请选择"
-          :style="{ width: field.append.width || '100px' }"
-          v-model:value="data[field.append.key]"
+          :style="{ width: field.params?.append.params?.width || '100px' }"
+          v-model:value="data[field.params?.append.model]"
           :disabled="field.disabled"
-          @change="handleSelectChange($event, field.append.key)"
+          @change="handleSelectChange($event, field.params?.append.model)"
         >
           <a-select-option
-            v-for="option in getOptions(field.append, field.append.key)"
+            v-for="option in getOptions(field.params?.append, field.params?.append.model)"
             :key="option.value"
             :value="option.value"
           >
@@ -34,33 +35,33 @@
       v-else-if="field.type === 'inputArea'"
       :disabled="field.disabled"
       v-model:value="fieldValue"
-      :style="{ width: field.width || '100%' }"
-      @change="handleValueChange($event, field.key)"
+      :style="getFieldStyle"
+      @change="handleValueChange($event, field.model)"
       v-bind="field.props"
-      :placeholder="field.placeholder || ''"
+      :placeholder="field.params?.placeholder || ''"
     ></a-textarea>
     <a-input
       v-else-if="field.type === 'number'"
       type="number"
       :disabled="field.disabled"
       v-model.number="fieldValue"
-      :style="{ width: field.width || '100%' }"
-      @change="handleValueChange($event, field.key)"
+      :style="getFieldStyle"
+      @change="handleValueChange($event, field.model)"
       v-bind="field.props"
-      :placeholder="field.placeholder || ''"
+      :placeholder="field.params?.placeholder || ''"
     ></a-input>
     <a-radio-group
       v-else-if="field.type === 'radio'"
       v-model:value="fieldValue"
       :disabled="field.disabled"
       style="width: 100%"
-      @change="handleValueChange($event, field.key)"
+      @change="handleValueChange($event, field.model)"
       v-bind="field.props"
     >
       <template v-if="!field.colCount">
         <a-radio
           class="wrapCheck"
-          v-for="item in getOptions(field, field.key)"
+          v-for="item in getOptions(field, field.model)"
           :key="item.value"
           :value="item.value"
         >
@@ -69,7 +70,7 @@
       </template>
 
       <a-row v-else type="flex" class="flexCheckRow">
-        <a-col :style="colStyle" v-for="item in getOptions(field, field.key)" :key="item.value">
+        <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="item.value">
           <a-radio class="flexCheck" :value="item.value">
             {{ item.title }}
           </a-radio>
@@ -81,11 +82,11 @@
       v-model:value="fieldValue"
       :disabled="field.disabled"
       style="width: 100%"
-      @change="handleValueChange($event, field.key)"
+      @change="handleValueChange($event, field.model)"
     >
       <template v-if="!field.colCount">
         <a-row>
-          <a-col :span="24" v-for="item in getOptions(field, field.key)">
+          <a-col :span="24" v-for="item in getOptions(field, field.model)">
             <a-checkbox :key="item.value" :value="item.value">
               {{ item.title }}
             </a-checkbox>
@@ -93,7 +94,7 @@
         </a-row>
       </template>
       <a-row v-else type="flex" class="flexCheckRow">
-        <a-col :style="colStyle" v-for="item in getOptions(field, field.key)" :key="option.value">
+        <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="option.value">
           <a-checkbox :value="item.value">
             {{ item.title }}
           </a-checkbox>
@@ -103,15 +104,15 @@
     <a-select
       v-else-if="field.type === 'select' || field.type === 'multi-select'"
       placeholder="请选择"
-      :style="{ width: field.width || '100%' }"
+      :style="getFieldStyle"
       v-model:value="fieldValue"
       :mode="field.type === 'multi-select' ? 'multiple' : null"
       :disabled="field.disabled"
-      @change="handleSelectChange($event, field.key)"
+      @change="handleSelectChange($event, field.model)"
       v-bind="field.props"
     >
       <a-select-option
-        v-for="option in getOptions(field, field.key)"
+        v-for="option in getOptions(field, field.model)"
         :key="option.value"
         :value="option.value"
       >
@@ -122,29 +123,29 @@
       v-else-if="field.type === 'date'"
       v-model:value="fieldValue"
       :disabled="field.disabled"
-      :style="{ width: field.width || '100%' }"
+      :style="getFieldStyle"
       placeholder="选择日期"
       mode="date"
       value-format="YYYY-MM-DD"
-      @change="handleValueChange($event, field.key)"
+      @change="handleValueChange($event, field.model)"
     ></a-date-picker>
 
     <a-date-picker
       v-else-if="field.type === 'year'"
       v-model:value="fieldValue"
       :disabled="field.disabled"
-      :style="{ width: field.width || '100%' }"
+      :style="getFieldStyle"
       mode="year"
       format="YYYY 年"
       valueFormat="YYYY"
       placeholder="请选择年"
       picker="year"
-      @change="handleValueChange($event, field.key)"
+      @change="handleValueChange($event, field.model)"
     ></a-date-picker>
     <a-range-picker
       v-else-if="field.type === 'daterange' || field.type === 'monthrange'"
       v-model:value="fieldValue"
-      :style="{ width: field.width || '100%' }"
+      :style="getFieldStyle"
       :disabled="field.disabled"
       :placeholder="[
         `开始${field.type === 'daterange' ? '日期' : '月份'}`,
@@ -152,7 +153,7 @@
       ]"
       :format="field.type === 'daterange' ? 'YYYY-MM-DD' : 'YYYY-MM'"
       :value-format="field.type === 'daterange' ? 'YYYY-MM-DD' : 'YYYY-MM'"
-      @change="handleValueChange($event, field.key)"
+      @change="handleValueChange($event, field.model)"
       v-bind="field.props"
     >
       <!--      :picker="field.type === 'daterange' ? 'date' : 'month'"-->
@@ -179,15 +180,15 @@
       v-model="fieldValue"
       :options="field.options"
       expandTrigger="hover"
-      @change="handleSelectChange($event, field.key)"
+      @change="handleSelectChange($event, field.model)"
       style="width: 100%"
     ></a-cascader>
     <slot v-else name="editRender" :field="field">
       <a-input
-        :placeholder="field.placeholder || '请输入'"
+        :placeholder="field.params?.placeholder || '请输入'"
         :disabled="field.disabled"
         v-model:value="fieldValue"
-        @change="handleValueChange($event, field.key)"
+        @change="otherValueChange($event)"
       ></a-input>
     </slot>
   </div>
@@ -243,10 +244,10 @@
       // const app = getCurrentInstance()
       const getFieldValue = () => {
         // value !== null && value !== undefined ? value : ' '
-        return props.data[props.dynamicKey || props.field.key];
+        return props.data[props.dynamicKey || props.field.model];
       };
       const fieldValue = ref(getFieldValue());
-      const vValue = props.data[props.dynamicKey || props.field.key];
+      const vValue = props.data[props.dynamicKey || props.field.model];
       const dynamicValue = ref(vValue !== null && vValue !== undefined ? vValue : ' ');
       const colStyle = computed(() => {
         const { field } = props;
@@ -258,11 +259,28 @@
           flexDirection: 'row',
         };
       });
-
+      const getFieldStyle = computed(() => {
+        const { field } = props;
+        let width = '100%'
+        const fieldWidth = field.params?.width
+        if (fieldWidth) {
+          console.log('----------------------------->fieldWidth', fieldWidth)
+          width = fieldWidth
+          if (!isNaN(parseFloat(fieldWidth)) && isFinite(fieldWidth)) {
+             console.log('----------------------------->parseFloat', fieldWidth)
+            width = `${fieldWidth}px`
+          }
+        }
+        return { width }
+      })
       const getOptions = (field, key) => {
         const { optionDict } = props;
-        return field.options || (optionDict ? optionDict[key || field.key] || [] : []);
+        return field.options || (optionDict ? optionDict[key || field.model] || [] : []);
       };
+      const otherValueChange = (event) => {
+        const { field } = props;
+        emit('onValueChange', field.model,  event.target.value);
+      }
       const handleValueChange = (event, key) => {
         const { field } = props;
         let value = event;
@@ -281,15 +299,15 @@
       const handleUploadChange = (file, fileList, type) => {
         const { field } = props;
         if (type === 'delete') {
-          emit('onValueChange', field.key, '');
+          emit('onValueChange', field.model, '');
         } else if (type === 'doing') {
           // 上传中，因为请求是异步的，所以需要占位
-          emit('onValueChange', field.key, file.url);
+          emit('onValueChange', field.model, file.url);
         } else {
           // 添加
-          emit('onValueChange', field.key, file.url);
+          emit('onValueChange', field.model, file.url);
         }
-        // formRef.value.clearValidate(field.key)
+        // formRef.value.clearValidate(field.model)
       };
       const handleMultiUploadChange = (file, fileList, type) => {
         const { field } = props;
@@ -301,11 +319,11 @@
           // 添加
         }
         console.log('handleMultiUploadChange  ====> ', fileUrlList);
-        emit('onValueChange', field.key, fileUrlList);
-        // formRef.value.clearValidate(field.key)
+        emit('onValueChange', field.model, fileUrlList);
+        // formRef.value.clearValidate(field.model)
       };
       watchEffect(() => {
-        console.log('SetFieldTypeEdit === >watchEffect ====> ', props.data, props.field.key);
+        console.log('SetFieldTypeEdit === >watchEffect ====> ', props.data, props.field.model);
         fieldValue.value = getFieldValue();
       });
 
@@ -313,8 +331,10 @@
         fieldValue,
         dynamicValue,
         colStyle,
+        getFieldStyle,
         getOptions,
         handleValueChange,
+        otherValueChange,
         handleSelectChange,
         handleUploadChange,
         handleMultiUploadChange,

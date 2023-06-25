@@ -16,7 +16,7 @@ function install(app: App) {
     if (item.install) {
       app.use(item);
     } else if (item.name) {
-      app.component(item.name, item);p
+      app.component(item.name, item);
     }
   });
 }

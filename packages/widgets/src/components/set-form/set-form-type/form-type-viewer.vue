@@ -7,12 +7,12 @@
     </div>
     <a-form-item
       v-else
-      :name="dynamicKey || field.key"
+      :name="dynamicKey || field.model"
       :required="false"
       :validateFirst="true"
       :label="showLabel ? field.label : null"
       :labelCol="labelCol"
-      :ref="field.key"
+      :ref="field.model"
     >
       <!--      :label-width="showLabel ? field.labelWidth || labelWidth || 'auto' : 'auto'"-->
       <SetTypeFieldViewer
@@ -94,7 +94,7 @@ export default defineComponent({
     // const { data, dynamicKey, field } = toRefs(props)
     const dynamicValue = computed(() => {
       const { data, dynamicKey, field } = props
-      const value = dynamicKey ? data[dynamicKey] : data[field.key]
+      const value = dynamicKey ? data[dynamicKey] : data[field.model]
       const { type } = field
       if (type === 'input' || type === 'inputArea' || type === 'switch') {
         return value !== null && value !== undefined ? value : ' '

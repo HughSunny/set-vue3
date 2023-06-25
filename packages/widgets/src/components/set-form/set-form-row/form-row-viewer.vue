@@ -3,7 +3,7 @@
     <a-row v-for="row in fieldRows" :key="row.key" :gutter="20">
       <a-col
         v-for="field in row.children"
-        :key="field.key"
+        :key="field.key || field.model"
         :span="field.span"
         :offset="field.offset || 0"
       >

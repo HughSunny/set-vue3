@@ -3,7 +3,7 @@ export const getArrayRule = (required) => {
   return { type: 'array', required, message: '请选择/上传' };
 };
 export function validateField(fields, key, value) {
-  const fieldMatch = fields.find((field) => field.key === key);
+  const fieldMatch = fields.find((field) => field.model === key);
   if (!fieldMatch) {
     return;
   }
@@ -63,7 +63,7 @@ export function generateRuleField(fields, field) {
   // let rules = [
   //   {
   //     validator: (rule, value, callback) => {
-  //       const result = validateField(fields, field.key, value)
+  //       const result = validateField(fields, field.model, value)
   //       if (result) {
   //         callback(new Error(result))
   //       } else {
@@ -76,7 +76,7 @@ export function generateRuleField(fields, field) {
   let rules: any[] = [
     {
       validator: (rule, value) => {
-        const result = validateField(fields, field.key, value);
+        const result = validateField(fields, field.model, value);
         console.log('validateField--------------->', result, ';', field, value);
         if (result) {
           return Promise.reject(result);
@@ -102,7 +102,7 @@ export function generateRuleField(fields, field) {
   }
   return {
     ...field,
-    key: field.key || newGuid(),
+    key: field.model || newGuid(),
     rules,
   };
 }
@@ -141,7 +141,7 @@ export function getFieldRow(fields, section, optionList) {
         } else {
           rowSpan = span;
           row = {
-            key: field.key || `${newGuid()}row`,
+            key: field.model || `${newGuid()}row`,
             children: [field],
           };
           rows.push(row);
@@ -153,7 +153,7 @@ export function getFieldRow(fields, section, optionList) {
 }
 export function requireField(fields, key, needRequire) {
   fields.forEach((field) => {
-    if (field.key === key) {
+    if (field.model === key) {
       field.required = needRequire;
     }
   });
@@ -163,19 +163,19 @@ export function requireField(fields, key, needRequire) {
 /**
  * row 需要require
  * @param {*} rows
- * @param {*} key
+ * @param {*} modelKey
  * @param {*} needRequire
  */
-export function requireFieldRow(rows, fields, key, needRequire) {
+export function requireFieldRow(rows, fields, modelKey, needRequire) {
   rows.forEach((rowItem) => {
     const { children } = rowItem;
-    const findItem = children.find((item) => item.key === key);
+    const findItem = children.find((item) => item.model === modelKey);
     if (findItem) {
       if (needRequire) {
         findItem.rules = [
           {
             validator: (rule, value, callback) => {
-              const result = validateField(fields, key, value);
+              const result = validateField(fields, modelKey, value);
               if (result) {
                 callback(new Error(result));
               }
@@ -195,13 +195,13 @@ export function requireFieldRow(rows, fields, key, needRequire) {
 /**
  * 给field 设置值
  * @param {*} fields
- * @param {*} keys
+ * @param {*} modelKeys
  * @param {*} obj
  */
-export function setFields(localFields, keys, obj, isInit = false) {
+export function setFields(localFields, modelKeys, obj, isInit = false) {
   const getNewFields = () =>
     localFields.map((field) => {
-      if (keys.indexOf(field.key) !== -1) {
+      if (modelKeys.indexOf(field.model) !== -1) {
         return {
           ...field,
           ...obj,
@@ -218,7 +218,7 @@ export function setFields(localFields, keys, obj, isInit = false) {
     fields = getNewFields();
   } else {
     fields.forEach((field, index) => {
-      if (keys.indexOf(field.key) !== -1) {
+      if (modelKeys.indexOf(field.model) !== -1) {
         fields[index] = { ...field, ...obj };
       }
     });
@@ -233,13 +233,13 @@ export function setFields(localFields, keys, obj, isInit = false) {
  * @param {*} key
  * @param {*} needRequire
  */
-export function setRows(localRows, keys, obj, isInit = false) {
+export function setRows(localRows, modelKeys, obj, isInit = false) {
   localRows.forEach((rowItem) => {
     const { children } = rowItem;
-    const findItems = children.find((item) => keys.indexOf(item.key) !== -1);
+    const findItems = children.find((item) => modelKeys.indexOf(item.model) !== -1);
     if (findItems && findItems.length > 0) {
       children.forEach((row, index) => {
-        if (keys.indexOf(row.key) !== -1) {
+        if (modelKeys.indexOf(row.model) !== -1) {
           children[index] = { ...row, ...obj };
         }
       });
@@ -251,10 +251,10 @@ export function setRows(localRows, keys, obj, isInit = false) {
 
   return localRows.map((rowItem) => {
     const { children } = rowItem;
-    const findItems = children.filter((item) => keys.indexOf(item.key) !== -1);
+    const findItems = children.filter((item) => modelKeys.indexOf(item.model) !== -1);
     if (findItems && findItems.length > 0) {
       const newList = children.map((field) => {
-        if (keys.indexOf(field.key) !== -1) {
+        if (modelKeys.indexOf(field.model) !== -1) {
           return {
             ...field,
             ...obj,
@@ -281,12 +281,12 @@ export function setRows(localRows, keys, obj, isInit = false) {
  * 设置值 测试阶段
  * @param {*} localFields
  * @param {*} localRows
- * @param {*} keys
+ * @param {*} modelKeys
  * @param {*} obj
  * @param {*} isInit 是否获取新对象
  */
-export function setFieldsAndRows(localFields, localRows, keys, obj, isInit = false) {
-  const fields = setFields(localFields, keys, obj, isInit);
+export function setFieldsAndRows(localFields, localRows, modelKeys, obj, isInit = false) {
+  const fields = setFields(localFields, modelKeys, obj, isInit);
   const rows = setRows(localRows, obj, isInit);
   return {
     fields,
@@ -304,9 +304,9 @@ export function setFieldsAndRows(localFields, localRows, keys, obj, isInit = fal
 export const getFieldValue = (fields, info, postfix) => {
   const value = { id: `${postfix ? postfix : 'value'}` };
   fields.forEach((item) => {
-    if (item.key) {
-      const keyName = `${item.key}${postfix ? postfix : ''}`;
-      value[item.key] = info[keyName] === null ? undefined : info[keyName];
+    if (item.model) {
+      const keyName = `${item.model}${postfix ? postfix : ''}`;
+      value[item.model] = info[keyName] === null ? undefined : info[keyName];
     }
   });
   return value;
@@ -322,9 +322,9 @@ export const getFieldValue = (fields, info, postfix) => {
 export const getMapValue = (fields, info, postfix) => {
   const value = {};
   fields.forEach((item) => {
-    if (item.key) {
-      const keyName = `${item.key}${postfix ? postfix : ''}`;
-      value[keyName] = info[item.key];
+    if (item.model) {
+      const keyName = `${item.model}${postfix ? postfix : ''}`;
+      value[keyName] = info[item.model];
     }
   });
   return value;

@@ -1,0 +1,649 @@
+[
+  {
+    "label": "A-农、林、牧、渔业",
+    "selected": false,
+    "value": "d163b983-2480-4486-8fe3-9883269b3728",
+    "children": [
+        {
+          "label": "A-01-农业",
+          "selected": false,
+          "value": "b3aee789-6480-4c30-975c-443194d909c8"
+        },
+        {
+          "label": "A-02-林业",
+          "selected": false,
+          "value": "683a9048-831f-4d56-bb3d-0660593b7842"
+        },
+        {
+          "label": "A-03-畜牧业",
+          "selected": false,
+          "value": "766bc712-6993-4360-8bf4-6a76a44d5a0b"
+        },
+        {
+          "label": "A-04-渔业",
+          "selected": false,
+          "value": "c357ae33-fcfc-431a-95a0-fbed84b8e343"
+        },
+        {
+          "label": "A-05-农、林、牧、渔专业及辅助性活动",
+          "selected": false,
+          "value": "99790a30-2c7c-4a99-89a6-cae822ba6537"
+        }
+     ]
+  },
+  {
+    "label": "B-采矿业 ",
+    "selected": false,
+    "value": "1577fe35-33b2-45cd-8ece-f71a438da9df",
+    "children": [
+      {
+        "label": "B-06-煤炭开采和洗选业",
+        "selected": false,
+        "value": "de3f6e6d-6566-4d4c-8f30-0ba21b75c6ed"
+      },
+      
+      {
+        "label": "B-07-石油和天然气开采业",
+        "selected": false,
+        "value": "a182cda8-3fc9-479a-b3ce-f69dfb652e8d"
+      },
+      {
+        "label": "B-08-黑色金属矿采选业",
+        "selected": false,
+        "value": "72012406-7ec5-470e-a9ff-a807bef82202"
+      },
+      {
+        "label": "B-09-有色金属矿采选业",
+        "selected": false,
+        "value": "8f06e5ef-7773-40ed-92bc-1d5727cf34f3"
+      },
+      {
+        "label": "B-10-非金属矿采选业",
+        "selected": false,
+        "value": "fbf90e27-d4fa-4236-b6ca-732e0e46ea62"
+      },
+      {
+        "label": "B-11-开采专业及辅助性活动",
+        "selected": false,
+        "value": "58599698-963e-4246-9f83-704fa3b7f373"
+      },
+      {
+        "label": "B-12-其他采矿业",
+        "selected": false,
+        "value": "fc7fb44c-3cf4-4ac0-af79-b086f9f79506"
+      }
+    ]
+  },
+  {
+    "label": "C-制造业",
+    "selected": false,
+    "value": "8713edb0-38d3-4196-9cd6-82b54a8e880d",
+    "children": [
+      {
+        "label": "C-13-农副食品加工业",
+        "selected": false,
+        "value": "03a3227a-65b5-47cc-ac8e-cf07087ad3ab"
+      },
+      {
+        "label": "C-14-食品制造业",
+        "selected": false,
+        "value": "27bd3ccb-401d-4dd9-96ec-71ab020f6ac3"
+      },
+      {
+        "label": "C-15-酒、饮料和精制茶制造业",
+        "selected": false,
+        "value": "23cea34e-05e9-4ce3-95f8-087948d9023a"
+      },
+      {
+        "label": "C-16-烟草制品业",
+        "selected": false,
+        "value": "7b351b1e-cc93-4f7b-bbfe-8c0353f72b3b"
+      },
+      {
+        "label": "C-17-纺织业",
+        "selected": false,
+        "value": "b3e0a9f5-23e7-415f-9095-2254d1bd6315"
+      },
+      {
+        "label": "C-18-纺织服装、服饰业",
+        "selected": false,
+        "value": "4274b702-bf3c-4668-9d68-385f1ea49d3f"
+      },
+      {
+        "label": "C-19-皮革、毛皮、羽毛及其制品和制鞋业",
+        "selected": false,
+        "value": "446b6172-1fc5-460d-a6ea-4dbd49910113"
+      },
+      {
+        "label": "C-20-木材加工和木、竹、藤、棕、草制品业",
+        "selected": false,
+        "value": "b9f07a55-9ba3-4e79-aa3f-0d3b2e5c927a"
+      },
+      {
+        "label": "C-21-家具制造业",
+        "selected": false,
+        "value": "a7eb832f-373b-400c-8d42-08e22788ebea"
+      },
+      {
+        "label": "C-22-造纸和纸制品业",
+        "selected": false,
+        "value": "5e072fa1-6e77-4be5-a7ab-7432fcc8324f"
+      },
+     
+      {
+        "label": "C-23-印刷和记录媒介复制业",
+        "selected": false,
+        "value": "babc23e8-44b8-4d8d-9ef7-ecee51afae15"
+      },
+      {
+        "label": "C-24-文教、工美、体育和娱乐用品制造业",
+        "selected": false,
+        "value": "76cbf98c-1759-4c19-82b2-a3b7dba921b3"
+      },
+      {
+        "label": "C-25-石油、煤炭及其他燃料加工业",
+        "selected": false,
+        "value": "5b96f236-85de-403f-8325-4a3d483dbf3c"
+      },
+      {
+        "label": "C-26-化学原料和化学制品制造业",
+        "selected": false,
+        "value": "6e10d9c7-efde-4263-bf5c-5074321a59a8"
+      },
+      {
+        "label": "C-27-医药制造业",
+        "selected": false,
+        "value": "fadbe10c-1dfc-4e46-afc9-80ef7cdd621d"
+      },
+      {
+        "label": "C-28-化学纤维制造业",
+        "selected": false,
+        "value": "5af7ce8c-b69c-4951-bd9a-572f920112c0"
+      },
+      {
+        "label": "C-29-橡胶和塑料制品业",
+        "selected": false,
+        "value": "bd6d8d71-32d4-4706-8652-3276701a62a1"
+      },
+      {
+        "label": "C-30-非金属矿物制品业",
+        "selected": false,
+        "value": "40b25e4a-7417-4757-8433-a234c4cc728c"
+      },
+      {
+        "label": "C-31-黑色金属冶炼和压延加工业",
+        "selected": false,
+        "value": "89e5759e-94a4-450d-8754-e20776b0e83b"
+      },
+      {
+        "label": "C-32-有色金属冶炼和压延加工业",
+        "selected": false,
+        "value": "a4f74807-c730-4070-8094-bb809719b54c"
+      },
+      {
+        "label": "C-33-金属制品业",
+        "selected": false,
+        "value": "d00f737f-3236-43b9-b562-66f9838ce1a1"
+      },
+      {
+        "label": "C-34-通用设备制造业",
+        "selected": false,
+        "value": "68057c8b-5ea9-4221-ab28-900a2ba4b4aa"
+      },
+      {
+        "label": "C-35-专用设备制造业",
+        "selected": false,
+        "value": "3d7fd661-d0d0-415c-8d91-72787af64c0d"
+      },
+      {
+        "label": "C-36-汽车制造业",
+        "selected": false,
+        "value": "13056e77-ff6a-46ad-9f6e-564bf3b1f930"
+      },
+      {
+        "label": "C-37-铁路、船舶、航空航天和其他运输设备制造业",
+        "selected": false,
+        "value": "dc754006-e59e-44e6-89fc-5c3464aae71b"
+      },
+      {
+        "label": "C-38-电气机械和器材制造业",
+        "selected": false,
+        "value": "35825417-0a27-44dd-b7dc-2421c889c06d"
+      },
+      {
+        "label": "C-39-计算机、通信和其他电子设备制造业",
+        "selected": false,
+        "value": "102d8bae-dbd1-4dde-be94-76e20e8cb400"
+      },
+      {
+        "label": "C-40-仪器仪表制造业",
+        "selected": false,
+        "value": "f960e9ee-11e1-4a91-a8c1-4a81352e9d28"
+      },
+      {
+        "label": "C-41-其他制造业",
+        "selected": false,
+        "value": "f2ee3ade-cf4d-4854-a89c-cfc30cefe457"
+      },
+      {
+        "label": "C-42-废弃资源综合利用业",
+        "selected": false,
+        "value": "996d23af-ab3a-4f01-85fe-3523108fdc87"
+      },
+      {
+        "label": "C-43-金属制品、机械和设备修理业",
+        "selected": false,
+        "value": "c40827b5-f295-46d0-8d7b-82f016688110"
+      }
+    ]
+  },
+  {
+    "label": "D-电力、热力、燃气及水生产和供应业",
+    "selected": false,
+    "value": "f111db4d-5869-4804-8cd2-9c0e33c19926",
+    "children": [
+      {
+        "label": "D-44-电力、热力生产和供应业",
+        "selected": false,
+        "value": "29c23f45-84c1-41b0-9be3-4d7c170b4be1"
+      },
+     
+      {
+        "label": "D-45-燃气生产和供应业",
+        "selected": false,
+        "value": "5c8310f8-38d5-4cf0-aec3-6f8f28f204cb"
+      },
+      {
+        "label": "D-46-水的生产和供应业",
+        "selected": false,
+        "value": "42b4392f-a33a-4abf-881a-57e9c8adf712"
+      }
+    ]
+  },
+  
+  
+  {
+    "label": "E-建筑业",
+    "selected": false,
+    "value": "edb24786-2fc4-46dc-86ad-314609f9cbd7",
+    "children": [
+      {
+        "label": "E-47-房屋建筑业",
+        "selected": false,
+        "value": "2c748203-e1fd-4fd8-a94d-cf8a0e31b447"
+      },
+      {
+        "label": "E-48-土木工程建筑业",
+        "selected": false,
+        "value": "6a892a7f-88f0-432b-a9bf-664a51beb727"
+      },
+      {
+        "label": "E-49-建筑安装业",
+        "selected": false,
+        "value": "6248ae34-7577-478c-a8b5-852df9347d8f"
+      },
+      {
+        "label": "E-50-建筑装饰、装修和其他建筑业",
+        "selected": false,
+        "value": "d5ae259c-4fda-4a9e-9aae-7eac4b5e380a"
+      }
+    ]
+  },
+  {
+    "label": "F-批发和零售业",
+    "selected": false,
+    "value": "7417c587-d246-49fc-97d0-0525a253d2d7",
+    "children":[
+      {
+        "label": "F-51-批发业",
+        "selected": false,
+        "value": "520b8dc5-2898-4146-9976-0382583d2acb"
+      },
+      
+      {
+        "label": "F-52-零售业",
+        "selected": false,
+        "value": "3dfc5f34-c887-44a3-9e98-ff822290b2a2"
+      }
+    ]
+  },
+  
+  
+  {
+    "label": "G-交通运输、仓储和邮政业",
+    "selected": false,
+    "value": "31ba9aa6-7387-4fee-afe3-61c377272390",
+    "children":[
+      {
+        "label": "G-53-铁路运输业",
+        "selected": false,
+        "value": "362c5c54-c0db-4edf-ae8c-7ef81f402770"
+      },
+      {
+        "label": "G-54-道路运输业",
+        "selected": false,
+        "value": "90dc898e-874e-4469-8a6a-2ac74ddcd2a5"
+      },
+      {
+        "label": "G-55-水上运输业",
+        "selected": false,
+        "value": "d7d3c607-d80a-4847-9440-78c3331da2e9"
+      },
+      {
+        "label": "G-56-航空运输业",
+        "selected": false,
+        "value": "4184b0bf-a261-4635-913b-fedc9e4fa64d"
+      },
+      {
+        "label": "G-57-管道运输业",
+        "selected": false,
+        "value": "12e02b4f-1e31-4b8e-8219-e37f998f0ce5"
+      },
+      {
+        "label": "G-58-多式联运和运输代理业",
+        "selected": false,
+        "value": "37cf908d-3078-4aa4-b2d6-42a9f750379b"
+      },
+      {
+        "label": "G-59-装卸搬运和仓储业",
+        "selected": false,
+        "value": "b03df9d6-1246-4a4e-91e1-3dde1d079f93"
+      },
+      {
+        "label": "G-60-邮政业",
+        "selected": false,
+        "value": "f6f1d159-8ddd-4bfd-90d3-f3085bf611fd"
+      }
+    ]
+  },
+  
+  {
+    "label": "H-住宿和餐饮业",
+    "selected": false,
+    "value": "87ccfd5f-957f-4c4d-93a3-10b93ebb48a8",
+    "children":[
+      {
+        "label": "H-61-住宿业",
+        "selected": false,
+        "value": "db33d2d6-4e24-452c-b9b4-91b48f725d04"
+      },
+      {
+        "label": "H-62-餐饮业",
+        "selected": false,
+        "value": "e09a08d4-60a0-4a24-9a94-ee913c02008b"
+      }
+    ]
+  },
+  
+  {
+    "label": "I-信息传输、软件和信息技术服务业",
+    "selected": false,
+    "value": "7fec6af6-dbac-4c31-976c-47ca4f12cce0",
+    "children":[
+      {
+        "label": "I-63-电信、广播电视和卫星传输服务",
+        "selected": false,
+        "value": "d6b89e35-b191-4c5d-8e6c-215487c900a2"
+      },
+      {
+        "label": "I-64-互联网和相关服务",
+        "selected": false,
+        "value": "441a6b6b-77f9-48c7-ac91-13e1facab457"
+      },
+      {
+        "label": "I-65-软件和信息技术服务业",
+        "selected": false,
+        "value": "8a1aa409-a2cb-4538-a6ba-723ecb1a6177"
+      }
+    ]
+  },
+  {
+    "label": "J-金融业",
+    "selected": false,
+    "value": "b6ba10c2-2375-42f4-90f8-d8a94861f2bd",
+    "children":[
+      {
+        "label": "J-66-货币金融服务",
+        "selected": false,
+        "value": "aa7da89e-7839-44cc-8cca-de14f6aed536"
+      },
+      {
+        "label": "J-67-资本市场服务",
+        "selected": false,
+        "value": "891a99aa-424f-445f-9c38-c2c0a6a8337c"
+      },
+      {
+        "label": "J-68-保险业",
+        "selected": false,
+        "value": "41c695c5-acee-49a7-9629-fabace663bb4"
+      },
+      {
+        "label": "J-69-其他金融业",
+        "selected": false,
+        "value": "1ce0c42e-9345-4429-988c-706865736bbc"
+      }
+    ]
+  },
+  
+  {
+    "label": "K-房地产业",
+    "selected": false,
+    "value": "7abdcaa8-01de-43b1-a2f3-e4e8ac530fd6",
+    "children":[
+      {
+        "label": "K-70-房地产业",
+        "selected": false,
+        "value": "239e363f-ea33-44fa-a528-be5694d28dd6"
+      }
+    ]
+  },
+  
+  {
+    "label": "L-租赁和商务服务业",
+    "selected": false,
+    "value": "c0addffa-9d6b-4178-baf3-84834d1c36e0",
+    "children":[
+      {
+        "label": "L-71-租赁业",
+        "selected": false,
+        "value": "6e2b94fe-3d5e-4420-b72b-5bff30a01c9a"
+      },
+      {
+        "label": "L-72-商务服务业",
+        "selected": false,
+        "value": "ec856220-c8e9-4b98-b8c5-10cb7bc22c87"
+      }
+     
+    ]
+  },
+  
+  {
+    "label": "M-科学研究和技术服务业",
+    "selected": false,
+    "value": "98455137-a40f-4fbf-8191-e735a480717b",
+    "children":[
+      {
+        "label": "M-73-研究和试验发展",
+        "selected": false,
+        "value": "532ef35f-f145-48e9-8d24-16ee4886e0d3"
+      },
+      {
+        "label": "M-74-专业技术服务业",
+        "selected": false,
+        "value": "656e34bf-926f-43a3-9a9b-62f6a88c0f12"
+      },
+      {
+        "label": "M-75-科技推广和应用服务业",
+        "selected": false,
+        "value": "008a98dd-3fc1-4013-87b6-edc97a532f60"
+      }
+    ]
+  },
+  
+  {
+    "label": "N-水利、环境和公共设施管理业",
+    "selected": false,
+    "value": "b898bde4-15de-454a-880e-46e1e431987d",
+    "children":[
+      {
+        "label": "N-76-水利管理业",
+        "selected": false,
+        "value": "4e05dd6e-3012-42db-b370-e70ca88ecb71"
+      },
+      {
+        "label": "N-77-生态保护和环境治理业",
+        "selected": false,
+        "value": "31f63c9c-9ee5-4b9a-b3e3-9c447a1c91f2"
+      },
+      {
+        "label": "N-78-公共设施管理业",
+        "selected": false,
+        "value": "977d0b34-33ab-45a3-96b1-9d129ae84326"
+      },
+      {
+        "label": "N-79-土地管理业",
+        "selected": false,
+        "value": "07487fed-32a7-4846-89c6-c0ef2010a06d"
+      }
+    ]
+  },
+  {
+    "label": "O-居民服务、修理和其他服务业",
+    "selected": false,
+    "value": "a12d7ce6-ad19-4e80-89b4-507c8660a664",
+    "children":[
+      {
+        "label": "O-80-居民服务业",
+        "selected": false,
+        "value": "e7975548-f203-45da-b827-38d06de9b24f"
+      },
+      
+      {
+        "label": "O-81-机动车、电子产品和日用产品修理业",
+        "selected": false,
+        "value": "0a707916-e880-472e-abb5-58eb10eea6ea"
+      },
+      {
+        "label": "O-82-其他服务业",
+        "selected": false,
+        "value": "b8c9ffac-9a53-42b4-8a49-6d8aeb9e4202"
+      }
+    ]
+  },
+  
+  {
+    "label": "P-教育",
+    "selected": false,
+    "value": "c7c7975e-7400-4155-b8c1-baab766679c3",
+    "children":[
+      {
+        "label": "P-83-教育",
+        "selected": false,
+        "value": "855886f3-1a13-4e7f-92dc-7215f39a9197"
+      }
+    ]
+  },
+  {
+    "label": "Q-卫生和社会工作",
+    "selected": false,
+    "value": "ec5ed248-9ecd-4326-b82c-6fccde0ed494",
+    "children":[
+      {
+        "label": "Q-84-卫生",
+        "selected": false,
+        "value": "1c57e2d6-1af2-4595-be37-57bc00ee886b"
+      },
+    
+      {
+        "label": "Q-85-社会工作",
+        "selected": false,
+        "value": "ee76b17c-c2fc-4af4-afa2-790a5e3edeb7"
+      }
+    ]
+  },
+  
+  {
+    "label": "R-文化、体育和娱乐业",
+    "selected": false,
+    "value": "b2edb651-aed4-4426-ab28-59e5770e3550",
+    "children":[
+      {
+        "label": "R-86-新闻和出版业",
+        "selected": false,
+        "value": "a2b22b25-b8ca-479a-8107-1f1198d89061"
+      },
+      {
+        "label": "R-87-广播、电视、电影和录音制作业",
+        "selected": false,
+        "value": "0de8e6ee-f9cb-4609-93e0-846d9b3a8f3e"
+      },
+      {
+        "label": "R-88-文化艺术业",
+        "selected": false,
+        "value": "3f6b39d4-b121-47cd-a11d-481597d36a3e"
+      },
+      {
+        "label": "R-89-体育",
+        "selected": false,
+        "value": "1925888d-d90f-43eb-9727-fed96fcac11f"
+      },
+      {
+        "label": "R-90-娱乐业",
+        "selected": false,
+        "value": "aaf98be9-2e5a-4733-b76b-5a49de120de8"
+      }
+    ]
+  },
+  {
+    "label": "S-公共管理、社会保障和社会组织",
+    "selected": false,
+    "value": "e5742881-edc7-4cae-9a26-79019f56d878",
+    "children":[
+      {
+        "label": "S-91-中国共产党机关",
+        "selected": false,
+        "value": "f7821a19-a993-4482-a86a-47609861e15e"
+      },
+      
+      {
+        "label": "S-92-国家机构",
+        "selected": false,
+        "value": "42e7d82b-46fe-475b-a60c-5ad473a57b6b"
+      },
+      {
+        "label": "S-93-人民政协、民主党派",
+        "selected": false,
+        "value": "14d8d1c8-21ef-404e-bee9-65a95077378f"
+      },
+      {
+        "label": "S-94-社会保障",
+        "selected": false,
+        "value": "76e70f5e-464a-4bef-a5e4-4a4fced1359b"
+      },
+      {
+        "label": "S-95-群众团体、社会团体和其他成员组织",
+        "selected": false,
+        "value": "5bdccf28-460b-494d-b080-e87b9cb9f004"
+      },
+      {
+        "label": "S-96-基层群众自治组织及其他组织",
+        "selected": false,
+        "value": "9701bc0a-04d0-46ad-825b-fec64d28074e"
+      }
+    ]
+  },
+  
+  {
+    "label": "T-国际组织",
+    "selected": false,
+    "value": "07ce1213-63ad-471b-8d4c-1a9e6283a78c",
+    "children":[
+      {
+        "label": "T-97-国际组织",
+        "selected": false,
+        "value": "f1dbe23a-33bc-4f29-993a-26b55159e1ee"
+      }
+    ]
+  }
+  
+]

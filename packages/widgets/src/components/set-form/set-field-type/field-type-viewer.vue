@@ -1,22 +1,22 @@
 <template>
   <div class="set-type-field_viewer">
     <span v-if="field.type === 'input'" class="contentRow" :style="valueStyle">
-      <span v-if="field.prepend">{{ field.prepend }} -</span>
+      <span v-if="field.params?.prepend">{{ field.params?.prepend }} -</span>
       {{ dynamicValue }}
-      <span v-if="field.append" class="row">
+      <span v-if="field.params?.append" class="row">
         -
-        <span v-if="field.append.type === 'select'">
-          {{ getSingleSelectValueByKey(field.append.key).title }}
+        <span v-if="field.params?.append.type === 'select'">
+          {{ getSingleSelectValueByKey(field.params?.append.model).title }}
         </span>
         <!--        <SetTypeFieldViewer-->
-        <!--          v-if="field.append.type === 'select'"-->
-        <!--          :field="field.append"-->
+        <!--          v-if="field.params?.append.type === 'select'"-->
+        <!--          :field="field.params?.append"-->
         <!--          :data="data"-->
         <!--          :optionDict="optionDict"-->
         <!--          :value-style="valueStyle"-->
         <!--        >-->
         <!--        </SetTypeFieldViewer>-->
-        <span v-else>{{ field.append }}</span>
+        <span v-else>{{ field.params?.append }}</span>
       </span>
     </span>
     <span v-else-if="field.type === 'inputArea'" :style="valueStyle" v-html="inputAreaValue"></span>
@@ -79,10 +79,12 @@
 
 <script lang="ts">
   import { defineComponent, computed, watch, toRefs } from 'vue';
-  import { getItemFromDataSourceById } from '@set/utils';
+  import { SetFormHelper } from '@set/utils';
+  // import { getItemFromDataSourceById } from '@set/utils';
   // import SetUpload from '@/components/set-upload/index.vue';
   import SetUpload from '../../set-upload/index.vue';
   import dayjs from 'dayjs';
+  const { getItemFromDataSourceById } = SetFormHelper
   // import { FieldTypeViewer } from '@/components/set-field-type/index'
   export default defineComponent({
     name: 'SetFieldTypeViewer',
@@ -129,7 +131,7 @@
       // const { data, dynamicKey, field } = toRefs(props)
       const dynamicValue = computed(() => {
         const { data, dynamicKey, field } = props;
-        const value = dynamicKey ? data[dynamicKey] : data[field.key];
+        const value = dynamicKey ? data[dynamicKey] : data[field.model];
         const { type } = field;
         if (type === 'input' || type === 'inputArea' || type === 'switch') {
           return value !== null && value !== undefined ? value : ' ';
@@ -138,7 +140,7 @@
       });
       const inputAreaValue = computed(() => {
         const { data, dynamicKey, field } = props;
-        const value = dynamicKey ? data[dynamicKey] : data[field.key];
+        const value = dynamicKey ? data[dynamicKey] : data[field.model];
         return value !== null && value !== undefined
           ? value.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp;')
           : '  ';
@@ -146,7 +148,7 @@
 
       const getDynamicValue = () => {
         const { data, dynamicKey, field } = props;
-        const value = dynamicKey ? data[dynamicKey] : data[field.key];
+        const value = dynamicKey ? data[dynamicKey] : data[field.model];
         const { type } = field;
         if (type === 'input' || type === 'inputArea' || type === 'switch') {
           return value !== null && value !== undefined ? value : ' ';
@@ -160,7 +162,7 @@
       const getSingleSelectValue = () => {
         const { field } = props;
         return (
-          getOptions(field, field.key).find((item) => item.value === getDynamicValue()) || {
+          getOptions(field, field.model).find((item) => item.value === getDynamicValue()) || {
             title: getDynamicValue(),
           }
         );
@@ -169,7 +171,7 @@
         const { field } = props;
         const values = getDynamicValue() || [];
         return (
-          getOptions(field, field.key).filter((item) => values.indexOf(item.value) !== -1) || []
+          getOptions(field, field.model).filter((item) => values.indexOf(item.value) !== -1) || []
         ).map((ss) => ss.title);
       };
       const getTimeString = (value, formatString) => {
@@ -188,9 +190,9 @@
       };
       const getCascaderValue = () => {
         const { data, dynamicKey, field } = props;
-        const key = dynamicKey || field.key;
+        const key = dynamicKey || field.model;
         const item = getItemFromDataSourceById(
-          getOptions(field, field.key),
+          getOptions(field, field.model),
           data[key] ? data[key][data[key].length - 1] : null,
           'value'
         );
@@ -198,7 +200,7 @@
       };
       const getOptions = (field, key) => {
         const { optionDict } = props;
-        return field.options || (optionDict ? optionDict[key || field.key] || [] : []);
+        return field.options || (optionDict ? optionDict[key || field.model] || [] : []);
       };
       return {
         dynamicValue,

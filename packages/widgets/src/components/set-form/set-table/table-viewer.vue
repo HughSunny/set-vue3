@@ -8,10 +8,10 @@
       </a-table-column>
       <a-table-column
         v-for="field in fields"
-        :key="field.key"
-        :data-index="field.key"
+        :key="field.model"
+        :data-index="field.model"
         :title="field.label"
-        :width="field.width"
+        :width="field.params?.width"
       >
         <template #default="{ text, record, index }">
           <!--          {{ record }}-->
@@ -100,7 +100,7 @@ export default defineComponent({
         const newFormValue = {}
         newVal.forEach((item, index) => {
           props.fields.forEach((field) => {
-            newFormValue[`${field.key}_${index}`] = item[field.key]
+            newFormValue[`${field.model}_${index}`] = item[field.model]
           })
         })
         values.value = newFormValue

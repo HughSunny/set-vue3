@@ -8,12 +8,12 @@
     <a-form-item
       v-else
       :rules="field.rules"
-      :name="dynamicKey || field.key"
+      :name="dynamicKey || field.model"
       :required="field.required"
       :validateFirst="true"
       :label="showLabel ? field.label : null"
       :labelCol="labelCol"
-      :ref="field.key"
+      :ref="field.model"
       :validateStatus="error ? 'error' : undefined"
       :help="error"
       v-bind="field.formProps"
@@ -98,10 +98,10 @@ export default defineComponent({
   },
   emits: ['onValueChange', 'onSwitchChange'],
   setup(props, { emit }) {
-    const fieldValue = ref(props.data[props.dynamicKey || props.field.key])
+    const fieldValue = ref(props.data[props.dynamicKey || props.field.model])
     // const dynamicValue = computed(() => {
     //   const { data, dynamicKey, field } = props
-    //   const value = dynamicKey ? data[dynamicKey] : data[field.key]
+    //   const value = dynamicKey ? data[dynamicKey] : data[field.model]
     //   const { type } = field
     //   if (type === 'input' || type === 'inputArea' || type === 'switch') {
     //     return value !== null && value !== undefined ? value : ' '
@@ -129,7 +129,7 @@ export default defineComponent({
 
     watchEffect(() => {
       console.log('SetFormTypeEdit  ====> watchEffect ')
-      fieldValue.value = props.data[props.dynamicKey || props.field.key]
+      fieldValue.value = props.data[props.dynamicKey || props.field.model]
     })
 
     return { fieldValue, labelCol, handleValueChange, handleSwitchChange }
