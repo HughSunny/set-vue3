@@ -32,8 +32,10 @@ bower_components
 build/Release
 
 # Dependency directories
+bower_components
+jspm_packages
 node_modules
-jspm_packages/
+web_modules
 
 # Optional npm cache directory
 .npm
@@ -58,3 +60,9 @@ jspm_packages/
 
 # OS X temporary files
 .DS_Store
+
+# build output
+build
+dist
+dist-ssr
+.changeset/*.md

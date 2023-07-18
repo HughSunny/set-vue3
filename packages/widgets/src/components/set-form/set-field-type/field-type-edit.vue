@@ -273,15 +273,15 @@
         }
         return { width }
       })
-      const getOptions = (field, key) => {
+      const getOptions = (field, model) => {
         const { optionDict } = props;
-        return field.options || (optionDict ? optionDict[key || field.model] || [] : []);
+        return field.options || (optionDict ? optionDict[model || field.model] || [] : []);
       };
       const otherValueChange = (event) => {
         const { field } = props;
         emit('onValueChange', field.model,  event.target.value);
       }
-      const handleValueChange = (event, key) => {
+      const handleValueChange = (event, model) => {
         const { field } = props;
         let value = event;
         if (field.type === 'input' || field.type === 'inputArea' || field.type === 'number') {
@@ -290,10 +290,10 @@
           value = event.target.value;
         }
 
-        emit('onValueChange', key, value);
+        emit('onValueChange', model, value);
       };
-      const handleSelectChange = (event, key) => {
-        emit('onValueChange', key, event);
+      const handleSelectChange = (event, model) => {
+        emit('onValueChange', model, event);
       };
 
       const handleUploadChange = (file, fileList, type) => {
