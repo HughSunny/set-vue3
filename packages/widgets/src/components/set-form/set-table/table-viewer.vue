@@ -43,85 +43,85 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watch, toRefs, ref, reactive, toRaw } from 'vue'
-import { FieldTypeViewer } from '@/components/set-form/set-field-type'
-import { InfoCircleFilled } from '@ant-design/icons-vue'
+  import { defineComponent, computed, watch, toRefs, ref, reactive, toRaw } from 'vue';
+  import { FieldTypeViewer } from '@/components/set-form/set-field-type';
+  import { InfoCircleFilled } from '@ant-design/icons-vue';
 
-export default defineComponent({
-  name: 'SetTablePreview',
-  components: { SetTypeFieldViewer: FieldTypeViewer, InfoCircleFilled },
-  props: {
-    fields: {
-      type: Array,
-      default() {
-        return []
+  export default defineComponent({
+    name: 'SetTablePreview',
+    components: { SetTypeFieldViewer: FieldTypeViewer, InfoCircleFilled },
+    props: {
+      fields: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      dataList: {
+        type: Array,
+        default() {
+          return [];
+        }
+      },
+      optionDict: {
+        type: Object,
+        default() {
+          return [];
+        }
+      },
+
+      pagination: {
+        type: Object,
+        default() {
+          return { current: 1, pageSize: 20, total: 0, showSizeChanger: false };
+        }
       }
     },
-    dataList: {
-      type: Array,
-      default() {
-        return []
-      }
-    },
-    optionDict: {
-      type: Object,
-      default() {
-        return []
-      }
-    },
+    setup(props, { emit }) {
+      const handleActionClick = (event, action, data) => {
+        emit(action.payload, data);
+      };
+      const list = ref([]);
+      const values = ref({});
 
-    pagination: {
-      type: Object,
-      default() {
-        return { current: 1, pageSize: 20, total: 0, showSizeChanger: false }
-      }
-    }
-  },
-  setup(props, { emit }) {
-    const handleActionClick = (event, action, data) => {
-      emit(action.payload, data)
-    }
-    const list = ref([])
-    const values = ref({})
+      const handleTableChange = (pager, filters, sorter) => {
+        console.log('----->', pager);
+        // props.pagination.current = pager.current
+        emit('onTableChange', pager, filters, sorter);
+        // this.fetchData({})
+      };
+      const indexMethod = index => {
+        return (props.pagination.current - 1) * props.pagination.pageSize + index + 1;
+      };
+      watch(
+        () => props.dataList,
+        newVal => {
+          list.value = [...newVal];
+          const newFormValue = {};
+          newVal.forEach((item, index) => {
+            props.fields.forEach(field => {
+              newFormValue[`${field.model}_${index}`] = item[field.model];
+            });
+          });
+          values.value = newFormValue;
+        }
+      );
 
-    const handleTableChange = (pager, filters, sorter) => {
-      console.log('----->', pager)
-      // props.pagination.current = pager.current
-      emit('onTableChange', pager, filters, sorter)
-      // this.fetchData({})
+      return { tableFields: [], list, values, indexMethod, handleActionClick, handleTableChange };
     }
-    const indexMethod = (index) => {
-      return (props.pagination.current - 1) * props.pagination.pageSize + index + 1
-    }
-    watch(
-      () => props.dataList,
-      (newVal) => {
-        list.value = [...newVal]
-        const newFormValue = {}
-        newVal.forEach((item, index) => {
-          props.fields.forEach((field) => {
-            newFormValue[`${field.model}_${index}`] = item[field.model]
-          })
-        })
-        values.value = newFormValue
-      }
-    )
-
-    return { tableFields: [], list, values, indexMethod, handleActionClick, handleTableChange }
-  }
-})
+  });
 </script>
 
 <style lang="less" scoped>
-.set-table_preview_item {
-  .antd-form-item {
-    margin: 0;
-  }
+  .set-table_preview_item {
+    .antd-form-item {
+      margin: 0;
+    }
 
-  .antd-form-item__content {
-    span {
-      color: #606266;
+    .antd-form-item__content {
+      span {
+        color: #606266;
+      }
     }
   }
-}
 </style>

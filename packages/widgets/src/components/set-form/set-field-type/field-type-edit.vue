@@ -61,6 +61,7 @@
       <template v-if="!field.colCount">
         <a-radio
           class="wrapCheck"
+          :class="field.params?.itemClass || ''"
           v-for="item in getOptions(field, field.model)"
           :key="item.value"
           :value="item.value"
@@ -71,7 +72,7 @@
 
       <a-row v-else type="flex" class="flexCheckRow">
         <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="item.value">
-          <a-radio class="flexCheck" :value="item.value">
+          <a-radio class="flexCheck" :value="item.value" :class="field.params?.itemClass || ''">
             {{ item.title }}
           </a-radio>
         </a-col>
@@ -87,7 +88,11 @@
       <template v-if="!field.colCount">
         <a-row>
           <a-col :span="24" v-for="item in getOptions(field, field.model)">
-            <a-checkbox :key="item.value" :value="item.value">
+            <a-checkbox
+              :key="item.value"
+              :value="item.value"
+              :class="field.params?.itemClass || ''"
+            >
               {{ item.title }}
             </a-checkbox>
           </a-col>
@@ -95,7 +100,7 @@
       </template>
       <a-row v-else type="flex" class="flexCheckRow">
         <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="option.value">
-          <a-checkbox :value="item.value">
+          <a-checkbox :value="item.value" :class="field.params?.itemClass || ''">
             {{ item.title }}
           </a-checkbox>
         </a-col>
@@ -115,6 +120,7 @@
         v-for="option in getOptions(field, field.model)"
         :key="option.value"
         :value="option.value"
+        :class="field.params?.itemClass || ''"
       >
         {{ option.title }}
       </a-select-option>
@@ -149,7 +155,7 @@
       :disabled="field.disabled"
       :placeholder="[
         `开始${field.type === 'daterange' ? '日期' : '月份'}`,
-        `结束${field.type === 'daterange' ? '日期' : '月份'}`,
+        `结束${field.type === 'daterange' ? '日期' : '月份'}`
       ]"
       :format="field.type === 'daterange' ? 'YYYY-MM-DD' : 'YYYY-MM'"
       :value-format="field.type === 'daterange' ? 'YYYY-MM-DD' : 'YYYY-MM'"
@@ -202,7 +208,7 @@
     toRefs,
     ref,
     watchEffect,
-    getCurrentInstance,
+    getCurrentInstance
   } from 'vue';
   import { DeleteOutlined, FormOutlined, PlusOutlined } from '@ant-design/icons-vue';
   import SetUpload from '../../set-upload/index.vue';
@@ -214,41 +220,39 @@
         type: Object,
         default() {
           return {};
-        },
+        }
       },
       dynamicKey: {
         type: String,
         default() {
           return null;
-        },
+        }
       },
+      value: {},
       data: {
         type: Object,
         default() {
           return {};
-        },
+        }
       },
       optionDict: {
         type: Object,
         default() {
           return {};
-        },
-      },
+        }
+      }
       // hideAdd: {
       //   type: Boolean,
       //   default: false
       // },
     },
-    emits: ['onValueChange'],
+    emits: ['onValueChange', 'update:value'],
     setup(props, { emit }) {
       // const app = getCurrentInstance()
       const getFieldValue = () => {
-        // value !== null && value !== undefined ? value : ' '
-        return props.data[props.dynamicKey || props.field.model];
+        return props.value || props.data[props.dynamicKey || props.field.key];
       };
-      const fieldValue = ref(getFieldValue());
-      const vValue = props.data[props.dynamicKey || props.field.model];
-      const dynamicValue = ref(vValue !== null && vValue !== undefined ? vValue : ' ');
+      const fieldValue = ref(props.value);
       const colStyle = computed(() => {
         const { field } = props;
         return {
@@ -256,31 +260,32 @@
           // width: `${100 / this.field.colCount}%`,
           alignItems: 'center',
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'row'
         };
       });
       const getFieldStyle = computed(() => {
         const { field } = props;
-        let width = '100%'
-        const fieldWidth = field.params?.width
+        let width = '100%';
+        const fieldWidth = field.params?.width;
         if (fieldWidth) {
-          console.log('----------------------------->fieldWidth', fieldWidth)
-          width = fieldWidth
+          console.log('----------------------------->fieldWidth', fieldWidth);
+          width = fieldWidth;
           if (!isNaN(parseFloat(fieldWidth)) && isFinite(fieldWidth)) {
-             console.log('----------------------------->parseFloat', fieldWidth)
-            width = `${fieldWidth}px`
+            console.log('----------------------------->parseFloat', fieldWidth);
+            width = `${fieldWidth}px`;
           }
         }
-        return { width }
-      })
+        return { width };
+      });
       const getOptions = (field, model) => {
         const { optionDict } = props;
         return field.options || (optionDict ? optionDict[model || field.model] || [] : []);
       };
-      const otherValueChange = (event) => {
+      const otherValueChange = event => {
         const { field } = props;
-        emit('onValueChange', field.model,  event.target.value);
-      }
+        emit('onValueChange', field.model, event.target.value);
+        emit('update:value', event.target.value);
+      };
       const handleValueChange = (event, model) => {
         const { field } = props;
         let value = event;
@@ -291,27 +296,32 @@
         }
 
         emit('onValueChange', model, value);
+        emit('update:value', value);
       };
       const handleSelectChange = (event, model) => {
         emit('onValueChange', model, event);
+        emit('update:value', event);
       };
 
       const handleUploadChange = (file, fileList, type) => {
         const { field } = props;
         if (type === 'delete') {
           emit('onValueChange', field.model, '');
+          emit('update:value', '');
         } else if (type === 'doing') {
           // 上传中，因为请求是异步的，所以需要占位
           emit('onValueChange', field.model, file.url);
+          emit('update:value', file.url);
         } else {
           // 添加
           emit('onValueChange', field.model, file.url);
+          emit('update:value', file.url);
         }
         // formRef.value.clearValidate(field.model)
       };
       const handleMultiUploadChange = (file, fileList, type) => {
         const { field } = props;
-        const fileUrlList = fileList.map((xx) => xx.url);
+        const fileUrlList = fileList.map(xx => xx.url);
         if (type === 'delete') {
         } else if (type === 'doing') {
           // 上传中，因为请求是异步的，所以需要占位
@@ -320,16 +330,21 @@
         }
         console.log('handleMultiUploadChange  ====> ', fileUrlList);
         emit('onValueChange', field.model, fileUrlList);
+        emit('update:value', fileUrlList);
         // formRef.value.clearValidate(field.model)
       };
       watchEffect(() => {
-        console.log('SetFieldTypeEdit === >watchEffect ====> ', props.data, props.field.model);
-        fieldValue.value = getFieldValue();
+        console.log(
+          'SetFieldTypeEdit === >watchEffect ====> ',
+          props.data,
+          props.field.model,
+          props.value
+        );
+        fieldValue.value = props.value;
       });
 
       return {
         fieldValue,
-        dynamicValue,
         colStyle,
         getFieldStyle,
         getOptions,
@@ -337,9 +352,9 @@
         otherValueChange,
         handleSelectChange,
         handleUploadChange,
-        handleMultiUploadChange,
+        handleMultiUploadChange
       };
-    },
+    }
   });
 </script>
 

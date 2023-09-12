@@ -22,7 +22,7 @@
       <SetTypeFieldEdit
         :field="field"
         :dynamicKey="dynamicKey"
-        :fieldValue="fieldValue"
+        :value="fieldValue"
         :data="data"
         :optionDict="optionDict"
         @onValueChange="handleValueChange"
