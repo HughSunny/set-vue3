@@ -1,5 +1,5 @@
 {
-  "name": "@set/utils",
+  "name": "@xdc/utils",
   "version": "1.0.0",
   "description": "utils functions",
   "main": "index.js",

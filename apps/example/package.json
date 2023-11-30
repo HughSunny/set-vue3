@@ -15,9 +15,9 @@
     "clean:vite": "rimraf node_modules/.vite"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.1.0",
+    "@ant-design/icons-vue": "^7.0.1",
     "@ckpack/vue-color": "^1.4.1",
-    "ant-design-vue": "^3.2.20",
+    "ant-design-vue": "~4.0.7",
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
     "numeral": "^2.0.6",
@@ -27,8 +27,8 @@
     "vue-router": "^4.2.1",
     "vue3-virtual-scroll-list": "^0.2.1",
     "vuedraggable": "^4.1.0",
-    "@set/widgets": "workspace:*",
-    "@set/utils": "workspace:*",
+    "@xdc/widgets": "workspace:*",
+    "@xdc/utils": "workspace:*",
     "v-viewer": "^3.0.10",
     "viewerjs": "^1.10.5"
   },

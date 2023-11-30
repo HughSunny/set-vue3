@@ -19,8 +19,7 @@ import cloudDeployment from '@/config/constants/cloud-deployment.json';
 import checkData from '@/config/constants/checkbox-data.json';
 import industryType from '@/config/constants/industry-type.json';
 import { YES_NO } from '@/config/constants/common';
-import { SetFormHelper } from '@set/utils';
-// import { getFieldRow } = SetFormHelper;
+import { getRuleFieldRow } from '@xdc/utils';
 const dataFields = [
   {
     key: 'input',
@@ -200,7 +199,7 @@ const dataFields = [
   },
 ];
 
-const fieldRows = ref(SetFormHelper.getFieldRow(dataFields, null));
+const fieldRows = ref(getRuleFieldRow(dataFields, null));
 const rowFormRef = ref();
 const designFormData = reactive({});
 const formDesignRef = ref();

@@ -1,22 +1,5 @@
 import _ from 'lodash-es';
 import dayjs from 'dayjs';
-
-/**
- * 转换页面page参数为请求参数
- * @param params 页面参数
- */
-export function convertPageRequestParam(params, pageKey = 'pageIndex') {
-  const { pageSize } = params;
-  const par = { ...params };
-  if (pageSize) {
-    par.skipCount = (params[pageKey] - 1) * pageSize;
-    par.maxResultCount = pageSize;
-  }
-  delete par[pageKey];
-  delete par.pageSize;
-  return par;
-}
-
 /**
  *
  * 对 object 或 array 数组中属性进行转换

@@ -1,18 +1,16 @@
 {
-  "name": "@set/widgets",
+  "name": "@xdc/widgets",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "pnpm generate:file && pnpm build:components",
-    "staging": "vite build --mode staging",
-    "serve": "vite preview",
-    "build:components": "vite build --config vite.config.build.ts",
-    "generate:file": "node scripts/gen.js"
+    "build:components": "vite build",
+    "gen": "ts-node scripts/gen.js",
+    "build": "pnpm gen && pnpm build:components"
   },
   "files": [
-    "dist"
+    "dist",
+    "typings"
   ],
-  "main": "dist/set-widgets.umd.js",
+  "main": "dist/set-widgets.cjs.js",
   "module": "dist/set-widgets.es.js",
   "style": "dist/style.css",
   "exports": {
@@ -26,20 +24,25 @@
     }
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.0.1",
-    "@set/utils": "workspace:*",
-    "ant-design-vue": "~3.2.0",
+    "@ant-design/icons-vue": "^7.0.1",
+    "@vueuse/core": "^10.5.0",
+    "@vueuse/integrations": "^10.5.0",
+    "@xdc/utils": "workspace:*",
+    "ant-design-vue": "~4.0.7",
     "rollup": "^3.25.2",
     "swiper": "~9.0.3",
     "v-viewer": "3.0.10",
     "viewerjs": "1.10.4",
     "vue": "~3.2.37",
     "vue-cropper": "^1.0.1",
-    "vue-router": "4",
-    "vuex": "^4.0.2"
+    "vue-router": "4"
   },
   "devDependencies": {
+    "rollup": "^3.25.2",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup": "^3.25.2"
+    "vite-plugin-style-import": "^2.0.0",
+    "vite-plugin-svg-icons": "^2.0.1",
+    "vite-plugin-windicss": "^1.9.2",
+    "vite-svg-loader": "^5.1.0"
   }
 }

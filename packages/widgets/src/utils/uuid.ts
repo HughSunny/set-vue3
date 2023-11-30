@@ -1,4 +1,4 @@
-const hexList = []
+const hexList:string[] = []
 for (let i = 0; i <= 15; i++) {
   hexList[i] = i.toString(16)
 }

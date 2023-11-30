@@ -1,3 +1,4 @@
-import FormRowEdit from './form-row-edit.vue'
-import FormRowViewer from './form-row-viewer.vue'
+import FormRowEdit from './edit.vue'
+import FormRowViewer from './viewer.vue'
+
 export { FormRowEdit, FormRowViewer }

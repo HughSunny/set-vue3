@@ -1,0 +1,69 @@
+@basicLayout-prefix-cls: ~'@{ant-prefix}-pro-basicLayout';
+@pro-layout-header-height: 48px;
+
+.@{basicLayout-prefix-cls} {
+  // BFC
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+
+  .@{ant-prefix}-layout-header {
+    // 设置固定的颜色
+    background: @menu-dark-bg;
+    &.@{ant-prefix}-pro-fixed-header {
+      position: fixed;
+      top: 0;
+      transition: width 0.2s;
+    }
+  }
+  .ant-pro-fixed-stuff {
+    flex-shrink: 0;
+    transition: width 0.2s;
+  }
+
+  &-content {
+    position: relative;
+    // 内容区域的边距
+    margin: 16px;
+
+    .@{ant-prefix}-pro-page-container {
+      margin: -16px -16px 0;
+    }
+
+    &-disable-margin {
+      margin: 0;
+
+      .@{ant-prefix}-pro-page-container {
+        margin: 0;
+      }
+    }
+    > .@{ant-prefix}-layout {
+      max-height: 100%;
+    }
+  }
+
+  // children should support fixed
+  .@{basicLayout-prefix-cls}-is-children.@{basicLayout-prefix-cls}-fix-siderbar {
+    height: 100vh;
+    overflow: hidden;
+    transform: rotate(0);
+  }
+
+  .@{basicLayout-prefix-cls}-has-header {
+    // tech-page-container
+    .tech-page-container {
+      height: calc(100vh - @pro-layout-header-height);
+    }
+    .@{basicLayout-prefix-cls}-is-children.@{basicLayout-prefix-cls}-has-header {
+      .tech-page-container {
+        height: calc(100vh - @pro-layout-header-height - @pro-layout-header-height);
+      }
+      .@{basicLayout-prefix-cls}-is-children {
+        min-height: calc(100vh - @pro-layout-header-height);
+        &.@{basicLayout-prefix-cls}-fix-siderbar {
+          height: calc(100vh - @pro-layout-header-height);
+        }
+      }
+    }
+  }
+}

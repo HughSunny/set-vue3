@@ -1,0 +1,2458 @@
+[
+  {
+    "code": "fa fa-address-book",
+    "name": "fa fa-address-book"
+  },
+  {
+    "code": "fa fa-address-book-o",
+    "name": "fa fa-address-book-o"
+  },
+  {
+    "code": "fa fa-address-card",
+    "name": "fa fa-address-card"
+  },
+  {
+    "code": "fa fa-address-card-o",
+    "name": "fa fa-address-card-o"
+  },
+  {
+    "code": "fa fa-adjust",
+    "name": "fa fa-adjust"
+  },
+  {
+    "code": "fa fa-align-center",
+    "name": "fa fa-align-center"
+  },
+  {
+    "code": "fa fa-align-justify",
+    "name": "fa fa-align-justify"
+  },
+  {
+    "code": "fa fa-align-left",
+    "name": "fa fa-align-left"
+  },
+  {
+    "code": "fa fa-align-right",
+    "name": "fa fa-align-right"
+  },
+  {
+    "code": "fa fa-ambulance",
+    "name": "fa fa-ambulance"
+  },
+  {
+    "code": "fa fa-american-sign-language-interpreting",
+    "name": "fa fa-american-sign-language-interpreting"
+  },
+  {
+    "code": "fa fa-anchor",
+    "name": "fa fa-anchor"
+  },
+  {
+    "code": "fa fa-angle-double-down",
+    "name": "fa fa-angle-double-down"
+  },
+  {
+    "code": "fa fa-angle-double-left",
+    "name": "fa fa-angle-double-left"
+  },
+  {
+    "code": "fa fa-angle-double-right",
+    "name": "fa fa-angle-double-right"
+  },
+  {
+    "code": "fa fa-angle-double-up",
+    "name": "fa fa-angle-double-up"
+  },
+  {
+    "code": "fa fa-angle-down",
+    "name": "fa fa-angle-down"
+  },
+  {
+    "code": "fa fa-angle-left",
+    "name": "fa fa-angle-left"
+  },
+  {
+    "code": "fa fa-angle-right",
+    "name": "fa fa-angle-right"
+  },
+  {
+    "code": "fa fa-angle-up",
+    "name": "fa fa-angle-up"
+  },
+  {
+    "code": "fa fa-archive",
+    "name": "fa fa-archive"
+  },
+  {
+    "code": "fa fa-area-chart",
+    "name": "fa fa-area-chart"
+  },
+  {
+    "code": "fa fa-arrow-circle-down",
+    "name": "fa fa-arrow-circle-down"
+  },
+  {
+    "code": "fa fa-arrow-circle-left",
+    "name": "fa fa-arrow-circle-left"
+  },
+  {
+    "code": "fa fa-arrow-circle-o-down",
+    "name": "fa fa-arrow-circle-o-down"
+  },
+  {
+    "code": "fa fa-arrow-circle-o-left",
+    "name": "fa fa-arrow-circle-o-left"
+  },
+  {
+    "code": "fa fa-arrow-circle-o-right",
+    "name": "fa fa-arrow-circle-o-right"
+  },
+  {
+    "code": "fa fa-arrow-circle-o-up",
+    "name": "fa fa-arrow-circle-o-up"
+  },
+  {
+    "code": "fa fa-arrow-circle-right",
+    "name": "fa fa-arrow-circle-right"
+  },
+  {
+    "code": "fa fa-arrow-circle-up",
+    "name": "fa fa-arrow-circle-up"
+  },
+  {
+    "code": "fa fa-arrow-down",
+    "name": "fa fa-arrow-down"
+  },
+  {
+    "code": "fa fa-arrow-left",
+    "name": "fa fa-arrow-left"
+  },
+  {
+    "code": "fa fa-arrow-right",
+    "name": "fa fa-arrow-right"
+  },
+  {
+    "code": "fa fa-arrows",
+    "name": "fa fa-arrows"
+  },
+  {
+    "code": "fa fa-arrows-alt",
+    "name": "fa fa-arrows-alt"
+  },
+  {
+    "code": "fa fa-arrows-h",
+    "name": "fa fa-arrows-h"
+  },
+  {
+    "code": "fa fa-arrows-v",
+    "name": "fa fa-arrows-v"
+  },
+  {
+    "code": "fa fa-arrow-up",
+    "name": "fa fa-arrow-up"
+  },
+  {
+    "code": "fa fa-asl-interpreting",
+    "name": "fa fa-asl-interpreting"
+  },
+  {
+    "code": "fa fa-assistive-listening-systems",
+    "name": "fa fa-assistive-listening-systems"
+  },
+  {
+    "code": "fa fa-asterisk",
+    "name": "fa fa-asterisk"
+  },
+  {
+    "code": "fa fa-at",
+    "name": "fa fa-at"
+  },
+  {
+    "code": "fa fa-audio-description",
+    "name": "fa fa-audio-description"
+  },
+  {
+    "code": "fa fa-automobile",
+    "name": "fa fa-automobile"
+  },
+  {
+    "code": "fa fa-backward",
+    "name": "fa fa-backward"
+  },
+  {
+    "code": "fa fa-balance-scale",
+    "name": "fa fa-balance-scale"
+  },
+  {
+    "code": "fa fa-ban",
+    "name": "fa fa-ban"
+  },
+  {
+    "code": "fa fa-bandcamp",
+    "name": "fa fa-bandcamp"
+  },
+  {
+    "code": "fa fa-bank",
+    "name": "fa fa-bank"
+  },
+  {
+    "code": "fa fa-bar-chart",
+    "name": "fa fa-bar-chart"
+  },
+  {
+    "code": "fa fa-bar-chart-o",
+    "name": "fa fa-bar-chart-o"
+  },
+  {
+    "code": "fa fa-barcode",
+    "name": "fa fa-barcode"
+  },
+  {
+    "code": "fa fa-bars",
+    "name": "fa fa-bars"
+  },
+  {
+    "code": "fa fa-bath",
+    "name": "fa fa-bath"
+  },
+  {
+    "code": "fa fa-bathtub",
+    "name": "fa fa-bathtub"
+  },
+  {
+    "code": "fa fa-battery",
+    "name": "fa fa-battery"
+  },
+  {
+    "code": "fa fa-battery-0",
+    "name": "fa fa-battery-0"
+  },
+  {
+    "code": "fa fa-battery-1",
+    "name": "fa fa-battery-1"
+  },
+  {
+    "code": "fa fa-battery-2",
+    "name": "fa fa-battery-2"
+  },
+  {
+    "code": "fa fa-battery-3",
+    "name": "fa fa-battery-3"
+  },
+  {
+    "code": "fa fa-battery-4",
+    "name": "fa fa-battery-4"
+  },
+  {
+    "code": "fa fa-battery-empty",
+    "name": "fa fa-battery-empty"
+  },
+  {
+    "code": "fa fa-battery-full",
+    "name": "fa fa-battery-full"
+  },
+  {
+    "code": "fa fa-battery-half",
+    "name": "fa fa-battery-half"
+  },
+  {
+    "code": "fa fa-battery-quarter",
+    "name": "fa fa-battery-quarter"
+  },
+  {
+    "code": "fa fa-battery-three-quarters",
+    "name": "fa fa-battery-three-quarters"
+  },
+  {
+    "code": "fa fa-bed",
+    "name": "fa fa-bed"
+  },
+  {
+    "code": "fa fa-beer",
+    "name": "fa fa-beer"
+  },
+  {
+    "code": "fa fa-bell",
+    "name": "fa fa-bell"
+  },
+  {
+    "code": "fa fa-bell-o",
+    "name": "fa fa-bell-o"
+  },
+  {
+    "code": "fa fa-bell-slash",
+    "name": "fa fa-bell-slash"
+  },
+  {
+    "code": "fa fa-bell-slash-o",
+    "name": "fa fa-bell-slash-o"
+  },
+  {
+    "code": "fa fa-bicycle",
+    "name": "fa fa-bicycle"
+  },
+  {
+    "code": "fa fa-binoculars",
+    "name": "fa fa-binoculars"
+  },
+  {
+    "code": "fa fa-birthday-cake",
+    "name": "fa fa-birthday-cake"
+  },
+  {
+    "code": "fa fa-bitcoin",
+    "name": "fa fa-bitcoin"
+  },
+  {
+    "code": "fa fa-blind",
+    "name": "fa fa-blind"
+  },
+  {
+    "code": "fa fa-bluetooth",
+    "name": "fa fa-bluetooth"
+  },
+  {
+    "code": "fa fa-bluetooth-b",
+    "name": "fa fa-bluetooth-b"
+  },
+  {
+    "code": "fa fa-bold",
+    "name": "fa fa-bold"
+  },
+  {
+    "code": "fa fa-bolt",
+    "name": "fa fa-bolt"
+  },
+  {
+    "code": "fa fa-bomb",
+    "name": "fa fa-bomb"
+  },
+  {
+    "code": "fa fa-book",
+    "name": "fa fa-book"
+  },
+  {
+    "code": "fa fa-bookmark",
+    "name": "fa fa-bookmark"
+  },
+  {
+    "code": "fa fa-bookmark-o",
+    "name": "fa fa-bookmark-o"
+  },
+  {
+    "code": "fa fa-braille",
+    "name": "fa fa-braille"
+  },
+  {
+    "code": "fa fa-briefcase",
+    "name": "fa fa-briefcase"
+  },
+  {
+    "code": "fa fa-btc",
+    "name": "fa fa-btc"
+  },
+  {
+    "code": "fa fa-bug",
+    "name": "fa fa-bug"
+  },
+  {
+    "code": "fa fa-building",
+    "name": "fa fa-building"
+  },
+  {
+    "code": "fa fa-building-o",
+    "name": "fa fa-building-o"
+  },
+  {
+    "code": "fa fa-bullhorn",
+    "name": "fa fa-bullhorn"
+  },
+  {
+    "code": "fa fa-bullseye",
+    "name": "fa fa-bullseye"
+  },
+  {
+    "code": "fa fa-bus",
+    "name": "fa fa-bus"
+  },
+  {
+    "code": "fa fa-cab",
+    "name": "fa fa-cab"
+  },
+  {
+    "code": "fa fa-calculator",
+    "name": "fa fa-calculator"
+  },
+  {
+    "code": "fa fa-calendar",
+    "name": "fa fa-calendar"
+  },
+  {
+    "code": "fa fa-calendar-check-o",
+    "name": "fa fa-calendar-check-o"
+  },
+  {
+    "code": "fa fa-calendar-minus-o",
+    "name": "fa fa-calendar-minus-o"
+  },
+  {
+    "code": "fa fa-calendar-o",
+    "name": "fa fa-calendar-o"
+  },
+  {
+    "code": "fa fa-calendar-plus-o",
+    "name": "fa fa-calendar-plus-o"
+  },
+  {
+    "code": "fa fa-calendar-times-o",
+    "name": "fa fa-calendar-times-o"
+  },
+  {
+    "code": "fa fa-camera",
+    "name": "fa fa-camera"
+  },
+  {
+    "code": "fa fa-camera-retro",
+    "name": "fa fa-camera-retro"
+  },
+  {
+    "code": "fa fa-car",
+    "name": "fa fa-car"
+  },
+  {
+    "code": "fa fa-caret-down",
+    "name": "fa fa-caret-down"
+  },
+  {
+    "code": "fa fa-caret-left",
+    "name": "fa fa-caret-left"
+  },
+  {
+    "code": "fa fa-caret-right",
+    "name": "fa fa-caret-right"
+  },
+  {
+    "code": "fa fa-caret-square-o-down",
+    "name": "fa fa-caret-square-o-down"
+  },
+  {
+    "code": "fa fa-caret-square-o-left",
+    "name": "fa fa-caret-square-o-left"
+  },
+  {
+    "code": "fa fa-caret-square-o-right",
+    "name": "fa fa-caret-square-o-right"
+  },
+  {
+    "code": "fa fa-caret-square-o-up",
+    "name": "fa fa-caret-square-o-up"
+  },
+  {
+    "code": "fa fa-caret-up",
+    "name": "fa fa-caret-up"
+  },
+  {
+    "code": "fa fa-cart-arrow-down",
+    "name": "fa fa-cart-arrow-down"
+  },
+  {
+    "code": "fa fa-cart-plus",
+    "name": "fa fa-cart-plus"
+  },
+  {
+    "code": "fa fa-cc",
+    "name": "fa fa-cc"
+  },
+  {
+    "code": "fa fa-certificate",
+    "name": "fa fa-certificate"
+  },
+  {
+    "code": "fa fa-chain",
+    "name": "fa fa-chain"
+  },
+  {
+    "code": "fa fa-chain-broken",
+    "name": "fa fa-chain-broken"
+  },
+  {
+    "code": "fa fa-check",
+    "name": "fa fa-check"
+  },
+  {
+    "code": "fa fa-check-circle",
+    "name": "fa fa-check-circle"
+  },
+  {
+    "code": "fa fa-check-circle-o",
+    "name": "fa fa-check-circle-o"
+  },
+  {
+    "code": "fa fa-check-square",
+    "name": "fa fa-check-square"
+  },
+  {
+    "code": "fa fa-check-square-o",
+    "name": "fa fa-check-square-o"
+  },
+  {
+    "code": "fa fa-chevron-circle-down",
+    "name": "fa fa-chevron-circle-down"
+  },
+  {
+    "code": "fa fa-chevron-circle-left",
+    "name": "fa fa-chevron-circle-left"
+  },
+  {
+    "code": "fa fa-chevron-circle-right",
+    "name": "fa fa-chevron-circle-right"
+  },
+  {
+    "code": "fa fa-chevron-circle-up",
+    "name": "fa fa-chevron-circle-up"
+  },
+  {
+    "code": "fa fa-chevron-down",
+    "name": "fa fa-chevron-down"
+  },
+  {
+    "code": "fa fa-chevron-left",
+    "name": "fa fa-chevron-left"
+  },
+  {
+    "code": "fa fa-chevron-right",
+    "name": "fa fa-chevron-right"
+  },
+  {
+    "code": "fa fa-chevron-up",
+    "name": "fa fa-chevron-up"
+  },
+  {
+    "code": "fa fa-child",
+    "name": "fa fa-child"
+  },
+  {
+    "code": "fa fa-circle",
+    "name": "fa fa-circle"
+  },
+  {
+    "code": "fa fa-circle-o",
+    "name": "fa fa-circle-o"
+  },
+  {
+    "code": "fa fa-circle-o-notch",
+    "name": "fa fa-circle-o-notch"
+  },
+  {
+    "code": "fa fa-circle-thin",
+    "name": "fa fa-circle-thin"
+  },
+  {
+    "code": "fa fa-clipboard",
+    "name": "fa fa-clipboard"
+  },
+  {
+    "code": "fa fa-clock-o",
+    "name": "fa fa-clock-o"
+  },
+  {
+    "code": "fa fa-clone",
+    "name": "fa fa-clone"
+  },
+  {
+    "code": "fa fa-close",
+    "name": "fa fa-close"
+  },
+  {
+    "code": "fa fa-cloud",
+    "name": "fa fa-cloud"
+  },
+  {
+    "code": "fa fa-cloud-download",
+    "name": "fa fa-cloud-download"
+  },
+  {
+    "code": "fa fa-cloud-upload",
+    "name": "fa fa-cloud-upload"
+  },
+  {
+    "code": "fa fa-cny",
+    "name": "fa fa-cny"
+  },
+  {
+    "code": "fa fa-code",
+    "name": "fa fa-code"
+  },
+  {
+    "code": "fa fa-code-fork",
+    "name": "fa fa-code-fork"
+  },
+  {
+    "code": "fa fa-coffee",
+    "name": "fa fa-coffee"
+  },
+  {
+    "code": "fa fa-cog",
+    "name": "fa fa-cog"
+  },
+  {
+    "code": "fa fa-cogs",
+    "name": "fa fa-cogs"
+  },
+  {
+    "code": "fa fa-columns",
+    "name": "fa fa-columns"
+  },
+  {
+    "code": "fa fa-comment",
+    "name": "fa fa-comment"
+  },
+  {
+    "code": "fa fa-commenting",
+    "name": "fa fa-commenting"
+  },
+  {
+    "code": "fa fa-commenting-o",
+    "name": "fa fa-commenting-o"
+  },
+  {
+    "code": "fa fa-comment-o",
+    "name": "fa fa-comment-o"
+  },
+  {
+    "code": "fa fa-comments",
+    "name": "fa fa-comments"
+  },
+  {
+    "code": "fa fa-comments-o",
+    "name": "fa fa-comments-o"
+  },
+  {
+    "code": "fa fa-compass",
+    "name": "fa fa-compass"
+  },
+  {
+    "code": "fa fa-compress",
+    "name": "fa fa-compress"
+  },
+  {
+    "code": "fa fa-copy",
+    "name": "fa fa-copy"
+  },
+  {
+    "code": "fa fa-copyright",
+    "name": "fa fa-copyright"
+  },
+  {
+    "code": "fa fa-creative-commons",
+    "name": "fa fa-creative-commons"
+  },
+  {
+    "code": "fa fa-credit-card",
+    "name": "fa fa-credit-card"
+  },
+  {
+    "code": "fa fa-credit-card-alt",
+    "name": "fa fa-credit-card-alt"
+  },
+  {
+    "code": "fa fa-crop",
+    "name": "fa fa-crop"
+  },
+  {
+    "code": "fa fa-crosshairs",
+    "name": "fa fa-crosshairs"
+  },
+  {
+    "code": "fa fa-cube",
+    "name": "fa fa-cube"
+  },
+  {
+    "code": "fa fa-cubes",
+    "name": "fa fa-cubes"
+  },
+  {
+    "code": "fa fa-cut",
+    "name": "fa fa-cut"
+  },
+  {
+    "code": "fa fa-cutlery",
+    "name": "fa fa-cutlery"
+  },
+  {
+    "code": "fa fa-dashboard",
+    "name": "fa fa-dashboard"
+  },
+  {
+    "code": "fa fa-database",
+    "name": "fa fa-database"
+  },
+  {
+    "code": "fa fa-deaf",
+    "name": "fa fa-deaf"
+  },
+  {
+    "code": "fa fa-deafness",
+    "name": "fa fa-deafness"
+  },
+  {
+    "code": "fa fa-dedent",
+    "name": "fa fa-dedent"
+  },
+  {
+    "code": "fa fa-desktop",
+    "name": "fa fa-desktop"
+  },
+  {
+    "code": "fa fa-diamond",
+    "name": "fa fa-diamond"
+  },
+  {
+    "code": "fa fa-dollar",
+    "name": "fa fa-dollar"
+  },
+  {
+    "code": "fa fa-dot-circle-o",
+    "name": "fa fa-dot-circle-o"
+  },
+  {
+    "code": "fa fa-download",
+    "name": "fa fa-download"
+  },
+  {
+    "code": "fa fa-drivers-license",
+    "name": "fa fa-drivers-license"
+  },
+  {
+    "code": "fa fa-drivers-license-o",
+    "name": "fa fa-drivers-license-o"
+  },
+  {
+    "code": "fa fa-edit",
+    "name": "fa fa-edit"
+  },
+  {
+    "code": "fa fa-eercast",
+    "name": "fa fa-eercast"
+  },
+  {
+    "code": "fa fa-eject",
+    "name": "fa fa-eject"
+  },
+  {
+    "code": "fa fa-ellipsis-h",
+    "name": "fa fa-ellipsis-h"
+  },
+  {
+    "code": "fa fa-ellipsis-v",
+    "name": "fa fa-ellipsis-v"
+  },
+  {
+    "code": "fa fa-envelope",
+    "name": "fa fa-envelope"
+  },
+  {
+    "code": "fa fa-envelope-o",
+    "name": "fa fa-envelope-o"
+  },
+  {
+    "code": "fa fa-envelope-open",
+    "name": "fa fa-envelope-open"
+  },
+  {
+    "code": "fa fa-envelope-open-o",
+    "name": "fa fa-envelope-open-o"
+  },
+  {
+    "code": "fa fa-envelope-square",
+    "name": "fa fa-envelope-square"
+  },
+  {
+    "code": "fa fa-eraser",
+    "name": "fa fa-eraser"
+  },
+  {
+    "code": "fa fa-etsy",
+    "name": "fa fa-etsy"
+  },
+  {
+    "code": "fa fa-eur",
+    "name": "fa fa-eur"
+  },
+  {
+    "code": "fa fa-euro",
+    "name": "fa fa-euro"
+  },
+  {
+    "code": "fa fa-exchange",
+    "name": "fa fa-exchange"
+  },
+  {
+    "code": "fa fa-exclamation",
+    "name": "fa fa-exclamation"
+  },
+  {
+    "code": "fa fa-exclamation-circle",
+    "name": "fa fa-exclamation-circle"
+  },
+  {
+    "code": "fa fa-exclamation-triangle",
+    "name": "fa fa-exclamation-triangle"
+  },
+  {
+    "code": "fa fa-expand",
+    "name": "fa fa-expand"
+  },
+  {
+    "code": "fa fa-external-link",
+    "name": "fa fa-external-link"
+  },
+  {
+    "code": "fa fa-external-link-square",
+    "name": "fa fa-external-link-square"
+  },
+  {
+    "code": "fa fa-eye",
+    "name": "fa fa-eye"
+  },
+  {
+    "code": "fa fa-eyedropper",
+    "name": "fa fa-eyedropper"
+  },
+  {
+    "code": "fa fa-eye-slash",
+    "name": "fa fa-eye-slash"
+  },
+  {
+    "code": "fa fa-fast-backward",
+    "name": "fa fa-fast-backward"
+  },
+  {
+    "code": "fa fa-fast-forward",
+    "name": "fa fa-fast-forward"
+  },
+  {
+    "code": "fa fa-fax",
+    "name": "fa fa-fax"
+  },
+  {
+    "code": "fa fa-feed",
+    "name": "fa fa-feed"
+  },
+  {
+    "code": "fa fa-female",
+    "name": "fa fa-female"
+  },
+  {
+    "code": "fa fa-fighter-jet",
+    "name": "fa fa-fighter-jet"
+  },
+  {
+    "code": "fa fa-file",
+    "name": "fa fa-file"
+  },
+  {
+    "code": "fa fa-file-archive-o",
+    "name": "fa fa-file-archive-o"
+  },
+  {
+    "code": "fa fa-file-audio-o",
+    "name": "fa fa-file-audio-o"
+  },
+  {
+    "code": "fa fa-file-code-o",
+    "name": "fa fa-file-code-o"
+  },
+  {
+    "code": "fa fa-file-excel-o",
+    "name": "fa fa-file-excel-o"
+  },
+  {
+    "code": "fa fa-file-image-o",
+    "name": "fa fa-file-image-o"
+  },
+  {
+    "code": "fa fa-file-movie-o",
+    "name": "fa fa-file-movie-o"
+  },
+  {
+    "code": "fa fa-file-o",
+    "name": "fa fa-file-o"
+  },
+  {
+    "code": "fa fa-file-pdf-o",
+    "name": "fa fa-file-pdf-o"
+  },
+  {
+    "code": "fa fa-file-photo-o",
+    "name": "fa fa-file-photo-o"
+  },
+  {
+    "code": "fa fa-file-picture-o",
+    "name": "fa fa-file-picture-o"
+  },
+  {
+    "code": "fa fa-file-powerpoint-o",
+    "name": "fa fa-file-powerpoint-o"
+  },
+  {
+    "code": "fa fa-files-o",
+    "name": "fa fa-files-o"
+  },
+  {
+    "code": "fa fa-file-sound-o",
+    "name": "fa fa-file-sound-o"
+  },
+  {
+    "code": "fa fa-file-text",
+    "name": "fa fa-file-text"
+  },
+  {
+    "code": "fa fa-file-text-o",
+    "name": "fa fa-file-text-o"
+  },
+  {
+    "code": "fa fa-file-video-o",
+    "name": "fa fa-file-video-o"
+  },
+  {
+    "code": "fa fa-file-word-o",
+    "name": "fa fa-file-word-o"
+  },
+  {
+    "code": "fa fa-file-zip-o",
+    "name": "fa fa-file-zip-o"
+  },
+  {
+    "code": "fa fa-film",
+    "name": "fa fa-film"
+  },
+  {
+    "code": "fa fa-filter",
+    "name": "fa fa-filter"
+  },
+  {
+    "code": "fa fa-fire",
+    "name": "fa fa-fire"
+  },
+  {
+    "code": "fa fa-fire-extinguisher",
+    "name": "fa fa-fire-extinguisher"
+  },
+  {
+    "code": "fa fa-flag",
+    "name": "fa fa-flag"
+  },
+  {
+    "code": "fa fa-flag-checkered",
+    "name": "fa fa-flag-checkered"
+  },
+  {
+    "code": "fa fa-flag-o",
+    "name": "fa fa-flag-o"
+  },
+  {
+    "code": "fa fa-flash",
+    "name": "fa fa-flash"
+  },
+  {
+    "code": "fa fa-flask",
+    "name": "fa fa-flask"
+  },
+  {
+    "code": "fa fa-floppy-o",
+    "name": "fa fa-floppy-o"
+  },
+  {
+    "code": "fa fa-folder",
+    "name": "fa fa-folder"
+  },
+  {
+    "code": "fa fa-folder-o",
+    "name": "fa fa-folder-o"
+  },
+  {
+    "code": "fa fa-folder-open",
+    "name": "fa fa-folder-open"
+  },
+  {
+    "code": "fa fa-folder-open-o",
+    "name": "fa fa-folder-open-o"
+  },
+  {
+    "code": "fa fa-font",
+    "name": "fa fa-font"
+  },
+  {
+    "code": "fa fa-forward",
+    "name": "fa fa-forward"
+  },
+  {
+    "code": "fa fa-free-code-camp",
+    "name": "fa fa-free-code-camp"
+  },
+  {
+    "code": "fa fa-frown-o",
+    "name": "fa fa-frown-o"
+  },
+  {
+    "code": "fa fa-futbol-o",
+    "name": "fa fa-futbol-o"
+  },
+  {
+    "code": "fa fa-gamepad",
+    "name": "fa fa-gamepad"
+  },
+  {
+    "code": "fa fa-gavel",
+    "name": "fa fa-gavel"
+  },
+  {
+    "code": "fa fa-gbp",
+    "name": "fa fa-gbp"
+  },
+  {
+    "code": "fa fa-gear",
+    "name": "fa fa-gear"
+  },
+  {
+    "code": "fa fa-gears",
+    "name": "fa fa-gears"
+  },
+  {
+    "code": "fa fa-genderless",
+    "name": "fa fa-genderless"
+  },
+  {
+    "code": "fa fa-gg",
+    "name": "fa fa-gg"
+  },
+  {
+    "code": "fa fa-gg-circle",
+    "name": "fa fa-gg-circle"
+  },
+  {
+    "code": "fa fa-gift",
+    "name": "fa fa-gift"
+  },
+  {
+    "code": "fa fa-glass",
+    "name": "fa fa-glass"
+  },
+  {
+    "code": "fa fa-globe",
+    "name": "fa fa-globe"
+  },
+  {
+    "code": "fa fa-graduation-cap",
+    "name": "fa fa-graduation-cap"
+  },
+  {
+    "code": "fa fa-grav",
+    "name": "fa fa-grav"
+  },
+  {
+    "code": "fa fa-group",
+    "name": "fa fa-group"
+  },
+  {
+    "code": "fa fa-hand-grab-o",
+    "name": "fa fa-hand-grab-o"
+  },
+  {
+    "code": "fa fa-hand-lizard-o",
+    "name": "fa fa-hand-lizard-o"
+  },
+  {
+    "code": "fa fa-hand-o-down",
+    "name": "fa fa-hand-o-down"
+  },
+  {
+    "code": "fa fa-hand-o-left",
+    "name": "fa fa-hand-o-left"
+  },
+  {
+    "code": "fa fa-hand-o-right",
+    "name": "fa fa-hand-o-right"
+  },
+  {
+    "code": "fa fa-hand-o-up",
+    "name": "fa fa-hand-o-up"
+  },
+  {
+    "code": "fa fa-hand-paper-o",
+    "name": "fa fa-hand-paper-o"
+  },
+  {
+    "code": "fa fa-hand-peace-o",
+    "name": "fa fa-hand-peace-o"
+  },
+  {
+    "code": "fa fa-hand-pointer-o",
+    "name": "fa fa-hand-pointer-o"
+  },
+  {
+    "code": "fa fa-hand-rock-o",
+    "name": "fa fa-hand-rock-o"
+  },
+  {
+    "code": "fa fa-hand-scissors-o",
+    "name": "fa fa-hand-scissors-o"
+  },
+  {
+    "code": "fa fa-handshake-o",
+    "name": "fa fa-handshake-o"
+  },
+  {
+    "code": "fa fa-hand-spock-o",
+    "name": "fa fa-hand-spock-o"
+  },
+  {
+    "code": "fa fa-hand-stop-o",
+    "name": "fa fa-hand-stop-o"
+  },
+  {
+    "code": "fa fa-hard-of-hearing",
+    "name": "fa fa-hard-of-hearing"
+  },
+  {
+    "code": "fa fa-hashtag",
+    "name": "fa fa-hashtag"
+  },
+  {
+    "code": "fa fa-hdd-o",
+    "name": "fa fa-hdd-o"
+  },
+  {
+    "code": "fa fa-header",
+    "name": "fa fa-header"
+  },
+  {
+    "code": "fa fa-headphones",
+    "name": "fa fa-headphones"
+  },
+  {
+    "code": "fa fa-heart",
+    "name": "fa fa-heart"
+  },
+  {
+    "code": "fa fa-heartbeat",
+    "name": "fa fa-heartbeat"
+  },
+  {
+    "code": "fa fa-heart-o",
+    "name": "fa fa-heart-o"
+  },
+  {
+    "code": "fa fa-history",
+    "name": "fa fa-history"
+  },
+  {
+    "code": "fa fa-home",
+    "name": "fa fa-home"
+  },
+  {
+    "code": "fa fa-hotel",
+    "name": "fa fa-hotel"
+  },
+  {
+    "code": "fa fa-hourglass",
+    "name": "fa fa-hourglass"
+  },
+  {
+    "code": "fa fa-hourglass-1",
+    "name": "fa fa-hourglass-1"
+  },
+  {
+    "code": "fa fa-hourglass-2",
+    "name": "fa fa-hourglass-2"
+  },
+  {
+    "code": "fa fa-hourglass-3",
+    "name": "fa fa-hourglass-3"
+  },
+  {
+    "code": "fa fa-hourglass-end",
+    "name": "fa fa-hourglass-end"
+  },
+  {
+    "code": "fa fa-hourglass-half",
+    "name": "fa fa-hourglass-half"
+  },
+  {
+    "code": "fa fa-hourglass-o",
+    "name": "fa fa-hourglass-o"
+  },
+  {
+    "code": "fa fa-hourglass-start",
+    "name": "fa fa-hourglass-start"
+  },
+  {
+    "code": "fa fa-i-cursor",
+    "name": "fa fa-i-cursor"
+  },
+  {
+    "code": "fa fa-id-badge",
+    "name": "fa fa-id-badge"
+  },
+  {
+    "code": "fa fa-id-card",
+    "name": "fa fa-id-card"
+  },
+  {
+    "code": "fa fa-id-card-o",
+    "name": "fa fa-id-card-o"
+  },
+  {
+    "code": "fa fa-ils",
+    "name": "fa fa-ils"
+  },
+  {
+    "code": "fa fa-image",
+    "name": "fa fa-image"
+  },
+  {
+    "code": "fa fa-imdb",
+    "name": "fa fa-imdb"
+  },
+  {
+    "code": "fa fa-inbox",
+    "name": "fa fa-inbox"
+  },
+  {
+    "code": "fa fa-indent",
+    "name": "fa fa-indent"
+  },
+  {
+    "code": "fa fa-industry",
+    "name": "fa fa-industry"
+  },
+  {
+    "code": "fa fa-info",
+    "name": "fa fa-info"
+  },
+  {
+    "code": "fa fa-info-circle",
+    "name": "fa fa-info-circle"
+  },
+  {
+    "code": "fa fa-inr",
+    "name": "fa fa-inr"
+  },
+  {
+    "code": "fa fa-institution",
+    "name": "fa fa-institution"
+  },
+  {
+    "code": "fa fa-intersex",
+    "name": "fa fa-intersex"
+  },
+  {
+    "code": "fa fa-italic",
+    "name": "fa fa-italic"
+  },
+  {
+    "code": "fa fa-jpy",
+    "name": "fa fa-jpy"
+  },
+  {
+    "code": "fa fa-key",
+    "name": "fa fa-key"
+  },
+  {
+    "code": "fa fa-keyboard-o",
+    "name": "fa fa-keyboard-o"
+  },
+  {
+    "code": "fa fa-krw",
+    "name": "fa fa-krw"
+  },
+  {
+    "code": "fa fa-language",
+    "name": "fa fa-language"
+  },
+  {
+    "code": "fa fa-laptop",
+    "name": "fa fa-laptop"
+  },
+  {
+    "code": "fa fa-leaf",
+    "name": "fa fa-leaf"
+  },
+  {
+    "code": "fa fa-legal",
+    "name": "fa fa-legal"
+  },
+  {
+    "code": "fa fa-lemon-o",
+    "name": "fa fa-lemon-o"
+  },
+  {
+    "code": "fa fa-level-down",
+    "name": "fa fa-level-down"
+  },
+  {
+    "code": "fa fa-level-up",
+    "name": "fa fa-level-up"
+  },
+  {
+    "code": "fa fa-life-bouy",
+    "name": "fa fa-life-bouy"
+  },
+  {
+    "code": "fa fa-life-buoy",
+    "name": "fa fa-life-buoy"
+  },
+  {
+    "code": "fa fa-life-ring",
+    "name": "fa fa-life-ring"
+  },
+  {
+    "code": "fa fa-life-saver",
+    "name": "fa fa-life-saver"
+  },
+  {
+    "code": "fa fa-lightbulb-o",
+    "name": "fa fa-lightbulb-o"
+  },
+  {
+    "code": "fa fa-line-chart",
+    "name": "fa fa-line-chart"
+  },
+  {
+    "code": "fa fa-link",
+    "name": "fa fa-link"
+  },
+  {
+    "code": "fa fa-linode",
+    "name": "fa fa-linode"
+  },
+  {
+    "code": "fa fa-list",
+    "name": "fa fa-list"
+  },
+  {
+    "code": "fa fa-list-alt",
+    "name": "fa fa-list-alt"
+  },
+  {
+    "code": "fa fa-list-ol",
+    "name": "fa fa-list-ol"
+  },
+  {
+    "code": "fa fa-list-ul",
+    "name": "fa fa-list-ul"
+  },
+  {
+    "code": "fa fa-location-arrow",
+    "name": "fa fa-location-arrow"
+  },
+  {
+    "code": "fa fa-lock",
+    "name": "fa fa-lock"
+  },
+  {
+    "code": "fa fa-long-arrow-down",
+    "name": "fa fa-long-arrow-down"
+  },
+  {
+    "code": "fa fa-long-arrow-left",
+    "name": "fa fa-long-arrow-left"
+  },
+  {
+    "code": "fa fa-long-arrow-right",
+    "name": "fa fa-long-arrow-right"
+  },
+  {
+    "code": "fa fa-long-arrow-up",
+    "name": "fa fa-long-arrow-up"
+  },
+  {
+    "code": "fa fa-low-vision",
+    "name": "fa fa-low-vision"
+  },
+  {
+    "code": "fa fa-magic",
+    "name": "fa fa-magic"
+  },
+  {
+    "code": "fa fa-magnet",
+    "name": "fa fa-magnet"
+  },
+  {
+    "code": "fa fa-mail-forward",
+    "name": "fa fa-mail-forward"
+  },
+  {
+    "code": "fa fa-mail-reply",
+    "name": "fa fa-mail-reply"
+  },
+  {
+    "code": "fa fa-mail-reply-all",
+    "name": "fa fa-mail-reply-all"
+  },
+  {
+    "code": "fa fa-male",
+    "name": "fa fa-male"
+  },
+  {
+    "code": "fa fa-map",
+    "name": "fa fa-map"
+  },
+  {
+    "code": "fa fa-map-marker",
+    "name": "fa fa-map-marker"
+  },
+  {
+    "code": "fa fa-map-o",
+    "name": "fa fa-map-o"
+  },
+  {
+    "code": "fa fa-map-pin",
+    "name": "fa fa-map-pin"
+  },
+  {
+    "code": "fa fa-map-signs",
+    "name": "fa fa-map-signs"
+  },
+  {
+    "code": "fa fa-mars",
+    "name": "fa fa-mars"
+  },
+  {
+    "code": "fa fa-mars-double",
+    "name": "fa fa-mars-double"
+  },
+  {
+    "code": "fa fa-mars-stroke",
+    "name": "fa fa-mars-stroke"
+  },
+  {
+    "code": "fa fa-mars-stroke-h",
+    "name": "fa fa-mars-stroke-h"
+  },
+  {
+    "code": "fa fa-mars-stroke-v",
+    "name": "fa fa-mars-stroke-v"
+  },
+  {
+    "code": "fa fa-meetup",
+    "name": "fa fa-meetup"
+  },
+  {
+    "code": "fa fa-meh-o",
+    "name": "fa fa-meh-o"
+  },
+  {
+    "code": "fa fa-mercury",
+    "name": "fa fa-mercury"
+  },
+  {
+    "code": "fa fa-microchip",
+    "name": "fa fa-microchip"
+  },
+  {
+    "code": "fa fa-microphone",
+    "name": "fa fa-microphone"
+  },
+  {
+    "code": "fa fa-microphone-slash",
+    "name": "fa fa-microphone-slash"
+  },
+  {
+    "code": "fa fa-minus",
+    "name": "fa fa-minus"
+  },
+  {
+    "code": "fa fa-minus-circle",
+    "name": "fa fa-minus-circle"
+  },
+  {
+    "code": "fa fa-minus-square",
+    "name": "fa fa-minus-square"
+  },
+  {
+    "code": "fa fa-minus-square-o",
+    "name": "fa fa-minus-square-o"
+  },
+  {
+    "code": "fa fa-mobile",
+    "name": "fa fa-mobile"
+  },
+  {
+    "code": "fa fa-mobile-phone",
+    "name": "fa fa-mobile-phone"
+  },
+  {
+    "code": "fa fa-money",
+    "name": "fa fa-money"
+  },
+  {
+    "code": "fa fa-moon-o",
+    "name": "fa fa-moon-o"
+  },
+  {
+    "code": "fa fa-mortar-board",
+    "name": "fa fa-mortar-board"
+  },
+  {
+    "code": "fa fa-motorcycle",
+    "name": "fa fa-motorcycle"
+  },
+  {
+    "code": "fa fa-mouse-pointer",
+    "name": "fa fa-mouse-pointer"
+  },
+  {
+    "code": "fa fa-music",
+    "name": "fa fa-music"
+  },
+  {
+    "code": "fa fa-navicon",
+    "name": "fa fa-navicon"
+  },
+  {
+    "code": "fa fa-neuter",
+    "name": "fa fa-neuter"
+  },
+  {
+    "code": "fa fa-newspaper-o",
+    "name": "fa fa-newspaper-o"
+  },
+  {
+    "code": "fa fa-object-group",
+    "name": "fa fa-object-group"
+  },
+  {
+    "code": "fa fa-object-ungroup",
+    "name": "fa fa-object-ungroup"
+  },
+  {
+    "code": "fa fa-outdent",
+    "name": "fa fa-outdent"
+  },
+  {
+    "code": "fa fa-paint-brush",
+    "name": "fa fa-paint-brush"
+  },
+  {
+    "code": "fa fa-paperclip",
+    "name": "fa fa-paperclip"
+  },
+  {
+    "code": "fa fa-paper-plane",
+    "name": "fa fa-paper-plane"
+  },
+  {
+    "code": "fa fa-paper-plane-o",
+    "name": "fa fa-paper-plane-o"
+  },
+  {
+    "code": "fa fa-paragraph",
+    "name": "fa fa-paragraph"
+  },
+  {
+    "code": "fa fa-paste",
+    "name": "fa fa-paste"
+  },
+  {
+    "code": "fa fa-pause",
+    "name": "fa fa-pause"
+  },
+  {
+    "code": "fa fa-pause-circle",
+    "name": "fa fa-pause-circle"
+  },
+  {
+    "code": "fa fa-pause-circle-o",
+    "name": "fa fa-pause-circle-o"
+  },
+  {
+    "code": "fa fa-paw",
+    "name": "fa fa-paw"
+  },
+  {
+    "code": "fa fa-pencil",
+    "name": "fa fa-pencil"
+  },
+  {
+    "code": "fa fa-pencil-square",
+    "name": "fa fa-pencil-square"
+  },
+  {
+    "code": "fa fa-pencil-square-o",
+    "name": "fa fa-pencil-square-o"
+  },
+  {
+    "code": "fa fa-percent",
+    "name": "fa fa-percent"
+  },
+  {
+    "code": "fa fa-phone",
+    "name": "fa fa-phone"
+  },
+  {
+    "code": "fa fa-phone-square",
+    "name": "fa fa-phone-square"
+  },
+  {
+    "code": "fa fa-photo",
+    "name": "fa fa-photo"
+  },
+  {
+    "code": "fa fa-picture-o",
+    "name": "fa fa-picture-o"
+  },
+  {
+    "code": "fa fa-pie-chart",
+    "name": "fa fa-pie-chart"
+  },
+  {
+    "code": "fa fa-plane",
+    "name": "fa fa-plane"
+  },
+  {
+    "code": "fa fa-play",
+    "name": "fa fa-play"
+  },
+  {
+    "code": "fa fa-play-circle",
+    "name": "fa fa-play-circle"
+  },
+  {
+    "code": "fa fa-play-circle-o",
+    "name": "fa fa-play-circle-o"
+  },
+  {
+    "code": "fa fa-plug",
+    "name": "fa fa-plug"
+  },
+  {
+    "code": "fa fa-plus",
+    "name": "fa fa-plus"
+  },
+  {
+    "code": "fa fa-plus-circle",
+    "name": "fa fa-plus-circle"
+  },
+  {
+    "code": "fa fa-plus-square",
+    "name": "fa fa-plus-square"
+  },
+  {
+    "code": "fa fa-plus-square-o",
+    "name": "fa fa-plus-square-o"
+  },
+  {
+    "code": "fa fa-podcast",
+    "name": "fa fa-podcast"
+  },
+  {
+    "code": "fa fa-power-off",
+    "name": "fa fa-power-off"
+  },
+  {
+    "code": "fa fa-print",
+    "name": "fa fa-print"
+  },
+  {
+    "code": "fa fa-puzzle-piece",
+    "name": "fa fa-puzzle-piece"
+  },
+  {
+    "code": "fa fa-qrcode",
+    "name": "fa fa-qrcode"
+  },
+  {
+    "code": "fa fa-question",
+    "name": "fa fa-question"
+  },
+  {
+    "code": "fa fa-question-circle",
+    "name": "fa fa-question-circle"
+  },
+  {
+    "code": "fa fa-question-circle-o",
+    "name": "fa fa-question-circle-o"
+  },
+  {
+    "code": "fa fa-quora",
+    "name": "fa fa-quora"
+  },
+  {
+    "code": "fa fa-quote-left",
+    "name": "fa fa-quote-left"
+  },
+  {
+    "code": "fa fa-quote-right",
+    "name": "fa fa-quote-right"
+  },
+  {
+    "code": "fa fa-random",
+    "name": "fa fa-random"
+  },
+  {
+    "code": "fa fa-ravelry",
+    "name": "fa fa-ravelry"
+  },
+  {
+    "code": "fa fa-recycle",
+    "name": "fa fa-recycle"
+  },
+  {
+    "code": "fa fa-refresh",
+    "name": "fa fa-refresh"
+  },
+  {
+    "code": "fa fa-registered",
+    "name": "fa fa-registered"
+  },
+  {
+    "code": "fa fa-remove",
+    "name": "fa fa-remove"
+  },
+  {
+    "code": "fa fa-reorder",
+    "name": "fa fa-reorder"
+  },
+  {
+    "code": "fa fa-repeat",
+    "name": "fa fa-repeat"
+  },
+  {
+    "code": "fa fa-reply",
+    "name": "fa fa-reply"
+  },
+  {
+    "code": "fa fa-reply-all",
+    "name": "fa fa-reply-all"
+  },
+  {
+    "code": "fa fa-retweet",
+    "name": "fa fa-retweet"
+  },
+  {
+    "code": "fa fa-rmb",
+    "name": "fa fa-rmb"
+  },
+  {
+    "code": "fa fa-road",
+    "name": "fa fa-road"
+  },
+  {
+    "code": "fa fa-rocket",
+    "name": "fa fa-rocket"
+  },
+  {
+    "code": "fa fa-rotate-left",
+    "name": "fa fa-rotate-left"
+  },
+  {
+    "code": "fa fa-rotate-right",
+    "name": "fa fa-rotate-right"
+  },
+  {
+    "code": "fa fa-rouble",
+    "name": "fa fa-rouble"
+  },
+  {
+    "code": "fa fa-rss",
+    "name": "fa fa-rss"
+  },
+  {
+    "code": "fa fa-rss-square",
+    "name": "fa fa-rss-square"
+  },
+  {
+    "code": "fa fa-rub",
+    "name": "fa fa-rub"
+  },
+  {
+    "code": "fa fa-ruble",
+    "name": "fa fa-ruble"
+  },
+  {
+    "code": "fa fa-rupee",
+    "name": "fa fa-rupee"
+  },
+  {
+    "code": "fa fa-s15",
+    "name": "fa fa-s15"
+  },
+  {
+    "code": "fa fa-save",
+    "name": "fa fa-save"
+  },
+  {
+    "code": "fa fa-scissors",
+    "name": "fa fa-scissors"
+  },
+  {
+    "code": "fa fa-search",
+    "name": "fa fa-search"
+  },
+  {
+    "code": "fa fa-search-minus",
+    "name": "fa fa-search-minus"
+  },
+  {
+    "code": "fa fa-search-plus",
+    "name": "fa fa-search-plus"
+  },
+  {
+    "code": "fa fa-send",
+    "name": "fa fa-send"
+  },
+  {
+    "code": "fa fa-send-o",
+    "name": "fa fa-send-o"
+  },
+  {
+    "code": "fa fa-server",
+    "name": "fa fa-server"
+  },
+  {
+    "code": "fa fa-share",
+    "name": "fa fa-share"
+  },
+  {
+    "code": "fa fa-share-alt",
+    "name": "fa fa-share-alt"
+  },
+  {
+    "code": "fa fa-share-alt-square",
+    "name": "fa fa-share-alt-square"
+  },
+  {
+    "code": "fa fa-share-square",
+    "name": "fa fa-share-square"
+  },
+  {
+    "code": "fa fa-share-square-o",
+    "name": "fa fa-share-square-o"
+  },
+  {
+    "code": "fa fa-shekel",
+    "name": "fa fa-shekel"
+  },
+  {
+    "code": "fa fa-sheqel",
+    "name": "fa fa-sheqel"
+  },
+  {
+    "code": "fa fa-shield",
+    "name": "fa fa-shield"
+  },
+  {
+    "code": "fa fa-ship",
+    "name": "fa fa-ship"
+  },
+  {
+    "code": "fa fa-shopping-bag",
+    "name": "fa fa-shopping-bag"
+  },
+  {
+    "code": "fa fa-shopping-basket",
+    "name": "fa fa-shopping-basket"
+  },
+  {
+    "code": "fa fa-shopping-cart",
+    "name": "fa fa-shopping-cart"
+  },
+  {
+    "code": "fa fa-shower",
+    "name": "fa fa-shower"
+  },
+  {
+    "code": "fa fa-signal",
+    "name": "fa fa-signal"
+  },
+  {
+    "code": "fa fa-sign-in",
+    "name": "fa fa-sign-in"
+  },
+  {
+    "code": "fa fa-signing",
+    "name": "fa fa-signing"
+  },
+  {
+    "code": "fa fa-sign-language",
+    "name": "fa fa-sign-language"
+  },
+  {
+    "code": "fa fa-sign-out",
+    "name": "fa fa-sign-out"
+  },
+  {
+    "code": "fa fa-sitemap",
+    "name": "fa fa-sitemap"
+  },
+  {
+    "code": "fa fa-sliders",
+    "name": "fa fa-sliders"
+  },
+  {
+    "code": "fa fa-smile-o",
+    "name": "fa fa-smile-o"
+  },
+  {
+    "code": "fa fa-snowflake-o",
+    "name": "fa fa-snowflake-o"
+  },
+  {
+    "code": "fa fa-soccer-ball-o",
+    "name": "fa fa-soccer-ball-o"
+  },
+  {
+    "code": "fa fa-sort",
+    "name": "fa fa-sort"
+  },
+  {
+    "code": "fa fa-sort-alpha-asc",
+    "name": "fa fa-sort-alpha-asc"
+  },
+  {
+    "code": "fa fa-sort-alpha-desc",
+    "name": "fa fa-sort-alpha-desc"
+  },
+  {
+    "code": "fa fa-sort-amount-asc",
+    "name": "fa fa-sort-amount-asc"
+  },
+  {
+    "code": "fa fa-sort-amount-desc",
+    "name": "fa fa-sort-amount-desc"
+  },
+  {
+    "code": "fa fa-sort-asc",
+    "name": "fa fa-sort-asc"
+  },
+  {
+    "code": "fa fa-sort-desc",
+    "name": "fa fa-sort-desc"
+  },
+  {
+    "code": "fa fa-sort-down",
+    "name": "fa fa-sort-down"
+  },
+  {
+    "code": "fa fa-sort-numeric-asc",
+    "name": "fa fa-sort-numeric-asc"
+  },
+  {
+    "code": "fa fa-sort-numeric-desc",
+    "name": "fa fa-sort-numeric-desc"
+  },
+  {
+    "code": "fa fa-sort-up",
+    "name": "fa fa-sort-up"
+  },
+  {
+    "code": "fa fa-space-shuttle",
+    "name": "fa fa-space-shuttle"
+  },
+  {
+    "code": "fa fa-spinner",
+    "name": "fa fa-spinner"
+  },
+  {
+    "code": "fa fa-spoon",
+    "name": "fa fa-spoon"
+  },
+  {
+    "code": "fa fa-square",
+    "name": "fa fa-square"
+  },
+  {
+    "code": "fa fa-square-o",
+    "name": "fa fa-square-o"
+  },
+  {
+    "code": "fa fa-star",
+    "name": "fa fa-star"
+  },
+  {
+    "code": "fa fa-star-half",
+    "name": "fa fa-star-half"
+  },
+  {
+    "code": "fa fa-star-half-empty",
+    "name": "fa fa-star-half-empty"
+  },
+  {
+    "code": "fa fa-star-half-full",
+    "name": "fa fa-star-half-full"
+  },
+  {
+    "code": "fa fa-star-half-o",
+    "name": "fa fa-star-half-o"
+  },
+  {
+    "code": "fa fa-star-o",
+    "name": "fa fa-star-o"
+  },
+  {
+    "code": "fa fa-step-backward",
+    "name": "fa fa-step-backward"
+  },
+  {
+    "code": "fa fa-step-forward",
+    "name": "fa fa-step-forward"
+  },
+  {
+    "code": "fa fa-sticky-note",
+    "name": "fa fa-sticky-note"
+  },
+  {
+    "code": "fa fa-sticky-note-o",
+    "name": "fa fa-sticky-note-o"
+  },
+  {
+    "code": "fa fa-stop",
+    "name": "fa fa-stop"
+  },
+  {
+    "code": "fa fa-stop-circle",
+    "name": "fa fa-stop-circle"
+  },
+  {
+    "code": "fa fa-stop-circle-o",
+    "name": "fa fa-stop-circle-o"
+  },
+  {
+    "code": "fa fa-street-view",
+    "name": "fa fa-street-view"
+  },
+  {
+    "code": "fa fa-strikethrough",
+    "name": "fa fa-strikethrough"
+  },
+  {
+    "code": "fa fa-subscript",
+    "name": "fa fa-subscript"
+  },
+  {
+    "code": "fa fa-subway",
+    "name": "fa fa-subway"
+  },
+  {
+    "code": "fa fa-suitcase",
+    "name": "fa fa-suitcase"
+  },
+  {
+    "code": "fa fa-sun-o",
+    "name": "fa fa-sun-o"
+  },
+  {
+    "code": "fa fa-superpowers",
+    "name": "fa fa-superpowers"
+  },
+  {
+    "code": "fa fa-superscript",
+    "name": "fa fa-superscript"
+  },
+  {
+    "code": "fa fa-support",
+    "name": "fa fa-support"
+  },
+  {
+    "code": "fa fa-table",
+    "name": "fa fa-table"
+  },
+  {
+    "code": "fa fa-tablet",
+    "name": "fa fa-tablet"
+  },
+  {
+    "code": "fa fa-tachometer",
+    "name": "fa fa-tachometer"
+  },
+  {
+    "code": "fa fa-tag",
+    "name": "fa fa-tag"
+  },
+  {
+    "code": "fa fa-tags",
+    "name": "fa fa-tags"
+  },
+  {
+    "code": "fa fa-tasks",
+    "name": "fa fa-tasks"
+  },
+  {
+    "code": "fa fa-taxi",
+    "name": "fa fa-taxi"
+  },
+  {
+    "code": "fa fa-telegram",
+    "name": "fa fa-telegram"
+  },
+  {
+    "code": "fa fa-television",
+    "name": "fa fa-television"
+  },
+  {
+    "code": "fa fa-terminal",
+    "name": "fa fa-terminal"
+  },
+  {
+    "code": "fa fa-text-height",
+    "name": "fa fa-text-height"
+  },
+  {
+    "code": "fa fa-text-width",
+    "name": "fa fa-text-width"
+  },
+  {
+    "code": "fa fa-th",
+    "name": "fa fa-th"
+  },
+  {
+    "code": "fa fa-thermometer",
+    "name": "fa fa-thermometer"
+  },
+  {
+    "code": "fa fa-thermometer-0",
+    "name": "fa fa-thermometer-0"
+  },
+  {
+    "code": "fa fa-thermometer-1",
+    "name": "fa fa-thermometer-1"
+  },
+  {
+    "code": "fa fa-thermometer-2",
+    "name": "fa fa-thermometer-2"
+  },
+  {
+    "code": "fa fa-thermometer-3",
+    "name": "fa fa-thermometer-3"
+  },
+  {
+    "code": "fa fa-thermometer-4",
+    "name": "fa fa-thermometer-4"
+  },
+  {
+    "code": "fa fa-thermometer-empty",
+    "name": "fa fa-thermometer-empty"
+  },
+  {
+    "code": "fa fa-thermometer-full",
+    "name": "fa fa-thermometer-full"
+  },
+  {
+    "code": "fa fa-thermometer-half",
+    "name": "fa fa-thermometer-half"
+  },
+  {
+    "code": "fa fa-thermometer-quarter",
+    "name": "fa fa-thermometer-quarter"
+  },
+  {
+    "code": "fa fa-thermometer-three-quarters",
+    "name": "fa fa-thermometer-three-quarters"
+  },
+  {
+    "code": "fa fa-th-large",
+    "name": "fa fa-th-large"
+  },
+  {
+    "code": "fa fa-th-list",
+    "name": "fa fa-th-list"
+  },
+  {
+    "code": "fa fa-thumbs-down",
+    "name": "fa fa-thumbs-down"
+  },
+  {
+    "code": "fa fa-thumbs-o-down",
+    "name": "fa fa-thumbs-o-down"
+  },
+  {
+    "code": "fa fa-thumbs-o-up",
+    "name": "fa fa-thumbs-o-up"
+  },
+  {
+    "code": "fa fa-thumbs-up",
+    "name": "fa fa-thumbs-up"
+  },
+  {
+    "code": "fa fa-thumb-tack",
+    "name": "fa fa-thumb-tack"
+  },
+  {
+    "code": "fa fa-ticket",
+    "name": "fa fa-ticket"
+  },
+  {
+    "code": "fa fa-times",
+    "name": "fa fa-times"
+  },
+  {
+    "code": "fa fa-times-circle",
+    "name": "fa fa-times-circle"
+  },
+  {
+    "code": "fa fa-times-circle-o",
+    "name": "fa fa-times-circle-o"
+  },
+  {
+    "code": "fa fa-times-rectangle",
+    "name": "fa fa-times-rectangle"
+  },
+  {
+    "code": "fa fa-times-rectangle-o",
+    "name": "fa fa-times-rectangle-o"
+  },
+  {
+    "code": "fa fa-tint",
+    "name": "fa fa-tint"
+  },
+  {
+    "code": "fa fa-toggle-down",
+    "name": "fa fa-toggle-down"
+  },
+  {
+    "code": "fa fa-toggle-left",
+    "name": "fa fa-toggle-left"
+  },
+  {
+    "code": "fa fa-toggle-off",
+    "name": "fa fa-toggle-off"
+  },
+  {
+    "code": "fa fa-toggle-on",
+    "name": "fa fa-toggle-on"
+  },
+  {
+    "code": "fa fa-toggle-right",
+    "name": "fa fa-toggle-right"
+  },
+  {
+    "code": "fa fa-toggle-up",
+    "name": "fa fa-toggle-up"
+  },
+  {
+    "code": "fa fa-trademark",
+    "name": "fa fa-trademark"
+  },
+  {
+    "code": "fa fa-train",
+    "name": "fa fa-train"
+  },
+  {
+    "code": "fa fa-transgender",
+    "name": "fa fa-transgender"
+  },
+  {
+    "code": "fa fa-transgender-alt",
+    "name": "fa fa-transgender-alt"
+  },
+  {
+    "code": "fa fa-trash",
+    "name": "fa fa-trash"
+  },
+  {
+    "code": "fa fa-trash-o",
+    "name": "fa fa-trash-o"
+  },
+  {
+    "code": "fa fa-tree",
+    "name": "fa fa-tree"
+  },
+  {
+    "code": "fa fa-trophy",
+    "name": "fa fa-trophy"
+  },
+  {
+    "code": "fa fa-truck",
+    "name": "fa fa-truck"
+  },
+  {
+    "code": "fa fa-try",
+    "name": "fa fa-try"
+  },
+  {
+    "code": "fa fa-tty",
+    "name": "fa fa-tty"
+  },
+  {
+    "code": "fa fa-turkish-lira",
+    "name": "fa fa-turkish-lira"
+  },
+  {
+    "code": "fa fa-tv",
+    "name": "fa fa-tv"
+  },
+  {
+    "code": "fa fa-umbrella",
+    "name": "fa fa-umbrella"
+  },
+  {
+    "code": "fa fa-underline",
+    "name": "fa fa-underline"
+  },
+  {
+    "code": "fa fa-undo",
+    "name": "fa fa-undo"
+  },
+  {
+    "code": "fa fa-universal-access",
+    "name": "fa fa-universal-access"
+  },
+  {
+    "code": "fa fa-university",
+    "name": "fa fa-university"
+  },
+  {
+    "code": "fa fa-unlink",
+    "name": "fa fa-unlink"
+  },
+  {
+    "code": "fa fa-unlock",
+    "name": "fa fa-unlock"
+  },
+  {
+    "code": "fa fa-unlock-alt",
+    "name": "fa fa-unlock-alt"
+  },
+  {
+    "code": "fa fa-unsorted",
+    "name": "fa fa-unsorted"
+  },
+  {
+    "code": "fa fa-upload",
+    "name": "fa fa-upload"
+  },
+  {
+    "code": "fa fa-usd",
+    "name": "fa fa-usd"
+  },
+  {
+    "code": "fa fa-user",
+    "name": "fa fa-user"
+  },
+  {
+    "code": "fa fa-user-circle",
+    "name": "fa fa-user-circle"
+  },
+  {
+    "code": "fa fa-user-circle-o",
+    "name": "fa fa-user-circle-o"
+  },
+  {
+    "code": "fa fa-user-o",
+    "name": "fa fa-user-o"
+  },
+  {
+    "code": "fa fa-user-plus",
+    "name": "fa fa-user-plus"
+  },
+  {
+    "code": "fa fa-users",
+    "name": "fa fa-users"
+  },
+  {
+    "code": "fa fa-user-secret",
+    "name": "fa fa-user-secret"
+  },
+  {
+    "code": "fa fa-user-times",
+    "name": "fa fa-user-times"
+  },
+  {
+    "code": "fa fa-vcard",
+    "name": "fa fa-vcard"
+  },
+  {
+    "code": "fa fa-vcard-o",
+    "name": "fa fa-vcard-o"
+  },
+  {
+    "code": "fa fa-venus",
+    "name": "fa fa-venus"
+  },
+  {
+    "code": "fa fa-venus-double",
+    "name": "fa fa-venus-double"
+  },
+  {
+    "code": "fa fa-venus-mars",
+    "name": "fa fa-venus-mars"
+  },
+  {
+    "code": "fa fa-video-camera",
+    "name": "fa fa-video-camera"
+  },
+  {
+    "code": "fa fa-volume-control-phone",
+    "name": "fa fa-volume-control-phone"
+  },
+  {
+    "code": "fa fa-volume-down",
+    "name": "fa fa-volume-down"
+  },
+  {
+    "code": "fa fa-volume-off",
+    "name": "fa fa-volume-off"
+  },
+  {
+    "code": "fa fa-volume-up",
+    "name": "fa fa-volume-up"
+  },
+  {
+    "code": "fa fa-warning",
+    "name": "fa fa-warning"
+  },
+  {
+    "code": "fa fa-wheelchair",
+    "name": "fa fa-wheelchair"
+  },
+  {
+    "code": "fa fa-wheelchair-alt",
+    "name": "fa fa-wheelchair-alt"
+  },
+  {
+    "code": "fa fa-wifi",
+    "name": "fa fa-wifi"
+  },
+  {
+    "code": "fa fa-window-close",
+    "name": "fa fa-window-close"
+  },
+  {
+    "code": "fa fa-window-close-o",
+    "name": "fa fa-window-close-o"
+  },
+  {
+    "code": "fa fa-window-maximize",
+    "name": "fa fa-window-maximize"
+  },
+  {
+    "code": "fa fa-window-minimize",
+    "name": "fa fa-window-minimize"
+  },
+  {
+    "code": "fa fa-window-restore",
+    "name": "fa fa-window-restore"
+  },
+  {
+    "code": "fa fa-won",
+    "name": "fa fa-won"
+  },
+  {
+    "code": "fa fa-wpexplorer",
+    "name": "fa fa-wpexplorer"
+  },
+  {
+    "code": "fa fa-wrench",
+    "name": "fa fa-wrench"
+  },
+  {
+    "code": "fa fa-yen",
+    "name": "fa fa-yen"
+  },
+  {
+    "code": "fa fa-youtube-play",
+    "name": "fa fa-youtube-play"
+  }
+]

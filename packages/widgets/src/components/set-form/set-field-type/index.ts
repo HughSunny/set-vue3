@@ -1,3 +1,4 @@
-import FieldTypeEdit from './field-type-edit.vue'
-import FieldTypeViewer from './field-type-viewer.vue'
+import FieldTypeEdit from './edit.vue'
+import FieldTypeViewer from './viewer.vue'
+
 export { FieldTypeEdit, FieldTypeViewer }

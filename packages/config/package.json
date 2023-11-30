@@ -1,0 +1,86 @@
+{
+  "name": "@xdc/config",
+  "version": "1.1.13",
+  "description": "为 项目提供 eslint、prettier、stylelint、commitlint、tsconfig 通用配置",
+  "keywords": [
+    "vue",
+    "eslint",
+    "prettier",
+    "stylelint",
+    "commitlint"
+  ],
+  "author": "sxx",
+  "homepage": "https://www.baidu.com",
+  "license": "ISC",
+  "files": [
+    "dist",
+    "*.md",
+    "*.js",
+    "package.json",
+    "tsconfig.*.json"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./eslint": "./eslint.js",
+    "./prettier": "./prettier.js",
+    "./stylelint": "./stylelint.js",
+    "./commitlint": "./commitlint.js",
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./tsconfig.dom.json": "./tsconfig.dom.json",
+    "./tsconfig.node.json": "./tsconfig.node.json"
+  },
+  "scripts": {
+    "build": "run-s build:clean build:lib",
+    "build:clean": "rimraf ./dist",
+    "build:lib": "cross-env NODE_ENV=production vite build",
+    "build:debug": "cross-env NODE_ENV=production VITE_DEBUG=1 vite build"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "@vitejs/plugin-legacy": "^4.0.4",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.41.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "^2.8.8",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-vue": "^9.14.1",
+    "lint-staged": "^13.2.2",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.24",
+    "postcss-html": "^1.5.0",
+    "postcss-less": "^6.0.0",
+    "stylelint": "^15.6.2",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-property-sort-order-smacss": "^9.1.0",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-prettier": "^3.0.0",
+    "terser": "^5.17.6",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9",
+    "vue-eslint-parser": "^9.3.0",
+    "vue-tsc": "^1.6.5"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.8",
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^18.16.14",
+    "debug": "^4.3.4"
+  }
+}
