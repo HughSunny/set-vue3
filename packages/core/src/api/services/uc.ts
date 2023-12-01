@@ -1,5 +1,5 @@
-import http from 'lead-lib/api/http/http-industry'
-import { AppConfig } from 'lead-lib/bo/app-config'
+import http from '@core/api/http/http'
+import { AppConfig } from '@core/bo/app-config'
 import { convertPageRequestParam } from '../helper'
 enum Api {
   entity = '/api/basic/User'
@@ -48,9 +48,9 @@ export async function getUserById(id) {
 }
 
 /**
- * 
+ *
  * @param roleId 角色id
- * @returns 
+ * @returns
  */
 export async function getRoleUserList(roleId) {
   return http.get({ url: getUrl(['Role', roleId].join('/')) })

@@ -29,7 +29,7 @@
     >
       <div v-if="!isMix" class="ant-pro-sider-logo">
         <router-link :to="{ name: 'IndustryPlatformHome' }">
-          <img src="/image/logo.png" alt="logo" style="height: 48px;"/>
+          <img :src="appLogo" alt="logo" style="height: 48px;"/>
           <!-- <h1 v-if="!collapsed">{{ appName }}</h1> -->
         </router-link>
       </div>
@@ -85,12 +85,12 @@ import { useRoute } from 'vue-router';
 import { defineComponent, computed, toRefs } from 'vue';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import type { MenuTheme } from 'ant-design-vue';
-import { useProProvider } from 'lead-lib/components/pro-provider/index';
-import BaseMenu, { BaseMenuProps } from 'lead-lib/home/base-menu/index.vue';
-import { findMenuChildren } from 'lead-lib/utils/menu-util';
-import type { LayoutType } from 'lead-lib/interface/IBaseLayout'
-import type { Breakpoint } from 'lead-lib/interface/typing';
-import { AppConfig } from 'lead-lib/bo';
+import { useProProvider } from '@core/hooks';
+import BaseMenu, { BaseMenuProps } from '@core/home/base-menu/index.vue';
+import { findMenuChildren } from '@core/utils/menu-util';
+import type { LayoutType, Breakpoint } from '@core/interface/IBaseLayout'
+import { AppConfig } from '@core/bo';
+import { useConfigStore } from '@core/store';
 const SiderMenuProps = Object.assign({}, BaseMenuProps, {
   prefixCls: {
     type: String,
@@ -193,8 +193,13 @@ export default defineComponent({
     const handleCollapse = () => {
       emit('update:collapsed', !collapsed.value);
     };
-    const appName = AppConfig.sysName;
-
+    const configStore = useConfigStore();
+    const appName = computed(() => {
+      return configStore.sysName || AppConfig.sysName;
+    })
+    const appLogo = computed(() => {
+      return configStore.sysLogo || '/image/logo.png';
+    })
     return {
       prefixCls,
       isMix,
@@ -206,6 +211,7 @@ export default defineComponent({
       handleOpenKeys,
       handleCollapse,
       appName,
+      appLogo,
     };
   },
   components: {
@@ -222,4 +228,4 @@ export default defineComponent({
 #app-body {
   @import url('./index.less');
 }
-</style>
+</style>@/@core/interface/IAntdPro

@@ -5,19 +5,19 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { message, notification } from 'ant-design-vue'
 import { cloneDeep, concat, uniq, uniqWith } from 'lodash-es'
-import type { IFetchMenu, IFramePermission, MenuRouteItem } from 'lead-lib/interface/IRouter'
-import type { IInitAppOptions } from 'lead-lib/interface/ILeadFrame'
-import { withoutArrayNil, setDocumentTitle, mergeArray, treeToArray } from 'lead-lib/utils'
-import { useAppStore } from 'lead-lib/store/app'
-import { useUserStore } from 'lead-lib/store/user'
-import { AppConfig, getOidcClientSetting } from 'lead-lib/bo'
+import type { IFetchMenu, IFramePermission, MenuRouteItem } from '@core/interface/IRouter'
+import type { IInitAppOptions } from '@core/interface/ILeadFrame'
+import { withoutArrayNil, setDocumentTitle, mergeArray, treeToArray } from '@core/utils'
+import { useAppStore } from '@core/store/app'
+import { useUserStore } from '@core/store/user'
+import { AppConfig, getOidcClientSetting } from '@core/bo'
 
-import Layout from 'lead-lib/home/index.vue'
-import NotFound from 'lead-lib/views/exception/404.vue'
-import RouteView from 'lead-lib/home/route-view'
+import Layout from '@core/home/index.vue'
+import NotFound from '@core/views/exception/404.vue'
+import RouteView from '@core/home/route-view'
 
 import { genMenuTreeRoutes, syncMenu2AccessRoutes } from './menu'
-import { getAuthManager } from 'lead-lib/utils/auth-manager'
+import { getAuthManager } from '@core/utils/auth-manager'
 
 let _initAppOptions: IInitAppOptions = { store: {} as Pinia, router: {} as Router }
 /**
@@ -211,7 +211,7 @@ export async function genRoutersByFetchMenu(
     }
     const hasAccess = accessRoutes && accessRoutes.length > 0
     // 主路由
-    let routeTrees = []
+    let routeTrees:RouteRecordRaw[] = []
     // 将原始的菜单数据转换为前端使用的菜单
     let menuTrees: MenuRouteItem[] = genMenuTreeRoutes(fetchMenuList, routeComponents, !hasAccess)
 
@@ -333,7 +333,7 @@ function mergeInitRouteOptions(options: IInitAppOptions) {
 export const getSystemInitRoutes = () => [
   //可以放一些403/404/500页面
 ]
-const AsyncGridPanelComponent = defineAsyncComponent(() => import('lead-lib/components/grid-panel'))
+const AsyncGridPanelComponent = defineAsyncComponent(() => import('@core/components/grid-panel/index.vue'))
 /**
  * 系统 layout 路由，需要登录
  */

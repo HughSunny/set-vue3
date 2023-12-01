@@ -1,4 +1,4 @@
-import { isObject, isString } from 'lead-lib/utils/is';
+import { isObject, isString } from '@core/utils/is';
 import dayjs from "dayjs";
 
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';

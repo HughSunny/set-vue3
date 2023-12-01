@@ -13,20 +13,20 @@
 
 
 <script lang="ts" setup name="Antd-Pro-App">
-// 页面级别的APP 
+// 页面级别的APP
 import { useI18n } from 'vue-i18n';
 import { computed, provide, ref, watch} from 'vue';
 import { legacyLogicalPropertiesTransformer, theme as antdTheme } from 'ant-design-vue';
 import type { ConfigProviderProps } from 'ant-design-vue';
 import { useRoute } from 'vue-router';
-import { STORAGE_LANG_KEY, useAppStore } from 'lead-lib/store/app';
-import { localStorage } from 'lead-lib/utils/local-storage';
-import useMediaQuery from 'lead-lib/hooks/useMediaQuery';
-import useMenuState, { MenuStateSymbol } from 'lead-lib/hooks/useMenuState';
-import SiteToken from 'lead-lib/home/site-token';
-import { useMultiTabStateProvider } from 'lead-lib/home/multi-tab';
-import { defaultLang } from 'lead-lib/i18n';
-import { useUserStore } from 'lead-lib/store/user';
+import { STORAGE_LANG_KEY, useAppStore } from '@core/store/app';
+import { localStorage } from '@core/utils/local-storage';
+import useMediaQuery from '@core/hooks/useMediaQuery';
+import useMenuState, { MenuStateSymbol } from '@core/hooks/useMenuState';
+import SiteToken from '@core/home/site-token';
+import { useMultiTabStateProvider } from '@core/home/multi-tab';
+import { defaultLang } from '@core/locale';
+import { useUserStore } from '@core/store/user';
 
 const i18n = useI18n();
 const appStore = useAppStore();

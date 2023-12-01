@@ -1,5 +1,5 @@
 import { cloneDeep, groupBy, without } from 'lodash-es'
-import { isObject } from 'lead-lib/utils/is'
+import { isObject } from '@core/utils/is'
 /**
  * * 判断是否是开发环境
  * @return { Boolean }
@@ -9,8 +9,8 @@ export const isDev = () => {
 }
 /**
  * 将字符串中的中文url-encode处理
- * @param str 
- * @returns 
+ * @param str
+ * @returns
  */
 export const urlEncodeChineseChars = (str) => {
   // 定义一个正则表达式,用于匹配中文字符

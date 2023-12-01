@@ -207,9 +207,8 @@ defineOptions({
   name: 'SetFieldTypeEdit'
 })
 import { computed, ref, watchEffect } from 'vue'
-import IconPicker from '../../../components/icon-picker'
-import IndustryUpload from '../../../components/industry-upload'
-import { SetFieldType } from '../../../entity/set-form'
+import { IndustryUpload, IconPicker } from '@/components';
+import { SetFieldType } from '@/entity/set-form'
 const props = defineProps({
   field: {
     type: Object,

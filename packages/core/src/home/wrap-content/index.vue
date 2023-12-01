@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs } from 'vue';
-import { useProProvider } from 'lead-lib/components/pro-provider/index';
+import { useProProvider } from '@core/hooks';
 
 export default defineComponent({
   name: 'WrapContent',

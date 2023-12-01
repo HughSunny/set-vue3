@@ -6,6 +6,14 @@
     "src/**/*.d.ts",
     "src/**/*.vue"
   ],
+  "compilerOptions": {
+    "baseUrl": ".", //未设置 "baseUrl" 时，不允许使用非相对路径。
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+  },
   "ts-node": {
     "compilerOptions": {
       "verbatimModuleSyntax": false,

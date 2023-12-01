@@ -52,12 +52,12 @@
 import type { PropType } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
 import { defineComponent, ref, computed, toRefs, inject } from 'vue';
-import { getMenuFirstChildren } from 'lead-lib/utils/menu-util';
-import { useProProvider } from 'lead-lib/components/pro-provider';
-import GlobalHeader from 'lead-lib/home/global-header/index';
-import TopNavHeader from 'lead-lib/home/top-nav-header/index.vue';
+import { getMenuFirstChildren } from '@core/utils/menu-util';
+import { useProProvider } from '@core/hooks';
+import GlobalHeader from '@core/home/global-header/index';
+import TopNavHeader from '@core/home/top-nav-header/index.vue';
 
-import type { RouteProps } from 'lead-lib/interface/IRouter'
+import type { RouteProps } from '@core/interface/IRouter'
 
 export default defineComponent({
   name: 'HeaderView',

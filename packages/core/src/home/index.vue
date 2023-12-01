@@ -81,12 +81,12 @@ import { default as WrapContent } from './wrap-content/index.vue'
 import { default as HeaderView } from './header/index.vue'
 import { default as SiderMenu } from './sider-menu/index.vue'
 import { default as NoticeIcon } from './notice-icon/index.vue'
-import { MultiTab as MultiTabVue } from './multi-tab'
+import { SelectLang} from '@core/components'
 
-import SelectLang from 'lead-lib/components/select-lang'
-import { injectMenuState } from 'lead-lib/hooks/useMenuState'
-import { useUserStore } from 'lead-lib/store/user'
-import { useConfigStore } from 'lead-lib/store/config'
+import { MultiTab as MultiTabVue } from './multi-tab'
+import { injectMenuState } from '@core/hooks/useMenuState'
+import { useUserStore } from '@core/store/user'
+import { useConfigStore } from '@core/store/config'
 
 export default defineComponent({
   name: 'BasicLayout',

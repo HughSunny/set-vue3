@@ -1,16 +1,16 @@
 import { defineAsyncComponent, h } from 'vue'
 import type { RouteMeta, RouteRecordRaw } from 'vue-router'
 import { camelCase, cloneDeep } from 'lodash-es'
-import RouteView from 'lead-lib/home/route-view'
-import BlankLayout from 'lead-lib/home/blank-layout'
+import RouteView from '@core/home/route-view'
+import BlankLayout from '@core/home/blank-layout'
 
 import {
   MenuTypeEnum,
   type IFetchMenu,
   type MenuRouteMeta,
   type MenuRouteItem
-} from 'lead-lib/interface/IRouter'
-import { urlEncodeChineseChars } from 'lead-lib/utils'
+} from '@core/interface/IRouter'
+import { urlEncodeChineseChars } from '@core/utils'
 
 /**
  * 菜单树 主要是用于显示
@@ -214,7 +214,7 @@ export function getComponentByMenuInMap(menu, componentMap) {
 export function syncMenu2AccessRoutes(
   menuList: MenuRouteItem[],
   accessRouteTreeList: Array<RouteRecordRaw>,
-  componentMap: Record<string, any>
+  componentMap?: Record<string, any>
 ) {
   const useGetAllowRoute = (
     asyncRoute: Array<RouteRecordRaw>,

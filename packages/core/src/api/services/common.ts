@@ -1,5 +1,5 @@
-import http from 'lead-lib/api/http/http'
-import { AppConfig } from 'lead-lib/bo/app-config'
+import http from '@core/api/http/http'
+import { AppConfig } from '@core/bo/app-config'
 enum Api {
   languageResource = '/Assets/I18n',
 }

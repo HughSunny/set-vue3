@@ -4,7 +4,7 @@ import { Modal, message as Message, notification } from 'ant-design-vue';
 import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 
 import { useI18n } from './useI18n';
-import { isString } from 'lead-lib/utils/is';
+import { isString } from '@core/utils/is';
 import { h } from 'vue';
 
 export interface NotifyApi {
@@ -87,14 +87,14 @@ const getBaseOptions = () => {
 };
 
 function createModalOptions(options: ModalOptionsPartial, icon: string): ModalOptionsPartial {
-  //update-begin-author:taoyan date:2023-1-10 for: 可以自定义图标 
+  //update-begin-author:taoyan date:2023-1-10 for: 可以自定义图标
   let titleIcon:any = ''
   if(options.icon){
     titleIcon = options.icon;
   }else{
     titleIcon = getIcon(icon)
   }
-  //update-end-author:taoyan date:2023-1-10 for: 可以自定义图标 
+  //update-end-author:taoyan date:2023-1-10 for: 可以自定义图标
   return {
     ...getBaseOptions(),
     ...options,

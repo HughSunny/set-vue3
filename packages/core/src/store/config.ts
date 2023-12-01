@@ -1,6 +1,6 @@
 const _config = _APP_CONFIG_ || {}
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import { type IAppConfig, AppConfig, defaultValue } from 'lead-lib/bo/app-config'
+import { type IAppConfig, AppConfig, defaultValue } from '@core/bo/app-config'
 export const initConfigState = (): IAppConfig => Object.assign(defaultValue, { ..._config, config: _config })
 
 export const useConfigStore = defineStore('config', {

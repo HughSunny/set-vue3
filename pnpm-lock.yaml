@@ -344,6 +344,9 @@ importers:
       '@ant-design/icons-vue':
         specifier: ^7.0.1
         version: 7.0.1(vue@3.3.9)
+      '@ctrl/tinycolor':
+        specifier: ^4.0.2
+        version: 4.0.2
       '@vueuse/core':
         specifier: ^10.5.0
         version: 10.6.1(vue@3.3.9)
@@ -552,12 +555,18 @@ importers:
       '@vueuse/integrations':
         specifier: ^10.5.0
         version: 10.6.1(vue@3.2.47)
+      '@xdc/core':
+        specifier: workspace:*
+        version: link:../core
       '@xdc/utils':
         specifier: workspace:*
         version: link:../utils
       ant-design-vue:
         specifier: ~4.0.7
         version: 4.0.7(vue@3.2.47)
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       rollup:
         specifier: ^3.25.2
         version: 3.29.4
@@ -577,7 +586,7 @@ importers:
         specifier: ^1.0.1
         version: 1.1.1
       vue-router:
-        specifier: '4'
+        specifier: ^4
         version: 4.2.5(vue@3.2.47)
     devDependencies:
       rollup-plugin-commonjs:
@@ -1997,6 +2006,11 @@ packages:
   /@ctrl/tinycolor@3.6.1:
     resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
     engines: {node: '>=10'}
+    dev: false
+
+  /@ctrl/tinycolor@4.0.2:
+    resolution: {integrity: sha512-fKQinXE9pJ83J1n+C3rDl2xNLJwfoYNvXLRy5cYZA9hBJJw2q+sbb/AOSNKmLxnTWyNTmy4994dueSwP4opi5g==}
+    engines: {node: '>=14'}
     dev: false
 
   /@emotion/hash@0.9.1:

@@ -1,6 +1,6 @@
-import { createAxios } from 'lead-lib/api/http/axios'
-import { ContentLanguageTypeEnum, ContentTypeEnum } from 'lead-lib/enum/httpEnum'
-import { AppConfig } from 'lead-lib/bo'
+import { createAxios } from '@core/api/http/axios'
+import { ContentLanguageTypeEnum, ContentTypeEnum } from '@core/enum/httpEnum'
+import { AppConfig } from '@core/bo'
 //工业平台 的axios // baseURL: 'http://10.30.121.131:5000',
 const http = createAxios({
   baseURL: AppConfig.baseUrl,

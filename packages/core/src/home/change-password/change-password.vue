@@ -86,9 +86,9 @@
 </template>
 <script lang="ts" setup>
 import { ref, reactive, toRefs, computed, toRaw } from 'vue'
-import { useUserStore } from 'lead-lib/store/user'
-import { updatePassword } from 'lead-lib/api/services/uc'
-import { useI18n } from 'lead-lib/hooks/useI18n'
+import { useUserStore } from '@core/store/user'
+import { updatePassword } from '@core/api/services/uc'
+import { useI18n } from '@core/hooks/useI18n'
 import { message } from 'ant-design-vue'
 defineOptions({
   name: 'ChangePwdModal'

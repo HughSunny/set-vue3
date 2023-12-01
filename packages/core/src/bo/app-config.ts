@@ -1,7 +1,7 @@
 const _config = _APP_CONFIG_ || {}
-import type { CreateAxiosOptions } from 'lead-lib/api/http/axios/axiosTransform'
+import type { CreateAxiosOptions } from '@core/api/http/axios/axiosTransform'
 import { type UserManagerSettings } from 'oidc-client'
-import type { IFramePermission } from 'lead-lib/interface/IRouter'
+import type { IFramePermission } from '@core/interface/IRouter'
 
 export const defaultValue = {
   //静态

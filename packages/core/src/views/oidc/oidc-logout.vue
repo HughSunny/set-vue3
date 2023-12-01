@@ -4,7 +4,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useUserStore } from 'lead-lib/store/user'
+import { useUserStore } from '@core/store/user'
 defineOptions({
   name: 'oidcLogout'
 })

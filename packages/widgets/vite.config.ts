@@ -32,9 +32,20 @@ export default defineConfig({
     emptyOutDir: false,
     minify: 'esbuild',
   },
+  resolve: {
+    alias: {
+      '@': path.join(__dirname, './src'),
+      '~': path.join(__dirname, './src/assets'),
+      vue: 'vue/dist/vue.esm-bundler.js',
+      dayjs: resolve(__dirname, 'node_modules', 'dayjs'),
+      'ant-design-vue': resolve(__dirname, 'node_modules', 'ant-design-vue'),
+    },
+  },
+
   esbuild: {
     pure: ['console.log'],
     minifyIdentifiers: false,
   },
   plugins,
 });
+

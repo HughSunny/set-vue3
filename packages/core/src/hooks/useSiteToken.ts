@@ -1,7 +1,7 @@
 import { TinyColor } from '@ctrl/tinycolor'
 import { theme } from 'ant-design-vue'
 import { computed, watch } from 'vue'
-import { useAppStore } from 'lead-lib/store/app'
+import { useAppStore } from '@core/store/app'
 const { useToken } = theme
 
 const useSiteToken = () => {
@@ -31,7 +31,7 @@ const useSiteToken = () => {
       styleDom.innerHTML = `
       :root {
         --font-size-base: ${tokenValue.fontSize}px;
-        
+
         --screen-xl: ${tokenValue.screenXL}px;
         --screen-lg: ${tokenValue.screenLG}px;
         --screen-md: ${tokenValue.screenMD}px;
@@ -51,7 +51,7 @@ const useSiteToken = () => {
         --text-color-inverse: ${tokenValue.colorWhite};
         --heading-color: ${tokenValue.colorTextHeading};
         --disabled-color: ${tokenValue.colorTextDisabled};
-        
+
         --btn-primary-color: #fff;
 
         --heading-3-size: ${tokenValue.fontSizeHeading3}px;

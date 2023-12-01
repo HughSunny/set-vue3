@@ -3,7 +3,7 @@
     <a-layout-header style="height: 150px; background: transparent; width: 100%">
       <div class="login-header">
         <div class="left">
-          <img class="login-logo" src="/image/lead-logo.png" alt="logo" />
+          <img class="login-logo" :src="sysLogo" alt="logo" />
           <h2 class="login-title">{{ $t(logoTitle) }}</h2>
         </div>
 
@@ -12,9 +12,9 @@
             v-for="(item, index) in friendUrls"
             :key="index"
             class="friendUrlItem"
-            @click="openUrl(item.Url)"
+            @click="openUrl(item.url)"
           >
-            {{ item.Caption }}
+            {{ item.title }}
           </div>
         </div>
       </div>
@@ -117,16 +117,16 @@ import { reactive, computed, ref } from 'vue'
 import { GlobalOutlined } from '@ant-design/icons-vue'
 
 import { useRouter, useRoute } from 'vue-router'
-import { AppConfig } from 'lead-lib/bo'
-import { useI18n } from 'lead-lib/hooks/useI18n'
-import { useAppStore } from 'lead-lib/store/app'
-import { useUserStore } from 'lead-lib/store/user'
-import ls from 'lead-lib/utils/local-storage'
-import type { FnLoginHook, FnAfterLogin } from 'lead-lib/interface/ILeadFrame'
-import { getUserInfo, login } from 'lead-lib/api/services/uc'
-import type { IUserInfo } from 'lead-lib/interface/IUser'
+import { AppConfig } from '@core/bo'
+import { useI18n } from '@core/hooks/useI18n'
+import { useAppStore } from '@core/store/app'
+import { useUserStore } from '@core/store/user'
+import ls from '@core/utils/local-storage'
+import type { FnLoginHook, FnAfterLogin } from '@core/interface/ILeadFrame'
+import { getUserInfo, login } from '@core/api/services/uc'
+import type { IUserInfo } from '@core/interface/IUser'
 import { useCookies } from '@vueuse/integrations/useCookies'
-import { useConfigStore } from 'lead-lib/store/config'
+import { useConfigStore } from '@core/store/config'
 const cookie = useCookies()
 const { t } = useI18n()
 const props = defineProps<{
@@ -167,8 +167,8 @@ const self = reactive({
 })
 const enableInternational = computed(() => configStore.enableInternational)
 const languageList = computed(() => configStore.languageList)
-const title = computed(() => configStore.loginSysName?.trim() || AppConfig.sysName)
-const sysLogo = computed(() => configStore.loginSysLogo?.trim())
+const title = computed(() => configStore.loginSysName?.trim() || AppConfig.loginSysName)
+const sysLogo = computed(() => configStore.loginSysLogo?.trim() || '/image/lead-logo.png')
 
 const friendUrls = computed(() => {
   return configStore.friendUrls || []
@@ -399,4 +399,3 @@ const openUrl = (url: string) => {
   }
 }
 </style>
-@/api/mes-services/uc

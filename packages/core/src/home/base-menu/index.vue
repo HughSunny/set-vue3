@@ -22,7 +22,7 @@
           <template #icon>
             <template v-if="menu.meta.icon">
               <template v-if="menu.meta.icon.startsWith('fa')">
-                 <i style="color: white" :class="menu.meta.icon"></i>
+                <i style="color: white" :class="menu.meta.icon"></i>
               </template>
               <template v-else-if="menu.meta.icon.startsWith('x')">
                 <!-- x 开头的图标 -->
@@ -55,9 +55,9 @@ import type { ComputedRef, PropType } from 'vue';
 import { defineComponent, computed } from 'vue';
 import { UnorderedListOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
-import type { RouteProps } from 'lead-lib/interface/IRouter';
+import type { RouteProps } from '@core/interface/IRouter';
 import SubMenu from './sub-menu.vue';
-import TransformVnode from 'lead-lib/components/transform-vnode';
+import { TransformVnode } from '@core/components';
 
 export function useRootSubmenuKeys(menus: RouteProps[]): ComputedRef<string[]> {
   return computed(() => menus.map(it => it.path));

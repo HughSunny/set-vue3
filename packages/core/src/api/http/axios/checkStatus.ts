@@ -1,8 +1,8 @@
 import type { ErrorMessageMode } from '#/axios'
-import { useMessage } from 'lead-lib/hooks/useMessage'
-import { useI18n } from 'lead-lib/hooks/useI18n'
-import { useUserStore } from 'lead-lib/store/user'
-import { SessionTimeoutProcessingEnum } from 'lead-lib/enum/httpEnum'
+import { useMessage } from '@core/hooks/useMessage'
+import { useI18n } from '@core/hooks/useI18n'
+import { useUserStore } from '@core/store/user'
+import { SessionTimeoutProcessingEnum } from '@core/enum/httpEnum'
 
 const { createMessage, createErrorModal } = useMessage()
 const error = createMessage.error!

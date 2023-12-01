@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig, Canceler } from 'axios';
 import axios from 'axios';
-import { isFunction } from 'lead-lib/utils/is';
+import { isFunction } from '@core/utils/is';
 
 // Used to store the identification and cancellation function of each request
 let pendingMap = new Map<string, Canceler>();

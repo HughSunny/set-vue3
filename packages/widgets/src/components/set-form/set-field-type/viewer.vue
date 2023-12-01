@@ -97,7 +97,7 @@ defineOptions({
 });
 import { computed, watch } from 'vue';
 import { SetFieldType } from '../../../entity/set-form';
-import IndustryUpload from '../../../components/industry-upload';
+import { IndustryUpload } from '@/components';
 import { getItemFromDataSourceById } from '../../../utils/helper';
 import dayjs from 'dayjs';
 

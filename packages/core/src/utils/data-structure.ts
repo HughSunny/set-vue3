@@ -1,5 +1,5 @@
 import { cloneDeep, groupBy, without } from 'lodash-es'
-import { isObject } from 'lead-lib/utils/is'
+import { isObject } from '@core/utils/is'
 // 数据结构相关工具方法
 
 /**
@@ -169,7 +169,7 @@ export const findNodePathInTree = (tree, targetValue, modalKey = 'id') => {
  * @param arr 目标对象数组
  * @param fieldName  分组字段
  * @param keyModal 主键字段名
- * @returns 
+ * @returns
  */
 export function classifyArrayBySameField2Tree(arr, fieldName, keyModal = 'title') {
   const temObj = {}

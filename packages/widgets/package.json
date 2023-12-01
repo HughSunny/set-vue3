@@ -27,15 +27,17 @@
     "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/integrations": "^10.5.0",
+    "@xdc/core": "workspace:*",
     "@xdc/utils": "workspace:*",
     "ant-design-vue": "~4.0.7",
+    "dayjs": "^1.11.10",
     "rollup": "^3.25.2",
     "swiper": "~9.0.3",
     "v-viewer": "3.0.10",
     "viewerjs": "1.10.4",
     "vue": "~3.2.37",
     "vue-cropper": "^1.0.1",
-    "vue-router": "4"
+    "vue-router": "^4"
   },
   "devDependencies": {
     "rollup": "^3.25.2",

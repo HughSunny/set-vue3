@@ -19,15 +19,15 @@ import { useRouter, useRoute } from 'vue-router';
 import { message } from 'ant-design-vue';
 import { eagerComputed } from '@vueuse/core'
 import { findLast, omit } from 'lodash-es'
-import type { MaybeRef } from 'lead-lib/interface/typing'
+import type { MaybeRef } from '@/@core/interface/IAntdPro'
 import type {
   CacheItem,
   MultiTabStore,
   CallerFunction,
   CacheKey
-} from 'lead-lib/interface/IMultiTabStore'
-import { flattenChildren } from 'lead-lib/utils/vnode-util'
-import { useAppStore } from 'lead-lib/store/app';
+} from '@core/interface/IMultiTabStore'
+import { flattenChildren } from '@core/utils/vnode-util'
+import { useAppStore } from '@core/store/app';
 
 export type Options = {
   defaultHomePage?: string;
@@ -117,14 +117,14 @@ export const MultiTabStoreConsumer = defineComponent({
       { immediate: true },
     );
     onBeforeUnmount(() => {
-      console.log('TAB--------------------->onBeforeUnmount')
+      // console.log('TAB--------------------->onBeforeUnmount')
       Object.keys(componentMap).forEach(key => {
         delete componentMap[key];
       });
     });
     return () => {
       const component = flattenChildren((slots.default && slots.default()) || [])[0] as any;
-      console.log('TAB--------------------->render component', component, route.path)
+      // console.log('TAB--------------------->render component', component, route.path)
       if (!component) {
         return null;
       }
@@ -164,7 +164,7 @@ export const MultiTabStoreConsumer = defineComponent({
       if (route.meta.keepAlive === false) {
         exclude.push(cacheItem.key!);
       }
-      console.log('TAB--------------------->cacheItem.key', cacheItem.key, componentMap)
+      // console.log('TAB--------------------->cacheItem.key', cacheItem.key, componentMap)
 
       const newCom =
         componentMap[cacheItem.key] ||

@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
-import type { MenuRouteItem, RouteProps } from 'lead-lib/interface/IRouter'
+import type { MenuRouteItem, RouteProps } from '@core/interface/IRouter'
 
 export const filterMenu = (routes: MenuRouteItem[]) => {
   return routes.find((item) => item.name === 'IndustryPlatformHome')?.children || []

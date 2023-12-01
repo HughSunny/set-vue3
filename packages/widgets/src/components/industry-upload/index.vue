@@ -2,7 +2,7 @@
   <div>
     <a-upload
       v-if="type === 'avatar'"
-      :accept="IMG_TYPES.map((xx) => xx.suffix).join(',')"
+      :accept="IMG_TYPES.map(xx => xx.suffix).join(',')"
       :before-upload="beforeUpload"
       @preview="handlePreview"
       @change="handleChange"
@@ -29,7 +29,7 @@
       v-else-if="type === 'image'"
       list-type="picture-card"
       :multiple="limit > 1"
-      :accept="IMG_TYPES.map((xx) => xx.suffix).join(',')"
+      :accept="IMG_TYPES.map(xx => xx.suffix).join(',')"
       action="#"
       :before-upload="beforeUpload"
       :show-upload-list="hideFiles ? !hideFiles : { showPreviewIcon: true, showRemoveIcon: isEdit }"
@@ -56,7 +56,7 @@
     <a-upload
       v-else
       name="file"
-      :accept="FILE_TYPES.map((xx) => xx.suffix).join(',')"
+      :accept="FILE_TYPES.map(xx => xx.suffix).join(',')"
       :multiple="limit > 1"
       :before-upload="beforeUpload"
       action="#"
@@ -88,111 +88,110 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, computed } from 'vue'
-import { api as viewerApi } from 'v-viewer'
+import { ref, watch, computed } from 'vue';
+import { api as viewerApi } from 'v-viewer';
 
-import { message } from 'ant-design-vue'
-import { LoadingOutlined, PlusOutlined, UploadOutlined, UserOutlined } from '@ant-design/icons-vue'
-import { IMG_TYPES, FILE_TYPES, getFileName } from './index.data'
-import { uploadFile } from 'lead-lib/api/services'
-import { AppConfig } from '@xdc/core'
+import { message } from 'ant-design-vue';
+import { LoadingOutlined, PlusOutlined, UploadOutlined, UserOutlined } from '@ant-design/icons-vue';
+import { IMG_TYPES, FILE_TYPES, getFileName } from './index.data';
+import { getInitOptions } from '@/index';
 interface FileItem {
-  name: string
-  url?: string
-  status?: string
-  file?: string | Blob
-  uid?: string
+  name: string;
+  url?: string;
+  status?: string;
+  file?: string | Blob;
+  uid?: string;
 
-  response?: string
+  response?: string;
 
-  preview?: string
-  originFileObj?: any
+  preview?: string;
+  originFileObj?: any;
 }
 
-defineOptions({ name: 'IndustryUpload' })
+defineOptions({ name: 'IndustryUpload' });
 const props = defineProps({
   type: {
     type: String,
     default() {
-      return 'file'
-    }
+      return 'file';
+    },
   },
   libraryName: {
     type: String,
     default() {
-      return AppConfig.uploadStorePath
-    }
+      return getInitOptions().uploadLibrary;
+    },
   },
   fileUrl: {
     type: String,
     default() {
-      return undefined
-    }
+      return undefined;
+    },
   },
   dataList: {
     type: Array,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   limit: {
     type: Number,
     default() {
-      return 1
-    }
+      return 1;
+    },
   },
   accept: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
   isEdit: {
     type: Boolean,
     default() {
-      return true
-    }
+      return true;
+    },
   },
   btnTxt: {
     type: String,
     default() {
-      return undefined
-    }
+      return undefined;
+    },
   },
   hideFiles: {
     type: Boolean,
     default() {
-      return false
-    }
-  }
-})
+      return false;
+    },
+  },
+});
 
-const emit = defineEmits(['change', 'update:fileUrl', 'update:dataList'])
-let files: FileItem[] = []
+const emit = defineEmits(['change', 'update:fileUrl', 'update:dataList']);
+let files: FileItem[] = [];
 if (props.dataList && props.dataList.length > 0) {
-  files = props.dataList.map((xx) => {
+  files = props.dataList.map(xx => {
     const tempFile: FileItem = {
       name: getFileName(xx),
       status: 'done',
-      url: xx as string
-    }
-    return tempFile
-  })
+      url: xx as string,
+    };
+    return tempFile;
+  });
 } else {
   if (props.fileUrl) {
-    files = [{ name: getFileName(props.fileUrl), status: 'done', url: props.fileUrl }]
+    files = [{ name: getFileName(props.fileUrl), status: 'done', url: props.fileUrl }];
   }
 }
 
-const fileLst = ref(files)
-const loading = ref<boolean>(false)
+const fileLst = ref(files);
+const loading = ref<boolean>(false);
 
 const fileOutOfLimit = computed(() => {
-  return !props.hideFiles && props.limit === 1 && fileLst.value.length > 0
-})
+  return !props.hideFiles && props.limit === 1 && fileLst.value.length > 0;
+});
 
-const handleChange = (info) => {
+const handleChange = info => {
   // console.log('handleChange--------------------------------->', info)
   if (info.file.status !== 'uploading') {
-    console.log('handleChange  uploading ', info.file, info.fileList)
+    console.log('handleChange  uploading ', info.file, info.fileList);
     // 如果网络错误，需要
     // info.fileList.pop()
   }
@@ -200,154 +199,157 @@ const handleChange = (info) => {
     // message.success(`${info.file.name} file uploaded successfully`)
   } else if (info.file.status === 'error') {
     // 如果网络错误，需要
-    message.error(`${info.file.name} 文件上传失败`)
-    info.fileList.pop()
-    fileLst.value = info.fileList
-    emit('change', info.file, fileLst.value, 'delete')
+    message.error(`${info.file.name} 文件上传失败`);
+    info.fileList.pop();
+    fileLst.value = info.fileList;
+    emit('change', info.file, fileLst.value, 'delete');
   } else if (info.file.status === 'removed') {
-    fileLst.value = info.fileList
-    emit('change', info.file, fileLst.value, 'delete')
+    fileLst.value = info.fileList;
+    emit('change', info.file, fileLst.value, 'delete');
     if (props.limit <= 1) {
       // imageUrl.value = null
     }
   }
-}
+};
 // beforeUpload 返回 false 后，手动上传文件。
 const beforeUpload = (file: FileItem, fileList) => {
-  console.log('beforeUpload=====> ', file, fileList)
-  let isLimitAccept = true
+  console.log('beforeUpload=====> ', file, fileList);
+  let isLimitAccept = true;
   // 文件个数
   if (props.limit > 1 && fileLst.value.length >= props.limit) {
-    message.warning('文件数量超过上限')
-    isLimitAccept = false
+    message.warning('文件数量超过上限');
+    isLimitAccept = false;
   }
-  let isFileAccept = true
+  let isFileAccept = true;
   // 文件类型
   if (props.accept.length > 0) {
-    const findFileType = !props.accept || props.accept.find((XX) => XX.type === file.type)
+    const findFileType = !props.accept || props.accept.find(XX => XX.type === file.type);
     if (!findFileType) {
-      const text = props.accept.map((item) => item.name)
-      message.error(`只能上传${text}`, 5)
-      isFileAccept = false
+      const text = props.accept.map(item => item.name);
+      message.error(`只能上传${text}`, 5);
+      isFileAccept = false;
     }
   } else {
     const accepts =
-      props.type === 'image' || props.type === 'avatar' ? [...IMG_TYPES] : [...FILE_TYPES]
-    const findFileType = accepts.find((XX) => XX.type === file.type)
+      props.type === 'image' || props.type === 'avatar' ? [...IMG_TYPES] : [...FILE_TYPES];
+    const findFileType = accepts.find(XX => XX.type === file.type);
     if (!findFileType) {
-      const text = accepts.map((item) => item.name)
-      message.error(`只能上传${text}`, 5)
-      isFileAccept = false
+      const text = accepts.map(item => item.name);
+      message.error(`只能上传${text}`, 5);
+      isFileAccept = false;
     }
   }
-  const result = isLimitAccept && isFileAccept
+  const result = isLimitAccept && isFileAccept;
   if (!result) {
     // 如果不符合条件，要把文件列表中不符合的踢掉
-    fileList.pop()
+    fileList.pop();
   }
   // && !loading.value
-  return result
-}
-const handleUpload = (params) => {
+  return result;
+};
+const handleUpload = params => {
   // console.log('handleUpload=====> custom-request 触发 ', params)
 
-  const { file } = params
-  loading.value = true
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => {
-    const fileName = file.name
-    uploadFile(file, props.libraryName)
-      .then((ret) => {
-        const { code, data } = ret //data返回的就是路径
-        if (code !== 0) {
-          message.error('文件上传失败')
-          loading.value = false
-          fileLst.value.pop()
-          emit('change', file, fileLst.value, 'delete')
-          return
-        }
-        const retFilePath = data
-        // const retFilePath = data.replace('http://localhost:5000/', 'http://10.30.121.131:5000/')
-        if (props.limit <= 1) {
-          file.url = retFilePath
-          fileLst.value = [file]
-          emit('update:fileUrl', retFilePath)
-          emit('change', { ...file }, fileLst.value, 'add')
-        } else {
-          file.url = retFilePath
-          const newFileList = []
-          fileLst.value.forEach((xx) => {
-            if (xx.uid === file.uid) {
-              newFileList.push({ ...file })
-            } else {
-              newFileList.push({ ...xx })
-            }
-          })
-
-          fileLst.value = [...newFileList]
-
-          //判断是否全部上传完毕
-          if (fileLst.value.filter((xx) => xx.url).length === fileLst.value.length) {
-            //如果全部上传完毕，才可以返回filelist
-
-            emit('update:dataList', fileLst.value)
-            emit('change', { ...file }, fileLst.value, 'add')
+  const { file } = params;
+  loading.value = true;
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = async () => {
+    const uploadRequest = getInitOptions().uploadRequest;
+    if (!uploadRequest) {
+      message.error('缺少上传参数');
+      return;
+    }
+    try {
+      const ret = await uploadRequest(file, props.libraryName);
+      // const { code, data } = ret; //data返回的就是路径
+      // if (code !== 0) {
+      //   message.error('文件上传失败');
+      //   loading.value = false;
+      //   fileLst.value.pop();
+      //   emit('change', file, fileLst.value, 'delete');
+      //   return;
+      // }
+      const retFilePath = ret;
+      // const retFilePath = data.replace('http://localhost:5000/', 'http://10.30.121.131:5000/')
+      if (props.limit <= 1) {
+        file.url = retFilePath;
+        fileLst.value = [file];
+        emit('update:fileUrl', retFilePath);
+        emit('change', { ...file }, fileLst.value, 'add');
+      } else {
+        file.url = retFilePath;
+        const newFileList = [];
+        fileLst.value.forEach(xx => {
+          if (xx.uid === file.uid) {
+            newFileList.push({ ...file });
           } else {
-            //多个没有上传，单个文件单个文件回调，但是filelist是空
-            emit('change', { ...file }, [], 'add')
+            newFileList.push({ ...xx });
           }
+        });
+
+        fileLst.value = [...newFileList];
+
+        //判断是否全部上传完毕
+        if (fileLst.value.filter(xx => xx.url).length === fileLst.value.length) {
+          //如果全部上传完毕，才可以返回filelist
+
+          emit('update:dataList', fileLst.value);
+          emit('change', { ...file }, fileLst.value, 'add');
+        } else {
+          //多个没有上传，单个文件单个文件回调，但是filelist是空
+          emit('change', { ...file }, [], 'add');
         }
-        loading.value = false
-      })
-      .catch((e) => {
-        console.log('oss Upload=====> catch ', e)
-        // 将文件列表中的文件pop掉
-        loading.value = false
-        fileLst.value.pop()
-        emit('change', file, fileLst.value, 'delete')
-      })
-  }
-}
+      }
+    } catch (e) {
+      console.log('oss Upload=====> catch ', e);
+      // 将文件列表中的文件pop掉
+      fileLst.value.pop();
+      emit('change', file, fileLst.value, 'delete');
+    } finally {
+      loading.value = false;
+    }
+  };
+};
 const handlePreview = (file: FileItem) => {
-  const initialViewIndex = fileLst.value.indexOf(file)
+  const initialViewIndex = fileLst.value.indexOf(file);
 
   viewerApi({
-    images: fileLst.value.map((xx) => xx.url),
+    images: fileLst.value.map(xx => xx.url),
     options: {
-      initialViewIndex
-    }
-  })
-}
+      initialViewIndex,
+    },
+  });
+};
 
 watch(
   () => props.fileUrl,
   (val, prevVal) => {
     // console.error('watch fileUrl----------------------------------------------->', val)
     if (val) {
-      fileLst.value = [{ name: getFileName(val), status: 'done', url: val }]
+      fileLst.value = [{ name: getFileName(val), status: 'done', url: val }];
     } else {
-      fileLst.value = []
+      fileLst.value = [];
     }
-  }
-)
+  },
+);
 watch(
   () => props.dataList,
   (val, prevVal) => {
     // console.error('watch dataList----------------------------------------------->', val)
     if (val && val.length > 0) {
-      fileLst.value = val.map((xx) => {
+      fileLst.value = val.map(xx => {
         if (xx) {
-          const tempFile: FileItem = { name: getFileName(xx), status: 'done', url: xx as string }
-          return tempFile
+          const tempFile: FileItem = { name: getFileName(xx), status: 'done', url: xx as string };
+          return tempFile;
         }
-        return {}
-      })
+        return {};
+      });
     } else {
-      fileLst.value = []
+      fileLst.value = [];
     }
-  }
-)
+  },
+);
 </script>
 
 <style lang="less" scoped>

@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import systemModule from './system/index.route'
-import RouteView from 'lead-lib/home/route-view'
-import BlankPage from 'lead-lib/views/BlankPage.vue'
+import RouteView from '@core/home/route-view'
+import BlankPage from '@core/views/BlankPage.vue'
 // 视图文件夹导出的路由
 
 

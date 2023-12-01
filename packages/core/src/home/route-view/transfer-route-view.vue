@@ -13,8 +13,8 @@ defineOptions({
   name: 'TransferRouterView'
 })
 import { computed } from 'vue'
-import { injectMenuState } from 'lead-lib/hooks/useMenuState'
-import { MultiTabStoreConsumer } from 'lead-lib/home/multi-tab'
+import { injectMenuState } from '@core/hooks/useMenuState'
+import { MultiTabStoreConsumer } from '@core/home/multi-tab'
 
 const menuState = injectMenuState()
 const transitionName = computed(() => menuState.transitionName.value)

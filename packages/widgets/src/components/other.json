@@ -22,5 +22,13 @@
   {
     "name": "SetFormTypeViewer",
     "path": "./set-form/set-form-type/viewer.vue"
+  },
+  {
+    "name": "SetFormTableEdit",
+    "path": "./set-form/set-form-table/edit.vue"
+  },
+  {
+    "name": "SetFormTableViewer",
+    "path": "./set-form/set-form-table/viewer.vue"
   }
 ]

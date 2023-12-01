@@ -1,11 +1,9 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type { PureSettings } from 'lead-lib/interface/IAppSetting'
-import { loadLanguageAsync } from 'lead-lib/i18n'
-import ls from 'lead-lib/utils/local-storage'
-import { AppConfig } from 'lead-lib/bo'
+import type { PureSettings } from '@core/interface/IAppSetting'
+import { loadLanguageAsync } from '@core/locale'
+import ls from '@core/utils/local-storage'
+import { AppConfig } from '@core/bo'
 
-const SET_LANG = 'SET_LANG'
-const SET_LOADING = 'SET_LOADING'
 export const DEFAULT_PRIMARY_COLOR = '#1677ff'
 export const FRAME_DARK_BACKGROUND_COLOR = '#1F2B69' // #001529
 export const FRAME_DARK_MENU_SUB_COLOR = '#2b3775' // #001529
@@ -51,7 +49,7 @@ export const useAppStore = defineStore('app', {
     multiTabFixed: true //固定tabs页面
   }),
   actions: {
-    async [SET_LANG](lang) {
+    async SET_LANG(lang) {
       loadLanguageAsync(lang)
         .then(() => {
           AppConfig.lang = lang
@@ -60,7 +58,7 @@ export const useAppStore = defineStore('app', {
         })
         .catch(() => {})
     },
-    [SET_LOADING](loading: boolean) {
+    SET_LOADING(loading: boolean) {
       this.loading = loading
     },
     setLanguageList(list) {

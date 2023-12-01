@@ -3,7 +3,7 @@
     <!-- 231013 去掉前面的图标 文字最好放在后面 -->
     <!-- <span v-if="isMobile" :class="`${baseClassName}-logo`">
       <router-link :to="{ name: 'IndustryPlatformHome' }">
-        <img src="/image/logo.png" alt="logo" style="height: 48px;"/>
+        <img :src="appLogo" alt="logo" style="height: 48px;"/>
       </router-link>
     </span> -->
     <div
@@ -18,7 +18,7 @@
     </div>
     <div v-if="layout === 'mix' && !isMobile" :class="`${baseClassName}-logo`">
       <router-link :to="{ name: 'IndustryPlatformHome' }">
-        <img src="/image/logo.png" alt="logo" style="height: 48px;"/>
+        <img :src="appLogo" alt="logo" style="height: 48px;"/>
         <h1>{{ appName }}</h1>
       </router-link>
     </div>
@@ -38,7 +38,8 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
-import { AppConfig } from 'lead-lib/bo';
+import { AppConfig } from '@core/bo';
+import { useConfigStore } from '@core/store';
 export default defineComponent({
   props: {
     prefixCls: {
@@ -78,7 +79,13 @@ export default defineComponent({
     const handleClick = (): void => {
       emit('collapse', !props.collapsed);
     };
-    const appName = AppConfig.sysName;
+    const configStore = useConfigStore();
+    const appName = computed(() => {
+      return configStore.sysName || AppConfig.sysName;
+    })
+    const appLogo = computed(() => {
+      return configStore.sysLogo || '/image/logo.png';
+    })
     return {
       baseClassName,
       classNames,
@@ -86,6 +93,7 @@ export default defineComponent({
       isLeft,
       handleClick,
       appName,
+      appLogo,
     };
   },
   components: {

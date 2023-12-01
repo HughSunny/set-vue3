@@ -6,9 +6,9 @@ import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 
 import { cloneDeep } from 'lodash-es';
-import { RequestEnum, ContentTypeEnum } from 'lead-lib/enum/httpEnum'
-import { isFunction } from 'lead-lib/utils/is'
-import { useMessage } from 'lead-lib/hooks/useMessage';
+import { RequestEnum, ContentTypeEnum } from '@core/enum/httpEnum'
+import { isFunction } from '@core/utils/is'
+import { useMessage } from '@core/hooks/useMessage';
 
 const { createMessage } = useMessage();
 export * from './axiosTransform';

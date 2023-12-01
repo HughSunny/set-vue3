@@ -1,9 +1,9 @@
 import type { Pinia } from 'pinia'
 import type { Router } from 'vue-router'
-import type { IUserInfo } from 'lead-lib/interface/IUser'
-import type { IFetchMenu, IFramePermission, IInitRouterOptions } from 'lead-lib/interface/IRouter'
-import type { CreateAxiosOptions } from 'lead-lib/api/http/axios/axiosTransform'
-import type { ILanguageItem, OauthOption } from 'lead-lib/bo/app-config'
+import type { IUserInfo } from '@core/interface/IUser'
+import type { IFetchMenu, IFramePermission, IInitRouterOptions } from '@core/interface/IRouter'
+import type { CreateAxiosOptions } from '@core/api/http/axios/axiosTransform'
+import type { ILanguageItem, OauthOption } from '@core/bo/app-config'
 
 export interface ISysInit {
   token: string // 当前登录用户的已经保存的令牌
@@ -17,7 +17,7 @@ export interface ISysInit {
   headerImage?: string //首页登录页面的背景图片
   friendUrls?: any[] //登录页友好链
   languageList: ILanguageItem[] //需要指定类型
-  
+
   sysStatusMsg?: any // 系统状态消息
   enableOidc?: boolean
   ssoConfig?: OauthOption // sso配置

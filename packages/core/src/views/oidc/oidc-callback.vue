@@ -4,9 +4,9 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { useUserStore } from 'lead-lib/store/user'
-import { init } from 'lead-lib/utils/auth-manager'
-import { AppConfig, getOidcClientSetting } from '@/lead-lib/bo';
+import { useUserStore } from '@core/store/user'
+import { init } from '@core/utils/auth-manager'
+import { AppConfig, getOidcClientSetting } from '@/@core/bo';
 const router = useRouter()
 const userStore = useUserStore()
 const authManager = init(getOidcClientSetting())
@@ -18,7 +18,7 @@ try {
     // })
 
      if (user) {
-        // 设置token 
+        // 设置token
         AppConfig.token = user.access_token
         // AppConfig.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiI1MDkxNzE2MzkxNTg2MjAxNjAiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEwNzMwIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Iuefs-aZk-aYnyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL3N1cm5hbWUiOiIxMDczMCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvZ3JvdXBzaWQiOiJEZWZhdWx0IiwibmJmIjoxNzAxMTQ5NTYzLCJleHAiOjE3MDEyMzU5NjMsImlzcyI6Imh0dHA6Ly93d3cueGRjcGx1cy5jb20iLCJhdWQiOiJwbGF0Zm9ybSJ9.9HOyoUkNabgtOpwFQ8jHDnY0aQBDE2_vqayO8aEobH4"
 

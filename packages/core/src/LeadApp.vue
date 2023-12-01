@@ -3,12 +3,12 @@
 </template>
 
 <script setup lang="ts" name="App">
-import AntdApp from 'lead-lib/App.vue'
+import AntdApp from '@core/AntdApp.vue'
 import { onBeforeMount, onMounted } from 'vue'
-import { getInitRouteOptions } from 'lead-lib/router/route'
-import { AppConfig } from 'lead-lib/bo/app-config'
-import { UserInfo } from 'lead-lib/bo/userInfo'
-import type { FnInitSysConfig, ISysInit } from 'lead-lib/interface/ILeadFrame'
+import { getInitRouteOptions } from '@core/router/route'
+import { AppConfig } from '@core/bo/app-config'
+import { UserInfo } from '@core/bo/userInfo'
+import type { FnInitSysConfig, ISysInit } from '@core/interface/ILeadFrame'
 import { useAppStore, useConfigStore } from './store'
 import { IndustryOption } from './app-option'
 
@@ -43,7 +43,7 @@ onMounted(async () => {
     //如果存在钩子，则执行钩子 更新配置
     config = await onGetConfig()
   } else {
-    // 工业逻辑 
+    // 工业逻辑
     config = await IndustryOption.onGetConfig()
   }
   const configStore = useConfigStore()

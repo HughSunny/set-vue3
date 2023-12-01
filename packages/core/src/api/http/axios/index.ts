@@ -6,16 +6,16 @@ import type { ICommonResModel, RequestOptions, Result } from '#/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
-import { useMessage } from 'lead-lib/hooks/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum, ConfigEnum, ContentLanguageTypeEnum } from 'lead-lib/enum/httpEnum'
-import { isString } from 'lead-lib/utils/is'
+import { useMessage } from '@core/hooks/useMessage';
+import { RequestEnum, ResultEnum, ContentTypeEnum, ConfigEnum, ContentLanguageTypeEnum } from '@core/enum/httpEnum'
+import { isString } from '@core/utils/is'
 
-import { setObjToUrlParams, deepMerge } from 'lead-lib/utils'
-import { useI18n } from 'lead-lib/hooks/useI18n'
+import { setObjToUrlParams, deepMerge } from '@core/utils'
+import { useI18n } from '@core/hooks/useI18n'
 import { joinTimestamp, formatRequestDate } from './helper';
-import { useUserStore } from 'lead-lib/store/user';
-import { useAppStore } from 'lead-lib/store/app'
-import i18n from 'lead-lib/i18n'
+import { useUserStore } from '@core/store/user';
+import { useAppStore } from '@core/store/app'
+import i18n from '@core/locale'
 // # 接口前缀
 const urlPrefix = '';
 const { createMessage, createErrorModal } = useMessage();
@@ -51,7 +51,7 @@ const transform: AxiosTransform = {
       commonRes = convertResponseData(res.data)
     }
     const { code, data, message } = commonRes
-    // 这里逻辑可以根据项目进行修改  
+    // 这里逻辑可以根据项目进行修改
     // data 可能为空
     const hasSuccess = (code === 0 || code === '0') && (res.status === ResultEnum.SUCCESS_204 || res.status === ResultEnum.SUCCESS_200)
     if (hasSuccess) {
@@ -148,13 +148,13 @@ const transform: AxiosTransform = {
       authenticationScheme,
       requestOptions: { contentLanguageType }
     } = options
-    // 设置语言 
+    // 设置语言
     // config.headers[ConfigEnum.LANGUAGE] = appStore.lang
     config.headers[ConfigEnum.LANGUAGE] =
       contentLanguageType == ContentLanguageTypeEnum.CULTURE
         ? `App.Culture=c&3D${appStore.lang}|uic&3D${appStore.lang};`
         : appStore.lang
-    
+
     // 增加vue3标记
     config.headers[ConfigEnum.VERSION] = 'v3'
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {

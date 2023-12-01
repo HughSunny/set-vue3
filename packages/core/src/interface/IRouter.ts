@@ -9,7 +9,7 @@ import type {
 } from 'vue-router'
 import type { Pinia } from 'pinia'
 import type { Router } from 'vue-router'
-import type { IUserInfo } from 'lead-lib/interface/IUser'
+import type { IUserInfo } from '@core/interface/IUser'
 type Lazy<T> = () => Promise<T>
 
 

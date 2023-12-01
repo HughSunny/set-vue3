@@ -2,9 +2,9 @@ import type { Ref } from 'vue'
 import { unref, computed, ref, watchEffect } from 'vue'
 import { intersection, toArray } from 'lodash-es'
 import { useRoute } from 'vue-router'
-import type { MenuRouteItem } from 'lead-lib/interface/IRouter'
-import type { Action } from 'lead-lib/interface/IUser'
-import { useUserStore } from 'lead-lib/store/user'
+import type { MenuRouteItem } from '@core/interface/IRouter'
+import type { Action } from '@core/interface/IUser'
+import { useUserStore } from '@core/store/user'
 
 export const filterChildRoute = (route: MenuRouteItem, permissions: string[]) =>
   route.children

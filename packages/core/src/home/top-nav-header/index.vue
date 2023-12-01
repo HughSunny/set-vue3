@@ -1,12 +1,12 @@
 <template>
   <div :class="classNames">
-    <div ref="headRef" :class="headerClassName">
+    <div ref="headRef" :class="headerClassName" :style="headerStyle">
       <div :class="`${prefixedClassName}-main-left`" @click="handleMenuHeaderClick">
         <div :class="`${prefixedClassName}-logo`" key="logo" id="logo">
           <slot v-if="hasLogoSlot" name="logo" />
           <div v-else>
             <router-link :to="{ name: 'IndustryPlatformHome' }">
-              <img src="/image/logo.png" alt="logo" style="height: 48px;" />
+              <img :src="appLogo" alt="logo" style="height: 48px;" />
               <!-- <h1>{{ appName }}</h1> -->
             </router-link>
           </div>
@@ -38,11 +38,12 @@
 import type { PropType } from 'vue';
 import { defineComponent, computed, toRefs } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
-import { useProProvider } from 'lead-lib/components/pro-provider/index';
-import type { RouteProps } from 'lead-lib/interface/IRouter'
-import BaseMenu from 'lead-lib/home/base-menu/index.vue';
-import { AppConfig } from 'lead-lib/bo';
+import { useProProvider } from '@core/hooks';
+import type { RouteProps } from '@core/interface/IRouter'
+import BaseMenu from '@core/home/base-menu/index.vue';
+import { AppConfig } from '@core/bo';
 import RightContent from './right-content.vue';
+import { useConfigStore } from '@core/store/config';
 
 export default defineComponent({
   props: {
@@ -106,9 +107,23 @@ export default defineComponent({
       emit('update:openKeys', openKeys);
     };
     const handleMenuHeaderClick = (): void => {};
-    const appName = AppConfig.sysName;
+    const configStore = useConfigStore();
+    const appName = computed(() => {
+      return configStore.sysName || AppConfig.sysName;
+    })
+    const appLogo = computed(() => {
+      return configStore.sysLogo // || '/image/logo.png';
+    })
+    const headerStyle = computed(() => {
+      if (configStore.headerImage) {
+        return {
+          background:  `url(${configStore.headerImage})`,
+        };
+      } else {
+        return null;}
+    })
     return {
-      appName,
+
       classNames,
       headerClassName,
       prefixedClassName,
@@ -118,6 +133,9 @@ export default defineComponent({
       handleSelectedKeys,
       handleOpenKeys,
       handleMenuHeaderClick,
+      appName,
+      appLogo,
+      headerStyle,
     };
   },
   components: {

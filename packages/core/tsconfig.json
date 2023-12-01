@@ -1,0 +1,26 @@
+{
+  "extends": "../config/tsconfig.dom.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
+    "node_modules/ant-design-vue/typings/global.d.ts",
+  ],
+  "compilerOptions": {
+    "baseUrl": ".", //未设置 "baseUrl" 时，不允许使用非相对路径。
+    "paths": {
+      "@core/*": [
+        "src/*"
+      ]
+    },
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "verbatimModuleSyntax": false,
+      "module": "CommonJS"
+    }
+  }
+}

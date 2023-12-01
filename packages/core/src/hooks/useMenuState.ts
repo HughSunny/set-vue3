@@ -4,11 +4,11 @@ import type { RouteLocationNormalized } from 'vue-router'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { xor } from 'lodash-es'
-import type { LayoutType, MenuTheme } from 'lead-lib/interface/IBaseLayout'
-import type { MultiTabStore } from 'lead-lib/interface/IMultiTabStore'
-import { useAppStore } from 'lead-lib/store/app'
-import { useUserStore } from 'lead-lib/store/user'
-import { AppConfig } from 'lead-lib/bo/app-config'
+import type { LayoutType, MenuTheme } from '@core/interface/IBaseLayout'
+import type { MultiTabStore } from '@core/interface/IMultiTabStore'
+import { useAppStore } from '@core/store/app'
+import { useUserStore } from '@core/store/user'
+import { AppConfig } from '@core/bo/app-config'
 
 export interface MenuState {
   collapsed: boolean

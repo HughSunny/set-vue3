@@ -1,4 +1,4 @@
-import http from 'lead-lib/api/http/http-industry'
+import http from '@core/api/http/http'
 enum Api {
   entity = '/api/basic/Healthz'
 }

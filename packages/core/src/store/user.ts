@@ -1,18 +1,18 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
-import ls from 'lead-lib/utils/local-storage'
-import { AppConfig } from 'lead-lib/bo'
-import { UserInfo } from 'lead-lib/bo/userInfo'
+import ls from '@core/utils/local-storage'
+import { AppConfig } from '@core/bo'
+import { UserInfo } from '@core/bo/userInfo'
 import {
   STORAGE_KEY_USER_INFO,
   STORAGE_KEY_TOKEN,
   type IUserInfo,
   type Role
-} from 'lead-lib/interface/IUser'
-import { logout } from 'lead-lib/api/services/uc'
-import { type IFetchMenu, type IFramePermission } from 'lead-lib/interface/IRouter'
-import { genRoutersByFetchMenu, getInitRouteOptions, resetRouter } from 'lead-lib/router/route'
-import { genMenuInfo, type MenuInfo } from 'lead-lib/utils/menu-util'
+} from '@core/interface/IUser'
+import { logout } from '@core/api/services/uc'
+import { type IFetchMenu, type IFramePermission } from '@core/interface/IRouter'
+import { genRoutersByFetchMenu, getInitRouteOptions, resetRouter } from '@core/router/route'
+import { genMenuInfo, type MenuInfo } from '@core/utils/menu-util'
 import { IndustryOption } from '../app-option'
 import { getAuthManager } from '../utils/auth-manager'
 
@@ -172,7 +172,7 @@ export const useUserStore = defineStore('user', {
       } else {
         window.location.href = '/login'
       }
-     
+
     }
   }
 })

@@ -98,7 +98,7 @@ import { defineComponent, ref, computed, inject } from 'vue'
 import { ReloadOutlined, EllipsisOutlined, CloseOutlined } from '@ant-design/icons-vue'
 import { useI18n } from 'vue-i18n'
 import { injectMultiTabStore, useMultiTab } from './multi-tab-store'
-import { injectMenuState } from 'lead-lib/hooks/useMenuState'
+import { injectMenuState } from '@core/hooks/useMenuState'
 import { useRoute } from 'vue-router'
 
 const props = withDefaults(defineProps<{ fixed?: boolean; defaultHomePage?: string }>(), {
