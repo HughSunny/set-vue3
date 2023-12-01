@@ -1,4 +1,5 @@
 import type { App } from 'vue';
+import AntdApp from './antd-app/index.vue';
 import GridPanel from './grid-panel/index.vue';
 import PageContainer from './page-container/index.vue';
 import PageGridContent from './page-grid-content/index.vue';
@@ -6,9 +7,18 @@ import ProProvider from './pro-provider/index.vue';
 import SelectLang from './select-lang';
 import TransformVnode from './transform-vnode';
 
-export { GridPanel, PageContainer, PageGridContent, ProProvider, SelectLang, TransformVnode };
+export {
+  AntdApp,
+  GridPanel,
+  PageContainer,
+  PageGridContent,
+  ProProvider,
+  SelectLang,
+  TransformVnode,
+};
 
 const install = (app: App) => {
+  app.component(AntdApp.name, AntdApp);
   app.component(GridPanel.name, GridPanel);
   app.component(PageContainer.name, PageContainer);
   app.component(PageGridContent.name, PageGridContent);

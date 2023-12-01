@@ -19,7 +19,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { message } from 'ant-design-vue';
 import { eagerComputed } from '@vueuse/core'
 import { findLast, omit } from 'lodash-es'
-import type { MaybeRef } from '@/@core/interface/IAntdPro'
+import type { MaybeRef } from '@core/interface/IBaseLayout'
 import type {
   CacheItem,
   MultiTabStore,

@@ -36,7 +36,7 @@ function setI18nLanguage(lang) {
 }
 
 export const loadLanguageModule = (lang) => {
-  const files = import.meta.globEager('./lang/*.ts')
+  const files = import.meta.glob('./lang/*.ts');
   const keys = Object.keys(files)
   for(let i = 0; i < keys.length; i++) {
     const filePath = keys[i]

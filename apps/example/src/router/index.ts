@@ -2,7 +2,6 @@ import type { App } from 'vue';
 import { createRouter, createWebHistory, createMemoryHistory} from 'vue-router';
 import routes from '@/router/routes';
 import MainLayout from '@/layout/index.vue';
-import { useGlobalStore } from '@/store/modules/global';
 /**
  * 初始化基础路由
  */
@@ -32,6 +31,6 @@ const router = createRouter({
 });
 
 export function setupRouter(app: App) {
-  
+
   app.use(router);
 }

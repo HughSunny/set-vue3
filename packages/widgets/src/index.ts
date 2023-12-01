@@ -1,17 +1,18 @@
 import type { App } from 'vue';
 import { ComponentPlugin } from './components';
 
-const install = (app: App, options: InitWidgetOptions) => {
+const install = (app: App, options?: InitWidgetOptions) => {
   app.use(ComponentPlugin);
   if (options) {
-    Object.keys(options).forEach((key) => {
+    Object.keys(options).forEach(key => {
       _initWidgetOption[key] = options[key];
-    })
+    });
   }
 };
 
-let _initWidgetOption: InitWidgetOptions = {};
+const _initWidgetOption: InitWidgetOptions = {};
 export interface InitWidgetOptions {
+  useI18n?: Function
   /**
    * 上传请求 (参数是)
    */

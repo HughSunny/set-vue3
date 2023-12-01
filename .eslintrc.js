@@ -66,6 +66,6 @@ module.exports = {
     ],
     'space-before-function-paren': 'off',
     quotes: ['error', 'single'],
-    'comma-dangle': ['error', 'never']
+    // 'comma-dangle': ['error', 'never']
   }
 };

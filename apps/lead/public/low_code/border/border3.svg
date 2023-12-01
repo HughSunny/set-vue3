@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 630 333" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="border-box-9-gradient-7a1a3fb4ecb74e7a918daf3484dc5f20" x1="0%" y1="0%" x2="100%" y2="100%"><animate attributeName="x1" values="0%;100%;0%" dur="10s" begin="0s" repeatCount="indefinite"></animate><animate attributeName="x2" values="100%;0%;100%" dur="10s" begin="0s" repeatCount="indefinite"></animate><stop offset="0%" stop-color="#83bff6"><animate attributeName="stop-color" values="#83bff6;#00CED1;#83bff6" dur="10s" begin="0s" repeatCount="indefinite"></animate></stop><stop offset="100%" stop-color="#00CED1"><animate attributeName="stop-color" values="#00CED1;#83bff6;#00CED1" dur="10s" begin="0s" repeatCount="indefinite"></animate></stop></linearGradient><mask id="border-box-9-mask-7a1a3fb4ecb74e7a918daf3484dc5f20"><polyline stroke="#fff" stroke-width="3" fill="transparent" points="8, 133.20000000000002 8, 3, 259, 3"></polyline><polyline fill="#fff" points="8, 49.949999999999996 8, 3, 70, 3
+            63, 8 14, 8 14, 42.949999999999996
+          "></polyline><polyline stroke="#fff" stroke-width="3" fill="transparent" points="315, 3 627, 3, 627, 83.25"></polyline><polyline fill="#fff" points="
+            327.6, 3 365.4, 3
+            358.4, 9 334.6, 9
+          "></polyline><polyline fill="#fff" points="
+            567, 3 627, 3 627, 33.300000000000004
+            621, 26.300000000000004 621, 9 574, 9
+          "></polyline><polyline stroke="#fff" stroke-width="3" fill="transparent" points="8, 166.5 8, 330 196, 330"></polyline><polyline fill="#fff" points="
+            8, 183.15 8, 233.1
+            2, 226.1 2, 190.15
+          "></polyline><polyline stroke="#fff" stroke-width="3" fill="transparent" points="220.5, 330 627, 330 627, 116.55"></polyline><polyline fill="#fff" points="
+            579.6, 330 627, 330 627, 266.40000000000003
+            621, 273.40000000000003 621, 324 586.6, 324
+          "></polyline></mask></defs><polygon fill="transparent" points="
+      15, 9 64, 9 67, 6 329.6, 6
+      333.6, 10 358.4, 10 363.4, 6
+      569, 6 573, 10 620, 10 620, 27.300000000000004
+      624, 32.300000000000004 624, 267.40000000000003 620, 272.40000000000003
+      620, 323 586.6, 323  581.6, 327
+      11, 327 11, 47.949999999999996 15, 42.949999999999996
+    "></polygon><rect x="0" y="0" width="630" height="333" fill="url(#border-box-9-gradient-7a1a3fb4ecb74e7a918daf3484dc5f20)" mask="url(#border-box-9-mask-7a1a3fb4ecb74e7a918daf3484dc5f20)"></rect></svg>

@@ -18,9 +18,9 @@
       :help="error"
       v-bind="field.formProps"
     >
-    <!--  -->
+      <!--  -->
       <!--      :label-width="showLabel ? field.labelWidth || labelWidth || 'auto' : 'auto'"-->
-      <FieldTypeEdit
+      <SetFieldTypeEdit
         v-model:value="fieldValue"
         :field="field"
         :data="data"
@@ -30,7 +30,7 @@
         <template #editRender="scope">
           <slot name="editRender" :field="scope.field"></slot>
         </template>
-      </FieldTypeEdit>
+      </SetFieldTypeEdit>
       <template v-if="field.labelRemark" #label>
         <span>
           {{ field.label }}
@@ -45,84 +45,81 @@
 
 <script lang="ts" setup name="SetFormTypeEdit">
 defineOptions({
-  name:'SetFormTypeEdit'
-})
-import { defineComponent, computed, watch, toRefs, ref, watchEffect } from 'vue'
-import { FieldTypeEdit } from '../../../components/set-form'
-import { InfoCircleFilled } from '@ant-design/icons-vue'
+  name: 'SetFormTypeEdit',
+});
+import { defineComponent, computed, watch, toRefs, ref, watchEffect } from 'vue';
+import { InfoCircleFilled } from '@ant-design/icons-vue';
 // ANTD label-width 不能设置
 const props = defineProps({
   field: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   dynamicKey: {
     type: String,
     default() {
-      return null
-    }
+      return null;
+    },
   },
-  data: { // 辅助
+  data: {
+    // 辅助
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
-  value: {
-
-  },
+  value: {},
   optionDict: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   labelWidth: {
     type: String,
     default() {
-      return null
-    }
+      return null;
+    },
   },
   showLabel: {
     type: Boolean,
     default() {
-      return true
-    }
+      return true;
+    },
   },
   error: {
     type: String,
     default() {
-      return null
-    }
-  }
-})
-const emit = defineEmits(['onValueChange', 'update:value'])
+      return null;
+    },
+  },
+});
+const emit = defineEmits(['onValueChange', 'update:value']);
 const labelCol = computed(() => {
-  const { showLabel, labelWidth, field } = props
-  const hasLabelWidth  = field.labelWidth || labelWidth
+  const { showLabel, labelWidth, field } = props;
+  const hasLabelWidth = field.labelWidth || labelWidth;
   if (!showLabel) {
-    return { span: 0 }
+    return { span: 0 };
   }
   return hasLabelWidth
     ? {
-        style: `width: ${field.labelWidth || labelWidth}`
+        style: `width: ${field.labelWidth || labelWidth}`,
       }
-    : undefined
-})
-const fieldValue = ref(props.value)
+    : undefined;
+});
+const fieldValue = ref(props.value);
 
 const handleValueChange = (key, event) => {
-  emit('update:value', event)
-  emit('onValueChange', key, event)
-
-}
+  emit('update:value', event);
+  emit('onValueChange', key, event);
+};
 
 watchEffect(() => {
   // console.log('SetFormTypeEdit  ====> watchEffect data --- KEY- ',props.field.model,  props.data)
-  fieldValue.value = props.value
-})
+  fieldValue.value = props.value;
+});
 </script>
 
 <style lang="less" scoped>

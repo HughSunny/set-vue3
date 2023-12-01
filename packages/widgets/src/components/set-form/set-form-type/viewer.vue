@@ -15,7 +15,7 @@
       :ref="field.model"
     >
       <!--      :label-width="showLabel ? field.labelWidth || labelWidth || 'auto' : 'auto'"-->
-      <FieldTypeViewer
+      <SetFieldTypeViewer
         :field="field"
         :dynamicKey="dynamicKey"
         :data="data"
@@ -25,7 +25,7 @@
         <template #valueRender="scope">
           <slot name="fieldRender" :field="scope.field"></slot>
         </template>
-      </FieldTypeViewer>
+      </SetFieldTypeViewer>
       <!--      <template v-if="field.labelRemark" #label>-->
       <!--        <span>-->
       <!--          {{ field.label }}-->
@@ -43,8 +43,6 @@ defineOptions({
   name:'SetFormTypeViewer'
 })
 import { defineComponent, computed, watch, toRefs } from 'vue'
-import { FieldTypeViewer } from '../../../components/set-form'
-import { InfoCircleFilled } from '@ant-design/icons-vue'
 const props = defineProps({
   field: {
     type: Object,

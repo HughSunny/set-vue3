@@ -32,7 +32,7 @@
         v-bind="field.tableProps"
       >
         <template #default="{ text, record, index }">
-          <FormTypeEdit
+          <SetFormTypeEdit
             v-if="field.type !== 'action'"
             class="set-table_edit_item"
             v-model:value="values[`${field.model}_${index}`]"
@@ -80,7 +80,7 @@
 </template>
 <script lang="ts" setup>
 import { ref, watch, reactive } from 'vue'
-import { SetFieldType, type SetFormTableField } from '../../../entity/set-form';
+import { SetFieldType, type SetFormTableField } from '@/entity/set-form';
 const emit = defineEmits(['onTableChange', 'onActionClick'])
 defineOptions({
   name: 'SetTableEdit'

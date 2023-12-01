@@ -26,7 +26,7 @@ export interface AppState extends PureSettings {
 
 export const useAppStore = defineStore('app', {
   // https://github.com/prazdevs/pinia-plugin-persistedstate 提供
-  persist: true, //process.env.NODE_ENV !== 'production',
+  // persist: true, //process.env.NODE_ENV !== 'production',
   state: (): AppState => ({
     lang: AppConfig.lang,
     device: 'desktop',

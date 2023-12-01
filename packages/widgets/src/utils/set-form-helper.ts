@@ -1,15 +1,14 @@
-import _ from 'lodash-es'
 import {
   SetFieldType,
   type SetFormRowField,
   type SetFormField,
   type SetFieldGenerateRow,
-} from '../entity/set-form';
-import { useI18n } from '@xdc/core'
+} from '@/entity/set-form';
+import { useI18n } from 'vue-i18n';
 export const getFieldNoticeAction = (field: SetFormField) => {
-  const { t } = useI18n()
-  const fieldLabel = t(field.label + '')
-  const type = field.type
+  const { t } = useI18n();
+  const fieldLabel = t(field.label + '');
+  const type = field.type;
   if (
     type === SetFieldType.Select ||
     type === SetFieldType.CheckBox ||
@@ -20,42 +19,42 @@ export const getFieldNoticeAction = (field: SetFormField) => {
     type === SetFieldType.Switch ||
     type === SetFieldType.Cascader
   ) {
-    return t('sys.action.pleaseSelect', { label: fieldLabel })
+    return t('sys.action.pleaseSelect', { label: fieldLabel });
   } else if (
     type === SetFieldType.Input ||
     type === SetFieldType.InputNumber ||
     type === SetFieldType.InputArea
   ) {
-    return t('sys.action.pleaseInput', { label: fieldLabel })
+    return t('sys.action.pleaseInput', { label: fieldLabel });
   } else if (
     type === SetFieldType.File ||
     type === SetFieldType.MultiFile ||
     type === SetFieldType.Image ||
     type === SetFieldType.MultiImageFile
   ) {
-    return t('sys.action.pleaseUpload', { label: fieldLabel })
+    return t('sys.action.pleaseUpload', { label: fieldLabel });
   }
-  return null
-}
+  return null;
+};
 
 export const getFieldWarningNotice = (field: SetFormField) => {
-  const { t } = useI18n()
-  const action = getFieldNoticeAction(field)
+  const { t } = useI18n();
+  const action = getFieldNoticeAction(field);
 
   if (action) {
     // console.log('getFieldWarningNotice ----------------->', action + fieldLabel)
     // return `${action}${fieldLabel}`
-    return action
+    return action;
   }
-  return t('sys.status.notNull')
-}
+  return t('sys.status.notNull');
+};
 
 export function validateField(fields: SetFormField[], key, value) {
-  const { t } = useI18n()
+  const { t } = useI18n();
 
-  const fieldMatch: SetFormField = fields.find((field) => field.model === key)
+  const fieldMatch: SetFormField = fields.find(field => field.model === key) as SetFormField;
   if (!fieldMatch) {
-    return
+    return;
   }
   // debugger
   // if (fieldMatch.validate) {
@@ -72,33 +71,33 @@ export function validateField(fields: SetFormField[], key, value) {
       !(fieldMatch.type === 'select' && value === 0) &&
       (!value || value.length === 0)
     ) {
-      return getFieldWarningNotice(fieldMatch)
+      return getFieldWarningNotice(fieldMatch);
     }
   } else {
     if (value === null || value === undefined || value === '') {
-      return
+      return;
     }
   }
   // 数字默认空是undefined
   if (fieldMatch.type === 'number') {
     if (Number.isNaN(Number.parseFloat(value))) {
-      return t('sys.action.pleaseInput') + t('sys.constant.numberValue')
+      return t('sys.action.pleaseInput') + t('sys.constant.numberValue');
     }
   }
 
   if (fieldMatch.rules) {
-    const failedRule = fieldMatch.rules.find((rule) => {
+    const failedRule = fieldMatch.rules.find(rule => {
       if (rule.pattern) {
-        return !rule.pattern.test(value)
+        return !rule.pattern.test(value);
       }
-      return false
-    })
+      return false;
+    });
 
     if (failedRule) {
-      return failedRule.help
+      return failedRule.help;
     }
   }
-  return
+  return;
 }
 
 export function generateRuleField<T extends SetFormField>(fields: T[], field: T): T {
@@ -108,29 +107,29 @@ export function generateRuleField<T extends SetFormField>(fields: T[], field: T)
     field.type === SetFieldType.MultiFile ||
     field.type === SetFieldType.MultiImageFile
       ? ['change']
-      : ['blur', 'change']
+      : ['blur', 'change'];
   let rules: any[] = [
     {
       key: 'RequireRule',
       validator: (rule, value, callback) => {
-        const result = validateField(fields, field.model, value)
+        const result = validateField(fields, field.model, value);
         // console.log('validateField--------------->', result, ';', field, value)
         if (result) {
-          return Promise.reject(result)
+          return Promise.reject(result);
         } else {
-          return Promise.resolve()
+          return Promise.resolve();
         }
-        callback()
+        callback();
       },
-      trigger
-    }
-  ]
+      trigger,
+    },
+  ];
 
   if (field.rules) {
-    rules = [...rules, ...field.rules]
+    rules = [...rules, ...field.rules];
   }
   // 获取附加的rule
-  rules.push(...getFieldExtraRules(field))
+  rules.push(...getFieldExtraRules(field));
 
   // 如果值是数组，必须添加新的rule
   if (
@@ -139,37 +138,37 @@ export function generateRuleField<T extends SetFormField>(fields: T[], field: T)
     field.type === SetFieldType.MultiSelect ||
     field.type.indexOf('multi') !== -1
   ) {
-    rules.push(...getArrayRules(field))
+    rules.push(...getArrayRules(field));
   }
   return {
     ...field,
     key: field.model || newGuid(),
-    rules
-  }
+    rules,
+  };
 }
 
 export const getFieldExtraRules = (field: SetFormField) => {
-  const { t } = useI18n()
-  const rules:any[] = []
-  const { params, type } = field
+  const { t } = useI18n();
+  const rules: any[] = [];
+  const { params, type } = field;
   if (params?.maxLength && (type === SetFieldType.Input || type === SetFieldType.InputArea)) {
     // 如果是输入款加入 长度限制
     rules.push({
       max: params.maxLength,
       message: t('sys.constant.lengthNotMoreThan') + params.maxLength,
-      trigger: 'blur'
-    })
+      trigger: 'blur',
+    });
   }
-  return rules
-}
+  return rules;
+};
 /**
  * 获取数组类型的特定rule
  * @param field
  * @returns
  */
 export const getArrayRules = (field: SetFormField) => {
-  return [{ type: 'array', required: field.required, message: getFieldNoticeAction(field) }]
-}
+  return [{ type: 'array', required: field.required, message: getFieldNoticeAction(field) }];
+};
 
 /**
  * 生成带rule的field
@@ -179,65 +178,65 @@ export const getArrayRules = (field: SetFormField) => {
  */
 export function getRuleFieldList<T extends SetFormField>(fields: T[], section): T[] {
   return fields
-    .filter((field) => {
-      return !section || field.section === section
+    .filter(field => {
+      return !section || field.section === section;
     })
-    .map((field) => {
-      return generateRuleField(fields, field)
-    })
+    .map(field => {
+      return generateRuleField(fields, field);
+    });
 }
 
 export function getRuleFieldRow(fields: SetFormRowField[], section: string, optionList?: any[]) {
   const rows: SetFieldGenerateRow[] = [];
 
   if (!fields) {
-    return rows
+    return rows;
   }
   let row: SetFieldGenerateRow = {
     key: '',
     children: [],
   };
-  let rowSpan = 25
+  let rowSpan = 25;
   fields
-    .filter((field) => {
-      return (!section || field.section === section) && !field.invisible
+    .filter(field => {
+      return (!section || field.section === section) && !field.invisible;
     })
-    .map((field) => {
-      return generateRuleField(fields, field)
+    .map(field => {
+      return generateRuleField(fields, field);
     })
-    .forEach((field) => {
-      const { offset = 0 } = field
-      const span = field.span || 24
+    .forEach(field => {
+      const { offset = 0 } = field;
+      const span = field.span || 24;
       if (!field.invisible) {
         if (rowSpan + span < 25) {
           if (rowSpan + span + offset > 24) {
-            field.span = 24 - rowSpan - offset
+            field.span = 24 - rowSpan - offset;
             if (24 - rowSpan - offset < 0) {
-              field.span = 0
+              field.span = 0;
             }
           }
-          rowSpan = rowSpan + span + offset
-          row.children.push(field)
+          rowSpan = rowSpan + span + offset;
+          row.children.push(field);
         } else {
-          rowSpan = span
+          rowSpan = span;
           row = {
             key: field.model || `${newGuid()}row`,
-            children: [field]
-          }
-          rows.push(row)
+            children: [field],
+          };
+          rows.push(row);
         }
       }
-    })
+    });
   // console.log('getRuleFieldRow', rows);
-  return rows
+  return rows;
 }
 export function requireField(fields: SetFormRowField[], key: string, needRequire: boolean) {
-  fields.forEach((field) => {
+  fields.forEach(field => {
     if (field.model === key) {
-      field.required = needRequire
+      field.required = needRequire;
     }
-  })
-  return fields
+  });
+  return fields;
 }
 
 /**
@@ -247,21 +246,21 @@ export function requireField(fields: SetFormRowField[], key: string, needRequire
  * @param {*} needRequire
  */
 export function requireFieldRow(rows, fields, modelKey, needRequire) {
-  rows.forEach((rowItem) => {
-    const { children } = rowItem
-    const findItem = children.find((item) => item.model === modelKey)
+  rows.forEach(rowItem => {
+    const { children } = rowItem;
+    const findItem = children.find(item => item.model === modelKey);
     if (findItem) {
-      const hasRequire = !!findItem.rules.find((rule) => rule.key === 'RequireRule')
+      const hasRequire = !!findItem.rules.find(rule => rule.key === 'RequireRule');
       if (needRequire) {
         if (!hasRequire) {
           findItem.rules.push({
             key: 'RequireRule',
             validator: (rule, value, callback) => {
-              const result = validateField(fields, modelKey, value)
+              const result = validateField(fields, modelKey, value);
               if (result) {
-                return Promise.reject(result)
+                return Promise.reject(result);
               } else {
-                return Promise.resolve()
+                return Promise.resolve();
               }
               // if (result) {
               //   callback(new Error(result))
@@ -269,13 +268,13 @@ export function requireFieldRow(rows, fields, modelKey, needRequire) {
 
               // callback()
             },
-            trigger: ['blur', 'change']
-          })
+            trigger: ['blur', 'change'],
+          });
         }
       }
     }
-  })
-  return rows
+  });
+  return rows;
 }
 /**
  * 给field 设置值
@@ -285,31 +284,31 @@ export function requireFieldRow(rows, fields, modelKey, needRequire) {
  */
 export function setFields(localFields, modelKeys, obj, isInit = false) {
   const getNewFields = () =>
-    localFields.map((field) => {
+    localFields.map(field => {
       if (modelKeys.indexOf(field.model) !== -1) {
         return {
           ...field,
-          ...obj
-        }
+          ...obj,
+        };
       } else {
         return {
-          ...field
-        }
+          ...field,
+        };
       }
-    })
+    });
 
-  let fields = localFields
+  let fields = localFields;
   if (isInit) {
-    fields = getNewFields()
+    fields = getNewFields();
   } else {
     fields.forEach((field, index) => {
       if (modelKeys.indexOf(field.model) !== -1) {
-        fields[index] = { ...field, ...obj }
+        fields[index] = { ...field, ...obj };
       }
-    })
+    });
   }
 
-  return fields
+  return fields;
 }
 
 /**
@@ -319,47 +318,47 @@ export function setFields(localFields, modelKeys, obj, isInit = false) {
  * @param {*} needRequire
  */
 export function setRows(localRows, modelKeys, obj, isInit = false) {
-  localRows.forEach((rowItem) => {
-    const { children } = rowItem
-    const findItems = children.find((item) => modelKeys.indexOf(item.model) !== -1)
+  localRows.forEach(rowItem => {
+    const { children } = rowItem;
+    const findItems = children.find(item => modelKeys.indexOf(item.model) !== -1);
     if (findItems && findItems.length > 0) {
       children.forEach((row, index) => {
         if (modelKeys.indexOf(row.model) !== -1) {
-          children[index] = { ...row, ...obj }
+          children[index] = { ...row, ...obj };
         }
-      })
+      });
     }
-  })
+  });
   if (!isInit) {
-    return localRows
+    return localRows;
   }
 
-  return localRows.map((rowItem) => {
-    const { children } = rowItem
-    const findItems = children.filter((item) => modelKeys.indexOf(item.model) !== -1)
+  return localRows.map(rowItem => {
+    const { children } = rowItem;
+    const findItems = children.filter(item => modelKeys.indexOf(item.model) !== -1);
     if (findItems && findItems.length > 0) {
-      const newList = children.map((field) => {
+      const newList = children.map(field => {
         if (modelKeys.indexOf(field.model) !== -1) {
           return {
             ...field,
-            ...obj
-          }
+            ...obj,
+          };
         } else {
           return {
-            ...field
-          }
+            ...field,
+          };
         }
-      })
+      });
       return {
         ...rowItem,
-        children: newList
-      }
+        children: newList,
+      };
     } else {
       return {
-        ...rowItem
-      }
+        ...rowItem,
+      };
     }
-  })
+  });
 }
 
 /**
@@ -370,15 +369,15 @@ export function setRows(localRows, modelKeys, obj, isInit = false) {
  * @returns {{id: string}}
  */
 export const getFieldValue = (fields, info, postfix) => {
-  const value = { id: `${postfix ? postfix : 'value'}` }
-  fields.forEach((item) => {
+  const value = { id: `${postfix ? postfix : 'value'}` };
+  fields.forEach(item => {
     if (item.model) {
-      const keyName = `${item.model}${postfix ? postfix : ''}`
-      value[item.model] = info[keyName] === null ? undefined : info[keyName]
+      const keyName = `${item.model}${postfix ? postfix : ''}`;
+      value[item.model] = info[keyName] === null ? undefined : info[keyName];
     }
-  })
-  return value
-}
+  });
+  return value;
+};
 
 /**
  * 获得 匹配 的规则的值
@@ -388,27 +387,25 @@ export const getFieldValue = (fields, info, postfix) => {
  * @returns {{}}
  */
 export const getMapValue = (fields, info, postfix) => {
-  const value = {}
-  fields.forEach((item) => {
+  const value = {};
+  fields.forEach(item => {
     if (item.model) {
-      const keyName = `${item.model}${postfix ? postfix : ''}`
-      value[keyName] = info[item.model]
+      const keyName = `${item.model}${postfix ? postfix : ''}`;
+      value[keyName] = info[item.model];
     }
-  })
-  return value
-}
+  });
+  return value;
+};
 
 /**
  * 生成guid
  */
 function newGuid() {
-  let guid = ''
+  let guid = '';
   for (let i = 1; i <= 32; i++) {
-    let n = Math.floor(Math.random() * 16.0).toString(16)
-    guid += n
-    if (i === 8 || i === 12 || i === 16 || i === 20) guid += '-'
+    let n = Math.floor(Math.random() * 16.0).toString(16);
+    guid += n;
+    if (i === 8 || i === 12 || i === 16 || i === 20) guid += '-';
   }
-  return guid
+  return guid;
 }
-
-

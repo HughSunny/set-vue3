@@ -1,0 +1,71 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <defs>
+        <filter y="-25%" x="-25%" width="150%" height="150%" id="fd1">
+            <feGaussianBlur result="blurred" stdDeviation="2" in="thicken" />
+        </filter>
+    </defs>
+    <g>
+        <title>Layer 1</title>
+        <path stroke="#2e6099" id="svg_1"
+            d="m11.11112,1l616.77779,0q10.11111,0 10.11111,10.24768l0,310.50466q0,10.24768 -10.11111,10.24768l-616.77779,0q-10.11111,0 -10.11111,-10.24768l0,-310.50466q0,-10.24768 10.11111,-10.24768"
+            stroke-width="2" fill="transparent" />
+        <path id="svg_2" stroke="#7ce7fd" d="m20,5l-5,0q-10,0 -10,10l0,5" filter="url(#fd1)" stroke-linecap="round"
+            fill="transparent" stroke-width="2" />
+        <path id="svg_3" stroke="#7ce7fd" d="m620,5l5,0q10,0 10,10l0,5" filter="url(#fd1)" stroke-linecap="round"
+            fill="transparent" stroke-width="2" />
+        <path id="svg_4" stroke="#7ce7fd" d="m620,328l5,0q10,0 10,-10l0,-5" filter="url(#fd1)" stroke-linecap="round"
+            fill="transparent" stroke-width="2" />
+        <path id="svg_5" stroke="#7ce7fd" d="m20,328l-5,0q-10,0 -10,-10l0,-5" filter="url(#fd1)" stroke-linecap="round"
+            fill="transparent" stroke-width="2" />
+    </g>
+</svg>
+
+<!-- <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"  preserveAspectRatio="none">
+    <defs>
+        <filter id="fd1">
+            <feMorphology operator="dilate" radius="1" in="SourceAlpha" result="thicken"></feMorphology>
+            <feGaussianBlur in="thicken" stdDeviation="8" result="blurred"></feGaussianBlur>
+            <feFlood flood-color="rgba(124,231,253,0.7)" result="glowColor">
+                <animate attributeName="flood-color" values="
+              rgba(124,231,253,0.7);
+              rgba(124,231,253,0.3);
+              rgba(124,231,253,0.7);
+            " dur="3s" begin="0s" repeatCount="indefinite"></animate>
+            </feFlood>
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlowColored"></feComposite>
+            <feMerge>
+                <feMergeNode in="softGlowColored"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <symbol id="sym01" viewBox="0 0 17 17">
+        <path stroke-width="2px" fill="transparent" stroke-linecap="round" filter="url(#fd1)"
+            d="M 17 2 L 12 2 Q 2 2 2 12 L 2 17" stroke="#7ce7fd"></path>
+    </symbol>
+    <symbol id="sym02" viewBox="0 0 17 17">
+        <path stroke-width="2px" fill="transparent" stroke-linecap="round" filter="url(#fd1)"
+            d="M 0 2 L 7 2 Q 15 2 15 12 L 15 17" stroke="#7ce7fd"></path>
+    </symbol>
+    <symbol id="sym03" viewBox="0 0 17 17">
+        <path stroke-width="2px" fill="transparent" stroke-linecap="round" filter="url(#fd1)"
+            d="M 17 15 L 12 15 Q 2 15 2 5 L 2 0" stroke="#7ce7fd"></path>
+    </symbol>
+    <symbol id="sym04" viewBox="0 0 17 17">
+        <path stroke-width="2px" fill="transparent" stroke-linecap="round" filter="url(#fd1)"
+            d="M 0 15 L 7 15 Q 15 15 15 5 L 15 0" stroke="#7ce7fd"></path>
+    </symbol>
+    <use xlink:href="#sym01" x="0" y="0" width="17px" height="17px" xmlns:xlink="http://www.w3.org/1999/xlink" />
+    <use xlink:href="#sym02" x="calc(100% - 17px)" y="0" width="17px" height="17px"
+        xmlns:xlink="http://www.w3.org/1999/xlink" />
+    <use xlink:href="#sym03" x="0" y="calc(100% - 17px)" width="17px" height="17px"
+        xmlns:xlink="http://www.w3.org/1999/xlink" />
+    <use xlink:href="#sym04" x="calc(100% - 17px)" y="calc(100% - 17px)" width="17" height="17"
+        xmlns:xlink="http://www.w3.org/1999/xlink" />
+    <line x1="2px" y1="17px" x2="2px" y2="calc(100% - 17px)" stroke="#2e6099" stroke-width="2px"></line>
+    <line x1="17px" y1="2px" x2="calc(100% - 17px)" y2="2px" stroke="#2e6099" stroke-width="2px"></line>
+    <line x1="17px" y1="calc(100% - 2px)" x2="calc(100% - 17px)" y2="calc(100% - 2px)" stroke="#2e6099"
+        stroke-width="2px"></line>
+    <line x1="calc(100% - 2px)" y1="17px" x2="calc(100% - 2px)" y2="calc(100% - 17px)" stroke="#2e6099"
+        stroke-width="2px"></line>
+</svg> -->

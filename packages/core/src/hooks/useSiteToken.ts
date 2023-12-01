@@ -1,32 +1,32 @@
-import { TinyColor } from '@ctrl/tinycolor'
-import { theme } from 'ant-design-vue'
-import { computed, watch } from 'vue'
-import { useAppStore } from '@core/store/app'
-const { useToken } = theme
+import { TinyColor } from '@ctrl/tinycolor';
+import { theme } from 'ant-design-vue';
+import { computed, watch } from 'vue';
+import { useAppStore } from '@core/store';
+const { useToken } = theme;
 
-const useSiteToken = () => {
-  const result = useToken()
-  const { token } = result
-  const appStore = useAppStore()
-  const frameDarkBackground = computed(() => appStore.frameDarkBackground)
-  const frameMenuSubBg = computed(() => appStore.frameMenuSubBg)
+export const useSiteToken = () => {
+  const result = useToken();
+  const { token } = result;
+  const appStore = useAppStore();
+  const frameDarkBackground = computed(() => appStore.frameDarkBackground);
+  const frameMenuSubBg = computed(() => appStore.frameMenuSubBg);
   const mergedToken = computed(() => ({
     theme: result.theme.value,
     hashId: result.hashId.value,
     token: {
-      ...token.value
-    }
-  }))
+      ...token.value,
+    },
+  }));
 
-  let styleDom: HTMLStyleElement | null = null
+  let styleDom: HTMLStyleElement | null = null;
   watch(
     mergedToken,
     () => {
-      styleDom = styleDom || document.createElement('style')
-      const tokenValue = mergedToken.value.token
+      styleDom = styleDom || document.createElement('style');
+      const tokenValue = mergedToken.value.token;
       // layout-sider-background 菜单底色  #001529 -> #1F2B69
-      const menuColor = frameDarkBackground.value
-      const menuSubColor = frameMenuSubBg.value //  #001529 -> #2b3775
+      const menuColor = frameDarkBackground.value;
+      const menuSubColor = frameMenuSubBg.value; //  #001529 -> #2b3775
 
       styleDom.innerHTML = `
       :root {
@@ -81,15 +81,13 @@ const useSiteToken = () => {
 
         --ease-in-out: ${tokenValue.motionEaseInOut};
       }
-    `
+    `;
       if (styleDom && !document.body.contains(styleDom)) {
-        document.body.appendChild(styleDom)
+        document.body.appendChild(styleDom);
       }
     },
-    { immediate: true }
-  )
+    { immediate: true },
+  );
 
-  return mergedToken
-}
-
-export default useSiteToken
+  return mergedToken;
+};

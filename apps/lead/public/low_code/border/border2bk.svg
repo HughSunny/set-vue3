@@ -1,0 +1,44 @@
+<svg width="512" height="333"  xmlns="http://www.w3.org/2000/svg" >
+  <defs>
+    <filter id="borderr-box-12-filterId-af9e2172a5a84cde86005febc7cca2d6" height="150%" width="150%" x="-25%" y="-25%">
+      <feMorphology operator="dilate" radius="1" in="SourceAlpha" result="thicken"></feMorphology>
+      <feGaussianBlur in="thicken" stdDeviation="2" result="blurred"></feGaussianBlur>
+      <feFlood flood-color="rgba(124,231,253,0.7)" result="glowColor">
+        <animate attributeName="flood-color" values="
+              rgba(124,231,253,0.7);
+              rgba(124,231,253,0.3);
+              rgba(124,231,253,0.7);
+            " dur="3s" begin="0s" repeatCount="indefinite"></animate>
+      </feFlood>
+      <feComposite in="glowColor" in2="blurred" operator="in" result="softGlowColored"></feComposite>
+      <feMerge>
+        <feMergeNode in="softGlowColored"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+  <path fill="transparent" stroke-width="2" stroke="#2e6099" d="
+        M15 5 L 497 5 Q 507 5, 507 15
+        L 507 318 Q 507 328, 497 328
+        L 15, 328 Q 5 328 5 318 L 5 15
+        Q 5 5 15 5
+      "></path>
+  <path stroke-width="2" fill="transparent" stroke-linecap="round"
+    filter="url(#borderr-box-12-filterId-af9e2172a5a84cde86005febc7cca2d6)" d="M 20 5 L 15 5 Q 5 5 5 15 L 5 20"
+    stroke="#7ce7fd"></path>
+  <path stroke-width="2" fill="transparent" stroke-linecap="round"
+    filter="url(#borderr-box-12-filterId-af9e2172a5a84cde86005febc7cca2d6)" d="M 492 5 L 497 5 Q 507 5 507 15 L 507 20"
+    stroke="#7ce7fd"></path>
+  <path stroke-width="2" fill="transparent" stroke-linecap="round"
+    filter="url(#borderr-box-12-filterId-af9e2172a5a84cde86005febc7cca2d6)" d="
+        M 492 328 L 497 328
+        Q 507 328 507 318
+        L 507 313
+      " stroke="#7ce7fd"></path>
+  <path stroke-width="2" fill="transparent" stroke-linecap="round"
+    filter="url(#borderr-box-12-filterId-af9e2172a5a84cde86005febc7cca2d6)" d="
+        M 20 328 L 15 328
+        Q 5 328 5 318
+        L 5 313
+      " stroke="#7ce7fd"></path>
+</svg>

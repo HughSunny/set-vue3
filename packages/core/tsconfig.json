@@ -14,8 +14,18 @@
     "paths": {
       "@core/*": [
         "src/*"
+      ],
+      "#/*": [
+        "typings/*"
       ]
     },
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+    "types": [
+      "vite/client"
+    ]
   },
   "ts-node": {
     "compilerOptions": {

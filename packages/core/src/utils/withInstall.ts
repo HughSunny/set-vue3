@@ -1,6 +1,6 @@
-import type { App, Plugin } from 'vue';
+import type { App, Plugin, DefineComponent, Component } from 'vue';
 
-export const withInstall = <T>(comp: T) => {
+export const withInstall = <T extends Component | DefineComponent>(comp: T) => {
   const c = comp as any;
   c.install = function (app: App) {
     app.component(c.displayName || c.name, comp);

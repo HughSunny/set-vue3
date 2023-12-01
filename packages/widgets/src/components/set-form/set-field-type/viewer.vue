@@ -96,9 +96,8 @@ defineOptions({
   name: 'SetFieldTypeViewer',
 });
 import { computed, watch } from 'vue';
-import { SetFieldType } from '../../../entity/set-form';
-import { IndustryUpload } from '@/components';
-import { getItemFromDataSourceById } from '../../../utils/helper';
+import { SetFieldType } from '@/entity/set-form';
+import { getItemFromDataSourceById } from '@/utils/helper';
 import dayjs from 'dayjs';
 
 const props = defineProps({

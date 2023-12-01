@@ -18,9 +18,9 @@
   "repository": {},
   "scripts": {
     "gen": "ts-node scripts/gen.js",
-    "build-only": "vite build",
-    "build": "pnpm gen && pnpm build-only",
-    "build1": "run-p type-check build-only",
+    "build": "vite build",
+    "build:all": "pnpm gen && pnpm build",
+    "build1": "run-p type-check build",
     "type-check": "vue-tsc --noEmit -p tsconfig.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"

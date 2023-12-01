@@ -1,35 +1,29 @@
 {
   "name": "@xdc/widgets",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "build:components": "vite build",
+    "build:all": "pnpm gen && pnpm build ",
     "gen": "ts-node scripts/gen.js",
-    "build": "pnpm gen && pnpm build:components"
+    "build": "vite build"
+  },
+  "license": "ISC",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
   },
   "files": [
     "dist",
     "typings"
   ],
-  "main": "dist/set-widgets.cjs.js",
-  "module": "dist/set-widgets.es.js",
-  "style": "dist/style.css",
-  "exports": {
-    ".": {
-      "import": "./dist/set-widgets.es.js",
-      "require": "./dist/set-widgets.umd.js"
-    },
-    "./dist/style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    }
-  },
   "dependencies": {
+    "ant-design-vue": "~4.0.7",
     "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/integrations": "^10.5.0",
-    "@xdc/core": "workspace:*",
     "@xdc/utils": "workspace:*",
-    "ant-design-vue": "~4.0.7",
     "dayjs": "^1.11.10",
     "rollup": "^3.25.2",
     "swiper": "~9.0.3",
@@ -37,7 +31,8 @@
     "viewerjs": "1.10.4",
     "vue": "~3.2.37",
     "vue-cropper": "^1.0.1",
-    "vue-router": "^4"
+    "vue-router": "^4",
+    "vue-i18n": "^9.3.0"
   },
   "devDependencies": {
     "rollup": "^3.25.2",

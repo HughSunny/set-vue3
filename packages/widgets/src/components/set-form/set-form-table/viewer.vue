@@ -14,7 +14,7 @@
         :width="field.width"
       >
         <template #default="{ text, record, index }">
-          <FieldTypeViewer
+          <SetFieldTypeViewer
             v-if="field.type !== 'action'"
             class="set-table_preview_item"
             :field="field"
@@ -45,8 +45,7 @@
 defineOptions({
   name: 'SetTableViewer'
 })
-import { SetFieldType, type SetFormTableField } from '../../../entity/set-form';
-import { FieldTypeViewer } from '../../../components/set-form'
+import { SetFieldType, type SetFormTableField } from '@/entity/set-form';
 const props = defineProps({
   fields: {
     type: Array<SetFormTableField>,

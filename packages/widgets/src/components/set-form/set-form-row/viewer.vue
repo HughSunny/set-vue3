@@ -7,7 +7,7 @@
         :span="field.span"
         :offset="field.offset || 0"
       >
-        <FormTypeViewer
+        <SetFormTypeViewer
           :field="field"
           :label-width="labelWidth"
           :data="data"
@@ -17,7 +17,7 @@
           <template #fieldRender="scope">
             <slot name="itemRender" :field="scope.field"></slot>
           </template>
-        </FormTypeViewer>
+        </SetFormTypeViewer>
       </a-col>
       <a-col v-if="$slots.rightAppend" v-bind="colBindAttrs" align="right">
         <slot name="rightAppend" />
@@ -27,7 +27,7 @@
   <template v-else>
     <a-row :gutter="20">
       <a-col v-for="field in fields" :key="field.model" v-bind="colBindAttrs">
-        <FormTypeViewer
+        <SetFormTypeViewer
           :field="field"
           :label-width="labelWidth"
           :data="data"
@@ -37,7 +37,7 @@
           <template #fieldRender="scope">
             <slot name="itemRender" :field="scope.field"></slot>
           </template>
-        </FormTypeViewer>
+        </SetFormTypeViewer>
       </a-col>
       <a-col v-if="$slots.rightAppend" v-bind="colBindAttrs" align="right">
         <slot name="rightAppend" />
@@ -48,65 +48,64 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name:'SetFormRowViewer'
-})
-import { defineComponent, computed, watchEffect, ref } from 'vue'
-import { FormTypeViewer } from '../../set-form'
-import { getRuleFieldRow } from '../../../utils/set-form-helper'
+  name: 'SetFormRowViewer',
+});
+import { defineComponent, computed, watchEffect, ref } from 'vue';
+import { getRuleFieldRow } from '@/utils/set-form-helper';
 const props = defineProps({
   fields: {
     type: Array,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   data: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   optionDict: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   labelWidth: {
     type: String,
     default() {
-      return null
-    }
+      return null;
+    },
   },
   errors: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   colType: {
     type: String,
     default() {
       //'custom'| '8-col' | '12-col' | '6-col'
-      return 'custom'
-    }
+      return 'custom';
+    },
   },
   sectionName: {
     type: String,
     default() {
-      return null
-    }
-  }
-})
-const emit = defineEmits(['onValueChange'])
-const fieldRows = ref(getRuleFieldRow(props.fields, props.sectionName, {}) || [])
+      return null;
+    },
+  },
+});
+const emit = defineEmits(['onValueChange']);
+const fieldRows = ref(getRuleFieldRow(props.fields, props.sectionName, {}) || []);
 
 watchEffect(() => {
-  fieldRows.value = getRuleFieldRow(props.fields, props.sectionName, {}) || []
-})
+  fieldRows.value = getRuleFieldRow(props.fields, props.sectionName, {}) || [];
+});
 const colBindAttrs = computed(() => {
   if (props.colType === 'custom') {
-    return {}
+    return {};
   }
   if (props.colType === '6-col') {
     return {
@@ -114,8 +113,8 @@ const colBindAttrs = computed(() => {
       sm: 24,
       md: 12,
       lg: 12,
-      xl: 6
-    }
+      xl: 6,
+    };
   }
   if (props.colType === '12-col') {
     return {
@@ -123,8 +122,8 @@ const colBindAttrs = computed(() => {
       sm: 24,
       md: 24,
       lg: 12,
-      xl: 12
-    }
+      xl: 12,
+    };
   }
   if (props.colType === '8-col') {
     return {
@@ -132,17 +131,17 @@ const colBindAttrs = computed(() => {
       sm: 24,
       md: 12,
       lg: 12,
-      xl: 8
-    }
+      xl: 8,
+    };
   }
-  return {}
-})
+  return {};
+});
 const handleValueChange = (key, event) => {
-  emit('onValueChange', key, event)
-}
+  emit('onValueChange', key, event);
+};
 watchEffect(() => {
-  fieldRows.value = getRuleFieldRow(props.fields, props.sectionName, {}) || []
-})
+  fieldRows.value = getRuleFieldRow(props.fields, props.sectionName, {}) || [];
+});
 </script>
 
 <style lang="less" scoped></style>

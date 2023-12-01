@@ -1,3 +1,4 @@
+import { builtinModules } from 'node:module';
 import path from 'node:path';
 import { defineConfig, PluginOption } from 'vite';
 import dts from 'vite-plugin-dts';
@@ -5,6 +6,18 @@ import vue from '@vitejs/plugin-vue';
 import jsx from '@vitejs/plugin-vue-jsx';
 import pkg from './package.json';
 
+const getExternal = () => {
+  const modules = builtinModules.filter(
+    x => !/^_|^(internal|v8|node-inspect|fsevents)\/|\//.test(x),
+  );
+
+  return modules
+    .concat(modules.map(s => `node:${s}`))
+    .concat(Object.keys(pkg.dependencies))
+    .concat(Object.keys(pkg.devDependencies));
+};
+
+// const external = getExternal();
 const external: (string | RegExp)[] = Object.keys(pkg.dependencies);
 const resolve = (...paths: string[]) => {
   return path.resolve(__dirname, ...paths);
@@ -19,7 +32,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve('src/index.ts'),
-      name: 'xdc-core',
+      name: 'xdc-widgets',
       formats: ['cjs', 'es'],
       fileName: format => {
         return ['es'].includes(format) ? 'index.js' : `index.${format}.js`;
@@ -36,9 +49,6 @@ export default defineConfig({
     alias: {
       '@': path.join(__dirname, './src'),
       '~': path.join(__dirname, './src/assets'),
-      vue: 'vue/dist/vue.esm-bundler.js',
-      dayjs: resolve(__dirname, 'node_modules', 'dayjs'),
-      'ant-design-vue': resolve(__dirname, 'node_modules', 'ant-design-vue'),
     },
   },
 
@@ -48,4 +58,3 @@ export default defineConfig({
   },
   plugins,
 });
-

@@ -32,21 +32,19 @@
         </page-header-content>
       </a-page-header>
     </div>
-    <grid-content>
+    <page-grid-content>
       <div v-if="hasChildren" :class="`${prefixedClassName}-children-content`">
         <slot />
       </div>
-    </grid-content>
+    </page-grid-content>
   </div>
 </template>
 <script lang="ts">
 import type { PropType, VNodeChild } from 'vue';
 import { defineComponent, h, ref, toRefs, withCtx, createTextVNode } from 'vue';
-import { useProProvider } from '@core/hooks';
-import {PageGridContent as GridContent} from '@core/components';
-import PageHeaderContent from './page-header-content.vue';
-import { injectMenuState } from '@core/hooks/useMenuState';
 import { RouterLink } from 'vue-router';
+import { useProProvider } from '@core/hooks';
+import { injectMenuState } from '@core/hooks/useMenuState';
 
 export interface Tab {
   key: string;
@@ -174,8 +172,6 @@ export default defineComponent({
     };
   },
   components: {
-    [GridContent.name]: GridContent,
-    PageHeaderContent,
   },
 });
 </script>

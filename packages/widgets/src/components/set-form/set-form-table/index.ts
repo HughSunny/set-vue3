@@ -1,4 +1,4 @@
-import FormTableEdit from './edit.vue'
-import FormTableViewer from './viewer.vue'
+import SetFormTableEdit from './edit.vue';
+import SetFormTableViewer from './viewer.vue';
 
-export { FormTableEdit, FormTableViewer }
+export { SetFormTableEdit, SetFormTableViewer };

@@ -186,7 +186,9 @@
     />
 
     <industry-upload
-      v-else-if="field.type === SetFieldType.MultiFile || field.type === SetFieldType.MultiImageFile"
+      v-else-if="
+        field.type === SetFieldType.MultiFile || field.type === SetFieldType.MultiImageFile
+      "
       v-model:data-list="fieldValue"
       :type="field.type === SetFieldType.MultiImageFile ? 'image' : 'file'"
       v-bind="field.props"
@@ -204,128 +206,128 @@
 
 <script lang="ts" setup name="SetFieldTypeEdit">
 defineOptions({
-  name: 'SetFieldTypeEdit'
-})
-import { computed, ref, watchEffect } from 'vue'
-import { IndustryUpload, IconPicker } from '@/components';
-import { SetFieldType } from '@/entity/set-form'
+  name: 'SetFieldTypeEdit',
+});
+import { computed, ref, watchEffect } from 'vue';
+// import { IndustryUpload, IconPicker } from '@/components';
+import { SetFieldType } from '@/entity/set-form';
 const props = defineProps({
   field: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   value: {},
   data: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   optionDict: {
     type: Object,
     default() {
-      return {}
-    }
-  }
+      return {};
+    },
+  },
   // hideAdd: {
   //   type: Boolean,
   //   default: false
   // },
-})
-const emit = defineEmits(['onValueChange', 'update:value'])
-const fieldValue = ref(props.value)
+});
+const emit = defineEmits(['onValueChange', 'update:value']);
+const fieldValue = ref(props.value);
 const colStyle = computed(() => {
-  const { field } = props
+  const { field } = props;
   return {
     flex: `0 0 ${100 / field.colCount}%`,
     // width: `${100 / this.field.colCount}%`,
     alignItems: 'center',
     display: 'flex',
-    flexDirection: 'row'
-  }
-})
+    flexDirection: 'row',
+  };
+});
 const getFieldStyle = computed(() => {
-  const { field } = props
-  let width = '100%'
-  const fieldWidth = field.params?.width
+  const { field } = props;
+  let width = '100%';
+  const fieldWidth = field.params?.width;
   if (fieldWidth) {
     // console.log('----------------------------->fieldWidth', fieldWidth)
-    width = fieldWidth
+    width = fieldWidth;
     if (!isNaN(parseFloat(fieldWidth)) && isFinite(fieldWidth)) {
       // console.log('----------------------------->parseFloat', fieldWidth)
-      width = `${fieldWidth}px`
+      width = `${fieldWidth}px`;
     }
   }
-  return { width }
-})
+  return { width };
+});
 const getOptions = (field, model) => {
-  const { optionDict } = props
-  return field.options || (optionDict ? optionDict[model || field.model] || [] : [])
-}
-const otherValueChange = (event) => {
-  const { field } = props
-  emit('update:value', event.target.value)
-  emit('onValueChange', field.model, event.target.value)
-}
+  const { optionDict } = props;
+  return field.options || (optionDict ? optionDict[model || field.model] || [] : []);
+};
+const otherValueChange = event => {
+  const { field } = props;
+  emit('update:value', event.target.value);
+  emit('onValueChange', field.model, event.target.value);
+};
 const handleValueChange = (event, model) => {
-  const { field } = props
-  let value = event
+  const { field } = props;
+  let value = event;
   if (field.type === SetFieldType.Input || field.type === SetFieldType.InputArea) {
-    value = event.target.value
+    value = event.target.value;
   } else if (field.type === SetFieldType.Radio) {
-    value = event.target.value
+    value = event.target.value;
   }
-  emit('update:value', value)
-  emit('onValueChange', model, value)
-}
+  emit('update:value', value);
+  emit('onValueChange', model, value);
+};
 const handleSelectChange = (event, model) => {
-  emit('update:value', event)
-  emit('onValueChange', model, event)
-}
+  emit('update:value', event);
+  emit('onValueChange', model, event);
+};
 
 const handleSwitchChange = (event, key) => {
-  emit('update:value', event)
-  emit('onValueChange', key, event)
-}
+  emit('update:value', event);
+  emit('onValueChange', key, event);
+};
 const handleUploadChange = (file, fileList, type) => {
-  const { field } = props
+  const { field } = props;
   if (type === 'delete') {
-    emit('update:value', '')
-    emit('onValueChange', field.model, '')
+    emit('update:value', '');
+    emit('onValueChange', field.model, '');
   } else if (type === 'doing') {
     // 上传中，因为请求是异步的
-    emit('update:value', file.url)
-    emit('onValueChange', field.model, file.url)
+    emit('update:value', file.url);
+    emit('onValueChange', field.model, file.url);
   } else {
     // 添加
-    console.log('handleUploadChange  ====> ', file.url)
-    emit('update:value', file.url)
-    emit('onValueChange', field.model, file.url)
+    console.log('handleUploadChange  ====> ', file.url);
+    emit('update:value', file.url);
+    emit('onValueChange', field.model, file.url);
   }
   // formRef.value.clearValidate(field.model)
-}
+};
 const handleMultiUploadChange = (file, fileList, type) => {
-  const { field } = props
+  const { field } = props;
   // 多文件上传 fileList 有值
-  const fileUrlList = fileList.map((xx) => xx.url)
+  const fileUrlList = fileList.map(xx => xx.url);
   if (type === 'delete') {
   } else if (type === 'doing') {
     // 上传中，因为请求是异步的
   } else {
     // 添加
   }
-  console.log('handleMultiUploadChange  ====> ', fileUrlList)
-  emit('update:value', fileUrlList)
-  emit('onValueChange', field.model, fileUrlList)
-}
+  console.log('handleMultiUploadChange  ====> ', fileUrlList);
+  emit('update:value', fileUrlList);
+  emit('onValueChange', field.model, fileUrlList);
+};
 watchEffect(() => {
   if (props.field.type === SetFieldType.TreeSelect) {
     // console.log('SetFieldTypeEdit === >watchEffect ====> ', props.data, props.field, props.value)
   }
-  fieldValue.value = props.value
-})
+  fieldValue.value = props.value;
+});
 </script>
 
 <style lang="less" scoped>
