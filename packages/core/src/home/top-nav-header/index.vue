@@ -6,7 +6,7 @@
           <slot v-if="hasLogoSlot" name="logo" />
           <div v-else>
             <router-link :to="{ name: 'IndustryPlatformHome' }">
-              <img :src="appLogo" alt="logo" style="height: 48px;" />
+              <img :src="appLogo" alt="logo" style="height: 48px" />
               <!-- <h1>{{ appName }}</h1> -->
             </router-link>
           </div>
@@ -39,7 +39,7 @@ import type { PropType } from 'vue';
 import { defineComponent, computed, toRefs } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
 import { useProProvider } from '@core/hooks';
-import type { RouteProps } from '@core/interface/IRouter'
+import type { RouteProps } from '@core/interface/IRouter';
 import BaseMenu from '@core/home/base-menu/index.vue';
 import { AppConfig } from '@core/bo';
 import RightContent from './right-content.vue';
@@ -110,20 +110,20 @@ export default defineComponent({
     const configStore = useConfigStore();
     const appName = computed(() => {
       return configStore.sysName || AppConfig.sysName;
-    })
+    });
     const appLogo = computed(() => {
-      return configStore.sysLogo // || '/image/logo.png';
-    })
+      return configStore.sysLogo; // || '/image/logo.png';
+    });
     const headerStyle = computed(() => {
       if (configStore.headerImage) {
         return {
-          background:  `url(${configStore.headerImage})`,
+          background: `url(${configStore.headerImage})`,
         };
       } else {
-        return null;}
-    })
+        return null;
+      }
+    });
     return {
-
       classNames,
       headerClassName,
       prefixedClassName,

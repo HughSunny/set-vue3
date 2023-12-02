@@ -1,16 +1,13 @@
 import type { App, Component } from 'vue';
 import { defineAsyncComponent, h } from 'vue';
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-
-import { initAppOptions, type IInitAppOptions, AppConfig, LeadProLayout } from '@xdc/core';
-
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+import { AppConfig, type IInitAppOptions, initAppOptions, LeadProLayout } from '@xdc/core';
+import { getMdmInitConfig } from '@/mdm-app-option';
+import { getMesInitConfig } from '@/mes-app-option';
 import store from '@/store';
 // import SystemModuleMap from '@/lead-lib/views/system/index.route.map';
 import accessRoutes from './access';
-
-import { getMesInitConfig } from '@/mes-app-option';
-import { getMdmInitConfig } from '@/mdm-app-option';
-import { getConstantRoutes, getConstantLayoutRoutes } from './constant';
+import { getConstantLayoutRoutes, getConstantRoutes } from './constant';
 
 const systemType = AppConfig.sysType; // MDM MES INDUSTRY
 const mode = 0; // 0: access 1: map

@@ -32,8 +32,6 @@ export default defineConfig(({ command, mode }) => {
         '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '#': fileURLToPath(new URL('./types', import.meta.url)),
-        'lead-lib': fileURLToPath(new URL('./src/lead-lib', import.meta.url)),
-        'lead-datas-lib': fileURLToPath(new URL('./src/lead-datas-lib', import.meta.url)),
       },
     },
     optimizeDeps: {

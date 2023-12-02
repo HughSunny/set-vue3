@@ -4,6 +4,8 @@ import { defineConfig, PluginOption } from 'vite';
 import dts from 'vite-plugin-dts';
 import vue from '@vitejs/plugin-vue';
 import jsx from '@vitejs/plugin-vue-jsx';
+import DefineOptions from 'unplugin-vue-define-options/vite';
+
 import pkg from './package.json';
 
 const getExternal = () => {
@@ -23,7 +25,7 @@ const resolve = (...paths: string[]) => {
   return path.resolve(__dirname, ...paths);
 };
 // @ts-ignore
-const plugins: PluginOption[] = [vue(), jsx()];
+const plugins: PluginOption[] = [vue(), jsx(), DefineOptions()];
 if (!process.env.VITE_DEBUG) {
   plugins.push(dts());
 }

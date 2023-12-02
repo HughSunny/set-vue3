@@ -11,12 +11,12 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'CustomRouterView'
-})
-import { computed } from 'vue'
-import { injectMenuState } from '@core/hooks/useMenuState'
-import { MultiTabStoreConsumer } from '@core/home/multi-tab'
+  name: 'CustomRouterView',
+});
+import { computed } from 'vue';
+import { injectMenuState } from '@core/hooks/useMenuState';
+import { MultiTabStoreConsumer } from '@core/home/multi-tab';
 
-const menuState = injectMenuState()
-const transitionName = computed(() => menuState.transitionName.value)
+const menuState = injectMenuState();
+const transitionName = computed(() => menuState.transitionName.value);
 </script>

@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { defineAsyncComponent, h } from 'vue';
 import {RouteView} from '@xdc/core'
-// import commonRoutes from '@/lead-lib/views/index.route'
+// import commonRoutes from 'lead-lib/views/index.route'
 
 const AsyncComponent =
   defineAsyncComponent(

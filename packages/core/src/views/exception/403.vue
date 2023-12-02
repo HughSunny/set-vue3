@@ -6,18 +6,18 @@
   </a-result>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'Exception403',
-  computed: {
-    subTitle() {
-      return this.$route.query?.msg || '抱歉，您没有权限访问这个页面。';
-    },
-  },
-  methods: {
-    toHome() {
-      this.$router.push({ path: '/' });
-    },
-  },
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+defineOptions({
+  name: 'Exception403Page',
+});
+const router = useRouter();
+const route = useRoute();
+const subTitle = computed(() => {
+  return route.query?.msg || '抱歉，您没有权限访问这个页面。';
+});
+const toHome = () => {
+  router.push({ path: '/' });
 };
 </script>

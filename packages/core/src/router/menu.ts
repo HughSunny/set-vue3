@@ -1,16 +1,16 @@
-import { defineAsyncComponent, h } from 'vue'
-import type { RouteMeta, RouteRecordRaw } from 'vue-router'
-import { camelCase, cloneDeep } from 'lodash-es'
-import RouteView from '@core/home/route-view'
-import BlankLayout from '@core/home/blank-layout'
+import { defineAsyncComponent, h } from 'vue';
+import type { RouteMeta, RouteRecordRaw } from 'vue-router';
+import { camelCase, cloneDeep } from 'lodash-es';
+import RouteView from '@core/home/route-view';
+import BlankLayout from '@core/home/blank-layout';
 
 import {
   MenuTypeEnum,
   type IFetchMenu,
   type MenuRouteMeta,
-  type MenuRouteItem
-} from '@core/interface/IRouter'
-import { urlEncodeChineseChars } from '@core/utils'
+  type MenuRouteItem,
+} from '@core/interface/IRouter';
+import { urlEncodeChineseChars } from '@core/utils';
 
 /**
  * 菜单树 主要是用于显示
@@ -23,25 +23,25 @@ import { urlEncodeChineseChars } from '@core/utils'
 export function genMenuTreeRoutes(
   menuList: IFetchMenu[],
   componentMap,
-  attachComp = true
+  attachComp = true,
 ): MenuRouteItem[] {
   // 菜单
   if (!Array.isArray(menuList) || menuList.length === 0) {
-    return []
+    return [];
   }
-  menuList = cloneDeep(menuList)
+  menuList = cloneDeep(menuList);
   // 菜单
-  let menus: IFetchMenu[] = []
-  const menuObj = {}
+  let menus: IFetchMenu[] = [];
+  const menuObj = {};
   // fix: 去重 id去重就算了，可能path 一样，但是id不一样， 要命
-  menuList.forEach((menu) => {
-    const { id, path } = menu
+  menuList.forEach(menu => {
+    const { id, path } = menu;
     if (menuObj[id]) {
-      return
+      return;
     }
-    menus.push(menu)
-    menuObj[id] = true
-  })
+    menus.push(menu);
+    menuObj[id] = true;
+  });
 
   // menuList = Array.from(new Set(menuList))
 
@@ -49,36 +49,37 @@ export function genMenuTreeRoutes(
   // const treeMenus = arrayToTree(menus)
   // menus = treeToArray(treeMenus)
   // 组件异常处理
-  const checkComponents: any[] = []
+  const checkComponents: any[] = [];
   // 处理后的路由信息
-  const routes: MenuRouteItem[] = []
+  const routes: MenuRouteItem[] = [];
   menus.forEach((menu: IFetchMenu) => {
-    const { name, menuType, id, path } = menu
+    const { name, menuType, id, path } = menu;
 
     // 传统逻辑
-    const isUrlPath = path && path.startsWith('http')
+    const isUrlPath = path && path.startsWith('http');
 
-    const menuPath = path //不能空
-    const menuName = name // name 是路由的主键，必须唯一!!
+    const menuPath = path; //不能空
+    const menuName = name; // name 是路由的主键，必须唯一!!
     // 路由path和组件映射处理
-    let component = null
+    let component = null;
 
     if (attachComp) {
-      component = getComponentByMenuInMap(menu, componentMap)
+      component = getComponentByMenuInMap(menu, componentMap);
 
       if (!component && !isUrlPath) {
-        checkComponents.push(menu)
+        checkComponents.push(menu);
         // 如果没有组件，就用空组件代替
         // return
       }
     }
 
     // 菜单
-    const route: RouteRecordRaw = {
+    const route: MenuRouteItem = {
       path: urlEncodeChineseChars(menuPath),
       name: menuName,
-      component
-    }
+      component,
+      children: [],
+    };
 
     // 重复的 name 造成路由跳转404问题
     // if (sysMenuNames.includes(name)) {
@@ -98,84 +99,88 @@ export function genMenuTreeRoutes(
       // hideInMenu 子页面不需要显示
       hideInMenu: menuType === MenuTypeEnum.ChildPage,
       menuType,
-    }
+    };
     // 子菜单因为是隐藏 显示激活的菜单
     if (menu.activeMenu) {
-      meta.activeMenu = menu.activeMenu
+      meta.activeMenu = menu.activeMenu;
     }
     // url 菜单特殊处理
     if (isUrlPath) {
-      meta.target = '_blank'
-      Reflect.deleteProperty(route, 'name')
-      Reflect.deleteProperty(route, 'component')
+      meta.target = '_blank';
+      Reflect.deleteProperty(route, 'name');
+      Reflect.deleteProperty(route, 'component');
     }
     // 元数据赋值
-    route.meta = meta
+    route.meta = meta;
 
     // 重定向
     // if (component && linkUrl) {
     //   route.redirect = linkUrl
     // }
 
-    routes.push(route)
-  })
+    routes.push(route);
+  });
   // 如果有配置问题，抛出异常
   if (checkComponents.length) {
-    const names = checkComponents.map((s) => `${s.path}`).join('\n')
-    console.warn(`部分菜单配置的前端组件无效:${names}`)
+    const names = checkComponents.map(s => `${s.path}`).join('\n');
+    console.warn(`部分菜单配置的前端组件无效:${names}`);
   }
   // 子级路由都隐藏，则隐藏菜单
   const handleCheckHideRoute = (routes, parent = undefined) => {
     if (!routes) {
-      return
+      return;
     }
 
     if (Array.isArray(routes)) {
-      routes.forEach((s) => {
-        handleCheckHideRoute(s, parent)
-      })
+      routes.forEach(s => {
+        handleCheckHideRoute(s, parent);
+      });
     }
 
     // 当前菜单或下级隐藏，不处理
     if (routes.hideInMenu || routes.hideChildrenInMenu) {
-      return
+      return;
     }
 
-    const { children } = routes
+    const { children } = routes;
     if (!Array.isArray(children) || children.length === 0) {
-      return
+      return;
     }
 
-    if (children.filter((s) => s.meta?.hideInMenu).length === children.length) {
-      routes.meta.hideChildrenInMenu = true
-      return
+    if (children.filter(s => s.meta?.hideInMenu).length === children.length) {
+      routes.meta.hideChildrenInMenu = true;
+      return;
     }
 
-    handleCheckHideRoute(children, routes)
-  }
+    handleCheckHideRoute(children, routes);
+  };
 
-  handleCheckHideRoute(routes)
+  handleCheckHideRoute(routes);
 
-  const menuTree: MenuRouteItem[] = fixMenuRoutes(routes)
+  const menuTree: MenuRouteItem[] = fixMenuRoutes(routes);
 
   if (attachComp) {
     // 一级菜单需要在组件上套一个route-view
-    menuTree.forEach((node) => {
+    menuTree.forEach(node => {
       if (!node.children || node.children.length === 0) {
         if (node.component) {
           if (node.component.render) {
             // 是一个静态组件
-            node.component = h(RouteView, null, h(node.component))
+            node.component = h(RouteView, null, h(node.component));
           } else {
             // （）=> 引入的组件
-            node.component = h(RouteView, null, h(defineAsyncComponent({ loader: node.component })))
+            node.component = h(
+              RouteView,
+              null,
+              h(defineAsyncComponent({ loader: node.component })),
+            );
           }
         }
       }
-    })
+    });
   }
 
-  return menuTree
+  return menuTree;
 }
 
 /**
@@ -185,22 +190,22 @@ export function genMenuTreeRoutes(
  * @returns
  */
 export function getComponentByMenuInMap(menu, componentMap) {
-  let component = null
+  let component = null;
   //componentMap 逻辑
   if (isMenu(menu.menuType)) {
     if (!menu.parentId || menu.parentId === '0') {
       //一级父级路由，就用自定义router-view(带tab-customer) 作为component
-      component = componentMap['RouteView'] || RouteView
+      component = componentMap['RouteView'] || RouteView;
     } else {
       // 二级父路由, 用 BlankLayout(简单route-view)
-      component = componentMap['BlankLayout'] || BlankLayout
+      component = componentMap['BlankLayout'] || BlankLayout;
     }
   } else {
     //如果是页面，但是又找不到组件，那么就加入异常
-    const cpName = menu.path
-    component = componentMap[cpName] || componentMap[getPath(cpName)]
+    const cpName = menu.path;
+    component = componentMap[cpName] || componentMap[getPath(cpName)];
   }
-  return component
+  return component;
 }
 
 /**
@@ -213,43 +218,45 @@ export function getComponentByMenuInMap(menu, componentMap) {
  */
 export function syncMenu2AccessRoutes(
   menuList: MenuRouteItem[],
-  accessRouteTreeList: Array<RouteRecordRaw>,
-  componentMap?: Record<string, any>
+  accessRouteTreeList: Array<MenuRouteItem>,
+  componentMap?: Record<string, any>,
 ) {
   const useGetAllowRoute = (
-    asyncRoute: Array<RouteRecordRaw>,
-    menus: Array<MenuRouteItem>
-  ): Array<RouteRecordRaw> => {
-    const userAsyncRouter: Array<RouteRecordRaw> = []
-    asyncRoute.forEach((route: RouteRecordRaw) => {
-      const temp = { ...route }
-      const hasChild = temp?.children?.length > 0
+    asyncRoute: Array<MenuRouteItem>,
+    menus: Array<MenuRouteItem>,
+  ): Array<MenuRouteItem> => {
+    const userAsyncRouter: Array<MenuRouteItem> = [];
+    asyncRoute.forEach((route: MenuRouteItem) => {
+      const temp: MenuRouteItem = { ...route };
+      const hasChild = temp?.children?.length > 0;
 
       if (hasChild) {
         // 迭代
-        temp.children = useGetAllowRoute(temp.children, menus).sort((a, b) => {
-          return a.meta?.sort - b.meta?.sort
-        })
+        temp.children = useGetAllowRoute(temp.children || [], menus).sort(
+          (a: MenuRouteItem, b: MenuRouteItem) => {
+            return a.meta?.sort || 0 - b.meta?.sort || 0;
+          },
+        );
         //父路由重定向
-        if (!temp.redirect || !temp.children.find((s) => s.path === temp.redirect)) {
-          temp.redirect = temp.children[0]?.path
+        if (!temp.redirect || !temp.children.find(s => s.path === temp.redirect)) {
+          temp.redirect = temp.children[0]?.path;
         }
       }
       // 路径可能有中文字符
-      temp.path = urlEncodeChineseChars(temp.path)
+      temp.path = urlEncodeChineseChars(temp.path);
       // 通过path 匹配
-      const targetMenu: MenuRouteItem = menus.find((r) => r.path === route.path)
+      const targetMenu: MenuRouteItem = menus.find(r => r.path === route.path);
 
       // 如果首层路由存在，直接加入
       if (targetMenu) {
         // 合并route信息
         if (!temp.name) {
           //name是用本地的还是menu的?
-          temp.name = targetMenu.name
+          temp.name = targetMenu.name;
         }
         // 合并route的meta
-        const tempMeta = { ...temp.meta, ...targetMenu.meta }
-        temp.meta = tempMeta
+        const tempMeta = { ...temp.meta, ...targetMenu.meta };
+        temp.meta = tempMeta;
 
         // 根据targetMenu 判断component
         if (temp.component) {
@@ -263,19 +270,19 @@ export function syncMenu2AccessRoutes(
               console.error(
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>',
                 temp.path,
-                ' 的路由组件必须有route-view包裹'
-              )
+                ' 的路由组件必须有route-view包裹',
+              );
             }
           }
           if (!isPage(tempMeta.menuType)) {
             if (typeof temp.component === 'object') {
-              const componentName = temp.component.name
+              const componentName = temp.component.name;
               if (componentName !== 'CustomRouterView' && componentName !== 'BlankLayout') {
                 console.error(
                   'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>',
                   temp.path,
-                  ' 的路由组件只能使用 CustomRouterView 或者 BlankLayout'
-                )
+                  ' 的路由组件只能使用 CustomRouterView 或者 BlankLayout',
+                );
               }
             }
           } else {
@@ -286,20 +293,20 @@ export function syncMenu2AccessRoutes(
           // temp.component = getComponentByMenuInMap(targetMenu, componentMap)
         }
       }
-      const targetComponent = getComponentByMenuInMap(temp, componentMap)
+      const targetComponent = getComponentByMenuInMap(temp, componentMap);
       if (targetComponent) {
         // console.log(temp.path, '------------------------------------->has targetComponent')
         //TODO: 替换原先路由下的component，可灵活运用
       }
 
-      userAsyncRouter.push(temp)
-    })
+      userAsyncRouter.push(temp);
+    });
     return userAsyncRouter.sort((a, b) => {
-      return a.meta?.sort - b.meta?.sort
-    })
-  }
-  const routeTree = useGetAllowRoute(accessRouteTreeList, menuList)
-  return routeTree
+      return a.meta?.sort - b.meta?.sort;
+    });
+  };
+  const routeTree = useGetAllowRoute(accessRouteTreeList, menuList);
+  return routeTree;
 }
 
 /**
@@ -314,33 +321,33 @@ export function syncMenu2AccessRoutes(
 export function getMenuFromAccessRoutes(
   menuList: IFetchMenu[],
   accessRouteTreeList: Array<RouteRecordRaw>,
-  componentMap: Record<string, any>
+  componentMap: Record<string, any>,
 ) {
   const useGetAllowRoute = (asyncRoute: Array<RouteRecordRaw>, menus: Array<IFetchMenu>) => {
-    const userAsyncRouter: Array<MenuRouteItem> = []
+    const userAsyncRouter: Array<MenuRouteItem> = [];
     asyncRoute.forEach((route: RouteRecordRaw) => {
-      const temp: MenuRouteItem = { ...route }
+      const temp: MenuRouteItem = { ...route };
       // 通过path 匹配
-      const targetMenu = menus.find((r) => r.path === route.path)
+      const targetMenu = menus.find(r => r.path === route.path);
       // 如果首层路由存在，直接加入
       if (targetMenu) {
         if (temp.children) {
           // 迭代
           temp.children = useGetAllowRoute(temp.children, menus).sort((a, b) => {
-            return a.meta?.sort - b.meta?.sort
-          })
+            return a.meta?.sort - b.meta?.sort;
+          });
         }
         // 合并route信息
         if (!temp.name) {
           //name是用本地的还是menu的?
-          temp.name = targetMenu.name
+          temp.name = targetMenu.name;
         }
-        temp.path = urlEncodeChineseChars(temp.path)
+        temp.path = urlEncodeChineseChars(temp.path);
 
         // 合并route的meta
-        const tempMeta = { ...temp.meta, ...targetMenu }
-        delete tempMeta.path
-        temp.meta = tempMeta
+        const tempMeta = { ...temp.meta, ...targetMenu };
+        delete tempMeta.path;
+        temp.meta = tempMeta;
 
         // component 判断
         if (temp.component) {
@@ -354,19 +361,19 @@ export function getMenuFromAccessRoutes(
               console.error(
                 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>',
                 temp.path,
-                ' 的路由组件必须有route-view包裹'
-              )
+                ' 的路由组件必须有route-view包裹',
+              );
             }
           }
           if (!isPage(targetMenu.menuType)) {
             if (typeof temp.component === 'object') {
-              const componentName = temp.component.name
+              const componentName = temp.component.name;
               if (componentName !== 'CustomRouterView' && componentName !== 'BlankLayout') {
                 console.error(
                   'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx>',
                   temp.path,
-                  ' 的路由组件只能使用 CustomRouterView 或者 BlankLayout'
-                )
+                  ' 的路由组件只能使用 CustomRouterView 或者 BlankLayout',
+                );
               }
             }
           } else {
@@ -374,26 +381,26 @@ export function getMenuFromAccessRoutes(
           }
         } else {
           //TODO: 没有组件的路由,从组件map中寻找
-          temp.component = getComponentByMenuInMap(targetMenu, componentMap)
+          temp.component = getComponentByMenuInMap(targetMenu, componentMap);
         }
 
-        userAsyncRouter.push(temp)
+        userAsyncRouter.push(temp);
       } else {
         // 公共路由放行，这里预留出不需要鉴权的路由，在meta里面添加 {guest: true}
         if (route.path === '/' || route.meta?.guest) {
           if (temp.children) {
-            temp.children = useGetAllowRoute(temp.children, menus)
+            temp.children = useGetAllowRoute(temp.children, menus);
           }
-          userAsyncRouter.push(temp)
+          userAsyncRouter.push(temp);
         }
       }
-    })
+    });
     return userAsyncRouter.sort((a, b) => {
-      return a.meta?.sort - b.meta?.sort
-    })
-  }
-  const routeTree = useGetAllowRoute(accessRouteTreeList, menuList)
-  return routeTree
+      return a.meta?.sort - b.meta?.sort;
+    });
+  };
+  const routeTree = useGetAllowRoute(accessRouteTreeList, menuList);
+  return routeTree;
 }
 
 /**
@@ -404,24 +411,24 @@ export function getMenuFromAccessRoutes(
  */
 export function fixMenuRoutes(menuRoutes) {
   if (!Array.isArray(menuRoutes)) {
-    return []
+    return [];
   }
 
-  const tree = []
+  const tree = [];
 
   // 菜单数组转换为树形结构
   // @ts-ignore
-  menuListToTree(menuRoutes, tree)
+  menuListToTree(menuRoutes, tree);
 
-  return tree
+  return tree;
 }
 // 判断path是否带/
 const getPath = (path: string) => {
   if (path && path.startsWith('/')) {
-    return path
+    return path;
   }
-  return `/${path}`
-}
+  return `/${path}`;
+};
 
 /**
  * Menu数组转树形结构
@@ -430,44 +437,44 @@ const getPath = (path: string) => {
  * @param {string} [parentId] 父ID
  */
 const menuListToTree = (list, tree, parentId) => {
-  list.forEach((item) => {
+  list.forEach(item => {
     // 判断是否为父级菜单
     if (item.meta.parentId !== parentId) {
-      return
+      return;
     }
 
     const child = {
       ...item,
-      children: []
-    }
+      children: [],
+    };
     // 找到当前菜单相符合的所有子菜单
-    menuListToTree(list, child.children, item.meta.id)
+    menuListToTree(list, child.children, item.meta.id);
 
     // 删掉不存在 children 值的属性
     if (child.children.length === 0) {
-      delete child.children
+      delete child.children;
     }
 
     // 处理 redirect
-    const { children } = child
+    const { children } = child;
     // 1.如果子菜单，清除该属性
     // 2.如果子菜单中没有指定的跳转连接，选择跳转到第一个子菜单项
     if (!Array.isArray(children)) {
       if (child.redirect) {
-        delete child.redirect
+        delete child.redirect;
       }
-    } else if (!children.find((s) => s.path === child.redirect)) {
+    } else if (!children.find(s => s.path === child.redirect)) {
       // 如果子菜单中没有父节点的redirect
-      child.redirect = children[0].path
+      child.redirect = children[0].path;
     }
     // 加入到树中
-    tree.push(child)
-  })
-}
+    tree.push(child);
+  });
+};
 export function isPage(menuType) {
-  return menuType === MenuTypeEnum.Page || menuType === MenuTypeEnum.ChildPage
+  return menuType === MenuTypeEnum.Page || menuType === MenuTypeEnum.ChildPage;
 }
 
 export function isMenu(menuType) {
-  return menuType === MenuTypeEnum.Menu
+  return menuType === MenuTypeEnum.Menu;
 }

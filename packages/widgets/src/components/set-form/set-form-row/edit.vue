@@ -7,7 +7,7 @@
         :span="field.span || 24"
         :offset="field.offset || 0"
       >
-        <FormTypeEdit
+        <SetFormTypeEdit
           v-model:value="data[field.model]"
           :field="field"
           :label-width="labelWidth"
@@ -19,7 +19,7 @@
           <template #editRender="scope">
             <slot name="itemRender" :field="scope.field"></slot>
           </template>
-        </FormTypeEdit>
+        </SetFormTypeEdit>
       </a-col>
       <a-col v-if="$slots.rightAppend" v-bind="rightAppendCol" align="right">
         <slot name="rightAppend" />

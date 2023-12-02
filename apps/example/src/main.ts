@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import antd from 'ant-design-vue';
+import XdcCore from '@xdc/core';
 import XdcWidgets from '@xdc/widgets';
 import { setupRouter } from '@/router';
 import { setupStore } from '@/store';
@@ -13,6 +14,7 @@ import './global.less';
 const app = createApp(App);
 const registerComponents = app => {
   app.use(antd);
+  app.use(XdcCore);
   app.use(XdcWidgets, { uploadLibrary: 'File' });
 };
 

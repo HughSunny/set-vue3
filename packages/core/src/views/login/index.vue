@@ -30,7 +30,10 @@
                 class="loginFormItem"
                 name="username"
                 :rules="[
-                  { required: true, message: $t('sys.action.pleaseInput') + $t('sys.user.account') }
+                  {
+                    required: true,
+                    message: $t('sys.action.pleaseInput') + $t('sys.user.account'),
+                  },
                 ]"
               >
                 <a-input
@@ -49,8 +52,8 @@
                 :rules="[
                   {
                     required: true,
-                    message: $t('sys.action.pleaseInput') + $t('sys.user.password')
-                  }
+                    message: $t('sys.action.pleaseInput') + $t('sys.user.password'),
+                  },
                 ]"
               >
                 <a-input-password
@@ -71,8 +74,8 @@
                 :rules="[
                   {
                     required: true,
-                    message: $t('sys.action.pleaseSelect') + $t('sys.user.language')
-                  }
+                    message: $t('sys.action.pleaseSelect') + $t('sys.user.language'),
+                  },
                 ]"
               >
                 <div class="language-select-row">
@@ -111,125 +114,125 @@
 </template>
 <script setup lang="ts">
 defineOptions({
-  name: 'LeadLogin'
-})
-import { reactive, computed, ref } from 'vue'
-import { GlobalOutlined } from '@ant-design/icons-vue'
+  name: 'FrameLoginView',
+});
+import { reactive, computed, ref } from 'vue';
+import { GlobalOutlined } from '@ant-design/icons-vue';
 
-import { useRouter, useRoute } from 'vue-router'
-import { AppConfig } from '@core/bo'
-import { useI18n } from '@core/hooks/useI18n'
-import { useAppStore } from '@core/store/app'
-import { useUserStore } from '@core/store/user'
-import ls from '@core/utils/local-storage'
-import type { FnLoginHook, FnAfterLogin } from '@core/interface/ILeadFrame'
-import { getUserInfo, login } from '@core/api/services/uc'
-import type { IUserInfo } from '@core/interface/IUser'
-import { useCookies } from '@vueuse/integrations/useCookies'
-import { useConfigStore } from '@core/store/config'
-const cookie = useCookies()
-const { t } = useI18n()
+import { useRouter, useRoute } from 'vue-router';
+import { AppConfig } from '@core/bo';
+import { useI18n } from '@core/hooks/useI18n';
+import { useAppStore } from '@core/store/app';
+import { useUserStore } from '@core/store/user';
+import ls from '@core/utils/local-storage';
+import type { FnLoginHook, FnAfterLogin } from '@core/interface/ILeadFrame';
+import { getUserInfo, login } from '@core/api/services/uc';
+import type { IUserInfo } from '@core/interface/IUser';
+import { useCookies } from '@vueuse/integrations/useCookies';
+import { useConfigStore } from '@core/store/config';
+const cookie = useCookies();
+const { t } = useI18n();
 const props = defineProps<{
-  loginHook?: FnLoginHook
-  afterLogin?: FnAfterLogin
-}>()
+  loginHook?: FnLoginHook;
+  afterLogin?: FnAfterLogin;
+}>();
 interface FormState {
-  username: string
-  password: string
-  remember: boolean
-  language: string
+  username: string;
+  password: string;
+  remember: boolean;
+  language: string;
 }
-const route = useRoute()
-const router = useRouter()
-const appStore = useAppStore()
-const userStore = useUserStore()
-const configStore = useConfigStore()
+const route = useRoute();
+const router = useRouter();
+const appStore = useAppStore();
+const userStore = useUserStore();
+const configStore = useConfigStore();
 // 如果缓存中存在用户名，则认为其登录时选择了‘记住用户名’
-const userCode = ls.get('userCode')
+const userCode = ls.get('userCode');
 const formState = reactive<FormState>({
   username: userCode || '',
   password: '',
   remember: !!userCode,
-  language: appStore.lang
-})
-const logoTitle = ''
+  language: appStore.lang,
+});
+const logoTitle = '';
 // 系统入口下拉框设置  //TODO: 功能需要添加
-const multiEntry: boolean = AppConfig.config['multiEntry']
-const entrys: any = AppConfig.config['appCodes']
-const currentEntry: string = AppConfig.config['appCode']
+const multiEntry: boolean = AppConfig.config['multiEntry'];
+const entrys: any = AppConfig.config['appCodes'];
+const currentEntry: string = AppConfig.config['appCode'];
 
 const self = reactive({
   loading: false,
   version: AppConfig.version,
   showLogin: false,
   authorizationCode: '',
-  from: ''
-})
-const enableInternational = computed(() => configStore.enableInternational)
-const languageList = computed(() => configStore.languageList)
-const title = computed(() => configStore.loginSysName?.trim() || AppConfig.loginSysName)
-const sysLogo = computed(() => configStore.loginSysLogo?.trim() || '/image/lead-logo.png')
+  from: '',
+});
+const enableInternational = computed(() => configStore.enableInternational);
+const languageList = computed(() => configStore.languageList);
+const title = computed(() => configStore.loginSysName?.trim() || AppConfig.loginSysName);
+const sysLogo = computed(() => configStore.loginSysLogo?.trim() || '/image/lead-logo.png');
 
 const friendUrls = computed(() => {
-  return configStore.friendUrls || []
-})
+  return configStore.friendUrls || [];
+});
 
 // 获取系统状态在 app中处理XX
-const handleLanguageChange = (e) => {
-  formState.language = e
-  AppConfig.lang = e
-  appStore.SET_LANG(e)
-}
+const handleLanguageChange = e => {
+  formState.language = e;
+  AppConfig.lang = e;
+  appStore.SET_LANG(e);
+};
 
-const handleLogin = async (e) => {
-  self.loading = true
-  let user: IUserInfo = null
+const handleLogin = async e => {
+  self.loading = true;
+  let user: IUserInfo = null;
   try {
     if (props.loginHook) {
-      user = await props.loginHook(formState.username, formState.password)
+      user = await props.loginHook(formState.username, formState.password);
     } else {
       // 工业逻辑 登录
-      const userRet = await login(formState.username, formState.password)
+      const userRet = await login(formState.username, formState.password);
       user = {
-        token: userRet.token
-      }
+        token: userRet.token,
+      };
     }
     // user是获取的数据
   } catch (error) {
-    console.log('handle login exception', error)
+    console.log('handle login exception', error);
   } finally {
-    self.loading = false
+    self.loading = false;
   }
   if (!user) {
-    return
+    return;
   }
-  userStore.SET_INFO(user)
+  userStore.SET_INFO(user);
   //记住账号
-  ls.remove('userCode')
+  ls.remove('userCode');
   if (formState.remember === true) {
-    ls.set('userCode', formState.username)
+    ls.set('userCode', formState.username);
   }
   if (props.afterLogin) {
-    props.afterLogin()
+    props.afterLogin();
   } else {
     // 工业逻辑 登录之后设置值
 
     // 登录之后跳转
-    const redirect = route?.query?.redirect as string
+    const redirect = route?.query?.redirect as string;
     if (redirect) {
       // 登录成功，跳转redirect页面
-      window.location.href = decodeURIComponent(redirect)
+      window.location.href = decodeURIComponent(redirect);
       // router.push(decodeURIComponent(redirect))
     } else {
       // 登录成功，跳转至首页
-      window.location.href = '/'
+      window.location.href = '/';
       // router.push({ name: 'IndustryPlatformHome' })
     }
   }
-}
+};
 const openUrl = (url: string) => {
-  window.open(url, '_blank')
-}
+  window.open(url, '_blank');
+};
 </script>
 <style scoped lang="less">
 .ld-login {

@@ -16,6 +16,7 @@ export * from './api';
 export * from './bo';
 export * from './interface';
 export * from './enum';
+export * from './utils';
 // views
 export * from './views';
 export { LeadApp };

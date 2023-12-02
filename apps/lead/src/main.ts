@@ -12,6 +12,8 @@ import App from './App.vue';
 
 import 'uno.css';
 import 'ant-design-vue/dist/reset.css';
+import '@xdc/core/dist/style.css';
+import '@xdc/widgets/dist/style.css';
 // viewerjs
 import 'viewerjs/dist/viewer.css';
 import './global.less';
@@ -21,19 +23,19 @@ const app = createApp(App);
 setupStore(app);
 
 const registerComponents = app => {
-  const IconFont = createFromIconfontCN({
-    scriptUrl: 'low_code/iconfont/iconfont.js',
-  });
+  // const IconFont = createFromIconfontCN({
+  //   scriptUrl: 'low_code/iconfont/iconfont.js',
+  // });
+  // app.component('icon-font', IconFont);
   // 注册 组件
   for (const i in Icons) {
     app.component(i);
     const icon = (Icons as any)[i];
     app.component(i, icon);
   }
-  app.component('icon-font', IconFont);
+
   app.use(Antd);
   app.use(VueViewer);
-  debugger
   app.use(XdcWidgets);
   app.use(XdcCore);
 };

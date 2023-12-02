@@ -11,11 +11,13 @@
   </a-style-provider>
 </template>
 
-
 <script lang="ts" setup name="Antd-Pro-App">
+defineOptions({
+  name: 'AntdApp',
+});
 // 页面级别的APP
 import { useI18n } from 'vue-i18n';
-import { computed, provide, ref, watch} from 'vue';
+import { computed, provide, ref, watch } from 'vue';
 import { legacyLogicalPropertiesTransformer, theme as antdTheme } from 'ant-design-vue';
 import type { ConfigProviderProps } from 'ant-design-vue';
 import { useRoute } from 'vue-router';
@@ -63,7 +65,7 @@ if (lang) {
 }
 const themeConfig = computed(() => {
   return {
-    algorithm: [antdTheme.defaultAlgorithm ],
+    algorithm: [antdTheme.defaultAlgorithm],
     token: { colorPrimary: appStore.primaryColor, colorInfo: appStore.primaryColor },
   };
 });
@@ -79,6 +81,4 @@ provide(MenuStateSymbol, menuState);
 const locale = computed(() => {
   return i18n.getLocaleMessage(i18n.locale.value).antd as ConfigProviderProps['locale'];
 });
-
-
 </script>

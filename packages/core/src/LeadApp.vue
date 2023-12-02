@@ -3,13 +3,13 @@
 </template>
 
 <script setup lang="ts" name="App">
-import { AntdApp } from '@core/components';
+defineOptions({ name: 'LeadApp' });
 import { onBeforeMount, onMounted } from 'vue';
 import { getInitRouteOptions } from '@core/router/route';
 import { AppConfig } from '@core/bo/app-config';
 import { UserInfo } from '@core/bo/userInfo';
 import type { FnInitSysConfig, ISysInit } from '@core/interface/ILeadFrame';
-import { useAppStore, useConfigStore } from './store';
+import { useAppStore, useConfigStore } from '@core/store';
 import { IndustryOption } from './app-option';
 
 const { onInitConfig, onGetConfig } = getInitRouteOptions();

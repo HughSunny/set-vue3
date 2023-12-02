@@ -37,7 +37,6 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import { AppConfig } from '@core/bo';
 import { useConfigStore } from '@core/store';
 export default defineComponent({
@@ -95,10 +94,6 @@ export default defineComponent({
       appName,
       appLogo,
     };
-  },
-  components: {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
   },
 });
 </script>

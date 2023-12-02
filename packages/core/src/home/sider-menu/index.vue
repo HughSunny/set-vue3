@@ -29,7 +29,7 @@
     >
       <div v-if="!isMix" class="ant-pro-sider-logo">
         <router-link :to="{ name: 'IndustryPlatformHome' }">
-          <img :src="appLogo" alt="logo" style="height: 48px;"/>
+          <img :src="appLogo" alt="logo" style="height: 48px" />
           <!-- <h1 v-if="!collapsed">{{ appName }}</h1> -->
         </router-link>
       </div>
@@ -63,7 +63,7 @@
           <a-menu-item
             key="collapsed-button"
             :class="`${prefixCls}-collapsed-button`"
-            :title="null"
+            :title="undefined"
             @click="handleCollapse"
           >
             <template #icon>
@@ -83,12 +83,11 @@
 import type { PropType } from 'vue';
 import { useRoute } from 'vue-router';
 import { defineComponent, computed, toRefs } from 'vue';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import type { MenuTheme } from 'ant-design-vue';
-import { useProProvider } from '@core/hooks';
+import { useProProvider } from '@core/components/pro-provider/index';
 import BaseMenu, { BaseMenuProps } from '@core/home/base-menu/index.vue';
 import { findMenuChildren } from '@core/utils/menu-util';
-import type { LayoutType, Breakpoint } from '@core/interface/IBaseLayout'
+import type { LayoutType, Breakpoint } from '@core/interface/IBaseLayout';
 import { AppConfig } from '@core/bo';
 import { useConfigStore } from '@core/store';
 const SiderMenuProps = Object.assign({}, BaseMenuProps, {
@@ -196,10 +195,10 @@ export default defineComponent({
     const configStore = useConfigStore();
     const appName = computed(() => {
       return configStore.sysName || AppConfig.sysName;
-    })
+    });
     const appLogo = computed(() => {
       return configStore.sysLogo || '/image/logo.png';
-    })
+    });
     return {
       prefixCls,
       isMix,
@@ -216,10 +215,6 @@ export default defineComponent({
   },
   components: {
     BaseMenu,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    // [Menu.name]: Menu,
-    // [Menu.Item.name]: Menu.Item,
   },
 });
 </script>
@@ -228,4 +223,5 @@ export default defineComponent({
 #app-body {
   @import url('./index.less');
 }
-</style>@/@core/interface/IAntdPro
+</style>
+@core/interface/IAntdPro

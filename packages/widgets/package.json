@@ -19,11 +19,12 @@
     "typings"
   ],
   "dependencies": {
-    "ant-design-vue": "~4.0.7",
     "@ant-design/icons-vue": "^7.0.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/integrations": "^10.5.0",
     "@xdc/utils": "workspace:*",
+    "@xdc/core": "workspace:*",
+    "ant-design-vue": "~4.0.7",
     "dayjs": "^1.11.10",
     "rollup": "^3.25.2",
     "swiper": "~9.0.3",
@@ -31,12 +32,14 @@
     "viewerjs": "1.10.4",
     "vue": "~3.2.37",
     "vue-cropper": "^1.0.1",
-    "vue-router": "^4",
-    "vue-i18n": "^9.3.0"
+    "vue-i18n": "^9.3.0",
+    "vue-router": "^4"
   },
   "devDependencies": {
+    "@vue-macros/volar": "^0.17.4",
     "rollup": "^3.25.2",
     "rollup-plugin-commonjs": "^10.1.0",
+    "unplugin-vue-define-options": "^1.4.0",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-windicss": "^1.9.2",

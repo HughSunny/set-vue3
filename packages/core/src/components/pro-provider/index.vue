@@ -1,11 +1,11 @@
 <template>
-  <slot/>
+  <slot />
 </template>
 <script lang="ts">
 import type { RenderFunction, App, PropType, SetupContext, InjectionKey } from 'vue';
 import { reactive, readonly, provide, inject, toRefs, defineComponent } from 'vue';
-import type { ContentWidth } from '@core/interface/IBaseLayout'
-import {injectProConfigKey} from '@core/hooks/useProProvider';
+import type { ContentWidth } from '@core/interface/IBaseLayout';
+import { injectProConfigKey } from '@core/hooks/useProProvider';
 export default defineComponent({
   name: 'ProProvider',
   props: {
@@ -32,9 +32,5 @@ export default defineComponent({
 
     provide(injectProConfigKey, readonly(proConfigProvider));
   },
-
 });
 </script>
-
-
-

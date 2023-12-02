@@ -131,7 +131,6 @@ export default defineComponent({
   components: {
     SubMenu,
     TransformVnode,
-    UnorderedListOutlined,
   },
 });
 </script>

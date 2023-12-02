@@ -1,11 +1,11 @@
 <template>
-  <div style="display: flex;flex-direction: column;">
+  <div style="display: flex; flex-direction: column">
     测试页面HOME
     <a-button>223434324</a-button>
     <custom-btn></custom-btn>
     怎么回事
     <IndustryUpload></IndustryUpload>
-    {{ SetFieldType.Input }}
+    {{ AppConfig }}
     <a-form ref="rowFormRef" layout="vertical" :model="designFormData">
       <set-form-row-edit
         :form="rowFormRef"
@@ -18,6 +18,7 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
+import { AppConfig } from '@xdc/core';
 import { SetFieldType } from '@xdc/widgets';
 import checkData from '@/config/constants/checkbox-data.json';
 import cloudDeployment from '@/config/constants/cloud-deployment.json';
@@ -38,14 +39,14 @@ const dataFields = [
     span: 12,
     params: {
       // 参数，属于设计的参数
-      width: '50%',
+      width: '100%',
       type: 'email', // 子属性
       placeholder: '1111',
       disabled: true, // 不可编辑
       hidden: false, //没有实现
-
       prepend: 'prepend',
       append: {
+        label: 'append',
         model: 'appendSelect',
         type: 'select',
         params: { width: '100px' },

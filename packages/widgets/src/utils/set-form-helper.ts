@@ -4,7 +4,7 @@ import {
   type SetFormField,
   type SetFieldGenerateRow,
 } from '@/entity/set-form';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '@xdc/core';
 export const getFieldNoticeAction = (field: SetFormField) => {
   const { t } = useI18n();
   const fieldLabel = t(field.label + '');

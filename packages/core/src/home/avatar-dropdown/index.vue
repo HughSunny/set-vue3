@@ -5,7 +5,7 @@
     class="frame-header-user-popup"
     :overlayInnerStyle="{ padding: '0px' }"
   >
-    <span style="padding-left:12px;">
+    <span style="padding-left: 12px">
       <a-avatar
         size="small"
         :src="currentUser.avatar || defaultAvatar"
@@ -44,7 +44,7 @@
 
           <a-menu-item key="changePassword" @click="handleChangePwd">
             <template #icon><edit-outlined /></template>
-            {{ $t('sys.user.changePassword')}}
+            {{ $t('sys.user.changePassword') }}
             <i class="ant-menu-submenu-arrow" />
           </a-menu-item>
           <a-popover placement="left" :overlayInnerStyle="{ padding: '0px' }">
@@ -74,7 +74,7 @@
           <a-divider style="height: 2px; margin: 8px 0" />
           <a-menu-item key="logout" @click="handleLogout">
             <template #icon><logout-outlined /></template>
-             {{ $t('sys.action.logout')}}
+            {{ $t('sys.action.logout') }}
           </a-menu-item>
         </a-menu>
       </div>
@@ -89,36 +89,36 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'AvatarDropdown'
-})
-import { reactive, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-import { useAppStore } from '@core/store/app'
-import { useConfigStore } from '@core/store/config'
-import ChangePasswordModal from '@core/home/change-password'
-import { useUserStore } from '@core/store/user'
+  name: 'AvatarDropdown',
+});
+import { reactive, computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+import { useAppStore } from '@core/store/app';
+import { useConfigStore } from '@core/store/config';
+import ChangePasswordModal from '@core/home/change-password';
+import { useUserStore } from '@core/store/user';
 const props = defineProps({
   currentUser: {
     type: Object,
-    default: () => {}
+    default: () => {},
   },
   menu: {
     type: Boolean,
-    default: true
-  }
-})
-const appStore = useAppStore()
-const configStore = useConfigStore()
-const enableInternational = computed(() => configStore.enableInternational)
-const currentLang = computed(() => appStore.lang)
-const languageList = computed(() => configStore.languageList)
+    default: true,
+  },
+});
+const appStore = useAppStore();
+const configStore = useConfigStore();
+const enableInternational = computed(() => configStore.enableInternational);
+const currentLang = computed(() => appStore.lang);
+const languageList = computed(() => configStore.languageList);
 const defaultAvatar =
-  'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png'
+  'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png';
 
-const router = useRouter()
-const userStore = useUserStore()
-const { t } = useI18n()
+const router = useRouter();
+const userStore = useUserStore();
+const { t } = useI18n();
 
 const state = reactive({
   showChangePassword: false,
@@ -127,35 +127,35 @@ const state = reactive({
     {
       name: '工厂大脑-EPM',
       icon: 'EPM',
-      url: 'https://www.baidu.com' // env.xxx
+      url: 'https://www.baidu.com', // env.xxx
     },
     {
       name: '工厂大脑-SPC',
       icon: 'SPC',
-      url: 'www.baidu.com' // env.xxx
-    }
-  ]
-})
+      url: 'www.baidu.com', // env.xxx
+    },
+  ],
+});
 const handleLogout = () => {
   userStore.logoutAndJump().then(() => {
     // 登出之后 操作
-  })
-}
+  });
+};
 const handleChangePwd = () => {
-  state.showChangePassword = true
-}
-const handlePwdCallback = (success) => {
+  state.showChangePassword = true;
+};
+const handlePwdCallback = success => {
   // 修改密码回调
-}
+};
 const handleLanguageSelect = ({ key }) => {
-  appStore.SET_LANG(key)
-}
+  appStore.SET_LANG(key);
+};
 const handleToCenter = () => {
-  router.push({ path: '/account/center' })
-}
+  router.push({ path: '/account/center' });
+};
 const handleToSettings = () => {
-  router.push({ path: '/account/settings' })
-}
+  router.push({ path: '/account/settings' });
+};
 </script>
 
 <style lang="less">

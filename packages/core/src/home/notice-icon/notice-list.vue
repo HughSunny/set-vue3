@@ -46,8 +46,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-import type { NoticeItem } from './index'
-defineOptions({ name: 'NoticeList' })
+import type { NoticeItem } from './index';
+defineOptions({ name: 'NoticeList' });
 const props = defineProps({
   count: Number,
   showClear: Boolean,
@@ -56,19 +56,19 @@ const props = defineProps({
   emptyText: String,
   clearText: {
     type: String,
-    default: 'Empty'
+    default: 'Empty',
   },
-  viewMoreText:  {
+  viewMoreText: {
     type: String,
-    default: 'See more'
+    default: 'See more',
   },
-  title: String
-})
-const emit = defineEmits(['itemClick', 'clear', 'viewMore'])
+  title: String,
+});
+const emit = defineEmits(['itemClick', 'clear', 'viewMore']);
 
 const handleClick = (item: NoticeItem) => {
-  emit('itemClick', item)
-}
+  emit('itemClick', item);
+};
 </script>
 <style lang="less" scoped>
 .list {
