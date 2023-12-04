@@ -3,39 +3,41 @@ export type SuccessMessageMode = 'none' | 'success' | 'error' | undefined;
 
 export interface RequestOptions {
   // 将请求参数拼接到url
-  joinParamsToUrl?: boolean
+  joinParamsToUrl?: boolean;
   // 格式化请求参数时间
-  formatDate?: boolean
+  formatDate?: boolean;
   // 是否处理请求结果
-  isTransformResponse?: boolean
+  isTransformResponse?: boolean;
   // 是否返回本地响应头,需要获取响应头时使用此属性
-  isReturnNativeResponse?: boolean
+  isReturnNativeResponse?: boolean;
   // Whether to join url
-  joinPrefix?: boolean
+  joinPrefix?: boolean;
   // 接口地址，如果保留为空，则使用默认值
-  apiUrl?: string
+  apiUrl?: string;
   // 请求拼接路径
-  urlPrefix?: string
+  urlPrefix?: string;
   // 错误消息提示类型
-  errorMessageMode?: ErrorMessageMode
+  errorMessageMode?: ErrorMessageMode;
   // 成功消息提示类型
-  successMessageMode?: SuccessMessageMode
+  successMessageMode?: SuccessMessageMode;
+  // 成功的文本信息
+  successMessageText?: string;
   // 是否添加时间戳
-  joinTime?: boolean
-  ignoreCancelToken?: boolean
+  joinTime?: boolean;
+  ignoreCancelToken?: boolean;
   //是否在标头中发送令牌
-  withToken?: boolean
+  withToken?: boolean;
   //转化res返回数据数据模型，让其返回该会ICommonResModel{ code, data, message} 这样的数据模型
-  convertResponseData?: FnConvertResponseData
+  convertResponseData?: FnConvertResponseData;
   //ContentLanguage的类型
-  contentLanguageType?:string
+  contentLanguageType?: string;
 }
 export interface ICommonResModel {
-  code: string | number //结果编码
-  data: any //具体数据
-  message: string //结果信息
+  code: string | number; //结果编码
+  data: any; //具体数据
+  message: string; //结果信息
 }
-export type FnConvertResponseData = (res: any) => ICommonResModel
+export type FnConvertResponseData = (res: any) => ICommonResModel;
 
 export interface Result<T = any> {
   code: number;

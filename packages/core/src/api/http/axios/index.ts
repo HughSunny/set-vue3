@@ -7,19 +7,24 @@ import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
 import { useMessage } from '@core/hooks/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum, ConfigEnum, ContentLanguageTypeEnum } from '@core/enum/httpEnum'
-import { isString } from '@core/utils/is'
+import {
+  RequestEnum,
+  ResultEnum,
+  ContentTypeEnum,
+  ConfigEnum,
+  ContentLanguageTypeEnum,
+} from '@core/enum/httpEnum';
+import { isString } from '@core/utils/is';
 
-import { setObjToUrlParams, deepMerge } from '@core/utils'
-import { useI18n } from '@core/hooks/useI18n'
+import { setObjToUrlParams, deepMerge } from '@core/utils';
+import { useI18n } from '@core/hooks/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';
 import { useUserStore } from '@core/store/user';
-import { useAppStore } from '@core/store/app'
-import i18n from '@core/locale'
+import { useAppStore } from '@core/store/app';
+
+const { createMessage, createErrorModal } = useMessage();
 // # 接口前缀
 const urlPrefix = '';
-const { createMessage, createErrorModal } = useMessage();
-
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -28,65 +33,68 @@ const transform: AxiosTransform = {
    * @description: 处理请求数据。如果数据不是预期格式，可直接抛出错误
    */
   transformRequestHook: (res: AxiosResponse<Result>, options: RequestOptions) => {
-    const { t } = useI18n()
+    const { t } = useI18n();
     // const { t } = i18n.global
-    const { isTransformResponse, isReturnNativeResponse, convertResponseData } = options
+    const { isTransformResponse, isReturnNativeResponse, convertResponseData, successMessageText } =
+      options;
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
-      return res
+      return res;
     }
     // 不进行任何处理，直接返回
     // 用于页面代码可能需要直接获取code，data，message这些信息时开启
     if (!isTransformResponse) {
-      return res.data
+      return res.data;
     }
     // 错误的时候返回
     if (!res.data) {
       // return '[HTTP] Request has no return value';
-      throw new Error(t('sys.api.apiRequestFailed'))
+      throw new Error(t('sys.api.apiRequestFailed'));
     }
     //  这里 code，data，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
-    let commonRes: ICommonResModel = res.data as ICommonResModel
+    let commonRes: ICommonResModel = res.data as ICommonResModel;
     if (convertResponseData) {
-      commonRes = convertResponseData(res.data)
+      commonRes = convertResponseData(res.data);
     }
-    const { code, data, message } = commonRes
+    const { code, data, message } = commonRes;
     // 这里逻辑可以根据项目进行修改
     // data 可能为空
-    const hasSuccess = (code === 0 || code === '0') && (res.status === ResultEnum.SUCCESS_204 || res.status === ResultEnum.SUCCESS_200)
+    const hasSuccess =
+      (code === 0 || code === '0') &&
+      (res.status === ResultEnum.SUCCESS_204 || res.status === ResultEnum.SUCCESS_200);
     if (hasSuccess) {
-      if (message && options.successMessageMode === 'success') {
+      if (options.successMessageMode === 'success' && successMessageText) {
         //信息成功提示
-        createMessage.success(message)
+        createMessage.success(t(successMessageText));
       }
-      return data
+      return data;
     }
 
     // 在此处根据自己项目的实际情况对不同的code执行不同的操作
     // 如果不希望中断当前请求，请return数据，否则直接抛出异常即可
-    let timeoutMsg = ''
-    const store = useUserStore()
+    let timeoutMsg = '';
+    const store = useUserStore();
     switch (code) {
       case ResultEnum.TIMEOUT:
-        timeoutMsg = t('sys.api.timeoutMessage')
-        store.logoutAndJump(false)
-        break
+        timeoutMsg = t('sys.api.timeoutMessage');
+        store.logoutAndJump(false);
+        break;
       default:
         if (message) {
-          timeoutMsg = message
+          timeoutMsg = message;
         }
     }
 
     // errorMessageMode=‘modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
     // errorMessageMode='none' 一般是调用时明确表示不希望自动弹出错误提示
-    const errorMsg = timeoutMsg || t('sys.api.apiRequestFailed')
+    const errorMsg = timeoutMsg || t('sys.api.apiRequestFailed');
     if (options.errorMessageMode === 'modal') {
-      createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg })
+      createErrorModal({ title: t('sys.api.errorTip'), content: timeoutMsg });
     } else if (options.errorMessageMode === 'message') {
-      createMessage.error(errorMsg)
+      createMessage.error(errorMsg);
     }
 
-    throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'))
+    throw new Error(timeoutMsg || t('sys.api.apiRequestFailed'));
   },
 
   // 请求之前处理config
@@ -124,7 +132,10 @@ const transform: AxiosTransform = {
           config.params = undefined;
         }
         if (joinParamsToUrl) {
-          config.url = setObjToUrlParams(config.url as string, Object.assign({}, config.params, config.data));
+          config.url = setObjToUrlParams(
+            config.url as string,
+            Object.assign({}, config.params, config.data),
+          );
         }
       } else {
         // 兼容restful风格
@@ -139,33 +150,33 @@ const transform: AxiosTransform = {
    * @description: 请求拦截器处理
    */
   requestInterceptors: (config: Recordable, options) => {
-    const store = useUserStore()
+    const store = useUserStore();
     // 请求之前处理config
-    const token = store.getToken()
-    const tenantId = store.getTenantId()
-    const appStore = useAppStore()
+    const token = store.getToken();
+    const tenantId = store.getTenantId();
+    const appStore = useAppStore();
     const {
       authenticationScheme,
-      requestOptions: { contentLanguageType }
-    } = options
+      requestOptions: { contentLanguageType },
+    } = options;
     // 设置语言
     // config.headers[ConfigEnum.LANGUAGE] = appStore.lang
     config.headers[ConfigEnum.LANGUAGE] =
       contentLanguageType == ContentLanguageTypeEnum.CULTURE
         ? `App.Culture=c&3D${appStore.lang}|uic&3D${appStore.lang};`
-        : appStore.lang
+        : appStore.lang;
 
     // 增加vue3标记
-    config.headers[ConfigEnum.VERSION] = 'v3'
+    config.headers[ConfigEnum.VERSION] = 'v3';
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
-      config.headers.Authorization =authenticationScheme
+      config.headers.Authorization = authenticationScheme
         ? `${authenticationScheme} ${token}`
-        : token
-      config.headers[ConfigEnum.TOKEN] = token
-      config.headers[ConfigEnum.TENANT_ID] = tenantId || 0
+        : token;
+      config.headers[ConfigEnum.TOKEN] = token;
+      config.headers[ConfigEnum.TENANT_ID] = tenantId || 0;
     }
-    return config
+    return config;
   },
 
   /**
@@ -259,11 +270,11 @@ export function createAxios(opt?: Partial<CreateAxiosOptions>) {
           withToken: true,
           // 消息头Content-Language 的模式
           contentLanguageType: ContentLanguageTypeEnum.VALUE,
-        }
+        },
       },
-      opt || {}
-    )
-  )
+      opt || {},
+    ),
+  );
 }
 export const defHttp = createAxios();
 

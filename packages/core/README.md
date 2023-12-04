@@ -43,9 +43,9 @@ npm run lint
 │  ├─utils              -文件夹-工具方法
 │  ├─App.vue            -页面主文件,main.ts中mount它
 │  └─main.ts            -程序主文件，初始化操作
-├─types                 -文件夹-申明全局类型
+├─typings               -文件夹-申明全局类型  types->typing 比较好搜索
 ├─index.html            -站点主入口html
 ├─vite.config.ts        -VITE-打包编译文件
-├─tsconfig.json         -TS-编译配置文件
+├─tsconfig.json         -TS-编译配置文件 
 └─package.json          -配置/包管理文件
 

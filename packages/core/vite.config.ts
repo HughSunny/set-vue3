@@ -4,6 +4,7 @@ import dts from 'vite-plugin-dts';
 import vue from '@vitejs/plugin-vue';
 import jsx from '@vitejs/plugin-vue-jsx';
 import DefineOptions from 'unplugin-vue-define-options/vite';
+import { builtinModules } from 'node:module';
 
 import pkg from './package.json';
 
@@ -49,7 +50,7 @@ export default defineConfig({
     alias: {
       '@core': path.join(__dirname, './src'),
       '~': path.join(__dirname, './src/assets'),
-      '#': path.join(__dirname, './types'),
+      '#': path.join(__dirname, './typings'),
       vue: 'vue/dist/vue.esm-bundler.js',
       dayjs: resolve(__dirname, 'node_modules', 'dayjs'),
       'ant-design-vue': resolve(__dirname, 'node_modules', 'ant-design-vue'),

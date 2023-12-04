@@ -1,5 +1,5 @@
-import antd from 'ant-design-vue/es/locale/zh_CN'
-import dayjs from 'dayjs/locale/zh-cn'
+import antd from 'ant-design-vue/es/locale/zh_CN';
+import dayjs from 'dayjs/locale/zh-cn';
 
 // antd dayjs 也需要中文化
 const locales = {
@@ -8,12 +8,7 @@ const locales = {
   antd,
   dayjs,
 
-  // 其他相关中文语言
   测试数据: '测试数据',
-  // '事件': 'event',
-  // '属性': 'property',
-  // '动画': 'animation',
-  // '自定义': 'custom'
   'constants.name': '姓名',
   'constant.jobName': '任务名称',
 
@@ -23,13 +18,16 @@ const locales = {
       numberValue: '数字值',
       lengthNotMoreThan: '长度不能超过',
       totalCount: '共{total}条记录',
-      saveSuccess: '保存成功'
+      saveSuccess: '保存成功',
+      updateSuccess: '更新成功',
+      createSuccess: '创建成功',
+      deleteSuccess: '删除成功',
     },
     route: {
       reloadCurrentPage: '刷新当前页',
       closeOthers: '关闭其他',
       closeLeft: '关闭到左侧',
-      closeRight: '关闭到右侧'
+      closeRight: '关闭到右侧',
     },
     action: {
       query: '查询',
@@ -56,7 +54,7 @@ const locales = {
       logout: '退出登录',
 
       confirmDeleteThis: '确认删除该',
-      canInputKeywordSearch: '可输入关键词搜索'
+      canInputKeywordSearch: '可输入关键词搜索',
     },
     user: {
       account: '账号',
@@ -70,7 +68,7 @@ const locales = {
       newPassword: '新密码',
       oldPassword: '原密码',
       confirmPassword: '确认密码',
-      passwordNotSame: '与新密码不同,请检查'
+      passwordNotSame: '与新密码不同,请检查',
     },
     menu: {
       // '系统管理': '系统管理',
@@ -90,13 +88,13 @@ const locales = {
       notNull: '不能为空',
       yes: '是',
       no: '否',
-      exception: '异常'
+      exception: '异常',
     },
     module: {
       user: '用户',
       menu: '菜单',
       role: '角色',
-      menuPermission: '菜单权限'
+      menuPermission: '菜单权限',
     },
     api: {
       operationFailed: '操作失败',
@@ -118,10 +116,10 @@ const locales = {
       errMsg502: '网络错误!',
       errMsg503: '服务不可用，服务器暂时过载或维护!',
       errMsg504: '网络超时!',
-      errMsg505: 'http版本不支持该请求!'
-    }
-  }
-}
+      errMsg505: 'http版本不支持该请求!',
+    },
+  },
+};
 export default {
   ...locales,
 };
