@@ -12,7 +12,7 @@ const install = (app: App, options?: InitWidgetOptions) => {
 
 const _initWidgetOption: InitWidgetOptions = {};
 export interface InitWidgetOptions {
-  useI18n?: Function
+  useI18nHook?: Function;
   /**
    * 上传请求 (参数是)
    */

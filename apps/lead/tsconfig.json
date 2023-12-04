@@ -1,40 +1,53 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
+    "jsx": "preserve",
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "suppressImplicitAnyIndexErrors": false,
     "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
+    // "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
-    "importsNotUsedAsValues": "error",
-    "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
-    "lib": ["esnext", "dom"],
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings"
+    ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
+    "env.d.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "types/**/*.d.ts",
-    "types/**/*.ts",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
     "scripts/**/*.ts",
     "scripts/**/*.d.ts",
-    "vite.config.ts"
+    "vite.config.ts",
+    "node_modules/ant-design-vue/typings/global.d.ts",
   ],
-  "exclude": ["dist"],
+  "exclude": [
+    "dist"
+  ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

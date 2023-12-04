@@ -16,12 +16,13 @@ export interface ISysInit {
   loginSysLogo?: string; //登录页显示的logo
   headerImage?: string; //首页登录页面的背景图片
   friendUrls?: any[]; //登录页友好链
+  localLanguages?: Recordable<object>; // 本地多语言配置-优先级最高
   languageList: ILanguageItem[]; //需要指定类型
 
   sysStatusMsg?: any; // 系统状态消息
   enableOidc?: boolean;
   ssoConfig?: OauthOption; // sso配置
-  // 静态配置
+  // 静态配置 通过environment 直接加载
   // version: string // 当前系统版本
   // appCode?: string // 应用编码
   // baseUrl?: string

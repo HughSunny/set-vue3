@@ -1,12 +1,9 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router';
 import { defineAsyncComponent, h } from 'vue';
-import {RouteView} from '@xdc/core'
-// import commonRoutes from 'lead-lib/views/index.route'
+import { RouteView } from '@xdc/core';
+import commonRoutes from '@/views/index.route';
 
-const AsyncComponent =
-  defineAsyncComponent(
-    () => import('@/views/test.vue')
-  )
+const AsyncComponent = defineAsyncComponent(() => import('@/views/test.vue'));
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,12 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       icon: 'home-outlined',
       title: '工作台',
-      guest: true
+      guest: true,
     },
-    component: h(RouteView, null, () => h(AsyncComponent))
+    component: h(RouteView, null, () => h(AsyncComponent)),
   },
-  // ...commonRoutes,
+  ...commonRoutes,
+];
 
-]
-
-export default routes
+export default routes;

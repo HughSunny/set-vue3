@@ -35,7 +35,7 @@ function setI18nLanguage(lang) {
   return lang;
 }
 
-export const loadLanguageModule = lang => {
+export const loadCoreLanguageModule = lang => {
   const files = import.meta.glob('./lang/*.ts', { eager: true });
   const keys = Object.keys(files);
   for (let i = 0; i < keys.length; i++) {
@@ -48,14 +48,30 @@ export const loadLanguageModule = lang => {
   }
   return {};
 };
+
+const loadExtraLanguage = lang => {
+  return AppConfig.localLanguages[lang] || {};
+};
 export function loadLanguageAsync(lang = defaultLang): Promise<string> {
   return new Promise<string>(resolve => {
     const currentLocale = i18n.global;
     const locale = i18nLocaleMap[lang] || lang;
     if (!loadedLanguages.value.includes(locale)) {
-      const result = loadLanguageModule(locale);
-      getLanguageResources(lang).then(ret => {
-        const loadedLang = { ...result, ...ret };
+      const core = loadCoreLanguageModule(locale);
+      const extra = loadExtraLanguage(locale);
+      if (AppConfig.config.i18nServiceUrl) {
+        getLanguageResources(lang).then(ret => {
+          const loadedLang = { ...core, ...ret, ...extra };
+          // set vue-i18n lang
+          currentLocale.setLocaleMessage(locale, loadedLang);
+          // set dayjs lang
+          dayjs.locale(loadedLang.dayjsLocaleName);
+          // save loaded
+          loadedLanguages.value.push(locale);
+          return resolve(setI18nLanguage(locale));
+        });
+      } else {
+        const loadedLang = { ...core, ...extra };
         // set vue-i18n lang
         currentLocale.setLocaleMessage(locale, loadedLang);
         // set dayjs lang
@@ -63,7 +79,7 @@ export function loadLanguageAsync(lang = defaultLang): Promise<string> {
         // save loaded
         loadedLanguages.value.push(locale);
         return resolve(setI18nLanguage(locale));
-      });
+      }
     }
 
     return resolve(setI18nLanguage(locale));

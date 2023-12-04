@@ -5,8 +5,10 @@ import {
   type SetFieldGenerateRow,
 } from '@/entity/set-form';
 import { useI18n } from '@xdc/core';
+import { getInitOptions } from '@/index';
 export const getFieldNoticeAction = (field: SetFormField) => {
-  const { t } = useI18n();
+  const useI18nFunc = getInitOptions().useI18nHook || useI18n;
+  const { t } = useI18nFunc();
   const fieldLabel = t(field.label + '');
   const type = field.type;
   if (
@@ -38,7 +40,8 @@ export const getFieldNoticeAction = (field: SetFormField) => {
 };
 
 export const getFieldWarningNotice = (field: SetFormField) => {
-  const { t } = useI18n();
+  const useI18nFunc = getInitOptions().useI18nHook || useI18n;
+  const { t } = useI18nFunc();
   const action = getFieldNoticeAction(field);
 
   if (action) {
@@ -50,7 +53,8 @@ export const getFieldWarningNotice = (field: SetFormField) => {
 };
 
 export function validateField(fields: SetFormField[], key, value) {
-  const { t } = useI18n();
+  const useI18nFunc = getInitOptions().useI18nHook || useI18n;
+  const { t } = useI18nFunc();
 
   const fieldMatch: SetFormField = fields.find(field => field.model === key) as SetFormField;
   if (!fieldMatch) {
@@ -148,7 +152,8 @@ export function generateRuleField<T extends SetFormField>(fields: T[], field: T)
 }
 
 export const getFieldExtraRules = (field: SetFormField) => {
-  const { t } = useI18n();
+  const useI18nFunc = getInitOptions().useI18nHook || useI18n;
+  const { t } = useI18nFunc();
   const rules: any[] = [];
   const { params, type } = field;
   if (params?.maxLength && (type === SetFieldType.Input || type === SetFieldType.InputArea)) {

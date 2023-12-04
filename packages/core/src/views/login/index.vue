@@ -171,7 +171,9 @@ const self = reactive({
 const enableInternational = computed(() => configStore.enableInternational);
 const languageList = computed(() => configStore.languageList);
 const title = computed(() => configStore.loginSysName?.trim() || AppConfig.loginSysName);
-const sysLogo = computed(() => configStore.loginSysLogo?.trim() || '/image/lead-logo.png');
+const sysLogo = computed(() => {
+  return configStore.loginSysLogo || '/image/lead-logo.png';
+});
 
 const friendUrls = computed(() => {
   return configStore.friendUrls || [];
@@ -238,7 +240,7 @@ const openUrl = (url: string) => {
 .ld-login {
   //   display: block;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: auto;
   //   position: relative;
   background-image: url(/image/mes-login-bg.jpg);

@@ -40,5 +40,5 @@ export default {
   rptServiceUrl: 'RPTService',
   reportService: 'ReportService',
   oauthServiceUrl: 'AuthService',
-  apiServiceUrl: 'ApiService'
-}
+  apiServiceUrl: 'ApiService',
+};

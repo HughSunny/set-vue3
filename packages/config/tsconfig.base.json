@@ -1,4 +1,5 @@
 {
+  // "extends": "@vue/tsconfig/tsconfig.json", //复制品
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Base",
   "compilerOptions": {

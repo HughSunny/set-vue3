@@ -1,4 +1,5 @@
 {
+  // "extends": "@vue/tsconfig/tsconfig.dom.json", //复制品
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "lib": [

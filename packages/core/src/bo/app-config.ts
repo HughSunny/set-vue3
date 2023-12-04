@@ -29,6 +29,7 @@ export const defaultValue = {
   opPermission: [],
   menuButtonRole: [],
   sysConfig: {},
+  localLanguages: {},
   languageList: [],
   uploadStorePath: 'Files',
   oauthOption: {
@@ -98,7 +99,7 @@ export interface IAppConfig {
   //
   menuOps: any[]; // 当前菜单的操作权限
   menuButtonRole: any[]; // 页面的按钮权限
-
+  localLanguages: Recordable<object>; //语言列表
   languageList: ILanguageItem[]; //语言列表
 
   sysType: string; //系统类型 MDM or MES or INDUSTRY

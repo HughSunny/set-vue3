@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import type { FnAfterLogin, FnLoginHook } from '@xdc/core';
 import { arrayToTree, MenuTypeEnum, reduceArr, treeToArray, useMessage } from '@xdc/core';
-import http from '@/api/http';
+import http from '@/api/http-mdm';
 import { login } from '@/api/mdm-services/uc';
 
 defineOptions({
@@ -121,3 +121,4 @@ const iterationDeleteMenuChildren = arr => {
 </script>
 
 <style lang="less" scoped></style>
+@/api/http-mdm

@@ -1,0 +1,14 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "display": "vue config",
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**"
+  ]
+}
