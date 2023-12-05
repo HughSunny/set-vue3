@@ -157,32 +157,3 @@ const handleToSettings = () => {
   router.push({ path: '/account/settings' });
 };
 </script>
-
-<style lang="less">
-body {
-  @import './header-dropdown.less';
-  .ant-pro-header-account-name {
-    margin-left: 8px;
-    vertical-align: center;
-  }
-  .ant-pro-header-account-avatar {
-    margin: 12px 8px 12px 0;
-    color: @primary-color;
-    vertical-align: top;
-    background: hsla(0, 0%, 100%, 0.85);
-  }
-  .frame-header-user-overlay {
-    background: white;
-    display: flex;
-    flex-direction: column;
-  }
-  .frame-header-user-overlay-menu {
-    border-right: 0px solid rgba(5, 5, 5, 0.06) !important;
-  }
-  .frame-header-user-popup {
-    ::v-deep(.ant-popover-inner) {
-      padding: 0px;
-    }
-  }
-}
-</style>

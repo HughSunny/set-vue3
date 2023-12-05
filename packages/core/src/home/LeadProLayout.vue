@@ -89,7 +89,7 @@ import { useUserStore } from '@core/store/user'
 import { useConfigStore } from '@core/store/config'
 
 export default defineComponent({
-  name: 'BasicLayout',
+  name: 'LeadProLayout',
   setup() {
     const userStore = useUserStore()
     const { t } = useI18n()
@@ -125,9 +125,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="less">
-body {
-  @import './index.less';
-}
-</style>

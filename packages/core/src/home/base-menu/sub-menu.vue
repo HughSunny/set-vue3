@@ -1,5 +1,5 @@
 <template>
-  <a-sub-menu v-if="!menu.meta?.hideInMenu" :key="menu.path" class="main-layout-submenu">
+  <a-sub-menu v-if="!menu.meta?.hideInMenu" :key="menu.path" class="xdc-main-base-submenu">
     <template #icon>
       <template v-if="menu.meta.icon">
         <template v-if="menu.meta.icon.startsWith('fa')">
@@ -10,12 +10,12 @@
           <UnorderedListOutlined />
         </template>
         <!-- <div v-else> {{ menu.meta.icon }}</div> -->
-        <component v-else :is="menu.meta.icon" />
+        <component :is="menu.meta.icon" v-else />
       </template>
 
       <component
-        v-else-if="collapsed && menu.meta.collapsedIcon !== undefined"
         :is="menu.meta.collapsedIcon"
+        v-else-if="collapsed && menu.meta.collapsedIcon !== undefined"
         :key="menu.meta.collapsedIcon"
       />
     </template>
@@ -25,9 +25,9 @@
     </template>
     <template v-for="child in menu.children">
       <a-menu-item
-        @mouseenter="$emit('itemHover', { key: child.path })"
         v-if="(!child.children || child.meta?.hideChildrenInMenu) && !child.meta?.hideInMenu"
         :key="child.path"
+        @mouseenter="$emit('itemHover', { key: child.path })"
       >
         <template #icon>
           <template v-if="child.meta.icon">
@@ -35,11 +35,11 @@
               <i style="color: white" :class="child.meta.icon"></i>
             </template>
 
-            <component v-else :is="child.meta.icon" />
+            <component :is="child.meta.icon" v-else />
           </template>
           <component
-            v-else-if="collapsed && child.meta.collapsedIcon !== undefined"
             :is="child.meta.collapsedIcon"
+            v-else-if="collapsed && child.meta.collapsedIcon !== undefined"
             :key="child.meta.collapsedIcon"
           />
         </template>
@@ -47,27 +47,28 @@
         <!-- {{ $t('1234') }} 11 -->
       </a-menu-item>
       <template v-else>
-        <sub-menu :menu="child" :key="child.path" :collapsed="collapsed" />
+        <XdcBaseSubmenu :key="child.path" :menu="child" :collapsed="collapsed" />
       </template>
     </template>
   </a-sub-menu>
 </template>
 
-<script lang="ts" name="SubMenu" setup>
-import { useI18n } from 'vue-i18n'
-import { UnorderedListOutlined } from '@ant-design/icons-vue'
+<script lang="ts" name="XdcBaseSubmenu" setup>
+defineOptions({
+  name: 'XdcBaseSubmenu',
+});
+import { useI18n } from 'vue-i18n';
+import { UnorderedListOutlined } from '@ant-design/icons-vue';
 defineProps({
   menu: {
     type: Object,
-    required: true
+    required: true,
   },
   collapsed: {
     type: Boolean,
-    default: false
-  }
-})
-defineEmits(['itemHover'])
-const { t } = useI18n()
+    default: false,
+  },
+});
+defineEmits(['itemHover']);
+const { t } = useI18n();
 </script>
-
-<style scoped></style>

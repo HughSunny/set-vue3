@@ -13,7 +13,7 @@ import { logout } from '@core/api/services/uc';
 import { type IFetchMenu, type MetaPermission } from '@core/interface/IRouter';
 import { genRoutersByFetchMenu, getInitRouteOptions, resetRouter } from '@core/router/route';
 import { genMenuInfo, type MenuInfo } from '@core/utils/menu-util';
-import { IndustryOption } from '../app-option';
+import { IndustryOption } from '../app/app-option';
 import { getAuthManager } from '../utils/auth-manager';
 
 export interface IUserState {

@@ -26,5 +26,3 @@ const handleClick = () => {
   router.push('/grid-panel1/111');
 };
 </script>
-
-<style lang="less" scoped></style>

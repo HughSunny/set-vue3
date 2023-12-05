@@ -17,5 +17,3 @@ const router = useRouter()
 const route = useRoute()
 const title = computed(() => route.meta?.title)
 </script>
-
-<style lang="less" scoped></style>

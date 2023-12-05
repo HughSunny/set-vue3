@@ -46,9 +46,3 @@ const wide = computed(() => (props.contentWidth || proContentWidth?.value) === '
 
 const childClassNames = ref(`${prefixedCls}-children`);
 </script>
-
-<style lang="less">
-#app-body {
-  @import url('./index.less');
-}
-</style>

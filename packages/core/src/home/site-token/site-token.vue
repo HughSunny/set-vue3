@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup name="site-token-view">
 defineOptions({
-  name: 'site-token-view',
+  name: 'SiteTokenView',
 });
 import { useSiteToken } from '@core/hooks';
 useSiteToken();

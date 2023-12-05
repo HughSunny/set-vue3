@@ -70,6 +70,7 @@ export function loadLanguageAsync(lang = defaultLang): Promise<string> {
           loadedLanguages.value.push(locale);
           return resolve(setI18nLanguage(locale));
         });
+        return;
       } else {
         const loadedLang = { ...core, ...extra };
         // set vue-i18n lang

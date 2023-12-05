@@ -2,7 +2,7 @@ import path from 'node:path';
 import ejs from 'ejs';
 import fs from 'fs-extra';
 import _ from 'lodash';
-import { logger, prettierFormat, getFolderNames } from '../../../scripts/utils';
+import { logger, prettierFormat, getFolderNames, genModuleStyle } from '../../../scripts/utils';
 const appPackage = require('../package.json');
 const PACKAGE_PATH = path.join(__dirname, '../');
 const srcComponentPath = 'src/components';
@@ -133,6 +133,10 @@ export {};
 
 async function run() {
   const components = await genComponentsIndex();
+  await genModuleStyle(PACKAGE_PATH, ['components', 'home', 'views'], {
+    inject: `// third libary
+     `,
+  });
   await genGlobalDts(components);
 }
 

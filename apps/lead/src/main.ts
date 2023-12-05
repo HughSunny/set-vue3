@@ -15,8 +15,9 @@ import { getInitConfig } from './init';
 import 'uno.css';
 import 'ant-design-vue/dist/reset.css';
 import 'nprogress/nprogress.css'; // progress bar style
-import '@xdc/core/dist/style.css';
 import '@xdc/widgets/dist/style.css';
+import '@xdc/core/dist/style.css';
+import '@xdc/core/dist/src/index.less';
 // viewerjs
 import 'viewerjs/dist/viewer.css';
 import './global.less';
@@ -44,6 +45,7 @@ const registerComponents = app => {
   app.use(VueViewer);
   app.use(XdcWidgets, widgetOption);
   app.use(XdcCore);
+
 };
 // 初始化 pinia
 setupStore(app);

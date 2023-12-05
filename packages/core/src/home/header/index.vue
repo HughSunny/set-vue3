@@ -194,9 +194,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="less">
-#app-body {
-  @import url('./index.less');
-}
-</style>

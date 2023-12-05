@@ -8,5 +8,5 @@
 
 // 环境变量 TypeScript的智能提示
 interface ImportMetaEnv {
-  _BASE_URL: string,
+  _BASE_URL: string;
 }

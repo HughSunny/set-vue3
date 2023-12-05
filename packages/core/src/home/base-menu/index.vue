@@ -1,24 +1,24 @@
 <template>
   <a-menu
-    class="main-base-menu"
+    class="xdc-main-base-menu"
     :theme="theme"
     :mode="mode"
     :open-keys="openKeys"
     :selected-keys="selectedKeys"
+    v-bind="dynamicProps"
     @openChange="handleOpenChange"
     @select="handleSelect"
-    v-bind="dynamicProps"
     @mouseenter="$emit('mouseenter', $event)"
     @mouseleave="$emit('mouseleave', $event)"
   >
     <template v-for="menu in menus">
       <transform-vnode
-        :key="menu.path"
         v-if="(!menu.children || menu.meta?.hideChildrenInMenu) && !menu.meta?.hideInMenu"
+        :key="menu.path"
         :by="customItem"
         :opt="menu"
       >
-        <a-menu-item @mouseenter="$emit('itemHover', { key: menu.path })" :key="menu.path">
+        <a-menu-item :key="menu.path" @mouseenter="$emit('itemHover', { key: menu.path })">
           <template #icon>
             <template v-if="menu.meta.icon">
               <template v-if="menu.meta.icon.startsWith('fa')">
@@ -28,7 +28,7 @@
                 <!-- x 开头的图标 -->
                 <UnorderedListOutlined />
               </template>
-              <component v-else :is="menu.meta.icon" />
+              <component :is="menu.meta.icon" v-else />
             </template>
             <template v-else-if="collapsed && menu.meta.collapsedIcon !== undefined">
               <component :is="menu.meta.collapsedIcon" />
@@ -38,11 +38,11 @@
         </a-menu-item>
       </transform-vnode>
       <template v-else-if="menu.children">
-        <sub-menu
+        <XdcBaseSubmenu
           :key="menu.path"
-          @itemHover="$emit('itemHover', $event)"
           :menu="menu"
           :collapsed="collapsed"
+          @itemHover="$emit('itemHover', $event)"
         />
       </template>
     </template>
@@ -56,7 +56,7 @@ import { defineComponent, computed } from 'vue';
 import { UnorderedListOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 import type { RouteProps } from '@core/interface/IRouter';
-import SubMenu from './sub-menu.vue';
+import XdcBaseSubmenu from './sub-menu.vue';
 import { TransformVnode } from '@core/components';
 
 export function useRootSubmenuKeys(menus: RouteProps[]): ComputedRef<string[]> {
@@ -102,6 +102,10 @@ export const BaseMenuProps = {
 
 export default defineComponent({
   name: 'BaseMenu',
+  components: {
+    XdcBaseSubmenu,
+    TransformVnode,
+  },
   props: { ...BaseMenuProps },
   emits: ['update:openKeys', 'update:selectedKeys', 'mouseenter', 'mouseleave', 'itemHover'],
   setup(props, { emit }) {
@@ -128,19 +132,5 @@ export default defineComponent({
       handleTest: () => {},
     };
   },
-  components: {
-    SubMenu,
-    TransformVnode,
-  },
 });
 </script>
-<style scoped lang="less">
-.main-base-menu {
-  background: @menu-dark-bg;
-  // ::deep(.ant-menu-dark .ant-menu-inline.ant-menu-sub) {
-
-  :deep(.ant-menu-inline) {
-    background: @menu-dark-sub-bg !important;
-  }
-}
-</style>

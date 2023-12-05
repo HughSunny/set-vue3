@@ -6,10 +6,10 @@
     v-model:open="visible"
     overlayClassName="pro-components-header-notice-icon-index-container"
   >
-    <span :class="['noticeButton', { opened: visible }]">
-      <a-badge :count="count" :style="{ boxShadow: 'none' }" class="badge">
+    <span :class="['xdc-header-notice-noticeButton', { opened: visible }]">
+      <a-badge :count="count" :style="{ boxShadow: 'none' }" class="xdc-header-notice-badge">
         <slot name="bell">
-          <bell-outlined class="icon" />
+          <bell-outlined class="xdc-header-notice-icon" />
         </slot>
       </a-badge>
     </span>
@@ -35,54 +35,3 @@ const props = defineProps({
 })
 const visible = ref(false)
 </script>
-<style lang="less" scoped>
-.popover {
-  position: relative;
-  width: 336px;
-}
-
-.noticeButton {
-  display: inline-block;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.icon {
-  padding: 4px;
-  vertical-align: middle;
-}
-
-.badge {
-  font-size: 16px;
-}
-
-.tabs {
-  :deep(.ant-tabs-nav-list) {
-    margin: auto;
-  }
-  :deep(.ant-tabs-nav-scroll) {
-    text-align: center;
-  }
-  :deep(.ant-tabs-bar) {
-    margin-bottom: 0;
-  }
-}
-</style>
-<style lang="less">
-.pro-components-header-notice-icon-index-container > * {
-  position: relative;
-  width: 336px;
-  background-color: @popover-bg;
-  border-radius: 4px;
-  box-shadow: @shadow-1-down;
-}
-
-@media screen and (max-width: @screen-xs) {
-  .pro-components-header-notice-icon-index-container {
-    width: 100% !important;
-  }
-  .pro-components-header-notice-icon-index-container > * {
-    width: 100% !important;
-    border-radius: 0 !important;
-  }
-}
-</style>

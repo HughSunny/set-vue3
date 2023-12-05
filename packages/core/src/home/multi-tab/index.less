@@ -1,0 +1,58 @@
+@import '../index.less';
+@pro-layout-header-height: 48px;
+@multi-tab-height: 50px;
+.ant-pro-multi-tab-wrap {
+  background: @component-background;
+}
+.ant-pro-multi-tab-wrap :deep(.ant-tabs-nav) {
+  padding-left: 16px;
+  margin-bottom: 3px;
+  .ant-tabs-tab {
+    padding: 0;
+    > div {
+      display: flex;
+    }
+    .ant-pro-multi-tab-reload-btn {
+      margin-right: 0;
+      margin-left: 8px;
+      color: @text-color-secondary;
+      font-size: 12px;
+
+      &:hover {
+        color: @primary-color;
+      }
+    }
+    .ant-pro-multi-tab-close-btn {
+      margin-right: 0;
+      margin-left: 8px;
+      color: @text-color-secondary;
+      font-size: 12px;
+    }
+  }
+  .ant-pro-multi-tab-title {
+    padding: 0 16px;
+  }
+}
+.ant-pro-multi-tab-fixed {
+  width: 100%;
+  height: @multi-tab-height;
+  background: transparent;
+}
+.ant-pro-multi-tab-wrap-fixed {
+  position: fixed;
+  top: @pro-layout-header-height;
+  right: 0;
+  z-index: 9;
+  width: 100%;
+  height: @multi-tab-height;
+  transition: width 0.2s;
+}
+.ant-pro-multi-tab-dropdown-menu-btn {
+  margin-right: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    color: @primary-color;
+  }
+}

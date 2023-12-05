@@ -17,16 +17,16 @@ import {
 import type { RouteLocationNormalized, RouteRecordNormalized } from 'vue-router';
 import { useRouter, useRoute } from 'vue-router';
 import { message } from 'ant-design-vue';
-import { eagerComputed } from '@vueuse/core'
-import { findLast, omit } from 'lodash-es'
-import type { MaybeRef } from '@core/interface/IBaseLayout'
+import { eagerComputed } from '@vueuse/core';
+import { findLast, omit } from 'lodash-es';
+import type { MaybeRef } from '@core/interface/IBaseLayout';
 import type {
   CacheItem,
   MultiTabStore,
   CallerFunction,
-  CacheKey
-} from '@core/interface/IMultiTabStore'
-import { flattenChildren } from '@core/utils/vnode-util'
+  CacheKey,
+} from '@core/interface/IMultiTabStore';
+import { flattenChildren } from '@core/utils/vnode-util';
 import { useAppStore } from '@core/store/app';
 
 export type Options = {
@@ -71,10 +71,10 @@ const findMatchedRoute = (
   route: RouteLocationNormalized,
 ): RouteRecordNormalized | RouteLocationNormalized => {
   const matched: RouteRecordNormalized[] = route.matched || [];
-  const lastMergeRoute = findLast(matched, (m) => {
-    return m.meta && m.meta.mergeTab
-  }) as RouteRecordNormalized
-  return lastMergeRoute || route
+  const lastMergeRoute = findLast(matched, m => {
+    return m.meta && m.meta.mergeTab;
+  }) as RouteRecordNormalized;
+  return lastMergeRoute || route;
 };
 const componentMap: Record<string, DefineComponent> = {};
 // 创建消费端
@@ -128,13 +128,13 @@ export const MultiTabStoreConsumer = defineComponent({
       if (!component) {
         return null;
       }
-      const tabRoute = findMatchedRoute(route)
+      const tabRoute = findMatchedRoute(route);
       // console.log('TAB--------------------->render tabRoute', tabRoute)
       // 是否存在 cache
       let cacheItem = hasCache(tabRoute.path);
       // 标签的title是路由meta中的titie 或者 route中参数的name
-      const tabTitle = (tabRoute?.meta?.title as string) || tabRoute.params?.name
-      const cacheRoute = { ...omit(route, ['matched']) }
+      const tabTitle = (tabRoute?.meta?.title as string) || tabRoute.params?.name;
+      const cacheRoute = { ...omit(route, ['matched']) };
       if (!cacheItem) {
         cacheItem = {
           path: route.path,
@@ -143,8 +143,8 @@ export const MultiTabStoreConsumer = defineComponent({
           tabTitle,
           tabPath: tabRoute.path,
           lock: !!route.meta.lock,
-          lastActiveTime: Date.now()
-        }
+          lastActiveTime: Date.now(),
+        };
         multiTab.value ? state.cacheList.push(cacheItem) : (state.cacheList = [cacheItem]);
       } else if (cacheItem.path !== route.path) {
         // 处理 mergeTab 逻辑
@@ -155,8 +155,8 @@ export const MultiTabStoreConsumer = defineComponent({
           tabTitle,
           tabPath: tabRoute.path,
           lock: !!route.meta.lock,
-          lastActiveTime: Date.now()
-        } as CacheItem)
+          lastActiveTime: Date.now(),
+        } as CacheItem);
       } else {
         cacheItem.lastActiveTime = Date.now();
       }
@@ -180,8 +180,8 @@ export const MultiTabStoreConsumer = defineComponent({
       componentMap[cacheItem.key] = newCom;
       return createVNode(KeepAlive, multiTab.value ? { exclude } : { include: [] }, {
         default: () =>
-          h(newCom, { key: cacheItem!.key + route.fullPath.replace(route.hash || '', '') })
-      })
+          h(newCom, { key: cacheItem!.key + route.fullPath.replace(route.hash || '', '') }),
+      });
     };
   },
 });

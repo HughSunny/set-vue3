@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 import CustomBtn from './custom-btn/index.vue';
 import DraggableModal from './draggable-modal/index.vue';
+import IconPicker from './icon-picker/index.vue';
 import IndustryUpload from './industry-upload/index.vue';
 import SetFieldTypeEdit from './set-form/set-field-type/edit.vue';
 import SetFieldTypeViewer from './set-form/set-field-type/viewer.vue';
@@ -14,6 +15,7 @@ import SetFormTableViewer from './set-form/set-form-table/viewer.vue';
 export {
   CustomBtn,
   DraggableModal,
+  IconPicker,
   IndustryUpload,
   SetFieldTypeEdit,
   SetFieldTypeViewer,
@@ -28,6 +30,7 @@ export {
 const install = (app: App) => {
   app.component(CustomBtn.name, CustomBtn);
   app.component(DraggableModal.name, DraggableModal);
+  app.component(IconPicker.name, IconPicker);
   app.component(IndustryUpload.name, IndustryUpload);
   app.component(SetFieldTypeEdit.name, SetFieldTypeEdit);
   app.component(SetFieldTypeViewer.name, SetFieldTypeViewer);

@@ -171,13 +171,5 @@ export default defineComponent({
       config,
     };
   },
-  components: {
-  },
 });
 </script>
-
-<style lang="less">
-#app-body {
-  @import url('./index.less');
-}
-</style>

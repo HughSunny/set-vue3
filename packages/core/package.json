@@ -1,6 +1,6 @@
 {
   "name": "@xdc/core",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "XDC平台核心库",
   "author": "Hugh.Shi",
   "license": "ISC",
@@ -18,10 +18,11 @@
   "repository": {},
   "scripts": {
     "gen": "ts-node scripts/gen.js",
-    "build": "vite build -d",
+    "build": "cross-env NODE_ENV=production vite build",
     "build:clean": "rimraf ./dist",
-    "build:all": "run-s build:clean gen build",
-    "build1": "run-p type-check build",
+    "build:all": "run-s build:clean gen build build:style",
+    "build-check": "run-p type-check build",
+    "build:style": "ts-node ./scripts/style.ts",
     "type-check": "vue-tsc --noEmit -p tsconfig.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"

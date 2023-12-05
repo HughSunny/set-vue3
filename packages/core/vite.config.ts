@@ -12,6 +12,7 @@ const resolve = (...paths: string[]) => {
 };
 // @ts-ignore
 const plugins: PluginOption[] = [vue(), jsx(), DefineOptions()];
+console.log('process.env.VITE_DEBUG', process.env.VITE_DEBUG);
 if (!process.env.VITE_DEBUG) {
   plugins.push(dts());
 }
@@ -42,18 +43,18 @@ export default defineConfig({
       'ant-design-vue': resolve(__dirname, 'node_modules', 'ant-design-vue'),
     },
   },
-  css: {
-    preprocessorOptions: {
-      less: {
-        // ANTD-PRO 初始化导入变量参数 不能少
-        modifyVars: {
-          hack: 'true; @import "~/styles/variables.less";',
-        },
-        // DO NOT REMOVE THIS LINE
-        javascriptEnabled: true,
-      },
-    },
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     less: {
+  //       // ANTD-PRO 初始化导入变量参数 不能少
+  //       modifyVars: {
+  //         hack: 'true; @import "./styles/variables.less";',
+  //       },
+  //       // DO NOT REMOVE THIS LINE
+  //       javascriptEnabled: true,
+  //     },
+  //   },
+  // },
 
   esbuild: {
     pure: ['console.log'],

@@ -3,6 +3,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CustomBtn: typeof import('@xdc/widgets')['CustomBtn'];
     DraggableModal: typeof import('@xdc/widgets')['DraggableModal'];
+    IconPicker: typeof import('@xdc/widgets')['IconPicker'];
     IndustryUpload: typeof import('@xdc/widgets')['IndustryUpload'];
     SetFieldTypeEdit: typeof import('@xdc/widgets')['SetFieldTypeEdit'];
     SetFieldTypeViewer: typeof import('@xdc/widgets')['SetFieldTypeViewer'];

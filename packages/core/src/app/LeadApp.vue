@@ -52,5 +52,3 @@ onMounted(async () => {
   console.log('App onMounted -----------------------------------------------done');
 });
 </script>
-
-<style lang="less" scoped></style>

@@ -52,18 +52,18 @@ export default defineConfig(({ command, mode }) => {
         // 'store/plugins/expire',
       ],
     },
-    // css: {
-    //   preprocessorOptions: {
-    //     less: {
-    //       // ANTD-PRO 初始化导入变量参数 不能少
-    //       modifyVars: {
-    //         hack: 'true; @import "~/styles/variables.less";',
-    //       },
-    //       // DO NOT REMOVE THIS LINE
-    //       javascriptEnabled: true,
-    //     },
-    //   },
-    // },
+    css: {
+      preprocessorOptions: {
+        less: {
+          // ANTD-PRO 初始化导入变量参数 不能少
+          modifyVars: {
+            hack: 'true; @import "./src/styles/variables.less";',
+          },
+          // DO NOT REMOVE THIS LINE
+          javascriptEnabled: true,
+        },
+      },
+    },
     define: {
       _APP_CONFIG_: mode === 'production' ? JSON.stringify(envProd) : JSON.stringify(env),
     },

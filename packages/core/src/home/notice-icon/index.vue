@@ -1,6 +1,6 @@
 <template>
   <notice-dropdown class="action" :count="userInfo && unreadCount" :loading="loading">
-    <a-tabs v-model:activeKey="activeKey" class="notice-tab" centered>
+    <a-tabs v-model:activeKey="activeKey" class="xdc-header-notice-tab" centered>
       <template
         v-for="{ key, title, emptyText, showViewMore, showClear } in noticesConfig"
         :key="key"
@@ -199,7 +199,7 @@ const handleNoticeClear = (title: string, key: string) => {
 </script>
 
 <style lang="less" scoped>
-.notice-tab :deep(.ant-tabs-nav-list) {
+.xdc-header-notice-tab :deep(.ant-tabs-nav-list) {
   .ant-tabs-tab {
     flex: 1;
     justify-content: center;

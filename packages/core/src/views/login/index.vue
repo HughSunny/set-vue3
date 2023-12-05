@@ -1,7 +1,7 @@
 <template>
-  <a-layout class="ld-login">
+  <a-layout class="lead-login-layout">
     <a-layout-header style="height: 150px; background: transparent; width: 100%">
-      <div class="login-header">
+      <div class="lead-login-header">
         <div class="left">
           <img class="login-logo" :src="sysLogo" alt="logo" />
           <h2 class="login-title">{{ $t(logoTitle) }}</h2>
@@ -20,8 +20,8 @@
       </div>
     </a-layout-header>
     <a-layout style="background: transparent">
-      <div class="login-content">
-        <div class="login-area">
+      <div class="lead-login-content">
+        <div class="lead-login-area">
           <div class="area-title">{{ title }}</div>
           <a-divider></a-divider>
           <div class="area-main">
@@ -236,18 +236,18 @@ const openUrl = (url: string) => {
   window.open(url, '_blank');
 };
 </script>
-<style scoped lang="less">
-.ld-login {
+<style lang="less" scoped>
+.lead-login-layout {
   //   display: block;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
   //   position: relative;
   background-image: url(/image/mes-login-bg.jpg);
   background-size: cover;
 }
 
-.login-header {
+.lead-login-header {
   display: flex;
   flex-direction: row;
   margin-left: 30px;
@@ -266,17 +266,19 @@ const openUrl = (url: string) => {
       cursor: pointer;
     }
   }
-}
-.login-logo {
-  height: 150px;
+
+  .login-logo {
+    height: 150px;
+  }
+
+  .login-title {
+    font-size: 32px;
+    padding-left: 30px;
+    color: white;
+  }
 }
 
-.login-title {
-  font-size: 32px;
-  padding-left: 30px;
-  color: white;
-}
-.login-content {
+.lead-login-content {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -284,7 +286,8 @@ const openUrl = (url: string) => {
   align-items: flex-end;
   margin: 5% 10%;
 }
-.login-area {
+
+.lead-login-area {
   background: #ffffff;
   //   box-shadow: 0px 4px 24px 1px rgba(0, 0, 0, 0.06);
   border-radius: 16px;
@@ -296,110 +299,101 @@ const openUrl = (url: string) => {
   flex-direction: column;
   align-items: center;
   float: right;
-}
 
-.input-style :deep(*) {
-  font-size: 20px !important;
-}
-.loginFormItem {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #d9d9d9;
-  border-radius: 6px;
-  &:first-child {
-    margin-top: 10px;
+  .input-style :deep(*) {
+    font-size: 20px !important;
   }
-  margin-bottom: 32px;
-  &:last-child {
-    margin-bottom: 24px !important;
+  .loginFormItem {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-radius: 6px;
+    &:first-child {
+      margin-top: 10px;
+    }
+    margin-bottom: 32px;
+    &:last-child {
+      margin-bottom: 24px !important;
+    }
   }
-}
-.language-select-row {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  padding: 4px 0px 4px 11px;
-}
-.language-select-row:last-child {
-  flex: 1;
-  :deep(.ant-select-selector) {
-    padding: 0 0 0 4px;
+  .language-select-row {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0px 4px 11px;
   }
-}
+  .language-select-row:last-child {
+    flex: 1;
+    :deep(.ant-select-selector) {
+      padding: 0 0 0 4px;
+    }
+  }
 
-.login-form-button {
-  float: right;
-}
+  .login-form-button {
+    float: right;
+  }
 
-.area-title {
-  font-size: 28px;
-  color: #666666;
-  text-align: left;
-  margin: 10px 0 0;
-  width: 100%;
-}
+  .area-title {
+    font-size: 28px;
+    color: #666666;
+    text-align: left;
+    margin: 10px 0 0;
+    width: 100%;
+  }
+  .area-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-// .area-main > :first-child {
-//   display: flex;
-//   font-size: 20px;
-//   line-height: 1;
-// }
-
-// .area-main > :first-child::before {
-//   content: '';
-//   width: 9px;
-//   background: #1890ff;
-//   margin-right: 12px;
-// }
-
-.area-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  // font-size: 1em;
-}
-.loginBtn {
-  font-size: 20px;
-  height: auto;
-  width: 100%;
+    // font-size: 1em;
+  }
+  .loginBtn {
+    font-size: 20px;
+    height: auto;
+    width: 100%;
+  }
 }
 
 @media (max-width: 754px) {
-  .login-content {
+  .lead-login-header {
+    .login-logo {
+      height: 80px;
+    }
+    .login-title {
+      font-size: 26px;
+    }
+  }
+
+  .lead-login-content {
     align-items: center;
-  }
-  .login-logo {
-    height: 80px;
-  }
-  .login-title {
-    font-size: 26px;
-  }
-  .login-area {
-    font-size: 15px;
+    .lead-login-area {
+      font-size: 15px;
+    }
   }
 }
 
 @media (max-width: 1180px) {
-  .login-logo {
-    height: 100px;
+  .lead-login-header {
+    .login-logo {
+      height: 100px;
+    }
+    .login-title {
+      font-size: 30px;
+    }
   }
-  .login-title {
-    font-size: 30px;
-  }
-  .login-area {
+  .lead-login-area {
     font-size: 18px;
   }
 }
 
 @media (max-width: 1600px) {
-  .login-area {
+  .lead-login-area {
     font-size: 24px;
   }
 }
 
 @media (max-width: 2000px) {
-  .login-area {
+  .leadlogin-area {
     font-size: 28px;
   }
 }
