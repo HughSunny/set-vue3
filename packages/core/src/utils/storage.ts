@@ -1,4 +1,4 @@
-import { JSONStringify, JSONParse } from './utils'
+import { JSONStringify, JSONParse } from './utils';
 
 /**
  * * 存储本地会话数据
@@ -8,11 +8,11 @@ import { JSONStringify, JSONParse } from './utils'
  */
 export const setLocalStorage = <T>(k: string, v: T) => {
   try {
-    window.localStorage.setItem(k, JSONStringify(v))
+    window.localStorage.setItem(k, JSONStringify(v));
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
 /**
  * * 获取本地会话数据
@@ -20,21 +20,21 @@ export const setLocalStorage = <T>(k: string, v: T) => {
  * @returns any
  */
 export const getLocalStorage = (k: string) => {
-  const item = window.localStorage.getItem(k)
+  const item = window.localStorage.getItem(k);
   try {
-    return item ? JSONParse(item) : item
+    return item ? JSONParse(item) : item;
   } catch (err) {
-    return item
+    return item;
   }
-}
+};
 
 /**
  * * 清除本地会话数据
  * @param name
  */
 export const clearLocalStorage = (name: string) => {
-  window.localStorage.removeItem(name)
-}
+  window.localStorage.removeItem(name);
+};
 
 /**
  * * 存储临时会话数据
@@ -44,29 +44,29 @@ export const clearLocalStorage = (name: string) => {
  */
 export const setSessionStorage = <T>(k: string, v: T) => {
   try {
-    window.sessionStorage.setItem(k, JSONStringify(v))
+    window.sessionStorage.setItem(k, JSONStringify(v));
   } catch (error) {
-    return false
+    return false;
   }
-}
+};
 
 /**
  * * 获取临时会话数据
  * @returns any
  */
 export const getSessionStorage: (k: string) => any = (k: string) => {
-  const item = window.sessionStorage.getItem(k)
+  const item = window.sessionStorage.getItem(k);
   try {
-    return item ? JSONParse(item) : item
+    return item ? JSONParse(item) : item;
   } catch (err) {
-    return item
+    return item;
   }
-}
+};
 
 /**
  * * 清除本地会话数据
  * @param name
  */
 export const clearSessioStorage = (name: string) => {
-  window.sessionStorage.removeItem(name)
-}
+  window.sessionStorage.removeItem(name);
+};

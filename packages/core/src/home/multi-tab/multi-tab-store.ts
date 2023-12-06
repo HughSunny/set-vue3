@@ -27,7 +27,7 @@ import type {
   CacheKey,
 } from '@core/interface/IMultiTabStore';
 import { flattenChildren } from '@core/utils/vnode-util';
-import { useAppStore } from '@core/store/app';
+import { useAppStore } from '@core/store';
 
 export type Options = {
   defaultHomePage?: string;

@@ -10,10 +10,10 @@ import type {
 import { STORAGE_KEY_TOKEN } from '@core/interface/IUser';
 import { Modal } from 'ant-design-vue';
 import { MenuTypeEnum, type IFetchMenu, type MetaPermission } from '@core/interface/IRouter';
-import ls from '@core/utils/local-storage';
+import { setLocalStorage, getLocalStorage } from '@core/utils/storage';
 import { AppConfig } from '@core/bo/app-config';
 import { type IUserInfo } from '@core/interface/IUser';
-import { getAllMenuList, getMenuList } from '@core/api/services/menu';
+import { getMenuList } from '@core/api/services/menu';
 import { getLanguageList } from '@core/api/services/common';
 import { getHealthz } from '@core//api/services/healthz';
 import { getSystemCodesByGroupCode } from '@core/api/services/system-code-group';
@@ -23,7 +23,7 @@ import { useI18n } from '@core/hooks/useI18n';
 import { treeToArray } from '@core/utils';
 const onInitConfig: FnInitSysConfig = () => {
   const config: ISysInit = {} as ISysInit;
-  config.token = ls.get(STORAGE_KEY_TOKEN);
+  config.token = getLocalStorage(STORAGE_KEY_TOKEN);
   // 缓存获取 配置
   return config;
 };
@@ -86,8 +86,8 @@ const onGetMenuList: FnGetMenu = async () => {
   let fetchMenuList: IFetchMenu[] = [];
   const menuRet = await getMenuList();
 
-  const serverArray = (treeList, parentMenuKey?) => {
-    const newArr = [];
+  const serverArray = (treeList, parentMenuKey?): IFetchMenu[] => {
+    const newArr: IFetchMenu[] = [];
     for (let mIndex = 0; mIndex < treeList.length; mIndex++) {
       const xx = treeList[mIndex];
       const hasChild = xx?.children?.length > 0;

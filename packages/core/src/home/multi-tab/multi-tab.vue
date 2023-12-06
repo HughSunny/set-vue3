@@ -8,7 +8,7 @@
       :style="{
         margin: 0,
         paddingTop: '6px',
-        width: sideWidth
+        width: sideWidth,
       }"
       hide-add
       :class="{ 'ant-pro-multi-tab-wrap': true, 'ant-pro-multi-tab-wrap-fixed': fixed }"
@@ -55,7 +55,7 @@
               <close-outlined
                 v-if="cacheListLength > 1 && !item.lock"
                 class="ant-pro-multi-tab-close-btn"
-                @click="(e) => handleClose(e, item.route.path)"
+                @click="e => handleClose(e, item.route.path)"
               />
             </span>
             <template #overlay>
@@ -94,31 +94,31 @@
 </template>
 
 <script lang="ts" setup name="multi-tab">
-import { defineComponent, ref, computed, inject } from 'vue'
-import { ReloadOutlined, EllipsisOutlined, CloseOutlined } from '@ant-design/icons-vue'
-import { useI18n } from 'vue-i18n'
-import { injectMultiTabStore, useMultiTab } from './multi-tab-store'
-import { injectMenuState } from '@core/hooks/useMenuState'
-import { useRoute } from 'vue-router'
+import { ref, computed, inject } from 'vue';
+import { ReloadOutlined, EllipsisOutlined, CloseOutlined } from '@ant-design/icons-vue';
+import { useI18n } from 'vue-i18n';
+import { injectMultiTabStore, useMultiTab } from './multi-tab-store';
+import { injectMenuState } from '@core/hooks/useMenuState';
+import { useRoute } from 'vue-router';
 
 const props = withDefaults(defineProps<{ fixed?: boolean; defaultHomePage?: string }>(), {
   fixed: false,
-  defaultHomePage: '/index' //Home
-})
+  defaultHomePage: '/index', //Home
+});
 defineOptions({
-  inheritAttrs: false
-})
-const menuState = injectMenuState()
-const store = injectMultiTabStore()
-const cacheListLength = computed(() => (store ? store.cacheList.length : 0))
-const route = useRoute()
+  inheritAttrs: false,
+});
+const menuState = injectMenuState();
+const store = injectMultiTabStore();
+const cacheListLength = computed(() => (store ? store.cacheList.length : 0));
+const route = useRoute();
 const activeKey = computed(() => {
   const key =
-    menuState.selectedKeys && menuState.selectedKeys.value[menuState.selectedKeys.value.length - 1]
+    menuState.selectedKeys && menuState.selectedKeys.value[menuState.selectedKeys.value.length - 1];
   // console.log('TAB---------------------------------> activeKey', key)
-  return key
-})
-const isMobile = inject('isMobile', ref(false))
+  return key;
+});
+const isMobile = inject('isMobile', ref(false));
 const sideWidth = computed(
   () =>
     (menuState.sideWidth &&
@@ -126,24 +126,24 @@ const sideWidth = computed(
       !isMobile.value &&
       props.fixed &&
       `calc(100% - ${menuState.sideWidth.value}px)`) ||
-    '100%'
-)
-const { t } = useI18n()
-const spin = ref(false)
+    '100%',
+);
+const { t } = useI18n();
+const spin = ref(false);
 const [{ refresh, close, closeLeft, closeRight, closeOther }] =
-  useMultiTab(/*{ defaultHomePage: props.defaultHomePage }*/)
+  useMultiTab(/*{ defaultHomePage: props.defaultHomePage }*/);
 
 const handleActiveKeyChange = (key: string) => {
-  menuState.selectedKeys!.value = [key]
-}
+  menuState.selectedKeys!.value = [key];
+};
 const handleReloadPage = async (key?: string) => {
-  spin.value = true
-  await refresh(key)
-  spin.value = false
-}
+  spin.value = true;
+  await refresh(key);
+  spin.value = false;
+};
 
 const handleClose = (e: Event, target: string) => {
-  close(target)
-  e.stopPropagation()
-}
+  close(target);
+  e.stopPropagation();
+};
 </script>

@@ -19,7 +19,8 @@ import { useCookies } from '@vueuse/integrations/useCookies';
 import {
   AppConfig,
   convertKeyCamelCase,
-  localStorage as ls,
+  getLocalStorage,
+  setLocalStorage,
   STORAGE_KEY_USER_INFO,
   useI18n,
 } from '@xdc/core';
@@ -33,7 +34,7 @@ import { getConstantRoutes } from './router/constant';
 const cookie = useCookies();
 const mesInitConfig: FnInitSysConfig = () => {
   // 从localstorage中获取数据
-  const sysConfig = ls.get(AppConfig.appCode + '_sys_config') || {};
+  const sysConfig = getLocalStorage(AppConfig.appCode + '_sys_config') || {};
   // 从cookie中取得数据
   const hasCookie = cookie.get('sid');
   const config: ISysInit = {
@@ -68,7 +69,7 @@ const mesInitGetConfig: FnGetSysConfig = async () => {
     config.loginSysName = fetchConfig.LoginSysName?.trim();
     config.loginSysLogo = fetchConfig.LoginSysLogo?.trim();
     config.friendUrls = fetchConfig.FriendUrls;
-    ls.set(AppConfig.appCode + '_sys_config', JSON.stringify(fetchConfig));
+    setLocalStorage(AppConfig.appCode + '_sys_config', JSON.stringify(fetchConfig));
   }
   const languageRet = await getLanguageList();
   // 获取语言列表
@@ -100,7 +101,7 @@ const mesInitGetConfig: FnGetSysConfig = async () => {
 };
 
 const onGetUserInfo: FnGetUserInfo = async () => {
-  const userData = ls.get(STORAGE_KEY_USER_INFO);
+  const userData = getLocalStorage(STORAGE_KEY_USER_INFO);
   const user: IUserInfo = {
     userCode: cookie.get('uid'),
     userName: cookie.get('un'),

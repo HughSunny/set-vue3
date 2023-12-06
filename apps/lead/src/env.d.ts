@@ -10,3 +10,7 @@
 interface ImportMetaEnv {
   _BASE_URL: string;
 }
+
+// interface ImportMeta {
+//   readonly env: ImportMetaEnv;
+// }

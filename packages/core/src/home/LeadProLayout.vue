@@ -73,55 +73,46 @@
   </pro-provider>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, inject, ref, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { default as AvatarDropdown } from './avatar-dropdown/index.vue'
-import { default as WrapContent } from './wrap-content/index.vue'
-import { default as HeaderView } from './header/index.vue'
-import { default as SiderMenu } from './sider-menu/index.vue'
-import { default as NoticeIcon } from './notice-icon/index.vue'
-import { SelectLang} from '@core/components'
+<script lang="ts" setup>
+import { defineComponent, computed, inject, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { default as AvatarDropdown } from './avatar-dropdown/index.vue';
+import { default as WrapContent } from './wrap-content/index.vue';
+import { default as HeaderView } from './header/index.vue';
+import { default as SiderMenu } from './sider-menu/index.vue';
+import { default as NoticeIcon } from './notice-icon/index.vue';
+import { SelectLang } from '@core/components';
 
-import { MultiTab as MultiTabVue } from './multi-tab'
-import { injectMenuState } from '@core/hooks/useMenuState'
-import { useUserStore } from '@core/store/user'
-import { useConfigStore } from '@core/store/config'
+import { MultiTab as MultiTabVue } from './multi-tab';
+import { injectMenuState } from '@core/hooks/useMenuState';
+import { useUserStore, useConfigStore } from '@core/store';
+defineOptions({ name: 'LeadProLayout' });
 
-export default defineComponent({
-  name: 'LeadProLayout',
-  setup() {
-    const userStore = useUserStore()
-    const { t } = useI18n()
-    const menuState = injectMenuState()
-    const isMobile = inject('isMobile', ref(false))
-    const currentUser = computed(() => userStore.user)
-    const configStore = useConfigStore()
-    const enableInternational = computed(() => configStore.enableInternational)
-    const hasSideMenu = computed(
-      () => menuState.layout.value === 'side' || menuState.layout.value === 'left'
-    )
-    const hasTopMenu = computed(() => menuState.layout.value === 'top')
-    const menus = computed(() => userStore.menuInfo.menus)
-    return {
-      t,
-      currentUser,
-      menus,
-      ...menuState,
-      hasSideMenu,
-      hasTopMenu,
-      isMobile,
-      enableInternational
-    }
-  },
-  components: {
-    MultiTabVue,
-    WrapContent,
-    HeaderView,
-    SiderMenu,
-    SelectLang,
-    AvatarDropdown,
-    NoticeIcon
-  }
-})
+const userStore = useUserStore();
+const { t } = useI18n();
+const menuState = injectMenuState();
+const isMobile = inject('isMobile', ref(false));
+const currentUser = computed(() => userStore.user);
+const configStore = useConfigStore();
+const enableInternational = computed(() => configStore.enableInternational);
+const hasSideMenu = computed(
+  () => menuState.layout.value === 'side' || menuState.layout.value === 'left',
+);
+const hasTopMenu = computed(() => menuState.layout.value === 'top');
+const menus = computed(() => userStore.menuInfo.menus);
+const {
+  theme,
+  layout,
+  fixedHeader,
+  fixedSidebar,
+  splitMenus,
+  multiTab,
+  multiTabFixed,
+  contentWidth,
+  sideWidth,
+  updateCollapsed,
+  collapsed,
+  openKeys,
+  selectedKeys,
+} = menuState;
 </script>

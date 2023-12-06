@@ -1,4 +1,5 @@
 import type { Pinia } from 'pinia';
+import { setActivePinia } from 'pinia';
 import { defineAsyncComponent, h } from 'vue';
 import type { RouteRecordRaw, Router } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
@@ -7,6 +8,7 @@ import { message, notification } from 'ant-design-vue';
 import { cloneDeep, concat, uniq, uniqWith } from 'lodash-es';
 import type { IFetchMenu, MetaPermission, MenuRouteItem, IInitAppOptions } from '@core/interface';
 import { withoutArrayNil, setDocumentTitle, mergeArray, treeToArray } from '@core/utils';
+
 import { useAppStore, useUserStore } from '@core/store';
 import { AppConfig, getOidcClientSetting } from '@core/bo';
 
@@ -20,7 +22,7 @@ let _initAppOptions: IInitAppOptions = { store: {} as Pinia, router: {} as Route
 /**
  * 获取初始化路由配置
  */
-export function getInitRouteOptions(): IInitAppOptions {
+export function getSystemInitOptions(): IInitAppOptions {
   return _initAppOptions || { store: {} as Pinia, router: {} as Router };
 }
 
@@ -49,7 +51,9 @@ export function initAppOptions(options: IInitAppOptions) {
     throw new Error('未指定有效 router 参数，路由实例用户初始化路由导航配置');
   }
   const opts = mergeInitRouteOptions(options);
+
   _initAppOptions = cloneDeep(opts);
+  // setActivePinia(_initAppOptions.store);
   const { router, routerOptions } = opts;
   const { initRoutes, whiteList, accessRoutes } = routerOptions || {};
   // 初始默认化路由
@@ -196,7 +200,7 @@ export async function genRoutersByFetchMenu(
   fetchMenuList: IFetchMenu[],
   opPermission: Recordable<Recordable<MetaPermission>>,
 ) {
-  const { routerOptions } = getInitRouteOptions();
+  const { routerOptions } = getSystemInitOptions();
   const { initRoutes, layoutRoutes, accessRoutes, layoutComponent, routeComponents } =
     routerOptions || {};
   try {

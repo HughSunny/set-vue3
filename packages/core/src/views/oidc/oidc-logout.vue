@@ -2,18 +2,18 @@
   <div></div>
 </template>
 <script lang="ts" setup>
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useUserStore } from '@core/store/user'
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@core/store';
 defineOptions({
-  name: 'oidcLogout'
-})
+  name: 'OidcLogout',
+});
 
-const router = useRouter()
-const userStore = useUserStore()
+const router = useRouter();
+const userStore = useUserStore();
 onMounted(async () => {
-   await userStore.logoutAndJump(false)
+  await userStore.logoutAndJump(false);
   // 自动跳转到登录
   // router.push('/login')
-})
+});
 </script>

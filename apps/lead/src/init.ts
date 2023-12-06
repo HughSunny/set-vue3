@@ -12,7 +12,7 @@ import {
   AppConfig,
   initAppOptions,
   LeadProLayout,
-  localStorage as ls,
+  getLocalStorage,
   STORAGE_KEY_TOKEN,
 } from '@xdc/core';
 import locales from '@/locale';
@@ -57,7 +57,7 @@ export const getInitConfig = () => {
 
 const onInitConfig: FnInitSysConfig = () => {
   const config: ISysInit = {};
-  config.token = ls.get(STORAGE_KEY_TOKEN);
+  config.token = getLocalStorage(STORAGE_KEY_TOKEN);
   // 多语言包导入
   config.localLanguages = locales;
   return config;

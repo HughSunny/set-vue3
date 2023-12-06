@@ -1,63 +1,63 @@
-import type { Ref } from 'vue'
-import { unref, computed, ref, watchEffect } from 'vue'
-import { intersection, toArray } from 'lodash-es'
-import { useRoute } from 'vue-router'
-import type { MenuRouteItem } from '@core/interface/IRouter'
-import type { Action } from '@core/interface/IUser'
-import { useUserStore } from '@core/store/user'
+import type { Ref } from 'vue';
+import { unref, computed, ref, watchEffect } from 'vue';
+import { intersection, toArray } from 'lodash-es';
+import { useRoute } from 'vue-router';
+import type { MenuRouteItem } from '@core/interface/IRouter';
+import type { Action } from '@core/interface/IUser';
+import { useUserStore } from '@core/store/user';
 
 export const filterChildRoute = (route: MenuRouteItem, permissions: string[]) =>
   route.children
-    ?.filter((item) => {
-      const hasAllow = hasAuthority(item, permissions)
+    ?.filter(item => {
+      const hasAllow = hasAuthority(item, permissions);
       if (hasAllow && item.children && item.children.length > 0) {
-        item.children = filterChildRoute(item, permissions!)
+        item.children = filterChildRoute(item, permissions!);
       }
-      return hasAllow
+      return hasAllow;
     })
-    .filter((item) => item)
+    .filter(item => item);
 
 // permissions: Permission[]
 export const hasAuthority = (route: MenuRouteItem, permissions: string[]) => {
   if (route.meta?.authority) {
-    return permissions.some((value) => {
-      return route.meta?.authority?.includes(value)
-    })
+    return permissions.some(value => {
+      return route.meta?.authority?.includes(value);
+    });
   }
-  return true
-}
+  return true;
+};
 
-type MaybeRef<T> = T | Ref<T>
+type MaybeRef<T> = T | Ref<T>;
 export const useAuth = (actions: MaybeRef<Action | Action[]>) => {
-  const userStore = useUserStore()
-  const role = computed(() => userStore.role)
-  const hasAuth = ref(false)
-  const route = useRoute()
+  const userStore = useUserStore();
+  const role = computed(() => userStore.role);
+  const hasAuth = ref(false);
+  const route = useRoute();
   watchEffect(() => {
     const authority =
       typeof route.meta.authority === 'string'
         ? [route.meta.authority]
-        : (route.meta.authority as string[]) || []
-    const permissions = role.value?.permissions
-    const auths = toArray(unref(actions))
+        : (route.meta.authority as string[]) || [];
+    const permissions = role.value?.permissions;
+    const auths = toArray(unref(actions));
     if (permissions) {
-      hasAuth.value = false
+      hasAuth.value = false;
       for (let i = 0; i < permissions.length; i++) {
-        const p = permissions[i]
-        if (!authority.includes(p.name)) continue
+        const p = permissions[i];
+        if (!authority.includes(p.name)) continue;
         // 都是空的时候，算作有权限
         if ((p.actions && p.actions.length === 0 && auths.length === 0) || auths.length === 0) {
-          hasAuth.value = true
-          break
+          hasAuth.value = true;
+          break;
         }
         if (intersection(p.actions || [], auths).length) {
-          hasAuth.value = true
-          break
+          hasAuth.value = true;
+          break;
         }
       }
     } else {
-      hasAuth.value = true
+      hasAuth.value = true;
     }
-  })
-  return hasAuth
-}
+  });
+  return hasAuth;
+};

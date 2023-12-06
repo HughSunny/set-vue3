@@ -34,113 +34,90 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { PropType } from 'vue';
-import { defineComponent, computed, toRefs } from 'vue';
+import { computed, useSlots } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
 import { useProProvider } from '@core/hooks';
 import type { RouteProps } from '@core/interface/IRouter';
 import BaseMenu from '@core/home/base-menu/index.vue';
 import { AppConfig } from '@core/bo';
 import RightContent from './right-content.vue';
-import { useConfigStore } from '@core/store/config';
-
-export default defineComponent({
-  props: {
-    prefixCls: {
-      type: String,
-      default: undefined,
-    },
-    layout: {
-      type: String,
-      default: 'side',
-    },
-    theme: {
-      type: String as PropType<MenuTheme>,
-      default: 'dark',
-    },
-    contentWidth: {
-      type: String,
-      default: 'Fluid',
-    },
-
-    // menu
-    menus: {
-      type: Array as PropType<RouteProps[]>,
-      default: () => [],
-    },
-    openKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
-    selectedKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
+import { useConfigStore } from '@core/store';
+const emit = defineEmits(['update:openKeys', 'update:selectedKeys']);
+const props = defineProps({
+  prefixCls: {
+    type: String,
+    default: undefined,
   },
-  emits: ['update:openKeys', 'update:selectedKeys'],
-  setup(props, { slots, emit }) {
-    const { theme, contentWidth, prefixCls: customizePrefixCls } = toRefs(props);
-    const { getPrefixCls } = useProProvider();
-    const prefixedClassName = customizePrefixCls.value || getPrefixCls('top-nav-header');
-    const hasMix = computed(() => props.layout === 'mix');
-    const classNames = computed(() => {
-      console.log('------------------->', prefixedClassName);
-      return {
-        [prefixedClassName]: true,
-        ['light']: theme.value === 'light',
-      };
-    });
-    const headerClassName = computed(() => {
-      return {
-        [`${prefixedClassName}-main`]: true,
-        ['wide']: contentWidth.value === 'Fixed',
-      };
-    });
-    const { logo: hasLogoSlot } = slots;
+  layout: {
+    type: String,
+    default: 'side',
+  },
+  theme: {
+    type: String as PropType<MenuTheme>,
+    default: 'dark',
+  },
+  contentWidth: {
+    type: String,
+    default: 'Fluid',
+  },
 
-    /** events */
-    const handleSelectedKeys = (selectedKeys: string[]): void => {
-      emit('update:selectedKeys', selectedKeys);
-    };
-    const handleOpenKeys = (openKeys: string[]): void => {
-      emit('update:openKeys', openKeys);
-    };
-    const handleMenuHeaderClick = (): void => {};
-    const configStore = useConfigStore();
-    const appName = computed(() => {
-      return configStore.sysName || AppConfig.sysName;
-    });
-    const appLogo = computed(() => {
-      return configStore.sysLogo; // || '/image/logo.png';
-    });
-    const headerStyle = computed(() => {
-      if (configStore.headerImage) {
-        return {
-          background: `url(${configStore.headerImage})`,
-        };
-      } else {
-        return null;
-      }
-    });
+  // menu
+  menus: {
+    type: Array as PropType<RouteProps[]>,
+    default: () => [],
+  },
+  openKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+  selectedKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+});
+
+const { getPrefixCls } = useProProvider();
+const prefixedClassName = props.prefixCls || getPrefixCls('top-nav-header');
+const hasMix = computed(() => props.layout === 'mix');
+const classNames = computed(() => {
+  console.log('------------------->', prefixedClassName);
+  return {
+    [prefixedClassName]: true,
+    ['light']: props.theme === 'light',
+  };
+});
+const headerClassName = computed(() => {
+  return {
+    [`${prefixedClassName}-main`]: true,
+    ['wide']: props.contentWidth === 'Fixed',
+  };
+});
+const { logo: hasLogoSlot } = useSlots();
+
+/** events */
+const handleSelectedKeys = (selectedKeys: string[]): void => {
+  emit('update:selectedKeys', selectedKeys);
+};
+const handleOpenKeys = (openKeys: string[]): void => {
+  emit('update:openKeys', openKeys);
+};
+const handleMenuHeaderClick = (): void => {};
+const configStore = useConfigStore();
+const appName = computed(() => {
+  return configStore.sysName || AppConfig.sysName;
+});
+const appLogo = computed(() => {
+  return configStore.sysLogo; // || '/image/logo.png';
+});
+const headerStyle = computed(() => {
+  if (configStore.headerImage) {
     return {
-      classNames,
-      headerClassName,
-      prefixedClassName,
-      hasMix,
-      hasLogoSlot,
-
-      handleSelectedKeys,
-      handleOpenKeys,
-      handleMenuHeaderClick,
-      appName,
-      appLogo,
-      headerStyle,
+      background: `url(${configStore.headerImage})`,
     };
-  },
-  components: {
-    BaseMenu,
-    RightContent,
-  },
+  } else {
+    return null;
+  }
 });
 </script>

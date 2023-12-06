@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
-import { useUserStore } from '@core/store/user';
+import { useUserStore } from '@core/store';
 import { init } from '@core/utils/auth-manager';
 import { AppConfig, getOidcClientSetting } from '@core/bo';
 const router = useRouter();

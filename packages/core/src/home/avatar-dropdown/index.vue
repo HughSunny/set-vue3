@@ -94,10 +94,8 @@ defineOptions({
 import { reactive, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
-import { useAppStore } from '@core/store/app';
-import { useConfigStore } from '@core/store/config';
+import { useAppStore, useConfigStore, useUserStore } from '@core/store';
 import ChangePasswordModal from '@core/home/change-password';
-import { useUserStore } from '@core/store/user';
 const props = defineProps({
   currentUser: {
     type: Object,

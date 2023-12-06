@@ -8,19 +8,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'RightContent',
-  props: {
-    rightSize: {
-      type: Number,
-      default: 208,
-    },
-  },
-  setup() {
-    return {};
+<script lang="ts" setup>
+defineOptions({ name: 'RightContent' });
+defineProps({
+  rightSize: {
+    type: Number,
+    default: 208,
   },
 });
 </script>

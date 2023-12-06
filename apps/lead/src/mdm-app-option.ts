@@ -13,7 +13,7 @@ import type {
 } from '@xdc/core';
 import {
   AppConfig,
-  localStorage as ls,
+  getLocalStorage,
   STORAGE_KEY_TOKEN,
   STORAGE_KEY_USER_INFO,
   treeToArray,
@@ -36,13 +36,13 @@ const mdmInitGetConfig: FnGetSysConfig = async () => {
 
 const getMdmMenuList: FnGetMenu = async () => {
   // 取值来源1：userStore， 2: 自定义登录中，自存，然后自取
-  const userInfo = ls.get(STORAGE_KEY_USER_INFO);
+  const userInfo = getLocalStorage(STORAGE_KEY_USER_INFO);
   const menuList = userInfo.menuList || [];
   return treeToArray(menuList.filter(f => f.systemMark === '1')) as IFetchMenu[];
 };
 
 const handleMdmCheckAccess: FnCheckAccess = async () => {
-  const token = ls.get(STORAGE_KEY_TOKEN);
+  const token = getLocalStorage(STORAGE_KEY_TOKEN);
   return !!token;
 };
 
@@ -52,7 +52,7 @@ const onGetPermission: FnGetPermission = async () => {
 };
 
 const onGetUserInfo: FnGetUserInfo = async () => {
-  const userData = ls.get(STORAGE_KEY_USER_INFO);
+  const userData = getLocalStorage(STORAGE_KEY_USER_INFO);
   const user: IUserInfo = {
     token: userData.token,
   };

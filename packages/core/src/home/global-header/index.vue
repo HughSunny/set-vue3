@@ -18,11 +18,11 @@
     </div>
     <div v-if="layout === 'mix' && !isMobile" :class="`${baseClassName}-logo`">
       <router-link :to="{ name: 'IndustryPlatformHome' }">
-        <img :src="appLogo" alt="logo" style="height: 48px;"/>
+        <img :src="appLogo" alt="logo" style="height: 48px" />
         <h1>{{ appName }}</h1>
       </router-link>
     </div>
-     <!-- 231013 Mobile下添加appName -->
+    <!-- 231013 Mobile下添加appName -->
     <div :class="`${baseClassName}-logo`" v-else>
       <router-link :to="{ name: 'IndustryPlatformHome' }">
         <h1>{{ appName }}</h1>
@@ -35,65 +35,55 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+<script lang="ts" setup>
+defineOptions({
+  name: 'GlobalHeader',
+});
+import { ref, computed } from 'vue';
 import { AppConfig } from '@core/bo';
 import { useConfigStore } from '@core/store';
-export default defineComponent({
-  props: {
-    prefixCls: {
-      type: String,
-      default: 'ant-pro',
-    },
-    layout: {
-      type: String,
-      default: 'side',
-    },
-    theme: {
-      type: String,
-      default: 'dark',
-    },
-    isMobile: {
-      type: Boolean,
-      default: false,
-    },
-    collapsed: {
-      type: Boolean,
-      default: false,
-    },
-    collapsedButton: {
-      type: Boolean,
-      default: () => true,
-    },
+
+const props = defineProps({
+  prefixCls: {
+    type: String,
+    default: 'ant-pro',
   },
-  emits: ['collapse'],
-  setup(props, { emit }) {
-    const baseClassName = `${props.prefixCls}-global-header`;
-    const classNames = ref({
-      [baseClassName]: true,
-      [`${baseClassName}-layout-${props.layout}`]: props.layout,
-    });
-    const isSide = computed(() => props.layout === 'side');
-    const isLeft = computed(() => props.layout === 'left');
-    const handleClick = (): void => {
-      emit('collapse', !props.collapsed);
-    };
-    const configStore = useConfigStore();
-    const appName = computed(() => {
-      return configStore.sysName || AppConfig.sysName;
-    })
-    const appLogo = computed(() => {
-      return configStore.sysLogo || '/image/logo.png';
-    })
-    return {
-      baseClassName,
-      classNames,
-      isSide,
-      isLeft,
-      handleClick,
-      appName,
-      appLogo,
-    };
+  layout: {
+    type: String,
+    default: 'side',
   },
+  theme: {
+    type: String,
+    default: 'dark',
+  },
+  isMobile: {
+    type: Boolean,
+    default: () => false,
+  },
+  collapsed: {
+    type: Boolean,
+  },
+  collapsedButton: {
+    type: Boolean,
+    default: () => true,
+  },
+});
+const emit = defineEmits(['collapse']);
+const baseClassName = `${props.prefixCls}-global-header`;
+const classNames = ref({
+  [baseClassName]: true,
+  [`${baseClassName}-layout-${props.layout}`]: props.layout,
+});
+const isSide = computed(() => props.layout === 'side');
+const isLeft = computed(() => props.layout === 'left');
+const handleClick = (): void => {
+  emit('collapse', !props.collapsed);
+};
+const configStore = useConfigStore();
+const appName = computed(() => {
+  return configStore.sysName || AppConfig.sysName;
+});
+const appLogo = computed(() => {
+  return configStore.sysLogo || '/image/logo.png';
 });
 </script>

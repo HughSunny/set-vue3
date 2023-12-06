@@ -8,7 +8,7 @@
         :model="searchState"
       >
         <SetFormRowEdit
-          v-model:data="searchState"
+          :data="searchState"
           :form="rowFormRef"
           :fields="searchSchemas"
           col-type="6-col"

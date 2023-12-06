@@ -21,18 +21,24 @@ import { computed, provide, ref, watch } from 'vue';
 import { legacyLogicalPropertiesTransformer, theme as antdTheme } from 'ant-design-vue';
 import type { ConfigProviderProps } from 'ant-design-vue';
 import { useRoute } from 'vue-router';
-import { STORAGE_LANG_KEY, useAppStore } from '@core/store/app';
-import { localStorage } from '@core/utils/local-storage';
+import { getActivePinia } from 'pinia';
+import { STORAGE_LANG_KEY, useAppStore } from '@core/store';
+import { getLocalStorage } from '@core/utils/storage';
 import useMediaQuery from '@core/hooks/useMediaQuery';
 import useMenuState, { MenuStateSymbol } from '@core/hooks/useMenuState';
 import SiteToken from '@core/home/site-token';
+import { getSystemInitOptions } from '@core/router/route';
 import { useMultiTabStateProvider } from '@core/home/multi-tab';
 import { defaultLang } from '@core/locale';
-import { useUserStore } from '@core/store/user';
-
 const i18n = useI18n();
+const { store } = getSystemInitOptions();
+
+console.warn('AntdApp Setup -----------------------------------------------remote store', store);
+console.warn(
+  'AntdApp Setup -----------------------------------------------remote ActivePinia',
+  getActivePinia(),
+);
 const appStore = useAppStore();
-const userStore = useUserStore();
 const multiTabState = useMultiTabStateProvider({});
 const colSize = useMediaQuery();
 const isMobile = computed(() => colSize.value === 'sm' || colSize.value === 'xs');
@@ -59,7 +65,7 @@ watch(
   { immediate: true },
 );
 // 语言设置
-const lang = localStorage.get(STORAGE_LANG_KEY, defaultLang);
+const lang = getLocalStorage(STORAGE_LANG_KEY) || defaultLang;
 if (lang) {
   appStore.SET_LANG(lang);
 }

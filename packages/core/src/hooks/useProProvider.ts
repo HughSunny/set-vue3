@@ -1,5 +1,5 @@
 import type { RenderFunction, App, PropType, SetupContext, InjectionKey } from 'vue';
-import { reactive, readonly, provide, inject, toRefs, defineComponent } from 'vue';
+import { reactive, readonly, provide, inject } from 'vue';
 import { withInstall } from '@core/utils/withInstall';
 export const injectProConfigKey: InjectionKey<ProProviderData> = Symbol();
 import type { ContentWidth } from '@core/interface/IBaseLayout';

@@ -3,7 +3,6 @@ export * from './constants';
 export * from './data-structure';
 export * from './dom';
 export * from './storage';
-export * from './local-storage';
 export * from './is';
 export * from './utils';
 export * from './vnode-util';
