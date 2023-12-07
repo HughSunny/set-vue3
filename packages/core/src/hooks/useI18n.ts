@@ -1,4 +1,4 @@
-import i18n from '@core/locale'
+import i18n from '@core/locale';
 
 type I18nGlobalTranslation = {
   (key: string): string;

@@ -1,9 +1,6 @@
-import { acceptHMRUpdate, defineStore } from 'pinia';
-import type { PureSettings } from '@core/interface/IAppSetting';
-import { loadLanguageAsync } from '@core/locale';
-import { setLocalStorage, getLocalStorage } from '@core/utils/storage';
-
-import { AppConfig } from '@core/bo';
+import type { PureSettings } from '@xdc/core';
+import { defineStore } from 'pinia';
+import { AppConfig } from '@xdc/core';
 
 export const DEFAULT_PRIMARY_COLOR = '#1677ff';
 export const FRAME_DARK_BACKGROUND_COLOR = '#1F2B69'; // #001529
@@ -25,7 +22,7 @@ export interface AppState extends PureSettings {
   frameMenuSubBg: string;
 }
 
-export const useAppStore = defineStore('app', {
+export const useAppTestStore = defineStore('appTest', {
   // https://github.com/prazdevs/pinia-plugin-persistedstate 提供
   // persist: true, //process.env.NODE_ENV !== 'production',
   state: (): AppState => ({
@@ -50,15 +47,6 @@ export const useAppStore = defineStore('app', {
     multiTabFixed: true, //固定tabs页面
   }),
   actions: {
-    async SET_LANG(lang) {
-      loadLanguageAsync(lang)
-        .then(() => {
-          AppConfig.lang = lang;
-          this.lang = lang;
-          setLocalStorage(STORAGE_LANG_KEY, lang);
-        })
-        .catch(() => {});
-    },
     SET_LOADING(loading: boolean) {
       this.loading = loading;
     },

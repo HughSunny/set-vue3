@@ -1,4 +1,4 @@
-/// <reference types="./env.d.ts" />
+/// <reference types="./src/env.d.ts" />
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig, loadEnv } from 'vite';
 import UnoCss from 'unocss/vite';
@@ -13,8 +13,8 @@ export default defineConfig(({ command, mode }) => {
   if (mode === 'production') {
   }
   return {
-    envDir: 'env',
-    envPrefix: '_',
+    // envDir: 'env',
+    // envPrefix: '_',
     server: {
       port: 4600,
     },
@@ -32,6 +32,7 @@ export default defineConfig(({ command, mode }) => {
         '~': fileURLToPath(new URL('./src/assets', import.meta.url)),
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '#': fileURLToPath(new URL('./types', import.meta.url)),
+        pinia: fileURLToPath(new URL('./node_modules/pinia', import.meta.url)),
       },
     },
     optimizeDeps: {
@@ -49,7 +50,6 @@ export default defineConfig(({ command, mode }) => {
         'vue',
         'vue-i18n',
         '@vueuse/core',
-        // 'store/plugins/expire',
       ],
     },
     css: {
@@ -61,6 +61,22 @@ export default defineConfig(({ command, mode }) => {
           },
           // DO NOT REMOVE THIS LINE
           javascriptEnabled: true,
+        },
+      },
+    },
+
+    build: {
+      cssCodeSplit: false,
+      reportCompressedSize: true,
+      chunkSizeWarningLimit: 2048,
+      // minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vue: ['vue', 'pinia', 'vue-router'],
+            antdv: ['ant-design-vue', '@ant-design/icons-vue'],
+            // 'lib-xdc-core': ['@xdc/core'],
+          },
         },
       },
     },

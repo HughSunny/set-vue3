@@ -9,7 +9,12 @@ import type {
 } from '@core/interface/ILeadFrame';
 import { STORAGE_KEY_TOKEN } from '@core/interface/IUser';
 import { Modal } from 'ant-design-vue';
-import { MenuTypeEnum, type IFetchMenu, type MetaPermission } from '@core/interface/IRouter';
+import {
+  MenuTypeEnum,
+  type IFetchMenu,
+  type MetaPermission,
+  type IFetchMenuTree,
+} from '@core/interface/IRouter';
 import { setLocalStorage, getLocalStorage } from '@core/utils/storage';
 import { AppConfig } from '@core/bo/app-config';
 import { type IUserInfo } from '@core/interface/IUser';
@@ -86,8 +91,8 @@ const onGetMenuList: FnGetMenu = async () => {
   let fetchMenuList: IFetchMenu[] = [];
   const menuRet = await getMenuList();
 
-  const serverArray = (treeList, parentMenuKey?): IFetchMenu[] => {
-    const newArr: IFetchMenu[] = [];
+  const serverArray = (treeList, parentMenuKey?): IFetchMenuTree[] => {
+    const newArr: IFetchMenuTree[] = [];
     for (let mIndex = 0; mIndex < treeList.length; mIndex++) {
       const xx = treeList[mIndex];
       const hasChild = xx?.children?.length > 0;
@@ -125,16 +130,17 @@ const onGetMenuList: FnGetMenu = async () => {
     return newArr;
   };
 
-  const menuList = [];
+  const menuList: IFetchMenu[] = [];
   if (menuRet && menuRet.length > 0) {
     AppConfig.menuPermission = menuRet.sort((a, b) => {
       return a.sortNo - b.sortNo;
     });
-    const serveList = serverArray(menuRet).sort((a, b) => {
+    const treeList: IFetchMenuTree[] = serverArray(menuRet).sort((a, b) => {
       return a.sort - b.sort;
     });
-    serveList.forEach(xx => {
-      menuList.push(...treeToArray(xx));
+    treeList.forEach((xx: IFetchMenuTree) => {
+      const nodeList: IFetchMenu[] = treeToArray(xx);
+      menuList.push(...nodeList);
     });
     fetchMenuList = menuList;
   }

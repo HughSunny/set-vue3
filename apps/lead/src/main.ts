@@ -45,10 +45,12 @@ const registerComponents = app => {
   app.use(VueViewer);
   app.use(XdcWidgets, widgetOption);
   app.use(XdcCore);
-
 };
+// eslint-disable-next-line import/first
+
 // 初始化 pinia
 setupStore(app);
+
 // 注册 组件
 registerComponents(app);
 
@@ -61,5 +63,6 @@ app.config.globalProperties.$antIcons = Icons;
 
 //初始化应用
 initAppOptions(getInitConfig());
+
 // 挂载
 app.mount('#app');

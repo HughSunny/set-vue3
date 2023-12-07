@@ -13,7 +13,7 @@ defineOptions({
   name: 'MdmLoginView',
 });
 
-console.log('------------------------------> MDM LOGIN');
+console.log('------------------------------> MDM LOGIN setup');
 
 const { createMessage } = useMessage();
 

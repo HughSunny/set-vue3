@@ -15,7 +15,7 @@ defineOptions({
 });
 
 const { t } = useI18n();
-console.log('------------------------------> MES LOGIN');
+console.log('------------------------------> MES LOGIN setup');
 const cookie = useCookies();
 const { createMessage, createErrorModal } = useMessage();
 

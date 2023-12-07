@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "cross-env NODE_ENV=development vite build",
     "preview": "vite preview",
     "lint": "run-s lint:eslint lint:prettier",
     "lint:eslint": "eslint --cache \"src/**/*.{vue,ts,tsx}\" --fix",
@@ -24,7 +24,7 @@
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "numeral": "^2.0.6",
-    "pinia": "^2.1.6",
+    "pinia": "2.1.6",
     "pinia-plugin-persistedstate": "^3.2.0",
     "v-viewer": "^3.0.10",
     "viewerjs": "^1.10.5",

@@ -1,8 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { RouteRecordRaw } from 'vue-router';
-import ls from '@core/utils/local-storage';
+import { setLocalStorage } from '@core/utils/storage';
 import { AppConfig } from '@core/bo';
-import { UserInfo } from '@core/bo/userInfo';
 import {
   STORAGE_KEY_USER_INFO,
   STORAGE_KEY_TOKEN,
@@ -11,13 +10,14 @@ import {
 } from '@core/interface/IUser';
 import { logout } from '@core/api/services/uc';
 import { type IFetchMenu, type MetaPermission } from '@core/interface/IRouter';
-import { genRoutersByFetchMenu, getInitRouteOptions, resetRouter } from '@core/router/route';
+import { getSystemInitOptions } from '@core/app';
+import { genRoutersByFetchMenu, resetRouter } from '@core/router/route';
 import { genMenuInfo, type MenuInfo } from '@core/utils/menu-util';
 import { IndustryOption } from '../app/app-option';
 import { getAuthManager } from '../utils/auth-manager';
 
 export interface IUserState {
-  user?: IUserInfo;
+  user: IUserInfo | null;
   role?: Role;
   menuTreeList: RouteRecordRaw[];
   menuInfo: MenuInfo;
@@ -33,7 +33,7 @@ export const SET_ROLE = 'SET_ROLE';
 export const RESET_CURRENT_USER = 'RESET_CURRENT_USER';
 
 export const initUserState = (): IUserState => ({
-  user: { token: null },
+  user: null,
   role: undefined,
   menuInfo: { menus: [], menuKeyMap: {} },
   menuTreeList: [],
@@ -59,19 +59,14 @@ export const useUserStore = defineStore('user', {
         ...user,
       };
       this.extra = { ...user };
-      UserInfo.sessionId = user.token;
-      UserInfo.userCode = user.userCode;
-      UserInfo.userName = user.userName;
-      UserInfo.userData = user.userData;
-
       AppConfig.token = user.token;
-      AppConfig.userCode = user.userCode;
-      AppConfig.userName = user.userName;
+      AppConfig.userCode = user.userCode || '';
+      AppConfig.userName = user.userName || '';
       // AppConfig.userFactorys = user.userData?.UserFactorys || []
 
-      ls.set(STORAGE_KEY_TOKEN, user.token);
+      setLocalStorage(STORAGE_KEY_TOKEN, user.token);
       // 缓存用户信息
-      ls.set(STORAGE_KEY_USER_INFO, user.userData);
+      setLocalStorage(STORAGE_KEY_USER_INFO, user.userData);
     },
 
     [SET_ROLE](role: IUserState['role']) {
@@ -80,7 +75,7 @@ export const useUserStore = defineStore('user', {
 
     async CHECK_ACCESS(): Promise<boolean> {
       //STEP: 校验用户权限
-      const { onCheckAccess } = getInitRouteOptions();
+      const { onCheckAccess } = getSystemInitOptions();
       if (onCheckAccess) {
         return await onCheckAccess();
       }
@@ -90,9 +85,9 @@ export const useUserStore = defineStore('user', {
     // AuthGuard : Promise<IUserInfo>
     async GET_INFO() {
       const { onGetMenuList, onGetUserInfo, routerOptions, onGetPermission } =
-        getInitRouteOptions();
+        getSystemInitOptions();
       const { menuHook, routeHook } = routerOptions || {};
-      let user: IUserInfo = null;
+      let user: IUserInfo | null = null;
       //STEP: 获得用户基础数据, 可以请求，可以读缓存
       if (onGetUserInfo) {
         user = await onGetUserInfo();
@@ -153,14 +148,15 @@ export const useUserStore = defineStore('user', {
       if (submit) {
         await logout();
       }
-      this.SET_INFO({
-        token: null,
-        id: null,
-        userCode: null,
-        userName: null,
+      const emptyUser: IUserInfo = {
+        token: '',
+        id: '',
+        userCode: '',
+        userName: '',
         userData: null,
         avatar: undefined,
-      });
+      };
+      this.SET_INFO(emptyUser);
       // 重置路由
       resetRouter();
       // 重置store中的allRouters

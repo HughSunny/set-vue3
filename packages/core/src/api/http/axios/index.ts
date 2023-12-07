@@ -1,7 +1,7 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
-import type { AxiosResponse } from 'axios';
+import type { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import type { ICommonResModel, RequestOptions, Result } from '#/axios';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { VAxios } from './Axios';
@@ -19,8 +19,7 @@ import { isString } from '@core/utils/is';
 import { setObjToUrlParams, deepMerge } from '@core/utils';
 import { useI18n } from '@core/hooks/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';
-import { useUserStore } from '@core/store/user';
-import { useAppStore } from '@core/store/app';
+import { useUserStore, useAppStore } from '@core/store';
 
 const { createMessage, createErrorModal } = useMessage();
 // # 接口前缀
@@ -149,16 +148,14 @@ const transform: AxiosTransform = {
   /**
    * @description: 请求拦截器处理
    */
-  requestInterceptors: (config: Recordable, options) => {
+  requestInterceptors: (config: InternalAxiosRequestConfig, options) => {
     const store = useUserStore();
     // 请求之前处理config
     const token = store.getToken();
     const tenantId = store.getTenantId();
     const appStore = useAppStore();
-    const {
-      authenticationScheme,
-      requestOptions: { contentLanguageType },
-    } = options;
+    const { authenticationScheme, requestOptions } = options;
+    const contentLanguageType = requestOptions?.contentLanguageType;
     // 设置语言
     // config.headers[ConfigEnum.LANGUAGE] = appStore.lang
     config.headers[ConfigEnum.LANGUAGE] =
@@ -219,7 +216,7 @@ const transform: AxiosTransform = {
         return Promise.reject(error);
       }
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error?.toString());
     }
     checkStatus(error?.response?.status, msg, errorMessageMode);
     return Promise.reject(error);

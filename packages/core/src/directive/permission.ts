@@ -122,7 +122,7 @@ export function getActionPermissionKeys(context, routeName?: string): string[] {
  * @param key 当前要判断的权限key
  * @returns 授权策略 visible:可见 invisible:不可见 enable:启用 disabled:禁用
  */
-function getActionPermissionType(context, key: string): string | undefined {
+function getActionPermissionType(context, key: string): string {
   // build 之后 context中带有 $route
   // if (context.$route) {
   //   // 路由判断
@@ -272,13 +272,12 @@ export default function (app: App) {
   app.directive('action', function (el, binding, vnode) {
     // 操作按钮/权限
     const key = binding.arg;
-
-    // 为空，按不可见
-    const auth = getActionPermissionType(binding.instance, key);
     if (!key) {
       console.error('v-action 未指定有效参数，如v-action:add');
       return;
     }
+    // 为空，按不可见
+    const auth = getActionPermissionType(binding.instance, key);
 
     // 授权策略 visible:可见 invisible:不可见 enable:启用 disabled:禁用
     const types = ['visible', 'invisible', 'enable', 'disabled'];
@@ -294,6 +293,6 @@ export default function (app: App) {
    */
   app.directive('visible', function (el, binding, vnode) {
     // 当表达式有值时，根据表达式的数组key，判断是否隐藏或禁用当前操作按钮/权限
-    handleCustomAction(binding, vnode, el, false);
+    handleCustomAction(binding, vnode, el);
   });
 }

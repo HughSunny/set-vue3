@@ -122,14 +122,12 @@ import { GlobalOutlined } from '@ant-design/icons-vue';
 import { useRouter, useRoute } from 'vue-router';
 import { AppConfig } from '@core/bo';
 import { useI18n } from '@core/hooks/useI18n';
-import { useAppStore } from '@core/store/app';
-import { useUserStore } from '@core/store/user';
-import ls from '@core/utils/local-storage';
+import { useAppStore, useConfigStore, useUserStore } from '@core/store';
+import { setLocalStorage, getLocalStorage, clearLocalStorage } from '@core/utils/storage';
 import type { FnLoginHook, FnAfterLogin } from '@core/interface/ILeadFrame';
 import { getUserInfo, login } from '@core/api/services/uc';
 import type { IUserInfo } from '@core/interface/IUser';
 import { useCookies } from '@vueuse/integrations/useCookies';
-import { useConfigStore } from '@core/store/config';
 const cookie = useCookies();
 const { t } = useI18n();
 const props = defineProps<{
@@ -148,7 +146,7 @@ const appStore = useAppStore();
 const userStore = useUserStore();
 const configStore = useConfigStore();
 // 如果缓存中存在用户名，则认为其登录时选择了‘记住用户名’
-const userCode = ls.get('userCode');
+const userCode = getLocalStorage('userCode');
 const formState = reactive<FormState>({
   username: userCode || '',
   password: '',
@@ -188,7 +186,7 @@ const handleLanguageChange = e => {
 
 const handleLogin = async e => {
   self.loading = true;
-  let user: IUserInfo = null;
+  let user: IUserInfo | null = null;
   try {
     if (props.loginHook) {
       user = await props.loginHook(formState.username, formState.password);
@@ -210,9 +208,9 @@ const handleLogin = async e => {
   }
   userStore.SET_INFO(user);
   //记住账号
-  ls.remove('userCode');
+  clearLocalStorage('userCode');
   if (formState.remember === true) {
-    ls.set('userCode', formState.username);
+    setLocalStorage('userCode', formState.username);
   }
   if (props.afterLogin) {
     props.afterLogin();
@@ -240,7 +238,7 @@ const openUrl = (url: string) => {
 .lead-login-layout {
   //   display: block;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: auto;
   //   position: relative;
   background-image: url(/image/mes-login-bg.jpg);

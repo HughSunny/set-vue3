@@ -48,149 +48,116 @@
   </a-layout-header>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { PropType } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
-import { defineComponent, ref, computed, toRefs, inject } from 'vue';
+import { ref, computed, toRefs, inject } from 'vue';
 import { getMenuFirstChildren } from '@core/utils/menu-util';
 import { useProProvider } from '@core/hooks';
 import GlobalHeader from '@core/home/global-header/index';
 import TopNavHeader from '@core/home/top-nav-header/index.vue';
 
-import type { RouteProps } from '@core/interface/IRouter'
-
-export default defineComponent({
+import type { RouteProps } from '@core/interface/IRouter';
+defineOptions({
   name: 'HeaderView',
-  props: {
-    fixedHeader: {
-      type: Boolean,
-      default: false,
-    },
-    //
-    layout: {
-      type: String,
-      default: 'mix',
-    },
-    theme: {
-      type: String as PropType<MenuTheme>,
-      default: 'dark',
-    },
-    menus: {
-      type: Array as PropType<RouteProps[]>,
-      default: (): Record<string, unknown>[] => [],
-    },
-    openKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
-    selectedKeys: {
-      type: Array as PropType<string[]>,
-      required: true,
-    },
-    hasSiderMenu: {
-      type: Boolean,
-      default: false,
-    },
-    collapsed: {
-      type: Boolean,
-      default: (): boolean => false,
-    },
-    siderWidth: {
-      type: Number,
-      default: 208,
-    },
-    collapsedWidth: {
-      type: Number,
-      default: 48,
-    },
-    collapsedButton: {
-      type: Boolean,
-      default: () => true,
-    },
-    headerHeight: {
-      type: Number,
-      default: 48,
-    },
-    splitMenus: {
-      type: Boolean,
-      default: false,
-    },
-    prefixCls: {
-      type: String,
-      default: () => undefined,
-    },
+});
+const emit = defineEmits(['update:openKeys', 'update:selectedKeys', 'update:collapsed']);
+const props = defineProps({
+  fixedHeader: {
+    type: Boolean,
+    default: false,
   },
-  emits: ['update:openKeys', 'update:selectedKeys', 'update:collapsed'],
-  // inheritAttrs: true,
-  setup(props, { emit }) {
-    const { getPrefixCls } = useProProvider();
-    const {
-      prefixCls: propPrefixCls,
-      collapsed,
-      fixedHeader,
-      hasSiderMenu,
-      siderWidth,
-      collapsedWidth,
-      splitMenus,
-    } = toRefs(props);
-    const prefixCls = propPrefixCls.value || getPrefixCls();
-    const isMobile = inject('isMobile', ref(false));
-    const isMix = computed(() => props.layout === 'mix');
-    const isTop = computed(() => props.layout === 'top');
-    const isLeft = computed(() => props.layout === 'left');
-    const needShowMenu = computed(() => (isMix.value ? splitMenus.value : true));
-    const needFixedHeader = computed(() => fixedHeader.value || isMix.value);
-    const needSettingWidth = computed(
-      () => needFixedHeader.value && hasSiderMenu.value && !isTop.value && !isMobile.value,
-    );
-    const computedMenus = computed(() =>
-      splitMenus.value ? getMenuFirstChildren(props.menus) : props.menus,
-    );
-
-    const classNames = ref({
-      [`${prefixCls}-fixed-header`]: needFixedHeader,
-      [`${prefixCls}-top-menu`]: isTop.value,
-    });
-    const width = computed(() =>
-      // 收起状态 或是 left 布局模式时，计算收起宽度
-      !isMix.value && needSettingWidth.value && !isMobile.value
-        ? `calc(100% - ${
-            collapsed.value || isLeft.value ? collapsedWidth.value : siderWidth.value
-          }px)`
-        : '100%',
-    );
-
-    const right = computed(() => (needFixedHeader.value ? 0 : undefined));
-
-    const handleSelectedKeys = (selectedKeys: string[]): void => {
-      emit('update:selectedKeys', selectedKeys);
-    };
-    const handleOpenKeys = (openKeys: string[]): void => {
-      emit('update:openKeys', openKeys);
-    };
-    const handleCollapse = (collapsed: boolean): void => {
-      emit('update:collapsed', collapsed);
-    };
-    return {
-      classNames,
-      width,
-      right,
-      needFixedHeader,
-      isTop,
-      isMix,
-      isLeft,
-      needShowMenu,
-      needSettingWidth,
-      computedMenus,
-      isMobile,
-      handleSelectedKeys,
-      handleOpenKeys,
-      handleCollapse,
-    };
+  //
+  layout: {
+    type: String,
+    default: 'mix',
   },
-  components: {
-    TopNavHeader,
-    GlobalHeader,
+  theme: {
+    type: String as PropType<MenuTheme>,
+    default: 'dark',
+  },
+  menus: {
+    type: Array as PropType<RouteProps[]>,
+    default: (): Record<string, unknown>[] => [],
+  },
+  openKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+  selectedKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+  hasSiderMenu: {
+    type: Boolean,
+    default: false,
+  },
+  collapsed: {
+    type: Boolean,
+    default: (): boolean => false,
+  },
+  siderWidth: {
+    type: Number,
+    default: 208,
+  },
+  collapsedWidth: {
+    type: Number,
+    default: 48,
+  },
+  collapsedButton: {
+    type: Boolean,
+    default: () => true,
+  },
+  headerHeight: {
+    type: Number,
+    default: 48,
+  },
+  splitMenus: {
+    type: Boolean,
+    default: false,
+  },
+  prefixCls: {
+    type: String,
+    default: () => undefined,
   },
 });
+
+const { getPrefixCls } = useProProvider();
+const { collapsed } = toRefs(props);
+const prefixCls = computed(() => props.prefixCls || getPrefixCls());
+const isMobile = inject('isMobile', ref(false));
+const isMix = computed(() => props.layout === 'mix');
+const isTop = computed(() => props.layout === 'top');
+const isLeft = computed(() => props.layout === 'left');
+const needShowMenu = computed(() => (isMix.value ? props.splitMenus : true));
+const needFixedHeader = computed(() => props.fixedHeader || isMix.value);
+const needSettingWidth = computed(
+  () => needFixedHeader.value && props.hasSiderMenu && !isTop.value && !isMobile.value,
+);
+const computedMenus = computed(() =>
+  props.splitMenus ? getMenuFirstChildren(props.menus) : props.menus,
+);
+
+const classNames = ref({
+  [`${prefixCls.value}-fixed-header`]: needFixedHeader,
+  [`${prefixCls.value}-top-menu`]: isTop.value,
+});
+const width = computed(() =>
+  // 收起状态 或是 left 布局模式时，计算收起宽度
+  !isMix.value && needSettingWidth.value && !isMobile.value
+    ? `calc(100% - ${props.collapsed || isLeft.value ? props.collapsedWidth : props.siderWidth}px)`
+    : '100%',
+);
+
+const right = computed(() => (needFixedHeader.value ? 0 : undefined));
+
+const handleSelectedKeys = (selectedKeys: string[]): void => {
+  emit('update:selectedKeys', selectedKeys);
+};
+const handleOpenKeys = (openKeys: string[]): void => {
+  emit('update:openKeys', openKeys);
+};
+const handleCollapse = (collapsed: boolean): void => {
+  emit('update:collapsed', collapsed);
+};
 </script>

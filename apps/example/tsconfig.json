@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "strictFunctionTypes": false,
-    "importsNotUsedAsValues": "error",
+    // "importsNotUsedAsValues": "error",
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,

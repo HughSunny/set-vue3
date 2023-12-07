@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import { acceptHMRUpdate, createPinia } from 'pinia';
+import { acceptHMRUpdate, createPinia, getActivePinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 // modules
 import { useAppStore, useConfigStore, useUserStore } from '@xdc/core';
@@ -11,11 +11,18 @@ if (import.meta.hot) {
 }
 
 const store = createPinia();
-store.use(piniaPluginPersistedstate);
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>store createPinia', store);
+// store.use(piniaPluginPersistedstate);
 
 export const setupStore = (app: App) => {
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>store setupStore', store);
   app.use(store);
-  return store;
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>store ActivePinia', getActivePinia());
+
+  // const userStore = useUserStore();
+  // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>store setupStore ', userStore);
+  // const configStore = useConfigStore();
+  // const appStore = useAppStore();
 };
 
 export default store;

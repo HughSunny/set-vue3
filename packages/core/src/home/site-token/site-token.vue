@@ -1,10 +1,10 @@
 <template>
   <slot></slot>
 </template>
-<script lang="ts" setup name="site-token-view">
+<script lang="ts" setup name="SiteTokenView">
 defineOptions({
   name: 'SiteTokenView',
 });
 import { useSiteToken } from '@core/hooks';
-useSiteToken();
+const { mergedToken } = useSiteToken();
 </script>

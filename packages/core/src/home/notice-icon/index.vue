@@ -103,15 +103,15 @@ const noticesConfig = ref([
 const getNoticeData = async () => {
   // const notices = await queryNotices();
 
-  const notices = [
+  const notices: NoticeItem[] = [
     {
       id: '000000001',
+      type: 'notification',
+      status: 'processing',
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png',
       title: '你收到了一个通知',
       datetime: '2017-08-09',
-      type: 'notification',
       extra: '进行中',
-      status: 'processing',
     },
     {
       id: '000000006',
@@ -119,14 +119,14 @@ const getNoticeData = async () => {
       description: '描述信息描述信息描述信息',
       datetime: '2017-08-07',
       type: 'warning',
-      clickClose: true,
+      status: '',
     },
     {
       id: '000000012',
       title: '这是一条报警',
       description: '冠霖提交于 2017-01-06，需在 2017-01-07 前完成代码变更任务',
-      // "extra": "进行中",
-      // "status": "processing",
+      extra: '进行中',
+      status: 'processing',
       type: 'alarm',
     },
   ];
@@ -134,7 +134,7 @@ const getNoticeData = async () => {
     list.value = [];
   } else {
     const newNotices = notices.map(notice => {
-      const newNotice = { ...notice };
+      const newNotice: NoticeItem = { ...notice };
 
       if (notice.datetime) {
         // newNotice.datetime = dayjs(notice.datetime)?.fromNow()

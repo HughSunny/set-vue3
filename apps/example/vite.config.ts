@@ -1,3 +1,4 @@
+/// <reference types="./src/env.d.ts" />
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import UnoCss from 'unocss/vite';
@@ -35,7 +36,6 @@ export default defineConfig(({ command, mode }) => {
       include: [
         'ant-design-vue/es/locale/en_US',
         'ant-design-vue/es/locale/zh_CN',
-        'store/plugins/expire',
         'ant-design-vue/es/form',
         'dayjs',
         'dayjs/locale/en',

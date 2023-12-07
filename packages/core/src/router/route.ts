@@ -17,20 +17,14 @@ import { Exception404 } from '@core/views';
 
 import { genMenuTreeRoutes, syncMenu2AccessRoutes } from './menu';
 import { getAuthManager } from '@core/utils/auth-manager';
+import { getSystemInitOptions } from '@core/app';
 
-let _initAppOptions: IInitAppOptions = { store: {} as Pinia, router: {} as Router };
-/**
- * 获取初始化路由配置
- */
-export function getSystemInitOptions(): IInitAppOptions {
-  return _initAppOptions || { store: {} as Pinia, router: {} as Router };
-}
 
 /**
  * 重置路由
  */
 export function resetRouter() {
-  const { router, routerOptions } = _initAppOptions;
+  const { router, routerOptions } = getSystemInitOptions();
   const { whiteList } = routerOptions || {};
 
   // 获取所有路由
@@ -45,14 +39,8 @@ export function resetRouter() {
 /**
  * 应用----初始应用配置
  */
-export function initAppOptions(options: IInitAppOptions) {
-  console.log('App initAppOptions -----------------------------------------------');
-  if (!options?.router) {
-    throw new Error('未指定有效 router 参数，路由实例用户初始化路由导航配置');
-  }
-  const opts = mergeInitRouteOptions(options);
-
-  _initAppOptions = cloneDeep(opts);
+export function initFrameRouter() {
+  const opts = getSystemInitOptions();
   // setActivePinia(_initAppOptions.store);
   const { router, routerOptions } = opts;
   const { initRoutes, whiteList, accessRoutes } = routerOptions || {};
@@ -65,7 +53,6 @@ export function initAppOptions(options: IInitAppOptions) {
 
   NProgress.configure({ showSpinner: false });
   router.beforeEach(async (to, from, next) => {
-    console.log('App router beforeEach-----------------------------------------------');
 
     startLoading();
     const userStore = useUserStore();
@@ -86,7 +73,7 @@ export function initAppOptions(options: IInitAppOptions) {
     // 白名单 不用权限校验 直接跳转
     // 白名单路由列表检查
     // 因为动态加载 要跳转的路由不存在 to 变成了 404
-    if (whiteList.includes(to.name as string) && !is404) {
+    if (whiteList?.includes(to.name as string) && !is404) {
       next();
       return;
     }
@@ -166,7 +153,7 @@ export function initAppOptions(options: IInitAppOptions) {
         //      router.addRoute(xx)
         //   }
         // })
-        // console.log('--------------------------->allRouters', allRouters)
+        console.log('--------------------------->allRouters', allRouters)
         console.log('--------------------------->menuTreeList', menuTreeList);
         console.log('--------------------------->router.getRoutes()', router.getRoutes());
       }
@@ -276,12 +263,16 @@ export async function genRoutersByFetchMenu(
       duration: 0,
     });
   }
+  return {
+    menuTreeList: [],
+    allRouters: [],
+  };
 }
 
 /**
  * 合并默认的初始化配置参数
  */
-function mergeInitRouteOptions(options: IInitAppOptions) {
+export function mergeInitRouteOptions(options: IInitAppOptions) {
   let {
     initRoutes = [],
     layoutRoutes = [],

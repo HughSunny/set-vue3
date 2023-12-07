@@ -1,4 +1,10 @@
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import type {
+  AxiosRequestConfig,
+  AxiosInstance,
+  AxiosResponse,
+  AxiosError,
+  InternalAxiosRequestConfig,
+} from 'axios';
 import type { RequestOptions, Result, UploadFileParams, UploadFileCallBack } from '#/axios';
 import type { CreateAxiosOptions } from './axiosTransform';
 import axios from 'axios';
@@ -6,8 +12,8 @@ import qs from 'qs';
 import { AxiosCanceler } from './axiosCancel';
 
 import { cloneDeep } from 'lodash-es';
-import { RequestEnum, ContentTypeEnum } from '@core/enum/httpEnum'
-import { isFunction } from '@core/utils/is'
+import { RequestEnum, ContentTypeEnum } from '@core/enum/httpEnum';
+import { isFunction } from '@core/utils/is';
 import { useMessage } from '@core/hooks/useMessage';
 
 const { createMessage } = useMessage();
@@ -70,17 +76,25 @@ export class VAxios {
     if (!transform) {
       return;
     }
-    const { requestInterceptors, requestInterceptorsCatch, responseInterceptors, responseInterceptorsCatch } = transform;
+    const {
+      requestInterceptors,
+      requestInterceptorsCatch,
+      responseInterceptors,
+      responseInterceptorsCatch,
+    } = transform;
 
     const axiosCanceler = new AxiosCanceler();
 
     // 请求侦听器配置处理
-    this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
+    this.axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       // If cancel repeat request is turned on, then cancel repeat request is prohibited
       // @ts-ignore
       const { ignoreCancelToken } = config.requestOptions;
 
-      const ignoreCancel = ignoreCancelToken !== undefined ? ignoreCancelToken : this.options.requestOptions?.ignoreCancelToken;
+      const ignoreCancel =
+        ignoreCancelToken !== undefined
+          ? ignoreCancelToken
+          : this.options.requestOptions?.ignoreCancelToken;
 
       !ignoreCancel && axiosCanceler.addPending(config);
       if (requestInterceptors && isFunction(requestInterceptors)) {
@@ -113,7 +127,11 @@ export class VAxios {
    * 文件上传
    */
   //--@updateBy-begin----author:liusq---date:20211117------for:增加上传回调参数callback------
-  uploadFile<T = any>(config: AxiosRequestConfig, params: UploadFileParams, callback?: UploadFileCallBack) {
+  uploadFile<T = any>(
+    config: AxiosRequestConfig,
+    params: UploadFileParams,
+    callback?: UploadFileCallBack,
+  ) {
     //--@updateBy-end----author:liusq---date:20211117------for:增加上传回调参数callback------
     const formData = new window.FormData();
     const customFilename = params.name || 'file';
@@ -126,16 +144,16 @@ export class VAxios {
     // const glob = useGlobSetting();
     // config.baseURL = glob.uploadUrl;
     if (params.data) {
-      Object.keys(params.data).forEach((key) => {
+      Object.keys(params.data).forEach(key => {
         const value = params.data![key];
         if (Array.isArray(value)) {
-          value.forEach((item) => {
+          value.forEach(item => {
             formData.append(`${key}[]`, item);
           });
           return;
         }
 
-        formData.append(key, params.data[key]);
+        formData.append(key, value);
       });
     }
 
@@ -173,7 +191,11 @@ export class VAxios {
     const headers = config.headers || this.options.headers;
     const contentType = headers?.['Content-Type'] || headers?.['content-type'];
 
-    if (contentType !== ContentTypeEnum.FORM_URLENCODED || !Reflect.has(config, 'data') || config.method?.toUpperCase() === RequestEnum.GET) {
+    if (
+      contentType !== ContentTypeEnum.FORM_URLENCODED ||
+      !Reflect.has(config, 'data') ||
+      config.method?.toUpperCase() === RequestEnum.GET
+    ) {
       return config;
     }
 
@@ -222,9 +244,9 @@ export class VAxios {
           if (transformRequestHook && isFunction(transformRequestHook)) {
             try {
               const ret = transformRequestHook(res, opt);
-              //zhangyafei---添加回调方法
-              config.success && config.success(res.data);
-              //zhangyafei---添加回调方法
+              // //zhangyafei---添加回调方法
+              // config.success && config.success(res.data);
+              // //zhangyafei---添加回调方法
               resolve(ret);
             } catch (err) {
               reject(err || new Error('request error!'));
@@ -246,7 +268,6 @@ export class VAxios {
     });
   }
 
-
   /**
    * 【用于评论功能】自定义文件上传-请求
    * @param url
@@ -254,16 +275,15 @@ export class VAxios {
    */
   uploadMyFile<T = any>(url, formData) {
     // const glob = useGlobSetting();
-    return this.axiosInstance
-      .request<T>({
-        url: url,
-        // baseURL: glob.uploadUrl,
-        method: 'POST',
-        data: formData,
-        headers: {
-          'Content-type': ContentTypeEnum.FORM_DATA,
-          ignoreCancelToken: true,
-        },
-      });
+    return this.axiosInstance.request<T>({
+      url: url,
+      // baseURL: glob.uploadUrl,
+      method: 'POST',
+      data: formData,
+      headers: {
+        'Content-type': ContentTypeEnum.FORM_DATA,
+        ignoreCancelToken: true,
+      },
+    });
   }
 }

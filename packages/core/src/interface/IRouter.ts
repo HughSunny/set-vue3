@@ -86,6 +86,10 @@ export enum MenuTypeEnum {
   ChildPage = 2, // 子页面 在菜单中隐藏
   Button = 3, //按钮
 }
+
+export interface IFetchMenuTree extends IFetchMenu {
+  children?: IFetchMenuTree[];
+}
 /**
  * 客户端请求获取的菜单项
  */
@@ -201,7 +205,7 @@ export interface MetaRecord {
 
 export type TargetType = '_blank' | '_self' | unknown;
 export interface RouteProps {
-  X;
+  // X;
   [x: string]: any;
   key?: string | symbol;
   path: string;

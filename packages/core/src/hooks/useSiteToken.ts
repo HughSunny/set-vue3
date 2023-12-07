@@ -2,21 +2,23 @@ import { TinyColor } from '@ctrl/tinycolor';
 import { theme } from 'ant-design-vue';
 import { computed, watch } from 'vue';
 import { useAppStore } from '@core/store';
-const { useToken } = theme;
 
-export const useSiteToken = () => {
+export function useSiteToken() {
+  const frameDarkBackground = computed(() => appStore.frameDarkBackground);
+  const frameMenuSubBg = computed(() => appStore.frameMenuSubBg);
+  const { useToken } = theme;
   const result = useToken();
   const { token } = result;
   const appStore = useAppStore();
-  const frameDarkBackground = computed(() => appStore.frameDarkBackground);
-  const frameMenuSubBg = computed(() => appStore.frameMenuSubBg);
-  const mergedToken = computed(() => ({
-    theme: result.theme.value,
-    hashId: result.hashId.value,
-    token: {
-      ...token.value,
-    },
-  }));
+  const mergedToken = computed(() => {
+    return {
+      theme: result.theme.value,
+      hashId: result.hashId.value,
+      token: {
+        ...token.value,
+      },
+    };
+  });
 
   let styleDom: HTMLStyleElement | null = null;
   watch(
@@ -89,5 +91,5 @@ export const useSiteToken = () => {
     { immediate: true },
   );
 
-  return mergedToken;
-};
+  return { mergedToken };
+}

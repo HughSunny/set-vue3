@@ -1,5 +1,5 @@
-import antd from 'ant-design-vue/es/locale/en_US'
-import dayjs from 'dayjs/locale/en'
+import antd from 'ant-design-vue/es/locale/en_US';
+import dayjs from 'dayjs/locale/en';
 
 // antd dayjs 英文配置
 const locales = {
@@ -36,13 +36,13 @@ const locales = {
       permission: 'Permission ',
       pleaseInput: 'Please Input {label}',
       pleaseSelect: 'Please Select {label}',
-      pleaseUpload: 'Please Upload {label}'
+      pleaseUpload: 'Please Upload {label}',
     },
     login: {
       account: 'Account',
       password: 'Password',
       language: 'Language',
-      rememberMe: 'Remember me'
+      rememberMe: 'Remember me',
     },
     menu: {},
     status: {
@@ -58,13 +58,13 @@ const locales = {
       notNull: 'notNull',
       yes: 'yes',
       no: 'no',
-      exception: 'exception'
+      exception: 'exception',
     },
     module: {
       user: 'user',
       menu: 'menu',
       role: 'role',
-      menuPermission: 'menu permission'
+      menuPermission: 'menu permission',
     },
     api: {
       operationFailed: 'Operation failed',
@@ -86,10 +86,10 @@ const locales = {
       errMsg502: 'Network Error!',
       errMsg503: 'The service is unavailable, the server is temporarily overloaded or maintained!',
       errMsg504: 'Network timeout!',
-      errMsg505: 'The http version does not support the request!'
-    }
-  }
-}
+      errMsg505: 'The http version does not support the request!',
+    },
+  },
+};
 export default {
-  ...locales
-}
+  ...locales,
+};

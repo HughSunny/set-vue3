@@ -125,7 +125,7 @@ export default function useMenuState(
       if (state.collapsed && !isMobile.value) {
         state.openKeys = [];
       } else {
-        state.openKeys = getOpenKeysBySelectKey(route.path);
+        state.openKeys = getOpenKeysBySelectKey(route.path) || [];
       }
     },
   );

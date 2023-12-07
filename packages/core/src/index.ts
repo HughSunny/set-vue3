@@ -1,4 +1,3 @@
-import '@core/api/http';
 import i18n from './locale';
 import type { App } from 'vue';
 import { ComponentPlugin } from './components';

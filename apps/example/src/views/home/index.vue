@@ -1,7 +1,11 @@
 <template>
   <div style="display: flex; flex-direction: column">
     测试页面HOME
+    <p>
+      {{ configStore.sysName }}
+    </p>
     <a-button>223434324</a-button>
+
     <custom-btn></custom-btn>
     怎么回事
     <IndustryUpload></IndustryUpload>
@@ -18,17 +22,18 @@
 </template>
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { AppConfig } from '@xdc/core';
+import { AppConfig, useConfigStore } from '@xdc/core';
 import { SetFieldType } from '@xdc/widgets';
 import checkData from '@/config/constants/checkbox-data.json';
 import cloudDeployment from '@/config/constants/cloud-deployment.json';
 import { YES_NO } from '@/config/constants/common';
 import industryType from '@/config/constants/industry-type.json';
 
+const configStore = useConfigStore();
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>App configStore ', configStore.sysName);
 defineOptions({
   name: 'Home',
 });
-
 const dataFields = [
   {
     key: 'input',

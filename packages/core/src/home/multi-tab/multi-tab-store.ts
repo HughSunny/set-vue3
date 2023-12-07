@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file */
 import type { DefineComponent, InjectionKey, UnwrapRef } from 'vue';
 import {
   isRef,
@@ -133,7 +134,9 @@ export const MultiTabStoreConsumer = defineComponent({
       // 是否存在 cache
       let cacheItem = hasCache(tabRoute.path);
       // 标签的title是路由meta中的titie 或者 route中参数的name
-      const tabTitle = (tabRoute?.meta?.title as string) || tabRoute.params?.name;
+      const tabTitle =
+        (tabRoute?.meta?.title as string) ||
+        ((tabRoute as RouteLocationNormalized).params?.name as string);
       const cacheRoute = { ...omit(route, ['matched']) };
       if (!cacheItem) {
         cacheItem = {
@@ -168,6 +171,7 @@ export const MultiTabStoreConsumer = defineComponent({
 
       const newCom =
         componentMap[cacheItem.key] ||
+        // eslint-disable-next-line vue/one-component-per-file
         defineComponent({
           name: cacheItem.key,
           setup(props, { attrs }) {
@@ -252,7 +256,7 @@ export const useMultiTab = (/*options?: Options*/): MultiTabType => {
     const newList: CacheItem[] = [];
     const deleteKeyList: string[] = [];
     for (let i = 0; i < list.length; i++) {
-      const item = list[i];
+      const item: CacheItem = list[i];
       if (i < start || i >= end || item.lock) {
         newList.push(item);
       } else {

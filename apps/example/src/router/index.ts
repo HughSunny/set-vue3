@@ -1,7 +1,7 @@
 import type { App } from 'vue';
-import { createRouter, createWebHistory, createMemoryHistory} from 'vue-router';
-import routes from '@/router/routes';
+import { createRouter, createWebHistory } from 'vue-router';
 import MainLayout from '@/layout/index.vue';
+import routes from '@/router/routes';
 /**
  * 初始化基础路由
  */
@@ -13,24 +13,19 @@ export const HomeLayoutRoutes = {
   component: MainLayout,
   meta: {
     title: '首页',
-    isPublic: true
+    isPublic: true,
   },
-  children: [
-    ...routes
-  ]
+  children: [...routes],
 };
 
 constantRoutes.push(HomeLayoutRoutes);
 
 // 实例化 vue-router
 const router = createRouter({
-  history: !import.meta.env?.SSR
-    ? createWebHistory()
-    : createMemoryHistory(),
+  history: createWebHistory(),
   routes: constantRoutes,
 });
 
 export function setupRouter(app: App) {
-
   app.use(router);
 }

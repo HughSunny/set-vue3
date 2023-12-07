@@ -8,18 +8,6 @@ import DefineOptions from 'unplugin-vue-define-options/vite';
 
 import pkg from './package.json';
 
-const getExternal = () => {
-  const modules = builtinModules.filter(
-    x => !/^_|^(internal|v8|node-inspect|fsevents)\/|\//.test(x),
-  );
-
-  return modules
-    .concat(modules.map(s => `node:${s}`))
-    .concat(Object.keys(pkg.dependencies))
-    .concat(Object.keys(pkg.devDependencies));
-};
-
-// const external = getExternal();
 const external: (string | RegExp)[] = Object.keys(pkg.dependencies);
 const resolve = (...paths: string[]) => {
   return path.resolve(__dirname, ...paths);

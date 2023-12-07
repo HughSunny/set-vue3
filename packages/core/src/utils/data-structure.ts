@@ -70,7 +70,7 @@ export function arrayToTree(data: Record<string, any>[], clone = true): Record<s
  * @param data
  * @param [clone=true] 是否深度克隆
  */
-export function treeToArray<T>(data: T[], clone = true): T[] {
+export function treeToArray<T, U extends T>(data: U[] | U, clone = true): T[] {
   const arr = [];
 
   const treeToOneArray = tree => {
@@ -178,13 +178,13 @@ export function classifyArrayBySameField2Tree(arr, fieldName, keyModal = 'title'
       temObj[item[fieldName]].push(item);
     }
   }
-  const resArr = [];
+  const resArr: any[] = [];
   Object.keys(temObj).forEach(key => {
-    resArr.push({
+    const model = {
       [keyModal]: key,
-      // title: '',
       children: temObj[key],
-    });
+    };
+    resArr.push(model);
   });
   return resArr;
 }

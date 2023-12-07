@@ -129,7 +129,6 @@ export default defineComponent({
       dynamicProps,
       handleOpenChange,
       handleSelect,
-      handleTest: () => {},
     };
   },
 });

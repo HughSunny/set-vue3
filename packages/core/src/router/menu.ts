@@ -1,5 +1,5 @@
 import { defineAsyncComponent, h } from 'vue';
-import type { RouteMeta, RouteRecordRaw } from 'vue-router';
+import type { RouteComponent, RouteMeta, RouteRecordRaw } from 'vue-router';
 import { camelCase, cloneDeep } from 'lodash-es';
 import RouteView from '@core/home/route-view';
 import BlankLayout from '@core/home/blank-layout';
@@ -31,7 +31,7 @@ export function genMenuTreeRoutes(
   }
   menuList = cloneDeep(menuList);
   // 菜单
-  let menus: IFetchMenu[] = [];
+  const menus: IFetchMenu[] = [];
   const menuObj = {};
   // fix: 去重 id去重就算了，可能path 一样，但是id不一样， 要命
   menuList.forEach(menu => {
@@ -61,7 +61,7 @@ export function genMenuTreeRoutes(
     const menuPath = path; //不能空
     const menuName = name; // name 是路由的主键，必须唯一!!
     // 路由path和组件映射处理
-    let component = null;
+    let component: RouteComponent | undefined = undefined;
 
     if (attachComp) {
       component = getComponentByMenuInMap(menu, componentMap);
@@ -189,8 +189,8 @@ export function genMenuTreeRoutes(
  * @param componentMap
  * @returns
  */
-export function getComponentByMenuInMap(menu, componentMap) {
-  let component = null;
+export function getComponentByMenuInMap(menu, componentMap): RouteComponent | undefined {
+  let component: RouteComponent | undefined = undefined;
   //componentMap 逻辑
   if (isMenu(menu.menuType)) {
     if (!menu.parentId || menu.parentId === '0') {
@@ -228,13 +228,13 @@ export function syncMenu2AccessRoutes(
     const userAsyncRouter: Array<MenuRouteItem> = [];
     asyncRoute.forEach((route: MenuRouteItem) => {
       const temp: MenuRouteItem = { ...route };
-      const hasChild = temp?.children?.length > 0;
+      const hasChild = temp?.children?.length;
 
       if (hasChild) {
         // 迭代
         temp.children = useGetAllowRoute(temp.children || [], menus).sort(
           (a: MenuRouteItem, b: MenuRouteItem) => {
-            return a.meta?.sort || 0 - b.meta?.sort || 0;
+            return a.meta?.sort || 0 - (b.meta?.sort || 0);
           },
         );
         //父路由重定向
@@ -245,7 +245,7 @@ export function syncMenu2AccessRoutes(
       // 路径可能有中文字符
       temp.path = urlEncodeChineseChars(temp.path);
       // 通过path 匹配
-      const targetMenu: MenuRouteItem = menus.find(r => r.path === route.path);
+      const targetMenu = menus.find(r => r.path === route.path);
 
       // 如果首层路由存在，直接加入
       if (targetMenu) {
@@ -302,7 +302,7 @@ export function syncMenu2AccessRoutes(
       userAsyncRouter.push(temp);
     });
     return userAsyncRouter.sort((a, b) => {
-      return a.meta?.sort - b.meta?.sort;
+      return a.meta?.sort || 0 - (b.meta?.sort || 0);
     });
   };
   const routeTree = useGetAllowRoute(accessRouteTreeList, menuList);
@@ -320,12 +320,12 @@ export function syncMenu2AccessRoutes(
  */
 export function getMenuFromAccessRoutes(
   menuList: IFetchMenu[],
-  accessRouteTreeList: Array<RouteRecordRaw>,
+  accessRouteTreeList: Array<MenuRouteItem>,
   componentMap: Record<string, any>,
 ) {
-  const useGetAllowRoute = (asyncRoute: Array<RouteRecordRaw>, menus: Array<IFetchMenu>) => {
+  const useGetAllowRoute = (asyncRoute: Array<MenuRouteItem>, menus: Array<IFetchMenu>) => {
     const userAsyncRouter: Array<MenuRouteItem> = [];
-    asyncRoute.forEach((route: RouteRecordRaw) => {
+    asyncRoute.forEach((route: MenuRouteItem) => {
       const temp: MenuRouteItem = { ...route };
       // 通过path 匹配
       const targetMenu = menus.find(r => r.path === route.path);
@@ -334,7 +334,7 @@ export function getMenuFromAccessRoutes(
         if (temp.children) {
           // 迭代
           temp.children = useGetAllowRoute(temp.children, menus).sort((a, b) => {
-            return a.meta?.sort - b.meta?.sort;
+            return (a.meta?.sort || 0) - (b.meta?.sort || 0);
           });
         }
         // 合并route信息
@@ -345,7 +345,7 @@ export function getMenuFromAccessRoutes(
         temp.path = urlEncodeChineseChars(temp.path);
 
         // 合并route的meta
-        const tempMeta = { ...temp.meta, ...targetMenu };
+        const tempMeta: MenuRouteMeta = { ...temp.meta, ...targetMenu };
         delete tempMeta.path;
         temp.meta = tempMeta;
 
@@ -396,7 +396,7 @@ export function getMenuFromAccessRoutes(
       }
     });
     return userAsyncRouter.sort((a, b) => {
-      return a.meta?.sort - b.meta?.sort;
+      return (a.meta?.sort || 0) - (b.meta?.sort || 0);
     });
   };
   const routeTree = useGetAllowRoute(accessRouteTreeList, menuList);

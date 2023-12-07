@@ -11,10 +11,10 @@
     <a-layout-sider
       v-bind="$attrs"
       :class="{
-        [prefixCls]: true,
-        [`${prefixCls}-${runtimeTheme}`]: true,
-        [`${prefixCls}-${layout}`]: true,
-        [`${prefixCls}-fixed`]: fixed,
+        [currentPrefixCls]: true,
+        [`${currentPrefixCls}-${runtimeTheme}`]: true,
+        [`${currentPrefixCls}-${layout}`]: true,
+        [`${currentPrefixCls}-fixed`]: fixed,
       }"
       :breakpoint="breakpoint"
       :width="runtimeSideWidth"
@@ -50,10 +50,10 @@
           under-sider
         />
       </div>
-      <div :class="`${prefixCls}-links`">
+      <div :class="`${currentPrefixCls}-links`">
         <a-menu
           v-if="collapsedButton"
-          :class="`${prefixCls}-link-menu`"
+          :class="`${currentPrefixCls}-link-menu`"
           :inline-indent="16"
           :theme="runtimeTheme"
           :selected-keys="[]"
@@ -62,7 +62,7 @@
         >
           <a-menu-item
             key="collapsed-button"
-            :class="`${prefixCls}-collapsed-button`"
+            :class="`${currentPrefixCls}-collapsed-button`"
             :title="undefined"
             @click="handleCollapse"
           >
@@ -79,18 +79,50 @@
   </template>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { PropType } from 'vue';
 import { useRoute } from 'vue-router';
-import { defineComponent, computed, toRefs } from 'vue';
-import type { MenuTheme } from 'ant-design-vue';
+import { computed, toRefs } from 'vue';
+import type { MenuTheme, MenuProps } from 'ant-design-vue';
 import { useProProvider } from '@core/components/pro-provider/index';
-import BaseMenu, { BaseMenuProps } from '@core/home/base-menu/index.vue';
+import BaseMenu from '@core/home/base-menu/index.vue';
 import { findMenuChildren } from '@core/utils/menu-util';
 import type { LayoutType, Breakpoint } from '@core/interface/IBaseLayout';
 import { AppConfig } from '@core/bo';
 import { useConfigStore } from '@core/store';
-const SiderMenuProps = Object.assign({}, BaseMenuProps, {
+import type { RouteProps } from '@core/interface/IRouter';
+
+const emit = defineEmits([
+  'update:openKeys',
+  'update:selectedKeys',
+  'update:collapsed',
+  'mouseenter',
+  'mouseleave',
+  'itemHover',
+]);
+const props = defineProps({
+  locale: {
+    type: Boolean,
+    default: false,
+  },
+  menus: {
+    type: Array as PropType<RouteProps[]>,
+    required: true,
+  },
+  mode: {
+    type: String as PropType<MenuProps['mode']>,
+    default: 'inline',
+  },
+  openKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+  selectedKeys: {
+    type: Array as PropType<string[]>,
+    required: true,
+  },
+
+  underSider: Boolean,
   prefixCls: {
     type: String,
     default: () => undefined,
@@ -145,77 +177,33 @@ const SiderMenuProps = Object.assign({}, BaseMenuProps, {
   },
 });
 
-export default defineComponent({
-  name: 'SiderMenu',
-  props: SiderMenuProps,
-  inheritAttrs: false,
-  emits: [
-    'update:openKeys',
-    'update:selectedKeys',
-    'update:collapsed',
-    'mouseenter',
-    'mouseleave',
-    'itemHover',
-  ],
-  setup(props, { emit }) {
-    const {
-      prefixCls: propPrefixCls,
-      theme,
-      layout,
-      collapsed,
-      collapsedWidth,
-      siderWidth,
-      splitMenus,
-    } = toRefs(props);
-    const route = useRoute();
-    const { getPrefixCls } = useProProvider();
-    const prefixCls = propPrefixCls.value || getPrefixCls('sider');
-    const isMix = computed(() => layout.value === 'mix');
-    const runtimeTheme = computed<MenuTheme>(
-      () =>
-        // layout.value === 'mix' ? 'light' : theme.value,
-        theme.value, //202301011 不需要是light模式
-    );
-    const runtimeSideWidth = computed(() =>
-      collapsed.value ? collapsedWidth.value : siderWidth.value,
-    );
-    const computedMenus = computed(() =>
-      splitMenus.value ? findMenuChildren(props.menus, route.matched[1].name) : props.menus,
-    );
+const { layout, collapsed, collapsedWidth, siderWidth, splitMenus } = toRefs(props);
+const route = useRoute();
+const { getPrefixCls } = useProProvider();
+const currentPrefixCls = computed(() => props.prefixCls || getPrefixCls('sider'));
+const isMix = computed(() => layout.value === 'mix');
+const runtimeTheme = computed(() => props.theme);
+const runtimeSideWidth = computed(() =>
+  collapsed.value ? collapsedWidth.value : siderWidth.value,
+);
+const computedMenus = computed(() =>
+  splitMenus.value ? findMenuChildren(props.menus, route.matched[1].name) : props.menus,
+);
 
-    const handleSelectedKeys = (selectedKeys: string[]): void => {
-      emit('update:selectedKeys', selectedKeys);
-    };
-    const handleOpenKeys = (openKeys: string[]): void => {
-      emit('update:openKeys', openKeys);
-    };
-    const handleCollapse = () => {
-      emit('update:collapsed', !collapsed.value);
-    };
-    const configStore = useConfigStore();
-    const appName = computed(() => {
-      return configStore.sysName || AppConfig.sysName;
-    });
-    const appLogo = computed(() => {
-      return configStore.sysLogo || '/image/logo.png';
-    });
-    return {
-      prefixCls,
-      isMix,
-      runtimeTheme,
-      runtimeSideWidth,
-      computedMenus,
-
-      handleSelectedKeys,
-      handleOpenKeys,
-      handleCollapse,
-      appName,
-      appLogo,
-    };
-  },
-  components: {
-    BaseMenu,
-  },
+const handleSelectedKeys = (selectedKeys: string[]): void => {
+  emit('update:selectedKeys', selectedKeys);
+};
+const handleOpenKeys = (openKeys: string[]): void => {
+  emit('update:openKeys', openKeys);
+};
+const handleCollapse = () => {
+  emit('update:collapsed', !collapsed.value);
+};
+const configStore = useConfigStore();
+const appName = computed(() => {
+  return configStore.sysName || AppConfig.sysName;
+});
+const appLogo = computed(() => {
+  return configStore.sysLogo || '/image/logo.png';
 });
 </script>
-

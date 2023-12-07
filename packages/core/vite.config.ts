@@ -6,7 +6,12 @@ import jsx from '@vitejs/plugin-vue-jsx';
 import DefineOptions from 'unplugin-vue-define-options/vite';
 
 import pkg from './package.json';
-const external: (string | RegExp)[] = Object.keys(pkg.dependencies);
+const external: (string | RegExp)[] = Object.keys(pkg.dependencies).concat(
+  [/dayjs\/plugin/],
+  /ant-design-vue\/lib/,
+);
+console.log(' vite external', external);
+
 const resolve = (...paths: string[]) => {
   return path.resolve(__dirname, ...paths);
 };
@@ -27,7 +32,7 @@ export default defineConfig({
       },
     },
     rollupOptions: {
-      external: external.concat([/dayjs\/plugin/], /ant-design-vue\/lib/),
+      external: external,
     },
     reportCompressedSize: false,
     emptyOutDir: false,
