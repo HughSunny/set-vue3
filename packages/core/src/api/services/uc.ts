@@ -1,5 +1,5 @@
 import http from '@core/api/http/http'
-import { AppConfig } from '@core/bo/app-config'
+import { AppConfig } from '@core/bo'
 import { convertPageRequestParam } from '../helper'
 enum Api {
   entity = '/api/basic/User'

@@ -7,7 +7,7 @@ import { xor } from 'lodash-es';
 import type { LayoutType, MenuTheme } from '@core/interface/IBaseLayout';
 import type { MultiTabStore } from '@core/interface/IMultiTabStore';
 import { useAppStore, useUserStore } from '@core/store';
-import { AppConfig } from '@core/bo/app-config';
+import { AppConfig } from '@core/bo';
 
 export interface MenuState {
   collapsed: boolean;

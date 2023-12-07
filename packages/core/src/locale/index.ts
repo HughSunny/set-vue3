@@ -1,7 +1,7 @@
 import { ref } from 'vue';
 import { createI18n } from 'vue-i18n';
 import { getLanguageResources } from '@core/api';
-import { AppConfig } from '@core/bo/app-config';
+import { AppConfig } from '@core/bo';
 import dayjs from 'dayjs';
 import defaultLangValue from './lang/zh-CN';
 

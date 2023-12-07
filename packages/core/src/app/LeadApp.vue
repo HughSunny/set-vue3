@@ -6,7 +6,7 @@
 defineOptions({ name: 'LeadApp' });
 import { onBeforeMount, onMounted } from 'vue';
 import { getSystemInitOptions } from '@core/app';
-import { AppConfig } from '@core/bo/app-config';
+import { AppConfig } from '@core/bo';
 import type { ISysInit } from '@core/interface/ILeadFrame';
 import { useAppStore, useConfigStore } from '@core/store';
 import { IndustryOption } from './app-option';

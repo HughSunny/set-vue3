@@ -1,6 +1,6 @@
 import type { App } from 'vue';
 import { cloneDeep } from 'lodash-es';
-import { AppConfig } from '@core/bo/app-config';
+import { AppConfig } from '@core/bo';
 
 /**
  * 是否有显示权限，替代不支持 v-action-enable 指令的组件

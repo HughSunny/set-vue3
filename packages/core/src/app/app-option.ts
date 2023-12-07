@@ -16,7 +16,7 @@ import {
   type IFetchMenuTree,
 } from '@core/interface/IRouter';
 import { setLocalStorage, getLocalStorage } from '@core/utils/storage';
-import { AppConfig } from '@core/bo/app-config';
+import { AppConfig } from '@core/bo';
 import { type IUserInfo } from '@core/interface/IUser';
 import { getMenuList } from '@core/api/services/menu';
 import { getLanguageList } from '@core/api/services/common';

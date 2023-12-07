@@ -1,12 +1,12 @@
-import http from '@core/api/http/http'
-import { AppConfig } from '@core/bo/app-config'
+import http from '@core/api/http/http';
+import { AppConfig } from '@core/bo';
 enum Api {
   languageResource = '/Assets/I18n',
 }
 function getLanguageUrl(service?: string) {
   return AppConfig.config.i18nServiceUrl
     ? AppConfig.config.i18nServiceUrl + '/' + (service || '')
-    : ''
+    : '';
 }
 /**
  * 获取多语言资源
@@ -14,25 +14,25 @@ function getLanguageUrl(service?: string) {
  * @returns
  */
 export async function getLanguageResources(lang) {
-  const url = getLanguageUrl(`${lang}.json`)
+  const url = getLanguageUrl(`${lang}.json`);
   if (url) {
     return http.get(
       { url },
       {
-        isTransformResponse: false
-      }
-    )
+        isTransformResponse: false,
+      },
+    );
   }
-  return Promise.resolve({})
+  return Promise.resolve({});
 }
 
 // 语言列表
 export async function getLanguageList() {
-  const url = getLanguageUrl('supportedCultures.json')
+  const url = getLanguageUrl('supportedCultures.json');
   return http.get(
     { url },
     {
-      isTransformResponse: false
-    }
-  )
+      isTransformResponse: false,
+    },
+  );
 }
