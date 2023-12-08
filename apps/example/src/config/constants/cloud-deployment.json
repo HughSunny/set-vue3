@@ -1,14 +1,14 @@
 [
   {
-      "value": "9525c492-efa2-41c7-86d8-8e9a06ef8df2",
-      "title": "公有云"
+    "value": "9525c492-efa2-41c7-86d8-8e9a06ef8df2",
+    "title": "公有云"
   },
   {
-      "value": "aeee9c50-b476-4652-bd23-0c4acf442f2a",
-      "title": "私有云"
+    "value": "aeee9c50-b476-4652-bd23-0c4acf442f2a",
+    "title": "私有云"
   },
   {
-      "value": "3725819f-d576-4c3b-b503-c66611903f7d",
-      "title": "混合云"
+    "value": "3725819f-d576-4c3b-b503-c66611903f7d",
+    "title": "混合云"
   }
 ]

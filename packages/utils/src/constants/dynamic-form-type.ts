@@ -140,11 +140,11 @@ export const FieldTypeMap = {
   multiImageUpload: 'multiImageUpload',
 };
 
-export const getFieldTypeRules = (type) => {
-  return (FieldTypes.find((aa) => aa.key === type) || {}).rules;
+export const getFieldTypeRules = type => {
+  return (FieldTypes.find(aa => aa.key === type) || {}).rules;
 };
-export const getFieldTypeProps = (type) => {
-  return (FieldTypes.find((aa) => aa.key === type) || {}).props;
+export const getFieldTypeProps = type => {
+  return (FieldTypes.find(aa => aa.key === type) || {}).props;
 };
 
 export default {

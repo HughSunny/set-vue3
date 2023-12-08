@@ -90,7 +90,7 @@
         </a-row>
       </template>
       <a-row v-else type="flex" class="flexCheckRow">
-        <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="option.value">
+        <a-col :style="colStyle" v-for="item in getOptions(field, field.model)" :key="item.value">
           <a-checkbox :value="item.value" :class="field.params?.itemCls || ''">
             {{ $t(item.title) || item.title }}
           </a-checkbox>

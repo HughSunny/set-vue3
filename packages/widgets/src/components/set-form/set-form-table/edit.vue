@@ -79,178 +79,178 @@
   </a-form>
 </template>
 <script lang="ts" setup>
-import { ref, watch, reactive } from 'vue'
+import { ref, watch, reactive } from 'vue';
 import { SetFieldType, type SetFormTableField } from '@/entity/set-form';
-const emit = defineEmits(['onTableChange', 'onActionClick'])
+const emit = defineEmits(['onTableChange', 'onActionClick']);
 defineOptions({
-  name: 'SetTableEdit'
-})
+  name: 'SetTableEdit',
+});
 
 const props = defineProps({
   fields: {
     type: Array<SetFormTableField>,
     default: function () {
-      return [] as SetFormTableField[]
-    }
+      return [] as SetFormTableField[];
+    },
   },
   dataList: {
     type: Array,
     default: function () {
-      return []
-    }
+      return [];
+    },
   },
   showIndex: {
     type: Boolean,
-    default: false
+    default: false,
   },
   optionDict: {
     type: Object,
     default: function () {
-      return {}
-    }
+      return {};
+    },
   },
   addPosition: {
     type: String,
-    default: 'bottom'
+    default: 'bottom',
   },
   headerStyle: {
     type: Object,
     default: function () {
       return {
         'background-color': '#E8E8E8',
-        color: '#101010'
-      }
-    }
+        color: '#101010',
+      };
+    },
   },
   errors: {
     type: Object,
     default() {
-      return {}
-    }
-  }
-})
-const setTableFormRef = ref()
-const autoCount = ref(props.dataList.length)
-const newFormValue = {}
-const newTableData = []
+      return {};
+    },
+  },
+});
+const setTableFormRef = ref();
+const autoCount = ref(props.dataList.length);
+const newFormValue = {};
+const newTableData = [];
 props.dataList.forEach((item, index) => {
-  props.fields.forEach((field) => {
-    newFormValue[`${field.model}_${index}`] = item[field.model]
-  })
-  const newTableItem = Object.assign({}, item, { zIndex: index })
-  newTableData.push(newTableItem)
-})
-const list = ref(newTableData)
+  props.fields.forEach(field => {
+    newFormValue[`${field.model}_${index}`] = item[field.model];
+  });
+  const newTableItem = Object.assign({}, item, { zIndex: index });
+  newTableData.push(newTableItem);
+});
+const list = ref(newTableData);
 
-const values = reactive(newFormValue)
+const values = reactive(newFormValue);
 
 watch(
   () => props.dataList,
-  (newVal) => {
-    Object.assign(values, {})
-    const newTableData = []
+  newVal => {
+    Object.assign(values, {});
+    const newTableData = [];
     newVal.forEach((item, index) => {
-      props.fields.forEach((field) => {
-        values[`${field.model}_${index}`] = ref(item[field.model])
-      })
-      const newTableItem = Object.assign({}, item, { zIndex: index })
-      newTableData.push(newTableItem)
-    })
-    list.value = newTableData
-    autoCount.value = newVal.length
-  }
-)
+      props.fields.forEach(field => {
+        values[`${field.model}_${index}`] = ref(item[field.model]);
+      });
+      const newTableItem = Object.assign({}, item, { zIndex: index });
+      newTableData.push(newTableItem);
+    });
+    list.value = newTableData;
+    autoCount.value = newVal.length;
+  },
+);
 
 watch(
   () => props.fields,
-  (newVal) => {
+  newVal => {
     // notice： 带rules的值 不带append
     // console.log('watch fields', newVal, oldVal);
-  }
-)
+  },
+);
 
 // 新增数据
 const handleAddItem = () => {
-  const length = autoCount.value
-  const rules = {}
+  const length = autoCount.value;
+  const rules = {};
   let item = {
     isEdit: true,
     editable: true,
     id: null,
-    zIndex: length
-  }
-  props.fields.forEach((field) => {
-    item[`${field.model}`] = undefined
-    rules[`${field.model}_${item.zIndex}`] = field.rules
-    values[`${field.model}_${item.zIndex}`] = ref(item[field.model])
-  })
-  list.value = list.value.concat([item])
-  autoCount.value = autoCount.value + 1
+    zIndex: length,
+  };
+  props.fields.forEach(field => {
+    item[`${field.model}`] = undefined;
+    rules[`${field.model}_${item.zIndex}`] = field.rules;
+    values[`${field.model}_${item.zIndex}`] = ref(item[field.model]);
+  });
+  list.value = list.value.concat([item]);
+  autoCount.value = autoCount.value + 1;
   // console.log('---------------->', list.value)
-  emit('onTableChange', item, list.value, 'add')
-}
+  emit('onTableChange', item, list.value, 'add');
+};
 
 // 删除数据
 const deleteItem = (index, list) => {
-  const findItem = list.splice(index, 1)[0]
-  props.fields.forEach((field) => {
-    values[`${field.model}_${index}`] = undefined
-    delete values[`${field.model}_${index}`]
-  })
-  emit('onTableChange', findItem, list.value, 'delete')
+  const findItem = list.splice(index, 1)[0];
+  props.fields.forEach(field => {
+    values[`${field.model}_${index}`] = undefined;
+    delete values[`${field.model}_${index}`];
+  });
+  emit('onTableChange', findItem, list.value, 'delete');
 
   // setTableFormRef.value.clearValidate()
-}
+};
 
 const handleValueChange = (key, event, index, row) => {
   // 传值的新方式
   // 修改list中的值
-  const findItem = list.value[index]
-  findItem[key] = event
+  const findItem = list.value[index];
+  findItem[key] = event;
 
   // 下下策 文件触发校验的时机有问题，所以在设置值之后需要清空校验
-  const fieldMatch = props.fields.find((field) => field.model === key)
+  const fieldMatch = props.fields.find(field => field.model === key);
   // console.log('---------------handleValueChange', values)
   if (fieldMatch && fieldMatch.type.indexOf('ile') !== -1) {
-    setTableFormRef.value.validateFields([`${key}_${findItem.zIndex}`])
+    setTableFormRef.value.validateFields([`${key}_${findItem.zIndex}`]);
     // rowFormRef.value.clearValidate(key)
   }
-}
+};
 
 const handleActionClick = (event, action, data, position) => {
-  emit(action.payload, data, position)
-}
+  emit(action.payload, data, position);
+};
 
 const edit = (index, row) => {
   // this.$set(row, 'isEdit', true)
-}
+};
 const editSuccess = (index, row) => {
   // this.$set(row, 'isEdit', false)
-}
+};
 
-const validate = (callback) => {
-  setTableFormRef.value.validate(callback)
-}
+const validate = callback => {
+  setTableFormRef.value.validate(callback);
+};
 const asyncValidate = () => {
-  return setTableFormRef.value.validate()
-}
+  return setTableFormRef.value.validate();
+};
 
 const clearValidate = () => {
-  setTableFormRef.value.clearValidate()
-}
+  setTableFormRef.value.clearValidate();
+};
 
 const getResult = () => {
-  return list.value.map((item) => ({
+  return list.value.map(item => ({
     ...item,
-    isEdit: null
-  }))
-}
+    isEdit: null,
+  }));
+};
 defineExpose({
   validate,
   asyncValidate,
   clearValidate,
-  getResult
-})
+  getResult,
+});
 </script>
 <style scoped lang="less">
 .set-table_edit {

@@ -1,1 +1,1 @@
-export * from './set-form'
+export * from './set-form';

@@ -3,20 +3,20 @@
  */
 export interface ISysConfig {
   /**登录页标题 */
-  LoginSysName: string
+  LoginSysName: string;
   /**登录页显示的logo */
-  LoginSysLogo: string
+  LoginSysLogo: string;
   /**首页显示的logo */
-  SysLogo: string
+  SysLogo: string;
   /**首页头的背景图片 */
-  HeaderImage: string
-  SysName: string
-  AnnounceDelay: number
-  TraceType: number
-  FriendUrls: LinkUrl[]
-  MessageSendTypes: string[]
+  HeaderImage: string;
+  SysName: string;
+  AnnounceDelay: number;
+  TraceType: number;
+  FriendUrls: LinkUrl[];
+  MessageSendTypes: string[];
 }
-export class SysConfig  {
+export class SysConfig {
   /**登录页标题 */
   LoginSysName: string;
   /**登录页显示的logo */
@@ -46,7 +46,7 @@ export class LinkUrl {
   Caption: string;
   Url: string;
 
-  constructor() { }
+  constructor() {}
 }
 
 export class LeadAppConfig {
@@ -158,13 +158,13 @@ export class AliyunConfig {
 /** 钉钉配置 */
 export class DingTalkConfig {
   /** 钉钉api服务地址 */
-  ApiUrl = ''
+  ApiUrl = '';
   /**应用的agentid */
-  AgentId = ''
+  AgentId = '';
   /**已创建的企业内部应用的AppKey */
-  AppKey = ''
+  AppKey = '';
   /**已创建的企业内部应用的AppSecret */
-  AppSecret = ''
+  AppSecret = '';
 }
 /**微信应用配置信息 */
 export class WeiXinConfig {

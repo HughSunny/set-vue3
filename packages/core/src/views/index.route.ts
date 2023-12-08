@@ -1,9 +1,8 @@
-import type { RouteRecordRaw } from 'vue-router'
-import systemModule from './system/index.route'
-import RouteView from '@core/home/route-view'
-import BlankPage from '@core/views/BlankPage.vue'
+import type { RouteRecordRaw } from 'vue-router';
+import systemModule from './system/index.route';
+import RouteView from '@core/home/route-view';
+import BlankPage from '@core/views/BlankPage.vue';
 // 视图文件夹导出的路由
-
 
 // route-view 需要手动添加
 const commonRoutes: Array<RouteRecordRaw> = [
@@ -11,9 +10,9 @@ const commonRoutes: Array<RouteRecordRaw> = [
     path: '/system',
     meta: { title: '系统设置' },
     component: RouteView,
-    children: [...systemModule]
+    children: [...systemModule],
   },
 
   // gridPanel: 通用匹配模式
-]
-export default commonRoutes
+];
+export default commonRoutes;

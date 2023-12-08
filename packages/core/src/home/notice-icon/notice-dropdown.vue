@@ -23,15 +23,15 @@
   </a-dropdown>
 </template>
 <script lang="ts" setup>
-import type { SlotsType } from 'vue'
-import { ref } from 'vue'
-import { BellOutlined } from '@ant-design/icons-vue'
+import type { SlotsType } from 'vue';
+import { ref } from 'vue';
+import { BellOutlined } from '@ant-design/icons-vue';
 defineOptions({
-  name: 'NoticeDropdown'
-})
+  name: 'NoticeDropdown',
+});
 const props = defineProps({
   count: Number,
-  loading: Boolean
-})
-const visible = ref(false)
+  loading: Boolean,
+});
+const visible = ref(false);
 </script>

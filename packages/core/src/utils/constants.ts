@@ -1,26 +1,26 @@
-import type { ISysInit } from '@core/interface/ILeadFrame'
+import type { ISysInit } from '@core/interface/ILeadFrame';
 import { MenuTypeEnum } from '@core/interface/IRouter';
 
-export const getMenuTypeTitle = (key) => {
+export const getMenuTypeTitle = key => {
   if (key === MenuTypeEnum.Menu) {
-    return '菜单'
+    return '菜单';
   } else if (key === MenuTypeEnum.Page) {
-    return '页面'
+    return '页面';
   } else if (key === MenuTypeEnum.ChildPage) {
-    return '子页面'
+    return '子页面';
   } else if (key === MenuTypeEnum.Button) {
-    return '按钮'
+    return '按钮';
   }
-  return ''
-}
+  return '';
+};
 
 export const systemConfigValue = {
   loginSysName: '',
   loginSysLogo: null,
   sysName: '',
   sysLogo: '',
-  headerImage: null
-}
+  headerImage: null,
+};
 
 export const SYSTEM_CODE_GROUP = 'SystemConfig';
 export const FriendUrlKey = 'friendlyUrls';

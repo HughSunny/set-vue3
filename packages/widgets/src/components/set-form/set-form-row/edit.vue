@@ -122,7 +122,7 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['onValueChange']);
-const formFieldRows = ref(getRuleFieldRow(props.fields, props.sectionName, {}) || []);
+const formFieldRows = ref(getRuleFieldRow(props.fields, props.sectionName) || []);
 const formFields = ref(getRuleFieldList(props.fields, props.sectionName) || []);
 
 const handleValueChange = (key, event) => {

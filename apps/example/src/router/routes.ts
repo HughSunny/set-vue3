@@ -1,3 +1,3 @@
-import home from '@/router/modules/home'
-const mix = [...home]
-export default mix
+import home from '@/router/modules/home';
+const mix = [...home];
+export default mix;

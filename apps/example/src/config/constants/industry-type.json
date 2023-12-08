@@ -4,32 +4,32 @@
     "selected": false,
     "value": "d163b983-2480-4486-8fe3-9883269b3728",
     "children": [
-        {
-          "label": "A-01-农业",
-          "selected": false,
-          "value": "b3aee789-6480-4c30-975c-443194d909c8"
-        },
-        {
-          "label": "A-02-林业",
-          "selected": false,
-          "value": "683a9048-831f-4d56-bb3d-0660593b7842"
-        },
-        {
-          "label": "A-03-畜牧业",
-          "selected": false,
-          "value": "766bc712-6993-4360-8bf4-6a76a44d5a0b"
-        },
-        {
-          "label": "A-04-渔业",
-          "selected": false,
-          "value": "c357ae33-fcfc-431a-95a0-fbed84b8e343"
-        },
-        {
-          "label": "A-05-农、林、牧、渔专业及辅助性活动",
-          "selected": false,
-          "value": "99790a30-2c7c-4a99-89a6-cae822ba6537"
-        }
-     ]
+      {
+        "label": "A-01-农业",
+        "selected": false,
+        "value": "b3aee789-6480-4c30-975c-443194d909c8"
+      },
+      {
+        "label": "A-02-林业",
+        "selected": false,
+        "value": "683a9048-831f-4d56-bb3d-0660593b7842"
+      },
+      {
+        "label": "A-03-畜牧业",
+        "selected": false,
+        "value": "766bc712-6993-4360-8bf4-6a76a44d5a0b"
+      },
+      {
+        "label": "A-04-渔业",
+        "selected": false,
+        "value": "c357ae33-fcfc-431a-95a0-fbed84b8e343"
+      },
+      {
+        "label": "A-05-农、林、牧、渔专业及辅助性活动",
+        "selected": false,
+        "value": "99790a30-2c7c-4a99-89a6-cae822ba6537"
+      }
+    ]
   },
   {
     "label": "B-采矿业 ",
@@ -41,7 +41,7 @@
         "selected": false,
         "value": "de3f6e6d-6566-4d4c-8f30-0ba21b75c6ed"
       },
-      
+
       {
         "label": "B-07-石油和天然气开采业",
         "selected": false,
@@ -129,7 +129,7 @@
         "selected": false,
         "value": "5e072fa1-6e77-4be5-a7ab-7432fcc8324f"
       },
-     
+
       {
         "label": "C-23-印刷和记录媒介复制业",
         "selected": false,
@@ -247,7 +247,7 @@
         "selected": false,
         "value": "29c23f45-84c1-41b0-9be3-4d7c170b4be1"
       },
-     
+
       {
         "label": "D-45-燃气生产和供应业",
         "selected": false,
@@ -260,8 +260,7 @@
       }
     ]
   },
-  
-  
+
   {
     "label": "E-建筑业",
     "selected": false,
@@ -293,13 +292,13 @@
     "label": "F-批发和零售业",
     "selected": false,
     "value": "7417c587-d246-49fc-97d0-0525a253d2d7",
-    "children":[
+    "children": [
       {
         "label": "F-51-批发业",
         "selected": false,
         "value": "520b8dc5-2898-4146-9976-0382583d2acb"
       },
-      
+
       {
         "label": "F-52-零售业",
         "selected": false,
@@ -307,13 +306,12 @@
       }
     ]
   },
-  
-  
+
   {
     "label": "G-交通运输、仓储和邮政业",
     "selected": false,
     "value": "31ba9aa6-7387-4fee-afe3-61c377272390",
-    "children":[
+    "children": [
       {
         "label": "G-53-铁路运输业",
         "selected": false,
@@ -356,12 +354,12 @@
       }
     ]
   },
-  
+
   {
     "label": "H-住宿和餐饮业",
     "selected": false,
     "value": "87ccfd5f-957f-4c4d-93a3-10b93ebb48a8",
-    "children":[
+    "children": [
       {
         "label": "H-61-住宿业",
         "selected": false,
@@ -374,12 +372,12 @@
       }
     ]
   },
-  
+
   {
     "label": "I-信息传输、软件和信息技术服务业",
     "selected": false,
     "value": "7fec6af6-dbac-4c31-976c-47ca4f12cce0",
-    "children":[
+    "children": [
       {
         "label": "I-63-电信、广播电视和卫星传输服务",
         "selected": false,
@@ -401,7 +399,7 @@
     "label": "J-金融业",
     "selected": false,
     "value": "b6ba10c2-2375-42f4-90f8-d8a94861f2bd",
-    "children":[
+    "children": [
       {
         "label": "J-66-货币金融服务",
         "selected": false,
@@ -424,12 +422,12 @@
       }
     ]
   },
-  
+
   {
     "label": "K-房地产业",
     "selected": false,
     "value": "7abdcaa8-01de-43b1-a2f3-e4e8ac530fd6",
-    "children":[
+    "children": [
       {
         "label": "K-70-房地产业",
         "selected": false,
@@ -437,12 +435,12 @@
       }
     ]
   },
-  
+
   {
     "label": "L-租赁和商务服务业",
     "selected": false,
     "value": "c0addffa-9d6b-4178-baf3-84834d1c36e0",
-    "children":[
+    "children": [
       {
         "label": "L-71-租赁业",
         "selected": false,
@@ -453,15 +451,14 @@
         "selected": false,
         "value": "ec856220-c8e9-4b98-b8c5-10cb7bc22c87"
       }
-     
     ]
   },
-  
+
   {
     "label": "M-科学研究和技术服务业",
     "selected": false,
     "value": "98455137-a40f-4fbf-8191-e735a480717b",
-    "children":[
+    "children": [
       {
         "label": "M-73-研究和试验发展",
         "selected": false,
@@ -479,12 +476,12 @@
       }
     ]
   },
-  
+
   {
     "label": "N-水利、环境和公共设施管理业",
     "selected": false,
     "value": "b898bde4-15de-454a-880e-46e1e431987d",
-    "children":[
+    "children": [
       {
         "label": "N-76-水利管理业",
         "selected": false,
@@ -511,13 +508,13 @@
     "label": "O-居民服务、修理和其他服务业",
     "selected": false,
     "value": "a12d7ce6-ad19-4e80-89b4-507c8660a664",
-    "children":[
+    "children": [
       {
         "label": "O-80-居民服务业",
         "selected": false,
         "value": "e7975548-f203-45da-b827-38d06de9b24f"
       },
-      
+
       {
         "label": "O-81-机动车、电子产品和日用产品修理业",
         "selected": false,
@@ -530,12 +527,12 @@
       }
     ]
   },
-  
+
   {
     "label": "P-教育",
     "selected": false,
     "value": "c7c7975e-7400-4155-b8c1-baab766679c3",
-    "children":[
+    "children": [
       {
         "label": "P-83-教育",
         "selected": false,
@@ -547,13 +544,13 @@
     "label": "Q-卫生和社会工作",
     "selected": false,
     "value": "ec5ed248-9ecd-4326-b82c-6fccde0ed494",
-    "children":[
+    "children": [
       {
         "label": "Q-84-卫生",
         "selected": false,
         "value": "1c57e2d6-1af2-4595-be37-57bc00ee886b"
       },
-    
+
       {
         "label": "Q-85-社会工作",
         "selected": false,
@@ -561,12 +558,12 @@
       }
     ]
   },
-  
+
   {
     "label": "R-文化、体育和娱乐业",
     "selected": false,
     "value": "b2edb651-aed4-4426-ab28-59e5770e3550",
-    "children":[
+    "children": [
       {
         "label": "R-86-新闻和出版业",
         "selected": false,
@@ -598,13 +595,13 @@
     "label": "S-公共管理、社会保障和社会组织",
     "selected": false,
     "value": "e5742881-edc7-4cae-9a26-79019f56d878",
-    "children":[
+    "children": [
       {
         "label": "S-91-中国共产党机关",
         "selected": false,
         "value": "f7821a19-a993-4482-a86a-47609861e15e"
       },
-      
+
       {
         "label": "S-92-国家机构",
         "selected": false,
@@ -632,12 +629,12 @@
       }
     ]
   },
-  
+
   {
     "label": "T-国际组织",
     "selected": false,
     "value": "07ce1213-63ad-471b-8d4c-1a9e6283a78c",
-    "children":[
+    "children": [
       {
         "label": "T-97-国际组织",
         "selected": false,
@@ -645,5 +642,4 @@
       }
     ]
   }
-  
 ]

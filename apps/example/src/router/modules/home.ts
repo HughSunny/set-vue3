@@ -1,11 +1,11 @@
-import { defineAsyncComponent, h } from 'vue'
-import RouteView from '@/layout/route-view.vue'
+import { defineAsyncComponent, h } from 'vue';
+import RouteView from '@/layout/route-view.vue';
 
 const workplace = defineAsyncComponent(
   () => import(/* webpackChunkName: "dashboard" */ '@/views/home/index.vue'),
-)
+);
 
-const routeName = 'home'
+const routeName = 'home';
 const routes = [
   {
     path: '/home',
@@ -17,4 +17,4 @@ const routes = [
     },
   },
 ];
-export default routes
+export default routes;

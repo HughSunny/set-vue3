@@ -8,4 +8,3 @@ export * from './utils';
 export * from './vnode-util';
 export * from './withInstall';
 export * from './menu-util';
-

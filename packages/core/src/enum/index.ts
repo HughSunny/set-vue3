@@ -1,2 +1,2 @@
-export * from './httpEnum'
-export * from './system-enum'
+export * from './httpEnum';
+export * from './system-enum';

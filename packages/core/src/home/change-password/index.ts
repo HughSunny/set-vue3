@@ -1,1 +1,1 @@
-export { default } from './change-password.vue'
+export { default } from './change-password.vue';

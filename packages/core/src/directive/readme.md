@@ -6,12 +6,12 @@ route.meta.permissions 控制配置按钮、连接等显示、隐藏、可用、
 
 - visible 显示
 - invisible 隐藏
-- 
-可用、禁用功能因为vue版本升级，已经不能用了
+- 可用、禁用功能因为 vue 版本升级，已经不能用了
 - enable 可用
 - disabled 禁用
 
 按钮显示/隐藏 v-has:[permission-name]
+
 ```vue
 <template>
   <a-button v-has:add type="primary">新增(可用)</a-button>
@@ -19,9 +19,8 @@ route.meta.permissions 控制配置按钮、连接等显示、隐藏、可用、
 </template>
 ```
 
+以下是拓展功能 route 的 permissions 配置功能暂时禁用
 
-
-以下是拓展功能 route的  permissions配置功能暂时禁用
 ```js
 const routes = [
  {
@@ -54,9 +53,11 @@ const routes = [
   },
 ],
 ```
-###主要用v-has
 
-在页面中 使用 permissions ,需要将$route赋值给context，通过以下方法
+###主要用 v-has
+
+在页面中 使用 permissions ,需要将$route 赋值给 context，通过以下方法
+
 ```js
 import { useRoute } from 'vue-router';
 const route = useRoute();

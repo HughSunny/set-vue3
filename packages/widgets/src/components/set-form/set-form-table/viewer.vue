@@ -43,47 +43,47 @@
 
 <script lang="ts" setup>
 defineOptions({
-  name: 'SetTableViewer'
-})
+  name: 'SetTableViewer',
+});
 import { SetFieldType, type SetFormTableField } from '@/entity/set-form';
 const props = defineProps({
   fields: {
     type: Array<SetFormTableField>,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   dataList: {
     type: Array,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   showIndex: {
     type: Boolean,
-    default: false
+    default: false,
   },
   optionDict: {
     type: Object,
     default() {
-      return []
-    }
+      return [];
+    },
   },
   pagination: {
     type: Object,
     default() {
-      return { current: 1, pageSize: 20, total: 0, showSizeChanger: false }
-    }
-  }
-})
-const emit = defineEmits(['onTableChange', 'onActionClick'])
+      return { current: 1, pageSize: 20, total: 0, showSizeChanger: false };
+    },
+  },
+});
+const emit = defineEmits(['onTableChange', 'onActionClick']);
 
-const indexMethod = (index) => {
-  return (props.pagination.current - 1) * props.pagination.pageSize + index + 1
-}
+const indexMethod = index => {
+  return (props.pagination.current - 1) * props.pagination.pageSize + index + 1;
+};
 const handleActionClick = (event, action, data) => {
-  emit(action.payload, data)
-}
+  emit(action.payload, data);
+};
 </script>
 
 <style lang="less" scoped>

@@ -6,17 +6,17 @@ export enum ResultEnum {
   SUCCESS_204 = 204,
   ERROR = 1,
   TIMEOUT = 401,
-  TYPE = 'success'
+  TYPE = 'success',
 }
 
 export enum SessionTimeoutProcessingEnum {
   ROUTE_JUMP,
-  PAGE_COVERAGE
+  PAGE_COVERAGE,
 }
 
 export enum ContentLanguageTypeEnum {
   VALUE = 'VALUE',
-  CULTURE = 'CULTURE'
+  CULTURE = 'CULTURE',
 }
 
 /**
@@ -59,8 +59,8 @@ export enum ConfigEnum {
   // 低代码应用ID
   X_LOW_APP_ID = 'X-Low-App-ID',
   // 语言
-  LANGUAGE='Content-Language',
+  LANGUAGE = 'Content-Language',
 
   // 工业中语言设置
-  COOKIE='Cookie',
+  COOKIE = 'Cookie',
 }

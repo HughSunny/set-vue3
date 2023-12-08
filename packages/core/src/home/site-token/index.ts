@@ -1,2 +1,1 @@
-
-export { default } from './site-token.vue'
+export { default } from './site-token.vue';

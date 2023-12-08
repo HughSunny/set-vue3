@@ -1,1 +1,1 @@
-export { default } from './blank-layout.vue'
+export { default } from './blank-layout.vue';

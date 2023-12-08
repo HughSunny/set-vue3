@@ -1,7 +1,7 @@
-import { AppConfig } from '@xdc/core'
-import http from '../http-mes'
+import { AppConfig } from '@xdc/core';
+import http from '../http-mes';
 function getUrl(service: string) {
-  return '/UCService/' + service
+  return '/UCService/' + service;
 }
 
 /**
@@ -12,8 +12,8 @@ function getUrl(service: string) {
 export async function login(userCode: string, password: string) {
   return http.post({
     url: getUrl('Login'),
-    data: { appCode: AppConfig.appCode || 'lead-mes', userCode: userCode, password: password }
-  })
+    data: { appCode: AppConfig.appCode || 'lead-mes', userCode: userCode, password: password },
+  });
 }
 
 /**
@@ -22,36 +22,36 @@ export async function login(userCode: string, password: string) {
  * @param userCode 用户编码
  */
 export async function checkSession(token: string, userCode: string) {
-  const url = getUrl('CheckSession')
+  const url = getUrl('CheckSession');
 
   return http.post({
     url,
-    data: { sessionId: token, userCode: userCode }
-  })
+    data: { sessionId: token, userCode: userCode },
+  });
 }
 
 /**
  * 获取用户的菜单
  */
 export async function getMenusOfUser() {
-  const url = getUrl('GetMenusOfUser')
+  const url = getUrl('GetMenusOfUser');
   return http.post({
     url,
-    data: { appCode: AppConfig.appCode,  userCode: AppConfig.userCode }
-  })
+    data: { appCode: AppConfig.appCode, userCode: AppConfig.userCode },
+  });
 }
 
 /**
  * 获取用户所有操作权限
  * @param userCode 用户编码
-   * @param appCode 系统编码
+ * @param appCode 系统编码
  */
 export async function getOperationsOfUser(userCode: string, appCode: string) {
-  const url = getUrl('GetOperationsOfUser')
+  const url = getUrl('GetOperationsOfUser');
   return http.post({
     url,
-    data: { userCode, appCode }
-  })
+    data: { userCode, appCode },
+  });
 }
 /**
  * 登出
@@ -60,4 +60,3 @@ export async function getOperationsOfUser(userCode: string, appCode: string) {
  * @param complete 完成函数
  */
 export async function logout() {}
-

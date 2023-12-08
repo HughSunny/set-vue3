@@ -19,7 +19,6 @@ import { genMenuTreeRoutes, syncMenu2AccessRoutes } from './menu';
 import { getAuthManager } from '@core/utils/auth-manager';
 import { getSystemInitOptions } from '@core/app';
 
-
 /**
  * 重置路由
  */
@@ -53,7 +52,6 @@ export function initFrameRouter() {
 
   NProgress.configure({ showSpinner: false });
   router.beforeEach(async (to, from, next) => {
-
     startLoading();
     const userStore = useUserStore();
     const appTitle = AppConfig.sysName;
@@ -153,7 +151,7 @@ export function initFrameRouter() {
         //      router.addRoute(xx)
         //   }
         // })
-        console.log('--------------------------->allRouters', allRouters)
+        console.log('--------------------------->allRouters', allRouters);
         console.log('--------------------------->menuTreeList', menuTreeList);
         console.log('--------------------------->router.getRoutes()', router.getRoutes());
       }

@@ -40,65 +40,65 @@
 
 <script lang="ts" setup name="SetFormTypeViewer">
 defineOptions({
-  name:'SetFormTypeViewer'
-})
-import { defineComponent, computed, watch, toRefs } from 'vue'
+  name: 'SetFormTypeViewer',
+});
+import { defineComponent, computed, watch, toRefs } from 'vue';
 const props = defineProps({
   field: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   dynamicKey: {
     type: String,
     default() {
-      return null
-    }
+      return null;
+    },
   },
-  value:{
-
-  },
+  value: {},
   data: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   optionDict: {
     type: Object,
     default() {
-      return {}
-    }
+      return {};
+    },
   },
   labelWidth: {
     type: String,
     default() {
-      return null
-    }
+      return null;
+    },
   },
   showLabel: {
     type: Boolean,
     default() {
-      return true
-    }
+      return true;
+    },
   },
   valueStyle: {
     type: String,
     default() {
-      return ''
-    }
-  }
-})
+      return '';
+    },
+  },
+});
 // ANTD label-width 不能设置
 const labelCol = computed(() => {
-  const { showLabel, labelWidth, field } = props
+  const { showLabel, labelWidth, field } = props;
   return showLabel
     ? {
-        style: `${field.labelWidth || labelWidth ? `width: ${field.labelWidth || labelWidth}` : ''}`
+        style: `${
+          field.labelWidth || labelWidth ? `width: ${field.labelWidth || labelWidth}` : ''
+        }`,
       }
-    : { span: 0 }
-})
+    : { span: 0 };
+});
 </script>
 
 <style lang="less" scoped>

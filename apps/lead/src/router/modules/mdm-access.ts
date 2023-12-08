@@ -1,11 +1,10 @@
-import type { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router';
 import { defineAsyncComponent, h } from 'vue';
 import { RouteView, BlankLayout } from '@xdc/core';
 
-const AsyncComponent =
-  defineAsyncComponent(
-    () => import(/* webpackChunkName: "workplace" */ '@/views/test.vue')
-  )
+const AsyncComponent = defineAsyncComponent(
+  () => import(/* webpackChunkName: "workplace" */ '@/views/test.vue'),
+);
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,9 +12,9 @@ const routes: Array<RouteRecordRaw> = [
     name: '首页',
     meta: {
       icon: 'home-outlined',
-      title: '工作台'
+      title: '工作台',
     },
-    component: h(RouteView, null, () => h(AsyncComponent))
+    component: h(RouteView, null, () => h(AsyncComponent)),
   },
 
   // 岗位任务
@@ -29,26 +28,26 @@ const routes: Array<RouteRecordRaw> = [
         path: '/mywork/tobedone',
         name: 'tobedone',
         component: () => import('@/views/test.vue'),
-        meta: { title: '待办' }
+        meta: { title: '待办' },
       },
       {
         path: '/mywork/done',
         name: 'done',
         component: () => import('@/views/test.vue'),
-        meta: { title: '已办' }
+        meta: { title: '已办' },
       },
 
       {
         path: '/mywork/workhistory',
         name: 'workhistory',
         component: () => import('@/views/test.vue'),
-        meta: { title: '历史记录' }
+        meta: { title: '历史记录' },
       },
       {
         path: '/mywork/createtask',
         name: 'createtask',
         component: () => import('@/views/test.vue'),
-        meta: { title: '任务发布' }
+        meta: { title: '任务发布' },
       },
 
       {
@@ -61,24 +60,24 @@ const routes: Array<RouteRecordRaw> = [
             path: '/mywork/processconfig',
             name: 'processconfig',
             component: () => import('@/views/test.vue'),
-            meta: { title: '流程配置' }
+            meta: { title: '流程配置' },
           },
           {
             path: '/mywork/formtypes',
             name: 'formtypes',
             component: () => import('@/views/test.vue'),
-            meta: { title: '表单类型' }
-          }
-        ]
+            meta: { title: '表单类型' },
+          },
+        ],
       },
       {
         path: '/mywork/functionalstrategy',
         name: 'functionalstrategy',
         component: () => import('@/views/test.vue'),
-        meta: { title: '功能策略', guest: true }
-      }
-    ]
-  }
-]
+        meta: { title: '功能策略', guest: true },
+      },
+    ],
+  },
+];
 
-export default routes
+export default routes;

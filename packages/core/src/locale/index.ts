@@ -43,7 +43,7 @@ export const loadCoreLanguageModule = lang => {
     const fileName = filePath.split('/').pop();
     const name = fileName?.replace(/\.\/|\.ts/g, '');
     if (name === lang) {
-      return files[filePath]?.default
+      return files[filePath]?.default;
     }
   }
   return {};

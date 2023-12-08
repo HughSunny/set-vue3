@@ -1,42 +1,42 @@
 export interface ProSettings {
-  footerRender?: boolean
-  headerRender?: boolean
+  footerRender?: boolean;
+  headerRender?: boolean;
 }
 
 export interface PureSettings {
-  primaryColor: string
+  primaryColor: string;
   /**
    * nav menu position: `side` or `top`
    */
-  headerHeight?: number
+  headerHeight?: number;
 
   /**
    * sticky header
    */
-  fixedHeader: boolean
+  fixedHeader: boolean;
   /**
    * sticky sidebar
    */
-  fixedSidebar: boolean
-  menu: { locale?: boolean; defaultOpenAll?: boolean }
+  fixedSidebar: boolean;
+  menu: { locale?: boolean; defaultOpenAll?: boolean };
 
-  colorWeak?: boolean
-  splitMenus?: boolean
-  
+  colorWeak?: boolean;
+  splitMenus?: boolean;
+
   /**
    * theme for nav menu
    */
-  navTheme: 'dark' | 'realDark' | undefined
+  navTheme: 'dark' | 'realDark' | undefined;
   /**
    * customize header height
    */
-  layout: string // LayoutType
+  layout: string; // LayoutType
   /**
    * layout of content: `Fluid` or `Fixed`, only works when layout is top
    */
-  contentWidth: 'Fluid' | 'Fixed'
+  contentWidth: 'Fluid' | 'Fixed';
 
-  transitionName: string
-  multiTab: boolean
-  multiTabFixed: boolean
+  transitionName: string;
+  multiTab: boolean;
+  multiTabFixed: boolean;
 }

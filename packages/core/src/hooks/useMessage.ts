@@ -1,5 +1,5 @@
 import type { ModalFunc, ModalFuncProps } from 'ant-design-vue/lib/modal/Modal';
-import type { NotificationArgsProps, ConfigProps } from 'ant-design-vue/lib/notification'
+import type { NotificationArgsProps, ConfigProps } from 'ant-design-vue/lib/notification';
 import { Modal, message as Message, notification } from 'ant-design-vue';
 import { InfoCircleFilled, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons-vue';
 
@@ -37,13 +37,13 @@ interface ConfirmOptions {
 function getIcon(iconType: string) {
   try {
     if (iconType === 'warning') {
-      return  h(InfoCircleFilled,{"class":"modal-icon-warning"})
+      return h(InfoCircleFilled, { class: 'modal-icon-warning' });
     } else if (iconType === 'success') {
-      return h(CheckCircleFilled,{"class": "modal-icon-success"});
+      return h(CheckCircleFilled, { class: 'modal-icon-success' });
     } else if (iconType === 'info') {
-      return h(InfoCircleFilled,{"class": "modal-icon-info"});
+      return h(InfoCircleFilled, { class: 'modal-icon-info' });
     } else {
-      return h(CloseCircleFilled,{"class":"modal-icon-error"});
+      return h(CloseCircleFilled, { class: 'modal-icon-error' });
     }
   } catch (e) {
     console.log(e);
@@ -53,7 +53,7 @@ function getIcon(iconType: string) {
 function renderContent({ content }: Pick<ModalOptionsEx, 'content'>) {
   try {
     if (isString(content)) {
-      return h('div', h('div', {'innerHTML':content as string}));
+      return h('div', h('div', { innerHTML: content as string }));
     } else {
       return content;
     }
@@ -88,18 +88,18 @@ const getBaseOptions = () => {
 
 function createModalOptions(options: ModalOptionsPartial, icon: string): ModalOptionsPartial {
   //update-begin-author:taoyan date:2023-1-10 for: 可以自定义图标
-  let titleIcon:any = ''
-  if(options.icon){
+  let titleIcon: any = '';
+  if (options.icon) {
     titleIcon = options.icon;
-  }else{
-    titleIcon = getIcon(icon)
+  } else {
+    titleIcon = getIcon(icon);
   }
   //update-end-author:taoyan date:2023-1-10 for: 可以自定义图标
   return {
     ...getBaseOptions(),
     ...options,
     content: renderContent(options),
-    icon: titleIcon
+    icon: titleIcon,
   };
 }
 

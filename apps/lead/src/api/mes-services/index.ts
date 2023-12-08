@@ -1,3 +1,3 @@
-export * from './uc'
-export * from './sys.service'
-export * from './common.service'
+export * from './uc';
+export * from './sys.service';
+export * from './common.service';

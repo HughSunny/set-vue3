@@ -3,88 +3,88 @@ export interface IOAuth2Option {
   /**
    * 认证服务器登录Url
    */
-  AuthenticationLoginUrl: string
+  AuthenticationLoginUrl: string;
   /**
    * 是否使用第三方认证服务
    */
-  IsUseThirdAuthServer: boolean
+  IsUseThirdAuthServer: boolean;
   /**
    * 认证服务器URL
    */
-  AuthenticationUrl: string
+  AuthenticationUrl: string;
   /**
    * 是否开启单点登录
    */
-  EnableSSO: boolean
+  EnableSSO: boolean;
   /**
    * 是否认证服务器
    */
-  IsAuthenticationServer: boolean
+  IsAuthenticationServer: boolean;
 
   /**
    * 认证URI
    */
-  AuthorizationEndpointUris: string[]
+  AuthorizationEndpointUris: string[];
 
   /**
    * LogoutURI
    */
-  LogoutEndpointUris: string[]
+  LogoutEndpointUris: string[];
 
   /**
    * 获取Token URI
    */
-  TokenEndpointUris: string[]
+  TokenEndpointUris: string[];
 
   /**
    * 获取用户信息URI
    */
-  UserinfoEndpointUris: string[]
+  UserinfoEndpointUris: string[];
 
   /**
    * Configuration URI
    */
-  ConfigurationEndpointUris: string[]
+  ConfigurationEndpointUris: string[];
 
   /**
    * Cryptography URI
    */
-  CryptographyEndpointUris: string[]
+  CryptographyEndpointUris: string[];
 
   /**
    * 客户端重定向URI
    */
-  ClientRedirectUri: string
+  ClientRedirectUri: string;
 
   /**
    * 客户端ID
    */
-  ClientId: string
+  ClientId: string;
 
   /**
    * 第三方认证服务器地址
    */
-  ThirdAuthenticationUrl: string
+  ThirdAuthenticationUrl: string;
 
   /**
    * 第三方配置Url
    */
-  ThirdConfigurationEndpointUri: string
+  ThirdConfigurationEndpointUri: string;
 
   /**
    * 第三方Token Url
    */
-  ThirdTokenEndpointUri: string
+  ThirdTokenEndpointUri: string;
 
   /**
    * 第三方userinfo Url
    */
-  ThirdUserinfoEndpointUri: string
+  ThirdUserinfoEndpointUri: string;
 
   /**
    * 是否使用第三方工作流
    */
-  UseThirdWorkflow: boolean
+  UseThirdWorkflow: boolean;
 }
 
 const defaultOAuth2Option = {
@@ -105,5 +105,5 @@ const defaultOAuth2Option = {
   ThirdConfigurationEndpointUri: '',
   ThirdTokenEndpointUri: '',
   ThirdUserinfoEndpointUri: '',
-  UseThirdWorkflow: false
-}
+  UseThirdWorkflow: false,
+};

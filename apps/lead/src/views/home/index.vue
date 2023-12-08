@@ -1,4 +1,3 @@
-
 <template>
   <div>
     测试页面HOME
@@ -28,9 +27,10 @@ const dataFields = [
     type: 'input',
     required: true,
     span: 12,
-    params:{ // 参数，属于设计的参数
+    params: {
+      // 参数，属于设计的参数
       width: '50%',
-      type: "email", // 子属性
+      type: 'email', // 子属性
       placeholder: '1111',
       disabled: true, // 不可编辑
       hidden: false, //没有实现
@@ -39,14 +39,14 @@ const dataFields = [
       append: {
         model: 'appendSelect',
         type: 'select',
-        params:{  width: '100px', },
+        params: { width: '100px' },
         options: cloudDeployment,
       },
     },
-    props:{ // 参数，属于组件的参数, 样式穿透太烦了，直接传参就好了...
-
+    props: {
+      // 参数，属于组件的参数, 样式穿透太烦了，直接传参就好了...
     },
-    options: [] // 字典
+    options: [], // 字典
   },
 
   {
@@ -55,7 +55,7 @@ const dataFields = [
     label: '文本域',
     type: 'inputArea',
     required: true,
-    params:{ width: 200, },
+    params: { width: 200 },
     span: 12,
   },
   {
@@ -82,7 +82,7 @@ const dataFields = [
     required: true,
     span: 12,
     options: cloudDeployment,
-    params:{ width: 200, },
+    params: { width: 200 },
     props: {
       ['filterable']: true,
       ['allow-create']: true,
@@ -95,7 +95,7 @@ const dataFields = [
     label: '多选框',
     type: 'multi-select',
     required: true,
-    params:{ width: 200, },
+    params: { width: 200 },
     span: 12,
     options: cloudDeployment,
   },
@@ -107,7 +107,7 @@ const dataFields = [
     type: 'file',
     // type: 'imageFile',
     required: true,
-    params:{ width: 200, },
+    params: { width: 200 },
     span: 12,
     props: {
       limit: 2,
@@ -127,7 +127,7 @@ const dataFields = [
       limitSize: 2,
       needFileName: false,
     },
-    params:{ width: 200, },
+    params: { width: 200 },
   },
   {
     key: 'radio',

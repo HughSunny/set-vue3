@@ -4,16 +4,16 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'BlankPage'
-})
-import { useRoute, useRouter } from 'vue-router'
-import { computed } from 'vue'
+  name: 'BlankPage',
+});
+import { useRoute, useRouter } from 'vue-router';
+import { computed } from 'vue';
 const props = defineProps({
-  foo: String
-})
-const emit = defineEmits([''])
+  foo: String,
+});
+const emit = defineEmits(['']);
 
-const router = useRouter()
-const route = useRoute()
-const title = computed(() => route.meta?.title)
+const router = useRouter();
+const route = useRoute();
+const title = computed(() => route.meta?.title);
 </script>
