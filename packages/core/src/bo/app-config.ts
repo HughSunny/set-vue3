@@ -1,5 +1,5 @@
 const _config = _APP_CONFIG_ || {};
-import type { CreateAxiosOptions } from '@core/api/http/axios/axiosTransform';
+import type { CreateAxiosOptions } from '@core/api/http';
 import { type UserManagerSettings } from 'oidc-client';
 import type { MetaPermission } from '@core/interface/IRouter';
 

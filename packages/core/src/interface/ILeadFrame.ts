@@ -2,7 +2,7 @@ import type { Pinia } from 'pinia';
 import type { Router } from 'vue-router';
 import type { IUserInfo } from '@core/interface/IUser';
 import type { IFetchMenu, MetaPermission, IInitRouterOptions } from '@core/interface/IRouter';
-import type { CreateAxiosOptions } from '@core/api/http/axios/axiosTransform';
+import type { CreateAxiosOptions } from '@core/api/http';
 import type { ILanguageItem, OauthOption } from '@core/bo/app-config';
 
 export interface ISysInit {

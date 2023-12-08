@@ -9,9 +9,35 @@
     "typings/**/*.ts",
     "node_modules/ant-design-vue/typings/global.d.ts",
   ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/__tests__/*"
+  ],
   "compilerOptions": {
-    // "preserveSymlinks": true,
     "baseUrl": ".", //未设置 "baseUrl" 时，不允许使用非相对路径。
+    // "isolatedModules": true,
+    // "composite": true,
+    // "strict": false,
+    // "strictPropertyInitialization": false,
+    // "suppressImplicitAnyIndexErrors": false,
+    // "target": "esnext",
+    // "module": "esnext",
+    // "moduleResolution": "node",
+    // "useDefineForClassFields": true,
+    // "allowSyntheticDefaultImports": true,
+    // "jsx": "preserve",
+    // "sourceMap": true,
+    // "resolveJsonModule": true,
+    // "esModuleInterop": true,
+    // "noImplicitAny": false,
+    // "skipLibCheck": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    // "preserveSymlinks": true,
+ 
     "paths": {
       "@core/*": [
         "src/*"

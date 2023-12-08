@@ -10,9 +10,9 @@ import type {
 } from '@xdc/core';
 import {
   AppConfig,
+  getLocalStorage,
   initAppOptions,
   LeadProLayout,
-  getLocalStorage,
   STORAGE_KEY_TOKEN,
 } from '@xdc/core';
 import locales from '@/locale';

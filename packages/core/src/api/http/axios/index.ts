@@ -1,9 +1,9 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
-import type { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosResponse, InternalAxiosRequestConfig, AxiosRequestConfig } from 'axios';
 import type { ICommonResModel, RequestOptions, Result } from '#/axios';
-import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
+import type { AxiosTransform } from './axiosTransform';
 import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
 import { useMessage } from '@core/hooks/useMessage';
@@ -15,7 +15,11 @@ import {
   ContentLanguageTypeEnum,
 } from '@core/enum/httpEnum';
 import { isString } from '@core/utils/is';
-
+export interface CreateAxiosOptions extends AxiosRequestConfig {
+  authenticationScheme?: string;
+  transform?: AxiosTransform;
+  requestOptions?: RequestOptions;
+}
 import { setObjToUrlParams, deepMerge } from '@core/utils';
 import { useI18n } from '@core/hooks/useI18n';
 import { joinTimestamp, formatRequestDate } from './helper';

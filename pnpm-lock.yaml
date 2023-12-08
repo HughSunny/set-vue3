@@ -577,6 +577,9 @@ importers:
       '@babel/register':
         specifier: ^7.18.6
         version: 7.22.15(@babel/core@7.23.3)
+      '@tsconfig/node18':
+        specifier: ^18.2.0
+        version: 18.2.2
       '@types/echarts':
         specifier: ^4.9.13
         version: 4.9.22
@@ -2770,6 +2773,10 @@ packages:
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: false
+
+  /@tsconfig/node18@18.2.2:
+    resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
+    dev: true
 
   /@types/argparse@1.0.38:
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}

@@ -36,13 +36,12 @@
 </template>
 
 <script lang="ts" setup>
-defineOptions({
-  name: 'GlobalHeader',
-});
 import { ref, computed } from 'vue';
 import { AppConfig } from '@core/bo';
 import { useConfigStore } from '@core/store';
-
+defineOptions({
+  name: 'GlobalHeader',
+});
 const props = defineProps({
   prefixCls: {
     type: String,

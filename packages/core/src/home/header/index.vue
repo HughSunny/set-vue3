@@ -123,32 +123,39 @@ const props = defineProps({
 });
 
 const { getPrefixCls } = useProProvider();
-const { collapsed } = toRefs(props);
-const prefixCls = computed(() => props.prefixCls || getPrefixCls());
+const {
+  prefixCls: propPrefixCls,
+  collapsed,
+  fixedHeader,
+  hasSiderMenu,
+  siderWidth,
+  collapsedWidth,
+  splitMenus,
+} = toRefs(props);
+const cPrefixCls = propPrefixCls?.value || getPrefixCls();
 const isMobile = inject('isMobile', ref(false));
 const isMix = computed(() => props.layout === 'mix');
 const isTop = computed(() => props.layout === 'top');
 const isLeft = computed(() => props.layout === 'left');
-const needShowMenu = computed(() => (isMix.value ? props.splitMenus : true));
-const needFixedHeader = computed(() => props.fixedHeader || isMix.value);
+const needShowMenu = computed(() => (isMix.value ? splitMenus.value : true));
+const needFixedHeader = computed(() => fixedHeader.value || isMix.value);
 const needSettingWidth = computed(
-  () => needFixedHeader.value && props.hasSiderMenu && !isTop.value && !isMobile.value,
+  () => needFixedHeader.value && hasSiderMenu.value && !isTop.value && !isMobile.value,
 );
 const computedMenus = computed(() =>
-  props.splitMenus ? getMenuFirstChildren(props.menus) : props.menus,
+  splitMenus.value ? getMenuFirstChildren(props.menus) : props.menus,
 );
 
 const classNames = ref({
-  [`${prefixCls.value}-fixed-header`]: needFixedHeader,
-  [`${prefixCls.value}-top-menu`]: isTop.value,
+  [`${cPrefixCls}-fixed-header`]: needFixedHeader,
+  [`${cPrefixCls}-top-menu`]: isTop.value,
 });
 const width = computed(() =>
   // 收起状态 或是 left 布局模式时，计算收起宽度
   !isMix.value && needSettingWidth.value && !isMobile.value
-    ? `calc(100% - ${props.collapsed || isLeft.value ? props.collapsedWidth : props.siderWidth}px)`
+    ? `calc(100% - ${collapsed.value || isLeft.value ? collapsedWidth.value : siderWidth.value}px)`
     : '100%',
 );
-
 const right = computed(() => (needFixedHeader.value ? 0 : undefined));
 
 const handleSelectedKeys = (selectedKeys: string[]): void => {

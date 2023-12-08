@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import type { PropType } from 'vue';
-import { computed, useSlots } from 'vue';
+import { computed, useSlots, toRefs } from 'vue';
 import type { MenuTheme } from 'ant-design-vue';
 import { useProProvider } from '@core/hooks';
 import type { RouteProps } from '@core/interface/IRouter';
@@ -79,19 +79,20 @@ const props = defineProps({
 });
 
 const { getPrefixCls } = useProProvider();
-const prefixedClassName = props.prefixCls || getPrefixCls('top-nav-header');
+const { theme, contentWidth, prefixCls: customizePrefixCls } = toRefs(props);
+const prefixedClassName = customizePrefixCls?.value || getPrefixCls('top-nav-header');
 const hasMix = computed(() => props.layout === 'mix');
 const classNames = computed(() => {
   console.log('------------------->', prefixedClassName);
   return {
     [prefixedClassName]: true,
-    ['light']: props.theme === 'light',
+    ['light']: theme.value === 'light',
   };
 });
 const headerClassName = computed(() => {
   return {
     [`${prefixedClassName}-main`]: true,
-    ['wide']: props.contentWidth === 'Fixed',
+    ['wide']: contentWidth.value === 'Fixed',
   };
 });
 const { logo: hasLogoSlot } = useSlots();
