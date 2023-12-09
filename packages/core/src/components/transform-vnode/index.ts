@@ -1,7 +1,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'transform-vnode',
+  name: 'TransformVnode',
   props: {
     // eslint-disable-next-line vue/require-default-prop
     by: {

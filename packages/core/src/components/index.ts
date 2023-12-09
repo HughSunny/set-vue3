@@ -1,7 +1,7 @@
 import type { App } from 'vue';
-import AntdApp from './antd-app/index.vue';
-import GridPanel from './grid-panel/index.vue';
-import PageContainer from './page-container/index.vue';
+import AntdApp from './antd-app';
+import GridPanel from './grid-panel';
+import PageContainer from './page-container';
 import PageGridContent from './page-grid-content/index.vue';
 import ProProvider from './pro-provider/index.vue';
 import SelectLang from './select-lang';

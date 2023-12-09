@@ -1,0 +1,59 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
+    "tests/**/*.ts",
+    "typings/**/*.d.ts",
+    "typings/**/*.ts",
+    "scripts/**/*.ts",
+    "scripts/**/*.d.ts",
+    "vite.config.ts",
+    "node_modules/ant-design-vue/typings/global.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/__tests__/*"
+  ],
+  "compilerOptions": {
+    "isolatedModules":true,
+    "composite": true,
+    "baseUrl": ".",
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "#/*": [
+        "typings/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types/",
+      "./typings"
+    ],
+  }
+}

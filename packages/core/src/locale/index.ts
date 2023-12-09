@@ -88,5 +88,4 @@ export function loadLanguageAsync(lang = defaultLang): Promise<string> {
   });
 }
 
-export const _t = i18n.global.t;
 export default i18n;

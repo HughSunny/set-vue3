@@ -1,5 +1,23 @@
 {
-  "extends": "@xdc/config/tsconfig.node.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Project Config",
+  "compilerOptions": {
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "types": [
+      "node"
+    ],
+    "composite": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    // custom
+    "noImplicitAny": false
+  },
   "include": [
     "scripts"
   ],
@@ -8,5 +26,5 @@
       "verbatimModuleSyntax": false,
       "module": "CommonJS"
     }
-  }
+  },
 }

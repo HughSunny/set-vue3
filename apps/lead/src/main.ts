@@ -1,11 +1,12 @@
 import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n';
 // antd
 import Antd from 'ant-design-vue';
 import VueViewer from 'v-viewer';
 import * as Icons from '@ant-design/icons-vue';
 import { createFromIconfontCN } from '@ant-design/icons-vue';
-import XdcCore, { AppConfig, initAppOptions, useI18n } from '@xdc/core';
-import XdcWidgets, { InitWidgetOptions } from '@xdc/widgets';
+import XdcCore, { AppConfig, i18n, initAppOptions, useI18n } from '@xdc/core';
+import XdcWidgets, { type InitWidgetOptions } from '@xdc/widgets';
 import { uploadFile } from '@/api/services/file';
 import { setupRouter } from '@/router';
 import { setupStore } from '@/store';
@@ -17,7 +18,7 @@ import 'ant-design-vue/dist/reset.css';
 import 'nprogress/nprogress.css'; // progress bar style
 import '@xdc/widgets/dist/style.css';
 import '@xdc/core/dist/style.css';
-import '@xdc/core/dist/src/index.less';
+import '@xdc/core/dist/index.less';
 // viewerjs
 import 'viewerjs/dist/viewer.css';
 import './global.less';
@@ -38,9 +39,19 @@ const registerComponents = app => {
   const widgetOption: InitWidgetOptions = {
     useI18nHook: useI18n,
     uploadRequest: uploadFile,
-    uploadLibrary: AppConfig.uploadLibrary,
+    uploadLibrary: AppConfig.uploadStorePath,
   };
-
+  if (!i18n) {
+    // 强迫症的患者这边必须加入，不然项目中的$t会报错(红色波浪线)
+    app.use(
+      createI18n({
+        legacy: false,
+        missingWarn: false,
+        fallbackWarn: false,
+        locale: AppConfig.lang,
+      }),
+    );
+  }
   app.use(Antd);
   app.use(VueViewer);
   app.use(XdcWidgets, widgetOption);

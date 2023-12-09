@@ -31,10 +31,13 @@
       >
         <template #icon>
           <template v-if="child.meta.icon">
-            <template v-if="child.meta.icon.startsWith('fa')">
+            <template v-if="isFaIcon(menu.meta.icon)">
               <i style="color: white" :class="child.meta.icon"></i>
             </template>
-
+            <!-- x 开头的图标 -->
+            <!-- <template v-else-if="isXIcon(menu.meta.icon)">
+              <UnorderedListOutlined />
+            </template> -->
             <component :is="child.meta.icon" v-else />
           </template>
           <component
@@ -71,4 +74,16 @@ defineProps({
 });
 defineEmits(['itemHover']);
 const { t } = useI18n();
+const isFaIcon = icon => {
+  if (icon && icon.startsWith('fa')) {
+    return true;
+  }
+  return false;
+};
+const isXIcon = icon => {
+  if (icon && icon.startsWith('x-')) {
+    return true;
+  }
+  return false;
+};
 </script>

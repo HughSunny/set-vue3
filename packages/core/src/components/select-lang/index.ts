@@ -1,1 +1,2 @@
-export { default } from './index.vue';
+import LeadSelectLang from './index.vue';
+export default LeadSelectLang;

@@ -84,7 +84,7 @@ import type { PropType } from 'vue';
 import { useRoute } from 'vue-router';
 import { computed, toRefs } from 'vue';
 import type { MenuTheme, MenuProps } from 'ant-design-vue';
-import { useProProvider } from '@core/components/pro-provider/index';
+import { useProProvider } from '@core/hooks';
 import BaseMenu from '@core/home/base-menu/index.vue';
 import { findMenuChildren } from '@core/utils/menu-util';
 import type { LayoutType, Breakpoint } from '@core/interface/IBaseLayout';

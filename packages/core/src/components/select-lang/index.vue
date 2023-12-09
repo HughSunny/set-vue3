@@ -18,6 +18,9 @@
 </template>
 
 <script lang="ts" setup>
+defineOptions({
+  name: 'LeadSelectLang',
+});
 import { computed } from 'vue';
 import type { MenuProps } from 'ant-design-vue';
 

@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import glob from 'glob';
 
 const srcPath = path.join(__dirname, '../src');
-const destPath = path.join(__dirname, '../dist/src');
+const destPath = path.join(__dirname, '../dist');
 
 const files = glob.sync('**/*.less', {
   cwd: srcPath,

@@ -20,21 +20,21 @@
       >
         <a-menu-item :key="menu.path" @mouseenter="$emit('itemHover', { key: menu.path })">
           <template #icon>
-            <template v-if="menu.meta.icon">
-              <template v-if="menu.meta.icon.startsWith('fa')">
+            <template v-if="menu.meta?.icon">
+              <template v-if="isFaIcon(menu.meta.icon)">
                 <i style="color: white" :class="menu.meta.icon"></i>
               </template>
-              <template v-else-if="menu.meta.icon.startsWith('x')">
+              <template v-else-if="isXIcon(menu.meta.icon)">
                 <!-- x 开头的图标 -->
                 <UnorderedListOutlined />
               </template>
               <component :is="menu.meta.icon" v-else />
             </template>
-            <template v-else-if="collapsed && menu.meta.collapsedIcon !== undefined">
+            <template v-else-if="collapsed && menu.meta?.collapsedIcon !== undefined">
               <component :is="menu.meta.collapsedIcon" />
             </template>
           </template>
-          {{ $t(menu.meta.title) }}
+          {{ $t(menu.meta?.title) }}
         </a-menu-item>
       </transform-vnode>
       <template v-else-if="menu.children">
@@ -49,21 +49,18 @@
   </a-menu>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import type { MenuProps, MenuTheme } from 'ant-design-vue';
 import type { ComputedRef, PropType } from 'vue';
-import { defineComponent, computed } from 'vue';
+import { computed } from 'vue';
 import { UnorderedListOutlined } from '@ant-design/icons-vue';
 import { useI18n } from 'vue-i18n';
 import type { RouteProps } from '@core/interface/IRouter';
 import XdcBaseSubmenu from './sub-menu.vue';
 import { TransformVnode } from '@core/components';
 
-export function useRootSubmenuKeys(menus: RouteProps[]): ComputedRef<string[]> {
-  return computed(() => menus.map(it => it.path));
-}
-
-export const BaseMenuProps = {
+defineOptions({ name: 'BaseMenu' });
+const props = defineProps({
   locale: {
     type: Boolean,
     default: false,
@@ -98,38 +95,39 @@ export const BaseMenuProps = {
     default: undefined,
   },
   underSider: Boolean,
+});
+const emit = defineEmits([
+  'update:openKeys',
+  'update:selectedKeys',
+  'mouseenter',
+  'mouseleave',
+  'itemHover',
+]);
+const isFaIcon = icon => {
+  if (icon && icon.startsWith('fa')) {
+    return true;
+  }
+  return false;
+};
+const isXIcon = icon => {
+  if (icon && icon.startsWith('x-')) {
+    return true;
+  }
+  return false;
 };
 
-export default defineComponent({
-  name: 'BaseMenu',
-  components: {
-    XdcBaseSubmenu,
-    TransformVnode,
-  },
-  props: { ...BaseMenuProps },
-  emits: ['update:openKeys', 'update:selectedKeys', 'mouseenter', 'mouseleave', 'itemHover'],
-  setup(props, { emit }) {
-    const { t } = useI18n();
-    const isInline = computed(() => props.mode === 'inline');
-    const dynamicProps = computed(() => {
-      return isInline.value
-        ? { [props.underSider ? 'collapsed' : 'inlineCollapsed']: props.collapsed }
-        : {};
-    });
-    const handleOpenChange = (openKeys: string[]): void => {
-      emit('update:openKeys', openKeys);
-    };
-    const handleSelect = (ctx: { [key: string]: any }): void => {
-      // console.log('BaseMenu----------------------------------->handleSelect ', ctx.selectedKeys )
-      emit('update:selectedKeys', ctx.selectedKeys);
-    };
-    return {
-      t,
-      isInline,
-      dynamicProps,
-      handleOpenChange,
-      handleSelect,
-    };
-  },
+const { t } = useI18n();
+const isInline = computed(() => props.mode === 'inline');
+const dynamicProps = computed(() => {
+  return isInline.value
+    ? { [props.underSider ? 'collapsed' : 'inlineCollapsed']: props.collapsed }
+    : {};
 });
+const handleOpenChange = (openKeys: string[]): void => {
+  emit('update:openKeys', openKeys);
+};
+const handleSelect = (ctx: { [key: string]: any }): void => {
+  // console.log('BaseMenu----------------------------------->handleSelect ', ctx.selectedKeys )
+  emit('update:selectedKeys', ctx.selectedKeys);
+};
 </script>

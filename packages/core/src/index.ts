@@ -16,6 +16,8 @@ export * from './bo';
 export * from './interface';
 export * from './enum';
 export * from './utils';
+
+export { default as i18n } from './locale';
 // views
 export * from './views';
 

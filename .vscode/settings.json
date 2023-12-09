@@ -1,0 +1,8 @@
+{
+  "i18n-ally.localesPaths": [
+    "packages/mes/locale",
+    "apps/lead/src/locale",
+    "packages/core/src/locale",
+    "packages/core/src/locale/lang"
+  ]
+}

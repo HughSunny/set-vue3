@@ -26,7 +26,7 @@ const routes = [
  {
     path: `/directive1`,
     name: `directive1`,
-    component: () => import('@/views/directive/index.vue'),
+    component: () => import('XXX/views/directive/index.vue'),
     meta: {
       title: `指令1`,
       keepAlive: true,
